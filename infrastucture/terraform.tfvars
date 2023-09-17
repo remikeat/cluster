@@ -1,0 +1,5 @@
+config_path       = "/home/remi/.kube/config"
+email             = "contact@remikeat.com"
+external_cidr     = "192.168.2.0/24"
+hostname          = "rancher.remikeat.com"
+bootstrapPassword = "admin"
