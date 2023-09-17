@@ -68,12 +68,12 @@ resource "helm_release" "rancher" {
   depends_on = [helm_release.cert-manager]
 }
 
-# resource "helm_release" "longhorn" {
-#   name             = "longhorn"
-#   namespace        = "longhorn"
-#   repository       = "https://charts.longhorn.io"
-#   chart            = "longhorn"
-#   create_namespace = true
+resource "helm_release" "longhorn" {
+  name             = "longhorn"
+  namespace        = "longhorn"
+  repository       = "https://charts.longhorn.io"
+  chart            = "longhorn"
+  create_namespace = true
 
-#   depends_on = [helm_release.cert-manager]
-# }
+  depends_on = [helm_release.cert-manager]
+}
