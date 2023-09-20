@@ -21,4 +21,16 @@ variable "hostname" {
 variable "bootstrapPassword" {
   description = "Bootstrap password"
   type        = string
+  sensitive   = true
+}
+
+variable "grafana_url" {
+  description = "Grafana url"
+  type        = string
+}
+
+variable "grafana_password" {
+  description = "Grafana password"
+  type        = string
+  sensitive   = true
 }

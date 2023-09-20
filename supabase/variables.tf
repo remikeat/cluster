@@ -6,16 +6,19 @@ variable "config_path" {
 variable "anonKey" {
   description = "Anon Key"
   type        = string
+  sensitive   = true
 }
 
 variable "serviceKey" {
   description = "Service Key"
   type        = string
+  sensitive   = true
 }
 
 variable "secret" {
   description = "Secret"
   type        = string
+  sensitive   = true
 }
 
 variable "email" {
@@ -26,6 +29,7 @@ variable "email" {
 variable "smtp_password" {
   description = "SMTP password"
   type        = string
+  sensitive   = true
 }
 
 variable "db_username" {
@@ -36,4 +40,5 @@ variable "db_username" {
 variable "db_password" {
   description = "DB password"
   type        = string
+  sensitive   = true
 }

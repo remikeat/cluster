@@ -94,4 +94,8 @@ resource "helm_release" "kube-prometheus-stack" {
     name  = "prometheus.prometheusSpec.evaluationInterval"
     value = "30s"
   }
+  set {
+    name  = "grafana.adminPassword"
+    value = var.grafana_password
+  }
 }
