@@ -52,15 +52,23 @@ resource "helm_release" "rancher" {
     value = var.bootstrapPassword
   }
   set {
-    name  = "ingress.tls.source"
-    value = "letsEncrypt"
-  }
-  set {
     name  = "letsEncrypt.email"
     value = var.email
   }
   set {
     name  = "letsEncrypt.ingress.class"
+    value = "nginx"
+  }
+  set {
+    name  = "ingress.extraAnnotations.cert-manager\\.io/cluster-issuer"
+    value = "letsencrypt-production"
+  }
+  set {
+    name  = "ingress.includeDefaultExtraAnnotations"
+    value = false
+  }
+  set {
+    name  = "ingress.ingressClassName"
     value = "nginx"
   }
 
