@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "remikeat-com"
+  labels:
+    app: remikeat.com
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: remikeat.com
+  template:
+    metadata:
+      labels:
+        app: remikeat.com
+    spec:
+      containers:
+      - name: remikeat-com
+        image: ghcr.io/remikeat/remikeat.com:latest
+        ports:
+        - containerPort: 80
+      imagePullSecrets:
+        - name: github-com-9k8gh6hf5h
