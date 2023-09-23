@@ -1,0 +1,14 @@
+all:
+  children:
+    master_nodes:
+      hosts:
+        master:
+          ansible_host: 192.168.1.1
+    worker_nodes:
+      hosts:
+        worker1:
+          ansible_host: 192.168.1.11
+        worker2:
+          ansible_host: 192.168.1.12
+  vars:
+    ansible_user: remi

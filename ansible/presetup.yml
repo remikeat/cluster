@@ -1,0 +1,124 @@
+---
+- name: Install kubernetes
+  hosts: all
+  become: true
+  tasks:
+    - name: Install packages
+      ansible.builtin.package:
+        name:
+          - apt-transport-https
+          - ca-certificates
+          - curl
+
+    - name: Install Docker public signing key
+      ansible.builtin.shell:
+        cmd: >-
+          curl -sSL https://download.docker.com/linux/ubuntu/gpg |
+          gpg --dearmor --yes -o /usr/share/keyrings/docker-archive-keyring.gpg
+
+    - name: Add the Docker apt repository
+      ansible.builtin.lineinfile:
+        path: /etc/apt/sources.list.d/docker.list
+        line: deb [signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu jammy stable
+        create: true
+
+    - name: Install Google Cloud public signing key
+      ansible.builtin.shell:
+        cmd: >-
+          curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg |
+          sudo gpg --dearmor -o /usr/share/keyrings/kubernetes-archive-keyring.gpg
+
+    - name: Add the Kubernetes apt repository
+      ansible.builtin.lineinfile:
+        path: /etc/apt/sources.list.d/kubernetes.list
+        line: deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main
+        create: true
+
+    - name: Install containerd Kubernetes Packages
+      ansible.builtin.apt:
+        pkg:
+          - docker.io
+          - containerd
+          - kubelet
+          - kubeadm
+          - kubectl
+        update_cache: true
+
+    - name: Hold Kubernetes Packages
+      ansible.builtin.dpkg_selections:
+        name: "{{ item }}"
+        selection: hold
+      with_items:
+        - kubelet
+        - kubeadm
+        - kubectl
+
+    - name: Setting kernel module
+      ansible.builtin.lineinfile:
+        path: /etc/modules-load.d/kubernetes.conf
+        line: "{{ item }}"
+        create: true
+      with_items:
+        - overlay
+        - br_netfilter
+
+    - name: Load kernel module
+      ansible.builtin.modprobe:
+        name: br_netfilter
+        state: present
+
+    - name: Setting Sysctl
+      ansible.builtin.lineinfile:
+        path: /etc/sysctl.conf
+        regexp: "^{{ item.regexp }}.*"
+        line: "{{ item.line }}"
+      with_items:
+        - regexp: net.ipv4.ip_forward
+          line: net.ipv4.ip_forward=1
+        - regexp: net.bridge.bridge-nf-call-ip6table
+          line: net.bridge.bridge-nf-call-ip6table=1
+        - regexp: net.bridge.bridge-nf-call-iptables
+          line: net.bridge.bridge-nf-call-iptables=1
+        - regexp: fs.inotify.max_user_instances
+          line: fs.inotify.max_user_instances=100000
+        - regexp: fs.inotify.max_user_watches
+          line: fs.inotify.max_user_watches=100000
+
+    - name: Create containerd config directory
+      ansible.builtin.file:
+        path: /etc/containerd
+        state: directory
+        mode: "0755"
+
+    - name: Disable swap
+      ansible.builtin.lineinfile:
+        path: /etc/fstab
+        regexp: '\sswap\s'
+        state: absent
+
+    - name: Create containerd config file
+      ansible.builtin.shell: containerd config default > /etc/containerd/config.toml
+
+    - name: Setting crictl endpoint
+      ansible.builtin.shell:
+        cmd: >-
+          crictl config
+          --set runtime-endpoint=unix:///run/containerd/containerd.sock
+          --set image-endpoint=unix:///run/containerd/containerd.sock
+
+    - name: Enable systemd cgroup
+      ansible.builtin.lineinfile:
+        path: /etc/containerd/config.toml
+        regexp: "{{ item.regexp }}"
+        line: "{{ item.line }}"
+        insertafter: "{{ item.insertafter }}"
+      with_items:
+        - regexp: "            SystemdCgroup = false"
+          line: "            SystemdCgroup = true"
+          insertafter: 'plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc.options'
+
+    - name: Join docker group
+      ansible.builtin.user:
+        name: "{{ ansible_env.SUDO_USER }}"
+        groups: docker
+        append: true
