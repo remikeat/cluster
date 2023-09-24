@@ -38,7 +38,7 @@ kind: RunnerDeployment
 metadata:
   name: remikeat-com-runnerdeploy
 spec:
-  replicas: 1
+  replicas: 3
   template:
     spec:
       repository: remikeat/remikeat.com
