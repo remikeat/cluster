@@ -20,4 +20,4 @@ spec:
         ports:
         - containerPort: 80
       imagePullSecrets:
-        - name: github-com-9k8gh6hf5h
+        - name: github-com

@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: remikeat-com
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-production
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: "www2.remikeat.com"
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: remikeat-com
+            port:
+              number: 3000
+  tls:
+  - hosts:
+      - www2.remikeat.com
+    secretName: remikeat-com-tls
