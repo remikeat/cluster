@@ -21,3 +21,13 @@ spec:
         - containerPort: 80
       imagePullSecrets:
         - name: github-com
+---
+apiVersion: actions.summerwind.dev/v1alpha1
+kind: RunnerDeployment
+metadata:
+  name: remikeat-com-runnerdeploy
+spec:
+  replicas: 1
+  template:
+    spec:
+      repository: remikeat/remikeat.com
