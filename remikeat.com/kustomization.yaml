@@ -5,6 +5,10 @@ secretGenerator:
     type: kubernetes.io/dockerconfigjson
     files:
     - .dockerconfigjson
+  - name: remikeat-com-secrets
+    type: kubernetes.io/opaque
+    envs:
+    - .env
 resources:
   - deployment.yaml
   - service.yaml

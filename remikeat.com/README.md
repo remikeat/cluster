@@ -14,6 +14,13 @@ Create an `.dockerconfigjson` file with the following content:
 }
 ```
 
+Create an `.env` file with the following content:
+
+```
+NEXT_PUBLIC_WEB3FORMS_TOKEN=""
+NEXT_PUBLIC_HCAPTCHA_TOKEN=""
+```
+
 # How to encode in base64
 
 ```
