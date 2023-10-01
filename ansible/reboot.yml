@@ -1,0 +1,6 @@
+- hosts: all
+
+  tasks:
+    - name: reboot
+      command: /usr/sbin/reboot
+      become: yes
