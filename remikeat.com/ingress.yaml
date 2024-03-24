@@ -16,7 +16,7 @@ spec:
           service:
             name: remikeat-com
             port:
-              number: 3000
+              number: 80
   tls:
   - hosts:
       - www2.remikeat.com
