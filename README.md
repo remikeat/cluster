@@ -1,3 +1,30 @@
+### Talos installation
+
+- Download talos image from https://factory.talos.dev/ by setting values according to talos/boot_assets/assets.yaml
+- Extract the image
+
+```
+xz -d metal-arm64.raw.xz
+```
+
+Prepare the cluster
+
+```
+talosctl apply-config --insecure -n 192.168.0.138 --file controlplane.yaml
+talosctl apply-config --insecure -n 192.168.0.168 --file worker.yaml
+talosctl apply-config --insecure -n 192.168.0.226 --file worker.yaml
+talosctl bootstrap -n 192.168.0.138
+talosctl kubeconfig -n 192.168.0.138
+```
+
+### Terraform installation
+
+```
+terraform init
+source .env
+terraform apply
+```
+
 ### Fix ingress
 
 ```
