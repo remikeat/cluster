@@ -3,6 +3,8 @@ kind: Application
 metadata:
   name: kube-prometheus-stack
   namespace: argo-cd
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
 spec:
   project: default
   source:
@@ -10,6 +12,7 @@ spec:
     targetRevision: 61.8.0
     chart: kube-prometheus-stack
     helm:
+      skipCrds: true
       valuesObject:
         prometheus:
           prometheusSpec:
@@ -25,4 +28,3 @@ spec:
     syncOptions:
     - CreateNamespace=true
     - PruneLast=true
-    - Replace=true
