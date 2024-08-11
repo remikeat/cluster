@@ -40,7 +40,7 @@ cert-manager.io/issuer-kind: Issuer
 
 ### Get bootstrap password for Rancher
 
-````
+```
 
 kubectl get secret --namespace cattle-system bootstrap-secret -o go-template='{{.data.bootstrapPassword|base64decode}}{{"\n"}}'
 
@@ -81,5 +81,3 @@ kubectl delete -n argo-cd secrets/argocd-initial-admin-secret
 ### ArgoCD configuration
 
 Create a github token and connect the repo in argocd
-```
-````
