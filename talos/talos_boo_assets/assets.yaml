@@ -1,0 +1,10 @@
+overlay:
+    image: siderolabs/sbc-raspberrypi
+    name: rpi_generic
+customization:
+    extraKernelArgs:
+        - usb-storage.quirks=152d:1561:u
+    systemExtensions:
+        officialExtensions:
+            - siderolabs/iscsi-tools
+            - siderolabs/util-linux-tools
