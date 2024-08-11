@@ -10,8 +10,9 @@ spec:
     targetRevision: 1.6.2
     chart: longhorn
     helm:
-      valueFiles:
-        - values.yaml
+      valuesObject:
+        preUpgradeChecker:
+          jobEnabled: false
   destination:
     server: https://kubernetes.default.svc
     namespace: longhorn-system
