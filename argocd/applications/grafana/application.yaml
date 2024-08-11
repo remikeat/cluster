@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: kube-prometheus-stack
-  namespace: kube-prometheus-stack
+  namespace: argo-cd
 spec:
   project: default
   source:
