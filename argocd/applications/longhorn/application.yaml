@@ -9,6 +9,9 @@ spec:
     repoURL: https://charts.longhorn.io
     targetRevision: 1.6.2
     chart: longhorn
+    helm:
+      valueFiles:
+        - values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: longhorn-system
