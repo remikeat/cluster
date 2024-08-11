@@ -1,27 +1,28 @@
-resource "kubectl_manifest" "ipaddresspool" {
+resource "kubectl_manifest" "ippool" {
   yaml_body  = <<-EOF
-apiVersion: metallb.io/v1beta1
-kind: IPAddressPool
+apiVersion: "cilium.io/v2alpha1"
+kind: CiliumLoadBalancerIPPool
 metadata:
-  name: default
-  namespace: metallb
+  name: "pool"
 spec:
-  addresses:
-    - "${var.external_cidr}"
-  avoidBuggyIPs: true
+  blocks:
+  - cidr: "${var.external_cidr}"
+  allowFirstLastIPs: "No"
   EOF
-  depends_on = [helm_release.metallb]
+  depends_on = [helm_release.cilium]
 }
 
 resource "kubectl_manifest" "l2advertisement" {
   yaml_body  = <<-EOF
-apiVersion: metallb.io/v1beta1
-kind: L2Advertisement
+apiVersion: "cilium.io/v2alpha1"
+kind: CiliumL2AnnouncementPolicy
 metadata:
-  name: l2advertisement
-  namespace: metallb
+  name: l2announcement-policy
+spec:
+  externalIPs: true
+  loadBalancerIPs: true
   EOF
-  depends_on = [helm_release.metallb]
+  depends_on = [helm_release.cilium]
 }
 
 resource "kubectl_manifest" "letsencrypt_staging" {

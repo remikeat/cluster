@@ -1,9 +1,49 @@
-resource "helm_release" "metallb" {
-  name             = "metallb"
-  namespace        = "metallb"
-  repository       = "https://metallb.github.io/metallb"
-  chart            = "metallb"
-  create_namespace = true
+resource "helm_release" "cilium" {
+  name       = "cilium"
+  namespace  = "kube-system"
+  repository = "https://helm.cilium.io/"
+  chart      = "cilium"
+
+  set {
+    name  = "ipam.mode"
+    value = "kubernetes"
+  }
+  set {
+    name  = "kubeProxyReplacement"
+    value = "true"
+  }
+  set {
+    name  = "securityContext.capabilities.ciliumAgent"
+    value = "{CHOWN,KILL,NET_ADMIN,NET_RAW,IPC_LOCK,SYS_ADMIN,SYS_RESOURCE,DAC_OVERRIDE,FOWNER,SETGID,SETUID}"
+  }
+  set {
+    name  = "securityContext.capabilities.cleanCiliumState"
+    value = "{NET_ADMIN,SYS_ADMIN,SYS_RESOURCE}"
+  }
+  set {
+    name  = "cgroup.autoMount.enabled"
+    value = "false"
+  }
+  set {
+    name  = "cgroup.hostRoot"
+    value = "/sys/fs/cgroup"
+  }
+  set {
+    name  = "k8sServiceHost"
+    value = "localhost"
+  }
+  set {
+    name  = "k8sServicePort"
+    value = "7445"
+  }
+  set {
+    name  = "l2announcements.enabled"
+    value = "true"
+  }
+  set {
+    name  = "externalIPs.enabled"
+    value = "true"
+  }
 }
 
 resource "helm_release" "ingress-nginx" {
@@ -18,7 +58,7 @@ resource "helm_release" "ingress-nginx" {
     value = "true"
   }
 
-  depends_on = [helm_release.metallb, kubectl_manifest.ipaddresspool, kubectl_manifest.l2advertisement]
+  depends_on = [helm_release.cilium, kubectl_manifest.ippool, kubectl_manifest.l2advertisement]
 }
 
 resource "helm_release" "cert-manager" {
@@ -39,7 +79,7 @@ resource "helm_release" "cert-manager" {
 resource "helm_release" "rancher" {
   name             = "rancher"
   namespace        = "rancher"
-  repository       = "https://releases.rancher.com/server-charts/stable"
+  repository       = "https://releases.rancher.com/server-charts/latest"
   chart            = "rancher"
   create_namespace = true
 
@@ -75,54 +115,54 @@ resource "helm_release" "rancher" {
   depends_on = [helm_release.cert-manager]
 }
 
-resource "helm_release" "longhorn" {
-  name             = "longhorn"
-  namespace        = "longhorn"
-  repository       = "https://charts.longhorn.io"
-  chart            = "longhorn"
-  create_namespace = true
+# resource "helm_release" "longhorn" {
+#   name             = "longhorn"
+#   namespace        = "longhorn"
+#   repository       = "https://charts.longhorn.io"
+#   chart            = "longhorn"
+#   create_namespace = true
 
-  depends_on = [helm_release.cert-manager]
-}
+#   depends_on = [helm_release.cert-manager]
+# }
 
-resource "helm_release" "kube-prometheus-stack" {
-  name             = "kube-prometheus-stack"
-  namespace        = "kube-prometheus-stack"
-  repository       = "https://prometheus-community.github.io/helm-charts"
-  chart            = "kube-prometheus-stack"
-  create_namespace = true
+# resource "helm_release" "kube-prometheus-stack" {
+#   name             = "kube-prometheus-stack"
+#   namespace        = "kube-prometheus-stack"
+#   repository       = "https://prometheus-community.github.io/helm-charts"
+#   chart            = "kube-prometheus-stack"
+#   create_namespace = true
 
-  depends_on = [helm_release.cert-manager]
+#   depends_on = [helm_release.cert-manager]
 
-  set {
-    name  = "prometheus.prometheusSpec.scrapeInterval"
-    value = "30s"
-  }
-  set {
-    name  = "prometheus.prometheusSpec.evaluationInterval"
-    value = "30s"
-  }
-  set {
-    name  = "grafana.adminPassword"
-    value = var.grafana_password
-  }
-}
+#   set {
+#     name  = "prometheus.prometheusSpec.scrapeInterval"
+#     value = "30s"
+#   }
+#   set {
+#     name  = "prometheus.prometheusSpec.evaluationInterval"
+#     value = "30s"
+#   }
+#   set {
+#     name  = "grafana.adminPassword"
+#     value = var.grafana_password
+#   }
+# }
 
-resource "helm_release" "actions-runner-controller" {
-  name             = "actions-runner-controller"
-  namespace        = "actions-runner-controller"
-  repository       = "https://actions-runner-controller.github.io/actions-runner-controller"
-  chart            = "actions-runner-controller"
-  create_namespace = true
+# resource "helm_release" "actions-runner-controller" {
+#   name             = "actions-runner-controller"
+#   namespace        = "actions-runner-controller"
+#   repository       = "https://actions-runner-controller.github.io/actions-runner-controller"
+#   chart            = "actions-runner-controller"
+#   create_namespace = true
 
-  depends_on = [helm_release.cert-manager]
+#   depends_on = [helm_release.cert-manager]
 
-  set {
-    name  = "authSecret.create"
-    value = true
-  }
-  set {
-    name  = "authSecret.github_token"
-    value = var.github_token
-  }
-}
+#   set {
+#     name  = "authSecret.create"
+#     value = true
+#   }
+#   set {
+#     name  = "authSecret.github_token"
+#     value = var.github_token
+#   }
+# }

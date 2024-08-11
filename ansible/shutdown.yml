@@ -1,6 +1,0 @@
-- hosts: all
-
-  tasks:
-    - name: shutdown
-      command: /usr/sbin/shutdown -h +1
-      become: yes
