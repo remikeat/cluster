@@ -4,7 +4,7 @@ metadata:
   name: kube-prometheus-stack
   namespace: argo-cd
   annotations:
-    argocd.argoproj.io/sync-wave: "3"
+    argocd.argoproj.io/sync-wave: "0"
 spec:
   project: default
   source:

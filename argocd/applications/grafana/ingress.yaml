@@ -4,6 +4,7 @@ metadata:
   name: grafana
   namespace: kube-prometheus-stack
   annotations:
+    argocd.argoproj.io/sync-wave: "1"
     cert-manager.io/cluster-issuer: letsencrypt-production
 spec:
   ingressClassName: nginx
