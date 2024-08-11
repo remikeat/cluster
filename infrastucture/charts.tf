@@ -170,16 +170,6 @@ resource "helm_release" "argo-cd" {
   depends_on = [helm_release.cert-manager]
 }
 
-# resource "helm_release" "longhorn" {
-#   name             = "longhorn"
-#   namespace        = "longhorn"
-#   repository       = "https://charts.longhorn.io"
-#   chart            = "longhorn"
-#   create_namespace = true
-
-#   depends_on = [helm_release.cert-manager]
-# }
-
 # resource "helm_release" "kube-prometheus-stack" {
 #   name             = "kube-prometheus-stack"
 #   namespace        = "kube-prometheus-stack"

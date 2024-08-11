@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kube-prometheus-stack
+  namespace: kube-prometheus-stack
+spec:
+  project: default
+  source:
+    repoURL: https://prometheus-community.github.io/helm-charts
+    targetRevision: 61.8.0
+    chart: kube-prometheus-stack
+    helm:
+      valuesObject:
+        prometheus:
+          prometheusSpec:
+            scrapeInterval: 30s
+            evaluationInterval: 30s
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: kube-prometheus-stack
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
