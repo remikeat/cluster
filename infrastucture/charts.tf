@@ -115,6 +115,61 @@ resource "helm_release" "rancher" {
   depends_on = [helm_release.cert-manager]
 }
 
+resource "helm_release" "argo-cd" {
+  name             = "argo-cd"
+  namespace        = "argo-cd"
+  repository       = "https://argoproj.github.io/argo-helm"
+  chart            = "argo-cd"
+  create_namespace = true
+
+  set {
+    name  = "global.domain"
+    value = "argocd.remikeat.com"
+  }
+
+  set {
+    name  = "configs.params.server.insecure"
+    value = true
+  }
+
+  set {
+    name  = "server.ingress.enabled"
+    value = true
+  }
+
+  set {
+    name  = "server.ingress.ingressClassName"
+    value = "nginx"
+  }
+
+  set {
+    name  = "server.ingress.annotations.cert-manager\\.io/cluster-issuer"
+    value = "letsencrypt-production"
+  }
+
+  set {
+    name  = "server.ingress.annotations.nginx\\.ingress\\.kubernetes\\.io/ssl-redirect"
+    value = "false"
+  }
+
+  set {
+    name  = "server.ingress.annotations.nginx\\.ingress\\.kubernetes\\.io/backend-protocol"
+    value = "HTTPS"
+  }
+
+  set {
+    name  = "server.ingress.extraTls[0].hosts[0]"
+    value = "argocd.remikeat.com"
+  }
+
+  set {
+    name  = "server.ingress.extraTls[0].secretName"
+    value = "argocd-tls"
+  }
+
+  depends_on = [helm_release.cert-manager]
+}
+
 # resource "helm_release" "longhorn" {
 #   name             = "longhorn"
 #   namespace        = "longhorn"
