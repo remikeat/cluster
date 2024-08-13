@@ -14,7 +14,7 @@ spec:
     helm:
       skipCrds: true
       valueFiles:
-      - values.yaml
+      - argocd/applications/grafana/values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: kube-prometheus-stack

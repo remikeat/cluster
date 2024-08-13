@@ -11,7 +11,7 @@ spec:
     chart: longhorn
     helm:
       valueFiles:
-      - values.yaml
+      - argocd/applications/longhorn/values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: longhorn-system
