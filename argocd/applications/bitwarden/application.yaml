@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: bitwarden
+  namespace: argo-cd
+spec:
+  project: default
+  sources:
+    - repoURL: https://charts.bitwarden.com
+      targetRevision: 2024.7.2
+      chart: bitwarden
+      helm:
+        valueFiles:
+        - $repo/argocd/applications/bitwarden/values.yaml
+    - repoURL: https://github.com/remikeat/cluster.git
+      targetRevision: HEAD
+      ref: repo
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: bitwarden
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
