@@ -7,8 +7,8 @@ spec:
   project: default
   sources:
     - repoURL: https://charts.bitwarden.com
-      targetRevision: 2024.7.2
-      chart: bitwarden
+      targetRevision: 0.1.0-Beta
+      chart: sm-operator
       helm:
         valueFiles:
         - $repo/argocd/applications/bitwarden/values.yaml
