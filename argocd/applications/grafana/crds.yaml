@@ -1,7 +1,8 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: argo-cd
+  name: kube-prometheus-stack-crds
+  namespace: argo-cd
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
 spec:
