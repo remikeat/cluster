@@ -6,12 +6,15 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://charts.longhorn.io
-    targetRevision: 1.6.2
-    chart: longhorn
-    helm:
-      valueFiles:
-      - argocd/applications/longhorn/values.yaml
+    - repoURL: https://charts.longhorn.io
+      targetRevision: 1.6.2
+      chart: longhorn
+      helm:
+        valueFiles:
+        - $repo/argocd/applications/longhorn/values.yaml
+    - repoURL: https://github.com/remikeat/cluster.git
+      targetRevision: HEAD
+      ref: repo
   destination:
     server: https://kubernetes.default.svc
     namespace: longhorn-system
