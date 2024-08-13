@@ -5,7 +5,7 @@ metadata:
   namespace: argo-cd
 spec:
   project: default
-  source:
+  sources:
     - repoURL: https://charts.longhorn.io
       targetRevision: 1.6.2
       chart: longhorn
