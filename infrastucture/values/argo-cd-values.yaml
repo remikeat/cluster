@@ -9,10 +9,19 @@ server:
     enabled: true
     ingressClassName: "nginx"
     annotations:
-      - cert-manager.io/cluster-issuer: "letsencrypt-production"
-      - nginx.ingress.kubernetes.io/ssl-redirect: "false"
-      - nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+      cert-manager.io/cluster-issuer: "letsencrypt-production"
+      nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
+      nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
     extraTls:
       - hosts:
         - "argocd.remikeat.com"
         secretName: "argocd-tls"
+repoServer:
+  volumeMounts:
+    - name: helm-values
+      mountPath: /helm-values
+  volumes:
+    - name: helm-values
+      secret:
+        secretName: helm-values
+        optional: true
