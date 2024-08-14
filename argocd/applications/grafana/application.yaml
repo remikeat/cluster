@@ -15,7 +15,7 @@ spec:
         skipCrds: true
         valueFiles:
         - $repo/argocd/applications/grafana/values.yaml
-        - /helm-values/grafana.yaml
+        - /../../../../helm-values/grafana.yaml
     - repoURL: https://github.com/remikeat/cluster.git
       targetRevision: HEAD
       ref: repo
