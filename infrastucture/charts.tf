@@ -69,29 +69,6 @@ resource "helm_release" "argo-cd" {
   depends_on = [helm_release.cert-manager]
 }
 
-# resource "helm_release" "kube-prometheus-stack" {
-#   name             = "kube-prometheus-stack"
-#   namespace        = "kube-prometheus-stack"
-#   repository       = "https://prometheus-community.github.io/helm-charts"
-#   chart            = "kube-prometheus-stack"
-#   create_namespace = true
-
-#   depends_on = [helm_release.cert-manager]
-
-#   set {
-#     name  = "prometheus.prometheusSpec.scrapeInterval"
-#     value = "30s"
-#   }
-#   set {
-#     name  = "prometheus.prometheusSpec.evaluationInterval"
-#     value = "30s"
-#   }
-#   set {
-#     name  = "grafana.adminPassword"
-#     value = var.grafana_password
-#   }
-# }
-
 # resource "helm_release" "actions-runner-controller" {
 #   name             = "actions-runner-controller"
 #   namespace        = "actions-runner-controller"

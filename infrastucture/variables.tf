@@ -24,19 +24,8 @@ variable "bootstrapPassword" {
   sensitive   = true
 }
 
-variable "grafana_url" {
-  description = "Grafana url"
-  type        = string
-}
-
-variable "grafana_password" {
-  description = "Grafana password"
-  type        = string
-  sensitive   = true
-}
-
-variable "github_token" {
-  description = "Github token"
-  type        = string
-  sensitive   = true
-}
+# variable "github_token" {
+#   description = "Github token"
+#   type        = string
+#   sensitive   = true
+# }
