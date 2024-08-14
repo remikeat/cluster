@@ -1,0 +1,13 @@
+hostname: ${hostname}
+bootstrapPassword: ${bootstrapPassword}
+letsEncrypt:
+  email: ${email}
+  ingress:
+    class: "nginx"
+ingress:
+  tls:
+    source: "letsEncrypt"
+  extraAnnotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-production"
+  includeDefaultExtraAnnotations: false
+  ingressClassName: "nginx"

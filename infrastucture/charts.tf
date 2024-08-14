@@ -4,46 +4,9 @@ resource "helm_release" "cilium" {
   repository = "https://helm.cilium.io/"
   chart      = "cilium"
 
-  set {
-    name  = "ipam.mode"
-    value = "kubernetes"
-  }
-  set {
-    name  = "kubeProxyReplacement"
-    value = "true"
-  }
-  set {
-    name  = "securityContext.capabilities.ciliumAgent"
-    value = "{CHOWN,KILL,NET_ADMIN,NET_RAW,IPC_LOCK,SYS_ADMIN,SYS_RESOURCE,DAC_OVERRIDE,FOWNER,SETGID,SETUID}"
-  }
-  set {
-    name  = "securityContext.capabilities.cleanCiliumState"
-    value = "{NET_ADMIN,SYS_ADMIN,SYS_RESOURCE}"
-  }
-  set {
-    name  = "cgroup.autoMount.enabled"
-    value = "false"
-  }
-  set {
-    name  = "cgroup.hostRoot"
-    value = "/sys/fs/cgroup"
-  }
-  set {
-    name  = "k8sServiceHost"
-    value = "localhost"
-  }
-  set {
-    name  = "k8sServicePort"
-    value = "7445"
-  }
-  set {
-    name  = "l2announcements.enabled"
-    value = "true"
-  }
-  set {
-    name  = "externalIPs.enabled"
-    value = "true"
-  }
+  values = [
+    file("${path.module}/values/cilium-values.yaml")
+  ]
 }
 
 resource "helm_release" "ingress-nginx" {
@@ -53,10 +16,9 @@ resource "helm_release" "ingress-nginx" {
   chart            = "ingress-nginx"
   create_namespace = true
 
-  set {
-    name  = "controller.publishService.enabled"
-    value = "true"
-  }
+  values = [
+    file("${path.module}/values/ingress-nginx-values.yaml")
+  ]
 
   depends_on = [helm_release.cilium, kubectl_manifest.ippool, kubectl_manifest.l2advertisement]
 }
@@ -68,10 +30,9 @@ resource "helm_release" "cert-manager" {
   chart            = "cert-manager"
   create_namespace = true
 
-  set {
-    name  = "installCRDs"
-    value = "true"
-  }
+  values = [
+    file("${path.module}/values/cert-manager-values.yaml")
+  ]
 
   depends_on = [helm_release.ingress-nginx]
 }
@@ -83,34 +44,13 @@ resource "helm_release" "rancher" {
   chart            = "rancher"
   create_namespace = true
 
-  set {
-    name  = "hostname"
-    value = var.hostname
-  }
-  set {
-    name  = "bootstrapPassword"
-    value = var.bootstrapPassword
-  }
-  set {
-    name  = "letsEncrypt.email"
-    value = var.email
-  }
-  set {
-    name  = "letsEncrypt.ingress.class"
-    value = "nginx"
-  }
-  set {
-    name  = "ingress.extraAnnotations.cert-manager\\.io/cluster-issuer"
-    value = "letsencrypt-production"
-  }
-  set {
-    name  = "ingress.includeDefaultExtraAnnotations"
-    value = false
-  }
-  set {
-    name  = "ingress.ingressClassName"
-    value = "nginx"
-  }
+  values = [
+    templatefile("${path.module}/values/rancher-values.yaml", {
+      hostname          = var.hostname,
+      bootstrapPassword = var.bootstrapPassword,
+      email             = var.email
+    })
+  ]
 
   depends_on = [helm_release.cert-manager]
 }
@@ -122,50 +62,9 @@ resource "helm_release" "argo-cd" {
   chart            = "argo-cd"
   create_namespace = true
 
-  set {
-    name  = "global.domain"
-    value = "argocd.remikeat.com"
-  }
-
-  set {
-    name  = "configs.params.server.insecure"
-    value = true
-  }
-
-  set {
-    name  = "server.ingress.enabled"
-    value = true
-  }
-
-  set {
-    name  = "server.ingress.ingressClassName"
-    value = "nginx"
-  }
-
-  set {
-    name  = "server.ingress.annotations.cert-manager\\.io/cluster-issuer"
-    value = "letsencrypt-production"
-  }
-
-  set {
-    name  = "server.ingress.annotations.nginx\\.ingress\\.kubernetes\\.io/ssl-redirect"
-    value = "false"
-  }
-
-  set {
-    name  = "server.ingress.annotations.nginx\\.ingress\\.kubernetes\\.io/backend-protocol"
-    value = "HTTPS"
-  }
-
-  set {
-    name  = "server.ingress.extraTls[0].hosts[0]"
-    value = "argocd.remikeat.com"
-  }
-
-  set {
-    name  = "server.ingress.extraTls[0].secretName"
-    value = "argocd-tls"
-  }
+  values = [
+    file("${path.module}/values/argo-cd-values.yaml")
+  ]
 
   depends_on = [helm_release.cert-manager]
 }
