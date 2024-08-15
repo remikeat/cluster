@@ -11,13 +11,15 @@ spec:
     - repoURL: https://prometheus-community.github.io/helm-charts
       targetRevision: 61.8.0
       chart: kube-prometheus-stack
-      helm:
-        skipCrds: true
-        valueFiles:
-        - $repo/argocd/applications/grafana/values.yaml
-        - /grafana.yaml
       plugin:
         name: secret-config-plugin
+        env:
+          - name: SECRETS
+            value: /grafana.yaml
+          - name: VALUES
+            value: $repo/argocd/applications/grafana/values.yaml
+          - name: ARGS
+            value: --skip-crds
     - repoURL: https://github.com/remikeat/cluster.git
       targetRevision: HEAD
       ref: repo
