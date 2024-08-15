@@ -15,7 +15,9 @@ spec:
         skipCrds: true
         valueFiles:
         - $repo/argocd/applications/grafana/values.yaml
-        - /../../../helm-values/grafana.yaml
+        - /grafana.yaml
+      plugin:
+        name: secret-config-plugin
     - repoURL: https://github.com/remikeat/cluster.git
       targetRevision: HEAD
       ref: repo

@@ -25,3 +25,26 @@ repoServer:
       secret:
         secretName: helm-values
         optional: true
+    - name: secret-config-plugin-config
+      configMap:
+        name: secret-config-plugin-config
+    - name: cmp-tmp
+      emptyDir: {}
+  extraContainers:
+    - name: secret-config-plugin
+      command:
+        - "/var/run/argocd/argocd-cmp-server"
+      image: busybox
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 999
+      volumeMounts:
+        - mountPath: /var/run/argocd
+          name: var-files
+        - mountPath: /home/argocd/cmp-server/plugins
+          name: plugins
+        - mountPath: /home/argocd/cmp-server/config/plugin.yaml
+          name: secret-config-plugin-config
+          subPath: plugin.yaml
+        - mountPath: /tmp
+          name: cmp-tmp

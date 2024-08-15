@@ -23,3 +23,8 @@ resource "kubectl_manifest" "letsencrypt_production" {
   })
   depends_on = [helm_release.cert-manager]
 }
+
+resource "kubectl_manifest" "secret_config_plugin" {
+  yaml_body  = file("${path.module}/manifests/secret_config_plugin.yaml")
+  depends_on = [helm_release.cert-manager]
+}
