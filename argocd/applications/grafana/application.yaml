@@ -15,7 +15,7 @@ spec:
         name: secret-config-plugin
         env:
           - name: SECRETS
-            value: /grafana.yaml
+            value: /helm-values/grafana.yaml
           - name: VALUES
             value: $repo/argocd/applications/grafana/values.yaml
           - name: ARGS

@@ -34,7 +34,7 @@ repoServer:
     - name: secret-config-plugin
       command:
         - "/var/run/argocd/argocd-cmp-server"
-      image: busybox
+      image: quay.io/argoproj/argocd
       securityContext:
         runAsNonRoot: true
         runAsUser: 999
