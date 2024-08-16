@@ -73,8 +73,7 @@ repoServer:
       name: custom-tools
   extraContainers:
     - name: secret-config-plugin
-      command:
-        - "/var/run/argocd/argocd-cmp-server"
+      command: ["/var/run/argocd/argocd-cmp-server", "--loglevel=debug"]
       image: quay.io/argoproj/argocd
       securityContext:
         runAsNonRoot: true
