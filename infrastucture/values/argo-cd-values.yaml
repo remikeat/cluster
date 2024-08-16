@@ -39,9 +39,9 @@ repoServer:
       secret:
         secretName: helm-values
         optional: true
-    - name: secret-config-plugin-config
+    - name: helm-secrets-cmp-config
       configMap:
-        name: secret-config-plugin-config
+        name: helm-secrets-cmp-config
     - name: cmp-tmp
       emptyDir: {}
     - name: custom-tools
@@ -72,8 +72,9 @@ repoServer:
     - mountPath: /custom-tools
       name: custom-tools
   extraContainers:
-    - name: secret-config-plugin
-      command: ["/var/run/argocd/argocd-cmp-server", "--loglevel=debug"]
+    - name: helm-secrets-cmp
+      command:
+        - "/var/run/argocd/argocd-cmp-server"
       image: quay.io/argoproj/argocd
       securityContext:
         runAsNonRoot: true
@@ -84,7 +85,7 @@ repoServer:
         - mountPath: /home/argocd/cmp-server/plugins
           name: plugins
         - mountPath: /home/argocd/cmp-server/config/plugin.yaml
-          name: secret-config-plugin-config
+          name: helm-secrets-cmp-config
           subPath: plugin.yaml
         - mountPath: /tmp
           name: cmp-tmp
