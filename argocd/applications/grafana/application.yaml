@@ -19,7 +19,7 @@ spec:
           - name: REPO_REVISION
             value: HEAD
           - name: REPO_PATH
-            value: /argocd/applications/grafana/
+            value: argocd/applications/grafana/
           - name: VALUES
             value: values.yaml
           - name: SECRETS

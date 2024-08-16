@@ -34,9 +34,6 @@ repoServer:
     - name: git-askpass
       mountPath: /usr/local/bin/git_askpass.sh
       subPath: git_askpass.sh
-    - name: cmp-plugin
-      mountPath: /usr/local/bin/template.sh
-      subPath: template.sh
   volumes:
     - name: helm-values
       secret:
@@ -81,3 +78,6 @@ repoServer:
           name: cmp-tmp
         - mountPath: /helm-values
           name: helm-values
+        - name: cmp-plugin
+          mountPath: /usr/local/bin/template.sh
+          subPath: template.sh
