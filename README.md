@@ -81,3 +81,36 @@ kubectl delete -n argo-cd secrets/argocd-initial-admin-secret
 ### ArgoCD configuration
 
 Create a github token and connect the repo in argocd
+
+### Bitwarden configuration
+
+Create a k8s secret with the following properties
+
+- name: bw-auth-token
+- namespace: argo-cd
+- data:
+  - token: <GITHUB_TOKEN>
+
+Create a secret in bitwarden secret manager with the following values
+
+- name: grafana
+- value:
+
+```
+  grafana:
+    adminPassword: <GRAFANA_PASSWORD>
+```
+
+And update argocd/applications/bitwarden/secrets.yaml
+
+### Deploy applications
+
+```
+kubectl apply -f applications.yaml
+```
+
+### Cluster shutdown
+
+```
+talosctl -n 192.168.0.138 -n 192.168.0.168 -n 192.168.0.226 shutdown
+```

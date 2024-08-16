@@ -22,14 +22,14 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: grafana-app
+  name: bitwarden-app
   namespace: argo-cd
 spec:
   project: default
   source:
     repoURL: https://github.com/remikeat/cluster.git
     targetRevision: HEAD
-    path: argocd/applications/grafana
+    path: argocd/applications/bitwarden
     directory:
       recurse: true
   destination:
@@ -43,14 +43,14 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: bitwarden-app
+  name: grafana-app
   namespace: argo-cd
 spec:
   project: default
   source:
     repoURL: https://github.com/remikeat/cluster.git
     targetRevision: HEAD
-    path: argocd/applications/bitwarden
+    path: argocd/applications/grafana
     directory:
       recurse: true
   destination:
