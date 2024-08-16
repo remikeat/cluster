@@ -34,3 +34,9 @@ variable "github_token" {
   type        = string
   sensitive   = true
 }
+
+variable "bitwarden_token" {
+  description = "Bitwarden token"
+  type        = string
+  sensitive   = true
+}

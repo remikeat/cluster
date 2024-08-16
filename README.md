@@ -84,13 +84,6 @@ Create a github token and connect the repo in argocd
 
 ### Bitwarden configuration
 
-Create a k8s secret with the following properties
-
-- name: bw-auth-token
-- namespace: argo-cd
-- data:
-  - token: <GITHUB_TOKEN>
-
 Create a secret in bitwarden secret manager with the following values
 
 - name: grafana
