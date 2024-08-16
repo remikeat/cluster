@@ -15,17 +15,17 @@ spec:
         name: secret-config-plugin
         parameters:
           - name: repo_url
-            value: https://github.com/remikeat/cluster.git
+            string: https://github.com/remikeat/cluster.git
           - name: repo_revision
-            value: HEAD
+            string: HEAD
           - name: repo_path
-            value: argocd/applications/grafana/
+            string: argocd/applications/grafana/
           - name: values
-            value: values.yaml
+            string: values.yaml
           - name: secrets
-            value: grafana.yaml
+            string: grafana.yaml
           - name: args
-            value: --skip-crds
+            string: --skip-crds
   destination:
     server: https://kubernetes.default.svc
     namespace: kube-prometheus-stack
