@@ -44,6 +44,8 @@ repoServer:
         name: secret-config-plugin-config
     - name: cmp-tmp
       emptyDir: {}
+    - name: custom-tools
+      emptyDir: {}
     - name: git-askpass
       configMap:
         name: git-askpass
@@ -58,6 +60,17 @@ repoServer:
         items:
           - key: template.sh
             path: template.sh
+  initContainers:
+  - name: download-tools
+    image: alpine:3.20
+    command: [sh, -c]
+    args:
+    - wget -q https://github.com/jqlang/jq/releases/download/jq-1.7.1/jq-linux-arm64 &&
+      chmod +x jq-linux-arm64 &&
+      mv jq-linux-arm64 /custom-tools/jq
+    volumeMounts:
+    - mountPath: /custom-tools
+      name: custom-tools
   extraContainers:
     - name: secret-config-plugin
       command:
@@ -81,3 +94,6 @@ repoServer:
         - name: cmp-plugin
           mountPath: /usr/local/bin/template.sh
           subPath: template.sh
+        - mountPath: /usr/local/bin/jq
+          name: custom-tools
+          subPath: jq

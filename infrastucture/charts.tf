@@ -68,22 +68,3 @@ resource "helm_release" "argo-cd" {
 
   depends_on = [helm_release.cert-manager]
 }
-
-# resource "helm_release" "actions-runner-controller" {
-#   name             = "actions-runner-controller"
-#   namespace        = "actions-runner-controller"
-#   repository       = "https://actions-runner-controller.github.io/actions-runner-controller"
-#   chart            = "actions-runner-controller"
-#   create_namespace = true
-
-#   depends_on = [helm_release.cert-manager]
-
-#   set {
-#     name  = "authSecret.create"
-#     value = true
-#   }
-#   set {
-#     name  = "authSecret.github_token"
-#     value = var.github_token
-#   }
-# }
