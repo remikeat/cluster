@@ -17,9 +17,26 @@ server:
         - "argocd.remikeat.com"
         secretName: "argocd-tls"
 repoServer:
+  env:
+    - name: GIT_ASKPASS
+      value: /usr/local/bin/git_askpass.sh
+    - name: GIT_USERNAME
+      valueFrom:
+        secretKeyRef:
+          name: github-https
+          key: username
+    - name: GIT_TOKEN
+      valueFrom:
+        secretKeyRef:
+          name: github-https
+          key: password
   volumeMounts:
-    - name: helm-values
-      mountPath: /helm-values
+    - name: git-askpass
+      mountPath: /usr/local/bin/git_askpass.sh
+      subPath: git_askpass.sh
+    - name: cmp-plugin
+      mountPath: /usr/local/bin/template.sh
+      subPath: template.sh
   volumes:
     - name: helm-values
       secret:
@@ -30,6 +47,20 @@ repoServer:
         name: secret-config-plugin-config
     - name: cmp-tmp
       emptyDir: {}
+    - name: git-askpass
+      configMap:
+        name: git-askpass
+        defaultMode: 0555
+        items:
+          - key: git_askpass.sh
+            path: git_askpass.sh
+    - name: cmp-plugin
+      configMap:
+        name: cmp-plugin
+        defaultMode: 0555
+        items:
+          - key: template.sh
+            path: template.sh
   extraContainers:
     - name: secret-config-plugin
       command:
@@ -48,3 +79,5 @@ repoServer:
           subPath: plugin.yaml
         - mountPath: /tmp
           name: cmp-tmp
+        - mountPath: /helm-values
+          name: helm-values
