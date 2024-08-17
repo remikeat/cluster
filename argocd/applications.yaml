@@ -65,7 +65,7 @@ spec:
   source:
     repoURL: https://github.com/remikeat/cluster.git
     targetRevision: HEAD
-    path: argocd/applications/remikeat-com
+    path: argocd/applications/remikeat.com
     plugin:
       name: custom-cmp
   destination:
