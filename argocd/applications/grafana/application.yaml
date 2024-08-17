@@ -12,7 +12,7 @@ spec:
       targetRevision: 61.8.0
       chart: kube-prometheus-stack
       plugin:
-        name: helm-secrets-cmp
+        name: custom-cmp
         parameters:
           - name: repo_url
             string: https://github.com/remikeat/cluster.git
