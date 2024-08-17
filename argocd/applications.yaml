@@ -9,8 +9,6 @@ spec:
     repoURL: https://github.com/remikeat/cluster.git
     targetRevision: HEAD
     path: argocd/applications/longhorn
-    directory:
-      recurse: true
   destination:
     server: https://kubernetes.default.svc
     namespace: default
@@ -30,8 +28,6 @@ spec:
     repoURL: https://github.com/remikeat/cluster.git
     targetRevision: HEAD
     path: argocd/applications/bitwarden
-    directory:
-      recurse: true
   destination:
     server: https://kubernetes.default.svc
     namespace: default
@@ -51,8 +47,27 @@ spec:
     repoURL: https://github.com/remikeat/cluster.git
     targetRevision: HEAD
     path: argocd/applications/grafana
-    directory:
-      recurse: true
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: remikeat-com-app
+  namespace: argo-cd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/remikeat/cluster.git
+    targetRevision: HEAD
+    path: argocd/applications/remikeat-com
+    plugin:
+      name: custom-cmp
   destination:
     server: https://kubernetes.default.svc
     namespace: default

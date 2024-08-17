@@ -4,11 +4,11 @@ secretGenerator:
   - name: github-com
     type: kubernetes.io/dockerconfigjson
     files:
-    - .dockerconfigjson
+    - /bw-secrets/.remikeat.com.dockerconfigjson
   - name: remikeat-com-secrets
     type: kubernetes.io/opaque
     envs:
-    - .env
+    - /bw-secrets/.remikeat.com.env
 resources:
   - deployment.yaml
   - service.yaml

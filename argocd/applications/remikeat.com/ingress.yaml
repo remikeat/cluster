@@ -2,6 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: remikeat-com
+  namespace: "remikeat-com"
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-production
 spec:

@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: "remikeat-com"
+  namespace: "remikeat-com"
   labels:
     app: remikeat.com
 spec:
@@ -32,13 +33,3 @@ spec:
                 key: NEXT_PUBLIC_HCAPTCHA_TOKEN
       imagePullSecrets:
         - name: github-com
----
-apiVersion: actions.summerwind.dev/v1alpha1
-kind: RunnerDeployment
-metadata:
-  name: remikeat-com-runnerdeploy
-spec:
-  replicas: 3
-  template:
-    spec:
-      repository: remikeat/remikeat.com
