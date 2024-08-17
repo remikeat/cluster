@@ -14,7 +14,7 @@ resource "kubernetes_secret" "github_https" {
 
 resource "kubernetes_secret" "bt_auth_token" {
   metadata {
-    name      = "bt-auth-token"
+    name      = "bw-auth-token"
     namespace = "argo-cd"
   }
 

@@ -35,9 +35,9 @@ repoServer:
       mountPath: /usr/local/bin/git_askpass.sh
       subPath: git_askpass.sh
   volumes:
-    - name: helm-values
+    - name: bw-secrets
       secret:
-        secretName: helm-values
+        secretName: bw-secrets
         optional: true
     - name: helm-secrets-cmp-config
       configMap:
@@ -89,8 +89,8 @@ repoServer:
           subPath: plugin.yaml
         - mountPath: /tmp
           name: cmp-tmp
-        - mountPath: /helm-values
-          name: helm-values
+        - mountPath: /bw-secrets
+          name: bw-secrets
         - name: cmp-plugin
           mountPath: /usr/local/bin/template.sh
           subPath: template.sh
