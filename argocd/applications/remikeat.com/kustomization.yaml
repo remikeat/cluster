@@ -2,10 +2,12 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 secretGenerator:
   - name: github-com
+    namespace: remikeat-com
     type: kubernetes.io/dockerconfigjson
     files:
     - remikeat.com.dockerconfigjson
   - name: remikeat-com-secrets
+    namespace: remikeat-com
     type: kubernetes.io/opaque
     envs:
     - remikeat.com.env
