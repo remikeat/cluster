@@ -10,7 +10,7 @@ if [ -f "Chart.yaml" ]; then
     git archive --remote=$REPO_URL $REPO_REVISION:$REPO_PATH $VALUES | tar -x
     helm template $ARGS -f $SECRETS -n $ARGOCD_APP_NAMESPACE $ARGOCD_APP_NAME .
 elif [ -f "kustomization.yaml" ]; then
-    kustomize .
+    kustomize build
 else
     >&2 echo "Neither Chart.yaml nor kustomization.yaml found."
 fi
