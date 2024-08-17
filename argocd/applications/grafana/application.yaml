@@ -23,7 +23,7 @@ spec:
           - name: values
             string: values.yaml
           - name: secrets
-            string: /bw-secrets/grafana.yaml
+            string: grafana.yaml
           - name: args
             string: --skip-crds
   destination:
