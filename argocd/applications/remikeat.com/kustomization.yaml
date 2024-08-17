@@ -5,7 +5,7 @@ secretGenerator:
     namespace: remikeat-com
     type: kubernetes.io/dockerconfigjson
     files:
-    - remikeat.com.dockerconfigjson
+    - .dockerconfigjson=remikeat.com.dockerconfigjson
   - name: remikeat-com-secrets
     namespace: remikeat-com
     type: kubernetes.io/opaque
