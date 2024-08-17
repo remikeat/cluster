@@ -94,7 +94,36 @@ Create a secret in bitwarden secret manager with the following values
     adminPassword: <GRAFANA_PASSWORD>
 ```
 
+- name: remikeat.com.dockerconfigjson
+- value:
+
+```
+{
+    "auths": {
+        "ghcr.io": {
+            "username": "",
+            "password": "",
+            "auth": "username:password base64 encoded"
+        }
+    }
+}
+```
+
+- name: remikeat.com.env
+- value:
+
+```
+NEXT_PUBLIC_WEB3FORMS_TOKEN=""
+NEXT_PUBLIC_HCAPTCHA_TOKEN=""
+```
+
 And update argocd/applications/bitwarden/secrets.yaml
+
+# How to encode in base64
+
+```
+echo -n "username:password" | base64
+```
 
 ### Deploy applications
 
