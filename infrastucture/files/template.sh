@@ -6,7 +6,11 @@ if [ -f "Chart.yaml" ]; then
     REPO_PATH=$(echo "$ARGOCD_APP_PARAMETERS" | jq -r '.[] | select(.name == "repo_path").string')
     VALUES=$(echo "$ARGOCD_APP_PARAMETERS" | jq -r '.[] | select(.name == "values").string')
     if [ -n "$VALUES" ]; then
-        git archive --remote=$REPO_URL $REPO_REVISION:$REPO_PATH $VALUES | tar -xOf $VALUES > custom_values.yaml
+        git clone $REPO_URL custom_values
+        cd custom_values
+        git checkout $REPO_REVISION
+        cd -
+        cp custom_values/$REPO_PATH/$VALUES custom_values.yaml
         VALUES="-f custom_values.yaml"
     fi
 

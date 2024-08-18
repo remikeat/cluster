@@ -17,23 +17,6 @@ server:
         - "argocd.remikeat.com"
         secretName: "argocd-tls"
 repoServer:
-  env:
-    - name: GIT_ASKPASS
-      value: /usr/local/bin/git_askpass.sh
-    - name: GIT_USERNAME
-      valueFrom:
-        secretKeyRef:
-          name: github-https
-          key: username
-    - name: GIT_TOKEN
-      valueFrom:
-        secretKeyRef:
-          name: github-https
-          key: password
-  volumeMounts:
-    - name: git-askpass
-      mountPath: /usr/local/bin/git_askpass.sh
-      subPath: git_askpass.sh
   volumes:
     - name: bw-secrets
       secret:
@@ -76,10 +59,26 @@ repoServer:
       command:
         - "/var/run/argocd/argocd-cmp-server"
       image: quay.io/argoproj/argocd
+      env:
+        - name: GIT_ASKPASS
+          value: /usr/local/bin/git_askpass.sh
+        - name: GIT_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: github-https
+              key: username
+        - name: GIT_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: github-https
+              key: password
       securityContext:
         runAsNonRoot: true
         runAsUser: 999
       volumeMounts:
+        - name: git-askpass
+          mountPath: /usr/local/bin/git_askpass.sh
+          subPath: git_askpass.sh
         - mountPath: /var/run/argocd
           name: var-files
         - mountPath: /home/argocd/cmp-server/plugins
