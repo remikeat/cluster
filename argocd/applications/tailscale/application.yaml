@@ -12,6 +12,14 @@ spec:
       plugin:
         name: custom-cmp
         parameters:
+          - name: repo_url
+            string: https://github.com/remikeat/cluster.git
+          - name: repo_revision
+            string: HEAD
+          - name: repo_path
+            string: argocd/applications/tailscale/
+          - name: values
+            string: values.yaml
           - name: secrets
             string: tailscale.yaml
   destination:
