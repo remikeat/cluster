@@ -23,7 +23,7 @@ spec:
           - name: secrets
             string: tailscale.yaml
           - name: args
-            string: --set apiServerProxyConfig.mode="true"
+            string: --set apiServerProxyConfig.mode='true'
   destination:
     server: https://kubernetes.default.svc
     namespace: tailscale
