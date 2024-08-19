@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   sources:
-    - repoURL: oci://registry-1.docker.io/bitnamicharts/redmine
+    - repoURL: registry-1.docker.io/bitnamicharts
       targetRevision: 29.0.3
       chart: redmine
       plugin:
