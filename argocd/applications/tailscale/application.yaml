@@ -16,10 +16,8 @@ spec:
             string: https://github.com/remikeat/cluster.git
           - name: repo_revision
             string: HEAD
-          - name: repo_path
-            string: argocd/applications/tailscale/
-          - name: values
-            string: values.yaml
+          - name: repo_values
+            string: argocd/applications/tailscale/values.yaml
           - name: secrets
             string: tailscale.yaml
   destination:
