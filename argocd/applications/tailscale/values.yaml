@@ -1,2 +1,2 @@
 apiServerProxyConfig:
-  mode: noauth
+  mode: "false" # "true", "false", "noauth"
