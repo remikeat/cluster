@@ -8,17 +8,17 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: "www2.remikeat.com"
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: remikeat-com
-            port:
-              number: 80
+    - host: "www2.remikeat.com"
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: remikeat-com
+                port:
+                  number: 80
   tls:
-  - hosts:
-      - www2.remikeat.com
-    secretName: remikeat-com-tls
+    - hosts:
+        - www2.remikeat.com
+      secretName: remikeat-com-tls

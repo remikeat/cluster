@@ -16,20 +16,20 @@ spec:
         app: remikeat.com
     spec:
       containers:
-      - name: remikeat-com
-        image: ghcr.io/remikeat/remikeat.com:latest
-        ports:
-        - containerPort: 80
-        env:
-          - name: NEXT_PUBLIC_WEB3FORMS_TOKEN
-            valueFrom:
-              secretKeyRef:
-                name: remikeat-com-secrets
-                key: NEXT_PUBLIC_WEB3FORMS_TOKEN
-          - name: NEXT_PUBLIC_HCAPTCHA_TOKEN
-            valueFrom:
-              secretKeyRef:
-                name: remikeat-com-secrets
-                key: NEXT_PUBLIC_HCAPTCHA_TOKEN
+        - name: remikeat-com
+          image: ghcr.io/remikeat/remikeat.com:latest
+          ports:
+            - containerPort: 80
+          env:
+            - name: NEXT_PUBLIC_WEB3FORMS_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: remikeat-com-secrets
+                  key: NEXT_PUBLIC_WEB3FORMS_TOKEN
+            - name: NEXT_PUBLIC_HCAPTCHA_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: remikeat-com-secrets
+                  key: NEXT_PUBLIC_HCAPTCHA_TOKEN
       imagePullSecrets:
         - name: github-com
