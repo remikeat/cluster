@@ -10,3 +10,6 @@ ingress:
   - hosts:
       - redmine.remikeat.com
     secretName: redmine-tls
+persistence:
+  enabled: true
+  storageClass: "longhorn"
