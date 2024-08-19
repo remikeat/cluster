@@ -2,6 +2,12 @@
 
 if [ -f "Chart.yaml" ]; then
     cmd=(helm template)
+
+    SECRETS=$(echo "$ARGOCD_APP_PARAMETERS" | jq -r '.[] | select(.name == "secrets").string')
+    if [ -n "$SECRETS" ]; then
+        cmd+=(-f bw-secrets/$SECRETS)
+    fi
+
     REPO_URL=$(echo "$ARGOCD_APP_PARAMETERS" | jq -r '.[] | select(.name == "repo_url").string')
     REPO_REVISION=$(echo "$ARGOCD_APP_PARAMETERS" | jq -r '.[] | select(.name == "repo_revision").string')
     REPO_VALUES=$(echo "$ARGOCD_APP_PARAMETERS" | jq -r '.[] | select(.name == "repo_values").string')
@@ -14,11 +20,10 @@ if [ -f "Chart.yaml" ]; then
     fi
 
     ARGS=$(echo "$ARGOCD_APP_PARAMETERS" | jq -r '.[] | select(.name == "args").string')
-    SECRETS=$(echo "$ARGOCD_APP_PARAMETERS" | jq -r '.[] | select(.name == "secrets").string')
-    if [ -n "$SECRETS" ]; then
-        cmd+=(-f bw-secrets/$SECRETS)
-    fi
+    cmd+=($ARGS)
+
     cmd+=(-n $ARGOCD_APP_NAMESPACE $ARGOCD_APP_NAME .)
+
     "${cmd[@]}"
 elif [ -f "kustomization.yaml" ]; then
     kustomize build
