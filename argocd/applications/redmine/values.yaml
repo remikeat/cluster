@@ -14,4 +14,5 @@ persistence:
   enabled: true
   storageClass: "longhorn"
 mariadb:
-  enabled: false
+  image:
+    debug: true
