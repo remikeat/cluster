@@ -13,3 +13,5 @@ ingress:
 persistence:
   enabled: true
   storageClass: "longhorn"
+mariadb:
+  enabled: false
