@@ -20,3 +20,6 @@ fi
 if [ -n "$REPO_VALUES" ]; then
     cp /repo/custom_values/$REPO_VALUES custom_values.yaml
 fi
+if [ -n "$REPO_URL" ]; then
+    rm -rf /repo/custom_values
+fi
