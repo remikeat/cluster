@@ -1,2 +1,4 @@
 preUpgradeChecker:
   jobEnabled: false
+persistence:
+  defaultClassReplicaCount: 1
