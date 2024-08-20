@@ -16,3 +16,6 @@ persistence:
 mariadb:
   image:
     debug: true
+  primary:
+    readinessProbe:
+      initialDelaySeconds: 90
