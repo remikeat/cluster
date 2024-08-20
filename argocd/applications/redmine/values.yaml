@@ -11,3 +11,5 @@
 #         - redmine.remikeat.com
 #       secretName: redmine-tls
 databaseType: postgresql
+mariadb:
+  enabled: false
