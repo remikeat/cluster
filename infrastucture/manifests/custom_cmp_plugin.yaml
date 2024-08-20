@@ -14,8 +14,7 @@ data:
         command: [bash, -c]
         args:
           - |
-            mkdir bw-secrets
-            cp /bw-secrets/* ./bw-secrets/
+            values.sh
       generate:
         command: [bash, -c]
         args:

@@ -7,9 +7,9 @@ ingress:
     kubernetes.io/ingress.class: nginx
     cert-manager.io/cluster-issuer: letsencrypt-production
   extraTls:
-  - hosts:
-      - redmine.remikeat.com
-    secretName: redmine-tls
+    - hosts:
+        - redmine.remikeat.com
+      secretName: redmine-tls
 persistence:
   enabled: true
   storageClass: "longhorn"

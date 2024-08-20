@@ -8,15 +8,9 @@ if [ -f "Chart.yaml" ]; then
         cmd+=(-f bw-secrets/$SECRETS)
     fi
 
-    REPO_URL=$(echo "$ARGOCD_APP_PARAMETERS" | jq -r '.[] | select(.name == "repo_url").string')
-    REPO_REVISION=$(echo "$ARGOCD_APP_PARAMETERS" | jq -r '.[] | select(.name == "repo_revision").string')
     REPO_VALUES=$(echo "$ARGOCD_APP_PARAMETERS" | jq -r '.[] | select(.name == "repo_values").string')
-    if [ -n "$VALUES" ]; then
-        git clone $REPO_URL custom_values
-        cd custom_values
-        git checkout $REPO_REVISION
-        cd -
-        cmd+=(-f custom_values/$REPO_VALUES)
+    if [ -n "$REPO_VALUES" ]; then
+        cmd+=(-f custom_values.yaml)
     fi
 
     ARGS=$(echo "$ARGOCD_APP_PARAMETERS" | jq -r '.[] | select(.name == "args").string')

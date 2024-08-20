@@ -9,13 +9,24 @@ resource "kubernetes_config_map" "git_askpass" {
   }
 }
 
-resource "kubernetes_config_map" "cmp_plugin" {
+resource "kubernetes_config_map" "template" {
   metadata {
-    name      = "cmp-plugin"
+    name      = "template"
     namespace = "argo-cd"
   }
 
   data = {
     "template.sh" = "${file("${path.module}/files/template.sh")}"
+  }
+}
+
+resource "kubernetes_config_map" "values" {
+  metadata {
+    name      = "values"
+    namespace = "argo-cd"
+  }
+
+  data = {
+    "values.sh" = "${file("${path.module}/files/values.sh")}"
   }
 }

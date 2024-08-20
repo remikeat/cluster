@@ -24,7 +24,7 @@ resource "kubectl_manifest" "letsencrypt_production" {
   depends_on = [helm_release.cert-manager]
 }
 
-resource "kubectl_manifest" "secret_config_plugin" {
-  yaml_body  = file("${path.module}/manifests/secret_config_plugin.yaml")
+resource "kubectl_manifest" "custom_cmp_plugin" {
+  yaml_body  = file("${path.module}/manifests/custom_cmp_plugin.yaml")
   depends_on = [helm_release.cert-manager]
 }
