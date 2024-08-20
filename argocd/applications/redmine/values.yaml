@@ -10,12 +10,4 @@
 #     - hosts:
 #         - redmine.remikeat.com
 #       secretName: redmine-tls
-persistence:
-  enabled: true
-  storageClass: "longhorn"
-mariadb:
-  image:
-    debug: true
-  primary:
-    readinessProbe:
-      initialDelaySeconds: 90
+databaseType: postgresql
