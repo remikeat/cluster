@@ -18,3 +18,4 @@ smtpPort: "587"
 smtpUser: "apiKey"
 updateStrategy:
   type: Recreate
+  rollingUpdate: null
