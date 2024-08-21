@@ -19,3 +19,4 @@ smtpUser: "apikey"
 updateStrategy:
   type: Recreate
   rollingUpdate: null
+resourcesPreset: "small"
