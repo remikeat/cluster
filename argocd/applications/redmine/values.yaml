@@ -16,3 +16,5 @@ mariadb:
 smtpHost: "smtp.sendgrid.net"
 smtpPort: "587"
 smtpUser: "apiKey"
+updateStrategy:
+  type: Recreate
