@@ -94,6 +94,16 @@ Create a secret in bitwarden secret manager with the following values
     adminPassword: <GRAFANA_PASSWORD>
 ```
 
+- name: redmine
+- value:
+
+```
+redmineUsername: <REDMINE_USERNAME>
+redminePassword: <REDMINE_PASSWORD>
+redmineEmail: <REDMINE_EMAIL>
+smtpPassword: "<SMTP_API_KEY>"
+```
+
 - name: remikeat.com.dockerconfigjson
 - value:
 
@@ -115,6 +125,15 @@ Create a secret in bitwarden secret manager with the following values
 ```
 NEXT_PUBLIC_WEB3FORMS_TOKEN=""
 NEXT_PUBLIC_HCAPTCHA_TOKEN=""
+```
+
+- name: tailscale.yaml
+- value:
+
+```
+oauth:
+  clientId: <CLIENT_ID>
+  clientSecret: <CLIENT_SECRET>
 ```
 
 And update argocd/applications/bitwarden/secrets.yaml

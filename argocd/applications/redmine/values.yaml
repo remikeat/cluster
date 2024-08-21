@@ -13,3 +13,6 @@ ingress:
 databaseType: postgresql
 mariadb:
   enabled: false
+smtpHost: "smtp.sendgrid.net"
+smtpPort: "587"
+smtpUser: "apiKey"
