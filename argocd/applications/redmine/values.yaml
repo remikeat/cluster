@@ -15,7 +15,7 @@ mariadb:
   enabled: false
 smtpHost: "smtp.sendgrid.net"
 smtpPort: "587"
-smtpUser: "apiKey"
+smtpUser: "apikey"
 updateStrategy:
   type: Recreate
   rollingUpdate: null
