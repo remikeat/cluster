@@ -1,0 +1,14 @@
+service:
+  type: ClusterIP
+tls:
+  force: true
+ingress:
+  enabled: true
+  ingressClassName: nginx
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: letsencrypt-production
+  hosts:
+    - host: portainer.remikeat.com
+      paths:
+        - path: "/"

@@ -113,3 +113,22 @@ spec:
     automated:
       prune: true
       selfHeal: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: portainer-app
+  namespace: argo-cd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/remikeat/cluster.git
+    targetRevision: HEAD
+    path: argocd/applications/portainer
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
