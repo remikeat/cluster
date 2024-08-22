@@ -1,10 +1,7 @@
 #!/bin/bash
 
-SECRETS=$(echo "$ARGOCD_APP_PARAMETERS" | jq -r '.[] | select(.name == "secrets").string')
-if [ -n "$SECRETS" ]; then
-    mkdir bw-secrets
-    cp /bw-secrets/* ./bw-secrets/
-fi
+mkdir bw-secrets
+cp /bw-secrets/* ./bw-secrets/
 
 REPO_URL=$(echo "$ARGOCD_APP_PARAMETERS" | jq -r '.[] | select(.name == "repo_url").string')
 REPO_REVISION=$(echo "$ARGOCD_APP_PARAMETERS" | jq -r '.[] | select(.name == "repo_revision").string')
