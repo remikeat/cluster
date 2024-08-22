@@ -5,12 +5,12 @@ secretGenerator:
     namespace: remikeat-com
     type: kubernetes.io/dockerconfigjson
     files:
-      - .dockerconfigjson=bw-secrets/remikeat.com.dockerconfigjson
+      - .dockerconfigjson=/bw-secrets/remikeat.com.dockerconfigjson
   - name: remikeat-com-secrets
     namespace: remikeat-com
     type: kubernetes.io/opaque
     envs:
-      - bw-secrets/remikeat.com.env
+      - /bw-secrets/remikeat.com.env
 resources:
   - namespace.yaml
   - deployment.yaml
