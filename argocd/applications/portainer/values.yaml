@@ -12,3 +12,7 @@ ingress:
     - host: portainer.remikeat.com
       paths:
         - path: "/"
+  tls:
+    - hosts:
+        - portainer.remikeat.com
+      secretName: portainer-tls
