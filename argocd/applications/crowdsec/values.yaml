@@ -1,0 +1,13 @@
+container_runtime: containerd
+agent:
+  acquisition:
+    - namespace: ingress-nginx
+      podName: ingress-nginx-controller-*
+      program: nginx
+  env:
+    - name: COLLECTIONS
+      value: "crowdsecurity/nginx"
+lapi:
+  env:
+    - name: ENROLL_INSTANCE_NAME
+      value: "my-k8s-cluster"
