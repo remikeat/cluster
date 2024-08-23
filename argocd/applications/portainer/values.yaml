@@ -1,13 +1,15 @@
 service:
   type: ClusterIP
 tls:
-  force: false
+  force: true
 ingress:
   enabled: true
   ingressClassName: nginx
   annotations:
     kubernetes.io/ingress.class: nginx
     cert-manager.io/cluster-issuer: letsencrypt-production
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
   hosts:
     - host: portainer.remikeat.com
       paths:
