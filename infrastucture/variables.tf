@@ -40,3 +40,9 @@ variable "bitwarden_token" {
   type        = string
   sensitive   = true
 }
+
+variable "crowdsec_api_key" {
+  description = "Crowdsec api key"
+  type        = string
+  sensitive   = true
+}

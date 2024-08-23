@@ -136,6 +136,18 @@ oauth:
   clientSecret: <CLIENT_SECRET>
 ```
 
+- name: crowdsec.yaml
+- value:
+
+```
+lapi:
+  env:
+    - name: ENROLL_KEY
+      value: "<ENROLL_KEY>"
+    - name: BOUNCER_KEY_nginx
+      value: "<BOUNCER_KEY>"
+```
+
 And update argocd/applications/bitwarden/secrets.yaml
 
 # How to encode in base64

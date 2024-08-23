@@ -17,7 +17,9 @@ resource "helm_release" "ingress-nginx" {
   create_namespace = true
 
   values = [
-    file("${path.module}/values/ingress-nginx-values.yaml")
+    templatefile("${path.module}/values/ingress-nginx-values.yaml", {
+      crowdsec_api_key = var.crowdsec_api_key
+    })
   ]
 
   depends_on = [helm_release.cilium, kubectl_manifest.ippool, kubectl_manifest.l2advertisement]
