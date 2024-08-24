@@ -7,7 +7,7 @@ spec:
   project: default
   sources:
     - repoURL: https://github.com/harvester/harvester.git
-      targetRevision: stable
+      targetRevision: v1.3.2-rc2
       path: deploy/charts/harvester
       plugin:
         name: custom-cmp
