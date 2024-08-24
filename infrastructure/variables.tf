@@ -46,3 +46,15 @@ variable "crowdsec_api_key" {
   type        = string
   sensitive   = true
 }
+
+variable "registry_username" {
+  description = "Github registry username"
+  type        = string
+  sensitive   = true
+}
+
+variable "registry_password" {
+  description = "Github registry password"
+  type        = string
+  sensitive   = true
+}

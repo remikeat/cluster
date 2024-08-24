@@ -14,7 +14,7 @@ server:
       nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
     extraTls:
       - hosts:
-        - "argocd.remikeat.com"
+          - "argocd.remikeat.com"
         secretName: "argocd-tls"
 repoServer:
   volumes:
@@ -53,16 +53,16 @@ repoServer:
           - key: values.sh
             path: values.sh
   initContainers:
-  - name: download-tools
-    image: alpine:3.20
-    command: [sh, -c]
-    args:
-    - wget -q https://github.com/jqlang/jq/releases/download/jq-1.7.1/jq-linux-arm64 &&
-      chmod +x jq-linux-arm64 &&
-      mv jq-linux-arm64 /custom-tools/jq
-    volumeMounts:
-    - mountPath: /custom-tools
-      name: custom-tools
+    - name: download-tools
+      image: alpine:3.20
+      command: [sh, -c]
+      args:
+        - wget -q https://github.com/jqlang/jq/releases/download/jq-1.7.1/jq-linux-arm64 &&
+          chmod +x jq-linux-arm64 &&
+          mv jq-linux-arm64 /custom-tools/jq
+      volumeMounts:
+        - mountPath: /custom-tools
+          name: custom-tools
   extraContainers:
     - name: custom-cmp
       command:
@@ -110,3 +110,5 @@ repoServer:
           name: bw-secrets
         - mountPath: /repo
           name: repo
+imagePullSecrets:
+  - name: github-registry
