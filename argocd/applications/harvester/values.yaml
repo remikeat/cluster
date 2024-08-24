@@ -1,2 +1,14 @@
 longhorn:
   enabled: false
+kubevirt-operator:
+  enabled: true
+kubevirt:
+  enabled: true
+cdi-operator:
+  enabled: true
+cdi:
+  enabled: true
+minio:
+  enabled: true
+multus:
+  enabled: true
