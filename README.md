@@ -142,6 +142,8 @@ oauth:
 ```
 lapi:
   env:
+    - name: ENROLL_INSTANCE_NAME
+      value: "my-k8s-cluster"
     - name: ENROLL_KEY
       value: "<ENROLL_KEY>"
     - name: BOUNCER_KEY_nginx

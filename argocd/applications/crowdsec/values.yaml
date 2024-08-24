@@ -7,7 +7,3 @@ agent:
   env:
     - name: COLLECTIONS
       value: "crowdsecurity/nginx"
-lapi:
-  env:
-    - name: ENROLL_INSTANCE_NAME
-      value: "my-k8s-cluster"
