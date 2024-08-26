@@ -27,8 +27,6 @@ repoServer:
         name: custom-cmp-config
     - name: cmp-tmp
       emptyDir: {}
-    - name: custom-tools
-      emptyDir: {}
     - name: repo
       emptyDir: {}
     - name: git-askpass
@@ -52,17 +50,6 @@ repoServer:
         items:
           - key: values.py
             path: values.py
-  initContainers:
-    - name: download-tools
-      image: alpine:3.20
-      command: [sh, -c]
-      args:
-        - wget -q https://github.com/jqlang/jq/releases/download/jq-1.7.1/jq-linux-arm64 &&
-          chmod +x jq-linux-arm64 &&
-          mv jq-linux-arm64 /custom-tools/jq
-      volumeMounts:
-        - mountPath: /custom-tools
-          name: custom-tools
   extraContainers:
     - name: custom-cmp
       command:
@@ -94,9 +81,6 @@ repoServer:
         - name: template
           mountPath: /usr/local/bin/template.py
           subPath: template.py
-        - mountPath: /usr/local/bin/jq
-          name: custom-tools
-          subPath: jq
         - mountPath: /var/run/argocd
           name: var-files
         - mountPath: /home/argocd/cmp-server/plugins
