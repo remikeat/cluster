@@ -169,3 +169,23 @@ kubectl apply -f applications.yaml
 ```
 talosctl -n 192.168.0.138 -n 192.168.0.168 -n 192.168.0.226 shutdown
 ```
+
+### talosctl
+
+```
+brew install siderolabs/tap/talosctl
+```
+
+### argocd
+
+```
+brew install argocd
+```
+
+### virtctl
+
+```
+curl -Lo virtctl https://github.com/kubevirt/kubevirt/releases/download/v1.3.1/virtctl-v1.3.1-linux-amd64
+chmod +x virtctl
+sudo mv virtctl /usr/local/bin/
+```

@@ -1,9 +1,9 @@
 longhorn:
   enabled: false
 kubevirt-operator:
-  enabled: true
+  enabled: false
 kubevirt:
-  enabled: true
+  enabled: false
 cdi-operator:
   enabled: true
 cdi:
