@@ -155,6 +155,25 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
+  name: kubevirt-app
+  namespace: argo-cd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/remikeat/cluster.git
+    targetRevision: HEAD
+    path: argocd/applications/kubevirt
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
   name: harvester-app
   namespace: argo-cd
 spec:
