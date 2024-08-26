@@ -14,3 +14,5 @@ minio:
   enabled: true
 multus:
   enabled: true
+storageClass:
+  replicaCount: 2
