@@ -7,8 +7,11 @@ import json
 
 
 def get_value(params, name, value):
-    return next((param[value]
-                for param in params if param['name'] == name), None)
+    if params:
+        return next((param[value]
+                    for param in params if param['name'] == name), None)
+    else:
+        return None
 
 
 argocd_app_parameters = json.loads(os.getenv("ARGOCD_APP_PARAMETERS", "[]"))
