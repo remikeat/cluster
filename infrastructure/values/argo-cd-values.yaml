@@ -67,7 +67,7 @@ repoServer:
     - name: custom-cmp
       command:
         - "/var/run/argocd/argocd-cmp-server"
-      image: quay.io/argoproj/argocd
+      image: ghcr.io/remikeat/cluster:latest
       env:
         - name: GIT_ASKPASS
           value: /usr/local/bin/git_askpass.sh
@@ -110,5 +110,5 @@ repoServer:
           name: bw-secrets
         - mountPath: /repo
           name: repo
-imagePullSecrets:
-  - name: github-registry
+  imagePullSecrets:
+    - name: github-registry
