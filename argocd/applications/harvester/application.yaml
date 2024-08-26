@@ -6,6 +6,12 @@ metadata:
 spec:
   project: default
   sources:
+    - repoURL: https://github.com/kubernetes-csi/external-snapshotter.git
+      targetRevision: release-4.0
+      path: client/config/crd
+    - repoURL: https://github.com/kubernetes-csi/external-snapshotter.git
+      targetRevision: release-4.0
+      path: deploy/kubernetes/snapshot-controller
     - repoURL: https://github.com/harvester/harvester.git
       targetRevision: v1.3.2-rc2
       path: deploy/charts/harvester
