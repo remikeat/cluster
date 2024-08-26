@@ -16,7 +16,7 @@ resource "kubernetes_config_map" "template" {
   }
 
   data = {
-    "template.sh" = "${file("${path.module}/files/template.sh")}"
+    "template.py" = "${file("${path.module}/files/template.py")}"
   }
 }
 
@@ -27,6 +27,6 @@ resource "kubernetes_config_map" "values" {
   }
 
   data = {
-    "values.sh" = "${file("${path.module}/files/values.sh")}"
+    "values.py" = "${file("${path.module}/files/values.py")}"
   }
 }

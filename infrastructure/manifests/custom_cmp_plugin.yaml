@@ -14,9 +14,9 @@ data:
         command: [bash, -c]
         args:
           - |
-            values.sh
+            values.py
       generate:
         command: [bash, -c]
         args:
           - |
-            template.sh
+            template.py
