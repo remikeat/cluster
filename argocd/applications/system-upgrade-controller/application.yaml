@@ -11,7 +11,7 @@ spec:
       path: .
   destination:
     server: https://kubernetes.default.svc
-    namespace: cattle-system
+    namespace: system-upgrade
   syncPolicy:
     automated:
       prune: true
