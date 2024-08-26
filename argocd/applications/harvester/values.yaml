@@ -8,6 +8,8 @@ cdi-operator:
   enabled: false
 cdi:
   enabled: false
+csi-snapshotter:
+  enabled: false
 minio:
   enabled: true
 multus:
