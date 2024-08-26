@@ -5,9 +5,9 @@ kubevirt-operator:
 kubevirt:
   enabled: false
 cdi-operator:
-  enabled: true
+  enabled: false
 cdi:
-  enabled: true
+  enabled: false
 minio:
   enabled: true
 multus:
