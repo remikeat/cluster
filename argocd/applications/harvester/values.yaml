@@ -16,3 +16,5 @@ multus:
   enabled: true
 storageClass:
   replicaCount: 2
+webhook:
+  replicas: 2
