@@ -68,5 +68,5 @@ resource "helm_release" "argo-cd" {
     file("${path.module}/values/argo-cd-values.yaml")
   ]
 
-  depends_on = [helm_release.cert-manager]
+  depends_on = [helm_release.cert-manager, kubernetes_config_map.git_askpass, kubernetes_config_map.template, kubernetes_config_map.values]
 }
