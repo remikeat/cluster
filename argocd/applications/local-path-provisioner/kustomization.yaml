@@ -4,5 +4,4 @@ resources:
   - github.com/rancher/local-path-provisioner/deploy?ref=v0.0.26
 patches:
   - path: patches/configmap.yaml
-  - path: patches/storageclass.yaml
   - path: patches/namespace.yaml
