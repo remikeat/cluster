@@ -176,6 +176,14 @@ talosctl -n 192.168.0.138 -n 192.168.0.168 -n 192.168.0.226 shutdown
 brew install siderolabs/tap/talosctl
 ```
 
+### talosctl auto-completion
+
+```
+talosctl completion bash > ~/.talos/completion.bash.inc
+echo "source '$HOME/.talos/completion.bash.inc'" >> ~/.bashrc
+source $HOME/.bashrc
+```
+
 ### argocd
 
 ```
