@@ -78,6 +78,10 @@ kubectl delete -n argo-cd secrets/argocd-initial-admin-secret
 
 ```
 
+### Portainer
+
+Create admin account for portainer by accessing portainer.remikeat.com IMMEDIATELY
+
 ### Bitwarden configuration
 
 Create a secret in bitwarden secret manager with the following values
