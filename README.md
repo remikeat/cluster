@@ -78,10 +78,6 @@ kubectl delete -n argo-cd secrets/argocd-initial-admin-secret
 
 ```
 
-### ArgoCD configuration
-
-Create a github token and connect the repo in argocd
-
 ### Bitwarden configuration
 
 Create a secret in bitwarden secret manager with the following values
