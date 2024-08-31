@@ -8,3 +8,10 @@ machine:
           - bind
           - rshared
           - rw
+      - destination: /oem
+        type: bind
+        source: /var/oem
+        options:
+          - bind
+          - rshared
+          - rw
