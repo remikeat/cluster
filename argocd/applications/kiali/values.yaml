@@ -6,4 +6,4 @@ cr:
       strategy: "anonymous"
     deployment:
       service_annotations:
-        - tailscale.com/expose: "true"
+        tailscale.com/expose: "true"
