@@ -7,3 +7,4 @@ cr:
     deployment:
       service_annotations:
         tailscale.com/expose: "true"
+        tailscale.com/hostname: "kiali"

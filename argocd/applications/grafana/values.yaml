@@ -5,3 +5,4 @@ prometheus:
   service:
     annotations:
       tailscale.com/expose: "true"
+      tailscale.com/hostname: "prometheus"
