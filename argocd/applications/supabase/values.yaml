@@ -68,6 +68,7 @@ storage:
     enabled: false
 
 imgproxy:
+  enabled: false
   image:
     tag: v3.8.0
   environment:
