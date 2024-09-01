@@ -1,2 +1,6 @@
 apiServerProxyConfig:
   mode: 'true' # "true", "false", "noauth"
+operatorConfig:
+  extraEnv:
+    - name: TS_DEBUG_FIREWALL_MODE
+      value: "auto"
