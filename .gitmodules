@@ -1,3 +1,0 @@
-[submodule "supabase-kubernetes"]
-	path = submodules/supabase-kubernetes
-	url = https://github.com/supabase-community/supabase-kubernetes.git
