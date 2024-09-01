@@ -93,6 +93,8 @@ kong:
     className: "nginx"
     annotations:
       nginx.ingress.kubernetes.io/rewrite-target: /
+      kubernetes.io/ingress.class: nginx
+      cert-manager.io/cluster-issuer: letsencrypt-production
     tls:
       - secretName: supabase-ingress-tls
         hosts:
