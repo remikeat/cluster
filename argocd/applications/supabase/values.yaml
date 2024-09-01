@@ -1,0 +1,133 @@
+db:
+  enabled: true
+  image:
+    tag: 15.1.0.147
+  livenessProbe:
+    exec:
+      command:
+        - pg_isready
+        - -U
+        - postgres
+    initialDelaySeconds: 3
+  persistence:
+    enabled: false
+
+studio:
+  image:
+    tag: 20240326-5e5586d
+  environment:
+    STUDIO_DEFAULT_ORGANIZATION: "My Organization"
+    STUDIO_DEFAULT_PROJECT: "My Project"
+    SUPABASE_PUBLIC_URL: https://supabase.remikeat.com/
+    NEXT_PUBLIC_ENABLE_LOGS: "true"
+  livenessProbe:
+    httpGet:
+      path: /api/profile
+      port: 3000
+    initialDelaySeconds: 3
+
+auth:
+  image:
+    tag: v2.143.0
+  environment:
+    API_EXTERNAL_URL: https://supabase.remikeat.com
+    GOTRUE_SITE_URL: https://supabase.remikeat.com
+    GOTRUE_EXTERNAL_EMAIL_ENABLED: "true"
+    GOTRUE_MAILER_AUTOCONFIRM: "true"
+    GOTRUE_SMTP_ADMIN_EMAIL: "contact@remikeat.com"
+    GOTRUE_SMTP_HOST: "smtp.sendgrid.net"
+    GOTRUE_SMTP_PORT: "587"
+    GOTRUE_SMTP_SENDER_NAME: "contact@remikeat.com"
+
+rest:
+  image:
+    tag: v12.0.1
+
+realtime:
+  image:
+    tag: v2.27.5
+  livenessProbe:
+    httpGet:
+      path: /
+      port: 4000
+    initialDelaySeconds: 3
+
+meta:
+  image:
+    tag: v0.80.0
+
+storage:
+  image:
+    tag: v0.46.4
+  livenessProbe:
+    httpGet:
+      path: /status
+      port: 5000
+    initialDelaySeconds: 3
+  persistence:
+    enabled: false
+
+imgproxy:
+  image:
+    tag: v3.8.0
+  environment:
+    IMGPROXY_ENABLE_WEBP_DETECTION: "true"
+  livenessProbe:
+    exec:
+      command:
+        - imgproxy
+        - health
+    initialDelaySeconds: 3
+  persistence:
+    enabled: false
+
+kong:
+  image:
+    repository: kong
+    tag: 2.8.1
+  environment:
+    KONG_DECLARATIVE_CONFIG: /usr/local/kong/kong.yml
+    KONG_LOG_LEVEL: info
+  ingress:
+    enabled: true
+    className: "nginx"
+    annotations:
+      nginx.ingress.kubernetes.io/rewrite-target: /
+    tls:
+      - secretName: supabase-ingress-tls
+        hosts:
+          - supabase.remikeat.com
+    hosts:
+      - host: supabase.remikeat.com
+        paths:
+          - path: /
+            pathType: Prefix
+
+analytics:
+  image:
+    tag: 1.4.0
+  livenessProbe:
+    httpGet:
+      path: /health
+      port: 4000
+    initialDelaySeconds: 3
+
+vector:
+  image:
+    tag: 0.34.0-alpine
+  livenessProbe:
+    httpGet:
+      path: /health
+      port: 9001
+    initialDelaySeconds: 3
+  volumeMounts:
+    - name: pod-logs
+      mountPath: /var/log/pods
+  volumes:
+    - name: pod-logs
+      hostPath:
+        path: /var/log/pods
+
+functions:
+  image:
+    tag: v1.41.2

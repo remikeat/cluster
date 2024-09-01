@@ -150,6 +150,29 @@ lapi:
       value: "<BOUNCER_KEY>"
 ```
 
+- name: supabase.yaml
+- value:
+
+```
+secret:
+  jwt:
+    anonKey:
+    serviceKey:
+    secret: your-super-secret-jwt-token-with-at-least-32-characters-long
+  smtp:
+    username: your-mail@example.com
+    password: example123456
+  dashboard:
+    username: supabase
+    password: this_password_is_insecure_and_should_be_updated
+  db:
+    username: postgres
+    password: example123456
+    database: postgres
+  analytics:
+    apiKey: your-super-secret-and-long-logflare-key
+```
+
 And update argocd/applications/bitwarden/secrets.yaml
 
 # How to encode in base64
