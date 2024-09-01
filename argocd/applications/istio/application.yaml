@@ -8,10 +8,10 @@ spec:
   sources:
     - repoURL: https://istio-release.storage.googleapis.com/charts
       targetRevision: 1.23.0
-      chart: istio/base
+      chart: base
     - repoURL: https://istio-release.storage.googleapis.com/charts
       targetRevision: 1.23.0
-      chart: istio/istiod
+      chart: istiod
   destination:
     server: https://kubernetes.default.svc
     namespace: istio
