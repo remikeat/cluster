@@ -2,3 +2,6 @@ prometheus:
   prometheusSpec:
     scrapeInterval: 30s
     evaluationInterval: 30s
+  service:
+    annotations:
+      tailscale.com/expose: "true"
