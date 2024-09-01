@@ -6,3 +6,4 @@ prometheus:
     annotations:
       tailscale.com/expose: "true"
       tailscale.com/hostname: "prometheus"
+    type: LoadBalancer
