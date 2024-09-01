@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kiali
+  namespace: argo-cd
+spec:
+  project: default
+  sources:
+    - repoURL: https://kiali.org/helm-charts
+      targetRevision: 1.89.0
+      chart: kiali-operator
+      helm:
+        valueFiles:
+          - $repo/argocd/applications/kiali/values.yaml
+    - repoURL: https://github.com/remikeat/cluster.git
+      targetRevision: HEAD
+      ref: repo
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: kiali-operator
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
