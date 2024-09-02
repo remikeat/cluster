@@ -1,0 +1,29 @@
+- op: replace
+  path: /spec/template/spec/containers/0/env
+  value:
+    - name: DEPLOY_CLUSTER_RESOURCES
+      value: "true"
+    - name: OPERATOR_VERSION
+      value: v1.60.2
+    - name: CONTROLLER_IMAGE
+      value: quay.io/kubevirt/cdi-controller:20240823_4c911fed2-arm64
+    - name: IMPORTER_IMAGE
+      value: quay.io/kubevirt/cdi-importer:20240823_4c911fed2-arm64
+    - name: CLONER_IMAGE
+      value: quay.io/kubevirt/cdi-cloner:20240823_4c911fed2-arm64
+    - name: OVIRT_POPULATOR_IMAGE
+      value: quay.io/kubevirt/cdi-importer:20240823_4c911fed2-arm64
+    - name: APISERVER_IMAGE
+      value: quay.io/kubevirt/cdi-apiserver:20240823_4c911fed2-arm64
+    - name: UPLOAD_SERVER_IMAGE
+      value: quay.io/kubevirt/cdi-uploadserver:20240823_4c911fed2-arm64
+    - name: UPLOAD_PROXY_IMAGE
+      value: quay.io/kubevirt/cdi-uploadproxy:20240823_4c911fed2-arm64
+    - name: VERBOSITY
+      value: "1"
+    - name: PULL_POLICY
+      value: IfNotPresent
+    - name: MONITORING_NAMESPACE
+- op: replace
+  path: /spec/template/spec/containers/0/image
+  value: quay.io/kubevirt/cdi-operator:20240823_4c911fed2-arm64
