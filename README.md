@@ -173,6 +173,20 @@ secret:
     apiKey: your-super-secret-and-long-logflare-key
 ```
 
+- name: kiali.yaml
+- value:
+
+```
+cr:
+  spec:
+    external_services:
+      grafana:
+        auth:
+          type: basic
+          username: ""
+          password: ""
+```
+
 And update argocd/applications/bitwarden/secrets.yaml
 
 # How to encode in base64

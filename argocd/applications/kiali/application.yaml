@@ -9,12 +9,17 @@ spec:
     - repoURL: https://kiali.org/helm-charts
       targetRevision: 1.89.0
       chart: kiali-operator
-      helm:
-        valueFiles:
-          - $repo/argocd/applications/kiali/values.yaml
-    - repoURL: https://github.com/remikeat/cluster.git
-      targetRevision: HEAD
-      ref: repo
+      plugin:
+        name: custom-cmp
+        parameters:
+          - name: repo_url
+            string: https://github.com/remikeat/cluster.git
+          - name: repo_revision
+            string: HEAD
+          - name: repo_values
+            string: argocd/applications/kiali/values.yaml
+          - name: secrets
+            string: kiali.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: kiali-operator
