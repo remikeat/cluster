@@ -2,29 +2,30 @@ prometheus:
   prometheusSpec:
     scrapeInterval: 30s
     evaluationInterval: 30s
-dashboards:
-  default:
-    mesh-dashboard:
-      gnetId: 7639
-      revision: 227
-      datasource: Prometheus
-    service-dashboard:
-      gnetId: 11829
-      revision: 227
-      datasource: Prometheus
-    workload-dashboard:
-      gnetId: 7636
-      revision: 227
-      datasource: Prometheus
-    performance-dashboard:
-      gnetId: 7630
-      revision: 227
-      datasource: Prometheus
-    control-plane-dashboard:
-      gnetId: 7645
-      revision: 227
-      datasource: Prometheus
-    wasm-extension-dashboard:
-      gnetId: 13277
-      revision: 184
-      datasource: Prometheus
+grafana:
+  dashboards:
+    default:
+      mesh-dashboard:
+        gnetId: 7639
+        revision: 227
+        datasource: Prometheus
+      service-dashboard:
+        gnetId: 11829
+        revision: 227
+        datasource: Prometheus
+      workload-dashboard:
+        gnetId: 7636
+        revision: 227
+        datasource: Prometheus
+      performance-dashboard:
+        gnetId: 7630
+        revision: 227
+        datasource: Prometheus
+      control-plane-dashboard:
+        gnetId: 7645
+        revision: 227
+        datasource: Prometheus
+      wasm-extension-dashboard:
+        gnetId: 13277
+        revision: 184
+        datasource: Prometheus
