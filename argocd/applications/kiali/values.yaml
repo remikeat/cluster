@@ -5,6 +5,22 @@ cr:
     auth:
       strategy: "anonymous"
     deployment:
-      service_annotations:
-        tailscale.com/expose: "true"
-        tailscale.com/hostname: "kiali"
+      ingress:
+        enabled: true
+        class_name: "tailscale"
+        override_yaml:
+          spec:
+            ingressClassName: tailscale
+            rules:
+              - http:
+                  paths:
+                    - path: /
+                      pathType: Prefix
+                      backend:
+                        service:
+                          name: kiali
+                          port:
+                            number: 20001
+            tls:
+              - hosts:
+                  - "kiali"
