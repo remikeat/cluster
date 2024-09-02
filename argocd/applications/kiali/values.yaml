@@ -27,7 +27,7 @@ cr:
     external_services:
       grafana:
         enabled: true
-        in_cluster_url: 'http://kube-prometheus-stack-grafana.kube-prometheus-stack:3000/'
+        in_cluster_url: 'http://kube-prometheus-stack-grafana.kube-prometheus-stack'
         url: 'https://grafana.remikeat.com'
       prometheus:
         url: "http://kube-prometheus-stack-prometheus.kube-prometheus-stack:9090/"
