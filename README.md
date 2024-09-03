@@ -195,6 +195,12 @@ And update argocd/applications/bitwarden/secrets.yaml
 echo -n "username:password" | base64
 ```
 
+# How to create htpasswd data
+
+```
+htpasswd -n username
+```
+
 ### Deploy applications
 
 ```

@@ -1,0 +1,14 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - https://raw.githubusercontent.com/kubevirt-manager/kubevirt-manager/main/kubernetes/bundled.yaml
+secretGenerator:
+  - name: auth-secret
+    namespace: kubevirt-manager
+    files:
+      - .htpasswd=bw-secrets/htpasswd
+    options:
+      labels:
+        app: kubevirt-manager
+        kubevirt-manager.io/version: 1.4.0
+        kubevirt-manager.io/managed: "true"
