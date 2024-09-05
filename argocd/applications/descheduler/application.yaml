@@ -11,6 +11,12 @@ spec:
     - repoURL: https://kubernetes-sigs.github.io/descheduler/
       targetRevision: 0.30.1
       chart: descheduler
+      helm:
+        valueFiles:
+          - $repo/argocd/applications/descheduler/values.yaml
+    - repoURL: https://github.com/remikeat/cluster.git
+      targetRevision: HEAD
+      ref: repo
   destination:
     server: https://kubernetes.default.svc
     namespace: kube-system
