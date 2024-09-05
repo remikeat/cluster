@@ -233,10 +233,36 @@ source $HOME/.bashrc
 brew install argocd
 ```
 
+### argocd auto-completion
+
+```
+echo "source <(/home/linuxbrew/.linuxbrew/bin/argocd completion bash)" >> ~/.bashrc
+```
+
 ### virtctl
 
 ```
 curl -Lo virtctl https://github.com/kubevirt/kubevirt/releases/download/v1.3.1/virtctl-v1.3.1-linux-amd64
 chmod +x virtctl
 sudo mv virtctl /usr/local/bin/
+```
+
+### virtctl auto-completion
+
+```
+virtctl completion bash > ~/.virtctl-completion.bash
+echo "source '/home/remi/.virtctl-completion.bash'" >> ~/.bashrc
+```
+
+### tailscale
+
+```
+echo "alias tailscale=\"/mnt/c/Program\ Files/Tailscale/tailscale.exe\"" >> ~/.bashrc
+```
+
+### tailscale auto-completion
+
+```
+tailscale completion bash | sudo tee -a /etc/bash_completion.d/tailscale
+echo "source '/etc/bash_completion.d/tailscale'" >> ~/.bashr
 ```
