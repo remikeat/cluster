@@ -9,6 +9,7 @@ spec:
     - http:
         paths:
           - pathType: ImplementationSpecific
+            path: /
             backend:
               service:
                 name: tekton-dashboard
