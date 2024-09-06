@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
   - https://storage.googleapis.com/tekton-releases/operator/latest/release.yaml
   - https://raw.githubusercontent.com/tektoncd/operator/main/config/crs/kubernetes/config/all/operator_v1alpha1_config_cr.yaml
+  - ingress.yaml
