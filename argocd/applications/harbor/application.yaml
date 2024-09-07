@@ -7,7 +7,7 @@ spec:
   project: default
   sources:
     - repoURL: https://helm.goharbor.io
-      targetRevision: 29.0.3
+      targetRevision: 1.15.1
       chart: harbor
       plugin:
         name: custom-cmp
