@@ -187,6 +187,13 @@ cr:
           password: ""
 ```
 
+- name: harbor.yaml
+- value:
+
+```
+harborAdminPassword: password
+```
+
 And update argocd/applications/bitwarden/secrets.yaml
 
 # How to encode in base64
