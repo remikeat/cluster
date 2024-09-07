@@ -1,10 +1,13 @@
 global:
   domain: "argocd.remikeat.com"
+  affinity:
+    podAntiAffinity: hard
 configs:
   params:
     server:
       insecure: true
 server:
+  replicas: 2
   ingress:
     enabled: true
     ingressClassName: "nginx"
@@ -17,6 +20,7 @@ server:
           - "argocd.remikeat.com"
         secretName: "argocd-tls"
 repoServer:
+  replicas: 2
   volumes:
     - name: bw-secrets
       secret:

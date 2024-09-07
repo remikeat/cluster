@@ -11,3 +11,5 @@ ingress:
     cert-manager.io/cluster-issuer: "letsencrypt-production"
   includeDefaultExtraAnnotations: false
   ingressClassName: "nginx"
+antiAffinity: required
+replicas: 2
