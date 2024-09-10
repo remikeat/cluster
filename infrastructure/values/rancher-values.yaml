@@ -12,4 +12,4 @@ ingress:
   includeDefaultExtraAnnotations: false
   ingressClassName: "nginx"
 antiAffinity: required
-replicas: 2
+replicas: 3
