@@ -78,6 +78,12 @@ kubectl delete -n argo-cd secrets/argocd-initial-admin-secret
 
 ```
 
+### Get initial password for elasticsearch
+
+```
+kubectl get secrets elasticsearch-es-elastic-user -o json | jq -r .data.elastic | base64 -d
+```
+
 ### Portainer
 
 Create admin account for portainer by accessing portainer.remikeat.com IMMEDIATELY
