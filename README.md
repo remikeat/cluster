@@ -200,6 +200,13 @@ cr:
 harborAdminPassword: password
 ```
 
+- name: fluentd.env
+- value:
+
+```
+elastic=""
+```
+
 And update argocd/applications/bitwarden/secrets.yaml
 
 # How to encode in base64
