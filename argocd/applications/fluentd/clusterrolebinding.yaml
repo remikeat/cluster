@@ -1,0 +1,12 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: fluentd-cluster-role-binding
+subjects:
+- kind: ServiceAccount
+  name: fluentd-sa
+  namespace: kube-system
+roleRef:
+  kind: ClusterRole
+  name: fluentd-cluster-role
+  apiGroup: rbac.authorization.k8s.io

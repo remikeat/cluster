@@ -8,3 +8,6 @@ secretGenerator:
       - bw-secrets/fluentd.env
 resources:
   - fluentd-daemonset-elasticsearch.yaml
+  - serviceaccount.yaml
+  - clusterrole.yaml
+  - clusterrolebinding.yaml
