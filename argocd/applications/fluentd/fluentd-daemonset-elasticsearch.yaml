@@ -17,7 +17,8 @@ spec:
         k8s-app: fluentd-logging
         version: v1
     spec:
-      serviceAccountName: fluentd-sa
+      serviceAccount: fluentd
+      serviceAccountName: fluentd
       tolerations:
         - key: node-role.kubernetes.io/control-plane
           effect: NoSchedule
