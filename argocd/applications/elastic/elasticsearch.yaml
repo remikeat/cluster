@@ -4,8 +4,12 @@ metadata:
   name: elasticsearch
 spec:
   version: 8.15.1
+  http:
+    tls:
+      selfSignedCertificate:
+        disabled: true
   nodeSets:
-  - name: default
-    count: 1
-    config:
-      node.store.allow_mmap: false
+    - name: default
+      count: 1
+      config:
+        node.store.allow_mmap: false
