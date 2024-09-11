@@ -22,3 +22,28 @@ spec:
     - hosts:
         - kibana.remikeat.com
       secretName: kibana-tls
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: elasticsearch
+  namespace: default
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-production
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: elasticsearch.remikeat.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: elasticsearch-es-http
+                port:
+                  number: 9200
+  tls:
+    - hosts:
+        - elasticsearch.remikeat.com
+      secretName: elasticsearch-tls
