@@ -45,7 +45,7 @@ spec:
             # Option to configure elasticsearch plugin with tls
             # ================================================================
             - name: FLUENT_ELASTICSEARCH_SSL_VERSION
-              value: "TLSv1_2"
+              value: "TLSv1_3"
             # X-Pack Authentication
             # =====================
             - name: FLUENT_ELASTICSEARCH_USER
