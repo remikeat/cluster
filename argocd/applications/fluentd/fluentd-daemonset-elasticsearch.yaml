@@ -33,11 +33,11 @@ spec:
                 fieldRef:
                   fieldPath: spec.nodeName
             - name: FLUENT_ELASTICSEARCH_HOST
-              value: "elasticsearch-es-http.default"
+              value: "elasticsearch.remikeat.com"
             - name: FLUENT_ELASTICSEARCH_PORT
-              value: "9200"
+              value: "80"
             - name: FLUENT_ELASTICSEARCH_SCHEME
-              value: "http"
+              value: "https"
             # Option to configure elasticsearch plugin with self signed certs
             # ================================================================
             - name: FLUENT_ELASTICSEARCH_SSL_VERIFY
