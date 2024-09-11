@@ -11,3 +11,5 @@ spec:
     tls:
       selfSignedCertificate:
         disabled: true
+  config:
+    server.publicBaseUrl: "https:/kibana.remikeat.com"
