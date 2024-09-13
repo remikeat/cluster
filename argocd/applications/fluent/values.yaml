@@ -2,6 +2,14 @@ containerRuntime: containerd
 fluentbit:
   crdsEnable: false
   enable: true
+  output:
+    es:
+      enable: true
+      host: elasticsearch-es-http.default
 fluentd:
   crdsEnable: false
   enable: true
+  output:
+    es:
+      enable: true
+      host: elasticsearch-es-http.default
