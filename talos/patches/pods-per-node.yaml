@@ -1,0 +1,8 @@
+cluster:
+  controllerManager:
+      extraArgs:
+        node-cidr-mask-size: 22
+machine:
+  kubelet:
+    extraConfig:
+      maxPods: 440

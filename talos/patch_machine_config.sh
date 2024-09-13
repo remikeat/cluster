@@ -5,6 +5,7 @@ talosctl machineconfig patch worker.yaml \
     --patch @patches/install.yaml \
     --patch @patches/metrics-server.yaml \
     --patch @patches/scheduling-control-plane.yaml \
+    --patch @patches/pods-per-node.yaml \
     -o worker.yaml
 
 talosctl machineconfig patch controlplane.yaml \
@@ -13,4 +14,5 @@ talosctl machineconfig patch controlplane.yaml \
     --patch @patches/install.yaml \
     --patch @patches/metrics-server.yaml \
     --patch @patches/scheduling-control-plane.yaml \
+    --patch @patches/pods-per-node.yaml \
     -o controlplane.yaml
