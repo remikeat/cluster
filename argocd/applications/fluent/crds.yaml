@@ -8,12 +8,10 @@ spec:
   sources:
     - repoURL: https://fluent.github.io/helm-charts
       path: charts/fluent-operator/charts/fluent-bit-crds
-      targetRevision: 3.1.0
-      chart: fluent-bit-crds
+      targetRevision: v3.1.0
     - repoURL: https://fluent.github.io/helm-charts
       path: charts/fluent-operator/charts/fluentd-crds
-      targetRevision: 3.1.0
-      chart: fluent-bit-crds
+      targetRevision: v3.1.0
   destination:
     server: https://kubernetes.default.svc
     namespace: fluent
