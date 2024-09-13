@@ -6,6 +6,9 @@ metadata:
 spec:
   project: default
   sources:
+    - repoURL: https://github.com/kiali/helm-charts.git
+      targetRevision: v1.89.0
+      path: kiali-operator/crds
     - repoURL: https://kiali.org/helm-charts
       targetRevision: 1.89.0
       chart: kiali-operator
