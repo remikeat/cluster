@@ -9,6 +9,12 @@ spec:
     - repoURL: https://fluent.github.io/helm-charts
       targetRevision: 3.1.0
       chart: fluent-operator
+      helm:
+        valueFiles:
+          - $repo/argocd/applications/fluent/values.yaml
+    - repoURL: https://github.com/remikeat/cluster.git
+      targetRevision: HEAD
+      ref: repo
   destination:
     server: https://kubernetes.default.svc
     namespace: fluent
