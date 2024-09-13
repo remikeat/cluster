@@ -3,6 +3,8 @@ kind: Application
 metadata:
   name: fluent-crds
   namespace: argo-cd
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
 spec:
   project: default
   sources:
