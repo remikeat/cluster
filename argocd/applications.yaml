@@ -404,14 +404,14 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: fluentd-app
+  name: fluent-app
   namespace: argo-cd
 spec:
   project: default
   source:
     repoURL: https://github.com/remikeat/cluster.git
     targetRevision: HEAD
-    path: argocd/applications/fluentd
+    path: argocd/applications/fluent
     plugin:
       name: custom-cmp
   destination:

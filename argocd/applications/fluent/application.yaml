@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: fluent
+  namespace: argo-cd
+spec:
+  project: default
+  sources:
+    - repoURL: https://fluent.github.io/helm-charts
+      targetRevision: 3.1.0
+      chart: fluent-operator
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: fluent
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
