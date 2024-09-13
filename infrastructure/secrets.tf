@@ -14,6 +14,7 @@ resource "kubernetes_secret" "private_repo" {
     username = "remikeat"
     password = var.github_token
   }
+  depends_on = [kubernetes_namespace.argo-cd]
 }
 
 resource "kubernetes_secret" "github_https" {
@@ -28,6 +29,8 @@ resource "kubernetes_secret" "github_https" {
   }
 
   type = "kubernetes.io/basic-auth"
+
+  depends_on = [kubernetes_namespace.argo-cd]
 }
 
 resource "kubernetes_secret" "bt_auth_token" {
@@ -39,6 +42,8 @@ resource "kubernetes_secret" "bt_auth_token" {
   data = {
     token = var.bitwarden_token
   }
+
+  depends_on = [kubernetes_namespace.argo-cd]
 }
 
 resource "kubernetes_secret" "github_registry" {
@@ -60,4 +65,6 @@ resource "kubernetes_secret" "github_registry" {
       }
     })
   }
+
+  depends_on = [kubernetes_namespace.argo-cd]
 }
