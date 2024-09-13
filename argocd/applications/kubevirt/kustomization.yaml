@@ -6,10 +6,10 @@ resources:
   - https://github.com/kubevirt/containerized-data-importer/releases/download/v1.60.2/cdi-operator.yaml
   - https://github.com/kubevirt/containerized-data-importer/releases/download/v1.60.2/cdi-cr.yaml
 
-patches:
-  - target:
-      version: v1
-      group: apps
-      kind: Deployment
-      name: cdi-operator
-    path: ./patches/image_patch.yaml
+# patches:
+#   - target:
+#       version: v1
+#       group: apps
+#       kind: Deployment
+#       name: cdi-operator
+#     path: ./patches/image_patch.yaml
