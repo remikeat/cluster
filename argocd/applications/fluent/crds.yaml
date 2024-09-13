@@ -6,10 +6,10 @@ metadata:
 spec:
   project: default
   sources:
-    - repoURL: https://fluent.github.io/helm-charts
+    - repoURL: https://github.com/fluent/fluent-operator.git
       path: charts/fluent-operator/charts/fluent-bit-crds
       targetRevision: v3.1.0
-    - repoURL: https://fluent.github.io/helm-charts
+    - repoURL: https://github.com/fluent/fluent-operator.git
       path: charts/fluent-operator/charts/fluentd-crds
       targetRevision: v3.1.0
   destination:
