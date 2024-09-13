@@ -205,7 +205,7 @@ cr:
 harborAdminPassword: password
 ```
 
-- name: fluentd.yaml
+- name: fluent.yaml
 - value:
 
 ```
