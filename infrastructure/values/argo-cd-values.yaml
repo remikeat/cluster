@@ -1,7 +1,7 @@
 global:
   domain: "argocd.remikeat.com"
   affinity:
-    podAntiAffinity: hard
+    podAntiAffinity: soft
 configs:
   params:
     server:
