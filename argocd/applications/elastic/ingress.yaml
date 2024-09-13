@@ -5,6 +5,7 @@ metadata:
   namespace: default
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-production
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   ingressClassName: nginx
   rules:
