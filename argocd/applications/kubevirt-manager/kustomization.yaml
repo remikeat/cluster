@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - https://raw.githubusercontent.com/kubevirt-manager/kubevirt-manager/main/kubernetes/bundled.yaml
   - configmap.yaml
+  - ingress.yaml
 generatorOptions:
   disableNameSuffixHash: true
 secretGenerator:
