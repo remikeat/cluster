@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: fluent-crds
+  namespace: argo-cd
+spec:
+  project: default
+  sources:
+    - repoURL: https://fluent.github.io/helm-charts
+      path: charts/fluent-operator/charts/fluent-bit-crds
+      targetRevision: 3.1.0
+      chart: fluent-bit-crds
+    - repoURL: https://fluent.github.io/helm-charts
+      path: charts/fluent-operator/charts/fluentd-crds
+      targetRevision: 3.1.0
+      chart: fluent-bit-crds
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: fluent
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true

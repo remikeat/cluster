@@ -1,3 +1,7 @@
 containerRuntime: containerd
+fluentbit:
+  crdsEnable: false
+  enable: true
 fluentd:
+  crdsEnable: false
   enable: true
