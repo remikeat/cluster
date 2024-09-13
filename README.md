@@ -200,11 +200,18 @@ cr:
 harborAdminPassword: password
 ```
 
-- name: fluentd.env
+- name: fluentd.yaml
 - value:
 
 ```
-elastic=""
+fluentbit:
+  output:
+    es:
+      httpPassword:
+fluentd:
+  output:
+    es:
+      httpPassword:
 ```
 
 And update argocd/applications/bitwarden/secrets.yaml

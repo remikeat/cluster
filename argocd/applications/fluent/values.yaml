@@ -6,6 +6,7 @@ fluentbit:
     es:
       enable: true
       host: elasticsearch-es-http.default
+      httpUser: elastic
 fluentd:
   crdsEnable: false
   enable: true
@@ -13,3 +14,4 @@ fluentd:
     es:
       enable: true
       host: elasticsearch-es-http.default
+      httpUser: elastic
