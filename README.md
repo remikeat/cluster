@@ -151,6 +151,9 @@ oauth:
 - value:
 
 ```
+secrets:
+  username: ""
+  password: ""
 lapi:
   env:
     - name: ENROLL_INSTANCE_NAME
