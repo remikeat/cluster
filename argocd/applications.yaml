@@ -412,6 +412,8 @@ spec:
     repoURL: https://github.com/remikeat/cluster.git
     targetRevision: HEAD
     path: argocd/applications/fluent
+    plugin:
+      name: custom-cmp
   destination:
     server: https://kubernetes.default.svc
     namespace: default
