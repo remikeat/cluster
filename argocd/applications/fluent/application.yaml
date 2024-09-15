@@ -18,8 +18,6 @@ spec:
             string: HEAD
           - name: repo_values
             string: argocd/applications/fluent/values.yaml
-          - name: secrets
-            string: fluent.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: fluent
