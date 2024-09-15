@@ -1,0 +1,27 @@
+apiVersion: fluentbit.fluent.io/v1alpha2
+kind: ClusterOutput
+metadata:
+  name: es
+  labels:
+    fluentbit.fluent.io/component: logging
+    fluentbit.fluent.io/enabled: "true"
+spec:
+  es:
+    bufferSize: 20MB
+    generateID: true
+    host: elasticsearch-es-http.default
+    httpPassword:
+      valueFrom:
+        secretKeyRef:
+          name: elasticsearch-es-elastic-user
+          key: elastic
+    httpUser:
+      value: elastic
+    logstashFormat: true
+    logstashPrefix: ks-logstash-log
+    port: 9200
+    replaceDots: false
+    timeKey: "@timestamp"
+    traceError: true
+    writeOperation: create
+  matchRegex: (?:kube|service)\.(.*)

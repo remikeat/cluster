@@ -4,7 +4,7 @@ fluentbit:
   enable: true
   output:
     es:
-      enable: true
+      enable: false
       host: elasticsearch-es-http.default
       httpUser:
         value: elastic
@@ -13,7 +13,7 @@ fluentd:
   enable: false
   output:
     es:
-      enable: true
+      enable: false
       host: elasticsearch-es-http.default
       httpUser:
         value: elastic
