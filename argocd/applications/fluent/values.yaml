@@ -4,7 +4,7 @@ fluentbit:
   enable: true
   output:
     es:
-      enable: false
+      enable: true
       host: elasticsearch-es-http.default
       httpPassword:
         valueFrom:
@@ -21,7 +21,7 @@ fluentd:
   enable: false
   output:
     es:
-      enable: false
+      enable: true
       host: elasticsearch-es-http.default
       httpPassword:
         valueFrom:
