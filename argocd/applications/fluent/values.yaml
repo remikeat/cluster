@@ -10,7 +10,7 @@ fluentbit:
         value: elastic
 fluentd:
   crdsEnable: false
-  enable: true
+  enable: false
   output:
     es:
       enable: true
