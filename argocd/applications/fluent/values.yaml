@@ -6,6 +6,7 @@ fluentbit:
     es:
       enable: true
       host: elasticsearch-es-http.default
+      suppressTypeName: On
       httpPassword:
         valueFrom:
           secretKeyRef:
@@ -23,6 +24,7 @@ fluentd:
     es:
       enable: true
       host: elasticsearch-es-http.default
+      suppressTypeName: On
       httpPassword:
         valueFrom:
           secretKeyRef:
