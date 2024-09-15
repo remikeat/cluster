@@ -16,7 +16,10 @@ spec:
           name: elasticsearch-es-elastic-user
           key: elastic
     httpUser:
-      value: "elastic"
+      valueFrom:
+        secretKeyRef:
+          name: elasticsearch-username
+          key: username
     logstashFormat: true
     logstashPrefix: ks-logstash-log
     port: 9200
