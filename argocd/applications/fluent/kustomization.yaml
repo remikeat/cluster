@@ -4,6 +4,7 @@ generatorOptions:
   disableNameSuffixHash: true
 secretGenerator:
   - name: elasticsearch-secrets
+    namespace: fluent
     type: kubernetes.io/opaque
     envs:
       - bw-secrets/fluent.env
