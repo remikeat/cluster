@@ -9,12 +9,12 @@ fluentbit:
       httpPassword:
         valueFrom:
           secretKeyRef:
-            name: elasticsearch-es-elastic-user
-            key: elastic
+            name: elasticsearch-secrets
+            key: password
       httpUser:
         valueFrom:
           secretKeyRef:
-            name: elasticsearch-username
+            name: elasticsearch-secrets
             key: username
 fluentd:
   crdsEnable: false
@@ -26,10 +26,10 @@ fluentd:
       httpPassword:
         valueFrom:
           secretKeyRef:
-            name: elasticsearch-es-elastic-user
-            key: elastic
+            name: elasticsearch-secrets
+            key: password
       httpUser:
         valueFrom:
           secretKeyRef:
-            name: elasticsearch-username
+            name: elasticsearch-secrets
             key: username
