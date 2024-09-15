@@ -6,8 +6,16 @@ fluentbit:
     es:
       enable: false
       host: elasticsearch-es-http.default
+      httpPassword:
+        valueFrom:
+          secretKeyRef:
+            name: elasticsearch-es-elastic-user
+            key: elastic
       httpUser:
-        value: elastic
+        valueFrom:
+          secretKeyRef:
+            name: elasticsearch-username
+            key: username
 fluentd:
   crdsEnable: false
   enable: false
@@ -15,5 +23,13 @@ fluentd:
     es:
       enable: false
       host: elasticsearch-es-http.default
+      httpPassword:
+        valueFrom:
+          secretKeyRef:
+            name: elasticsearch-es-elastic-user
+            key: elastic
       httpUser:
-        value: elastic
+        valueFrom:
+          secretKeyRef:
+            name: elasticsearch-username
+            key: username
