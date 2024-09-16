@@ -1,0 +1,65 @@
+driver:
+  kind: modern_ebpf
+tty: true
+
+falcosidekick:
+  enabled: true
+  replicaCount: 1
+  webui:
+    enabled: true
+    replicaCount: 1
+    redis:
+      storageEnabled: false
+    service:
+      type: NodePort
+      port: 2802
+      targetPort: 2802
+      nodePort: 30128
+
+falcoctl:
+  artifact:
+    install:
+      enabled: true
+    follow:
+      enabled: true
+  config:
+    artifact:
+      install:
+        refs:
+          [
+            falco-rules:latest,
+            falco-incubating-rules:latest,
+            k8saudit-rules:latest,
+          ]
+      follow:
+        refs:
+          [
+            falco-rules:latest,
+            falco-incubating-rules:latest,
+            k8saudit-rules:latest,
+          ]
+
+services:
+  - name: k8saudit-webhook
+    type: ClusterIP
+    ports:
+      - port: 9765
+        targetPort: 9765
+        protocol: TCP
+        name: http
+
+falco:
+  rules_file:
+    - /etc/falco/falco_rules.yaml
+    - /etc/falco/falco-incubating_rules.yaml
+    - /etc/falco/k8s_audit_rules.yaml
+    - /etc/falco/rules.d
+  plugins:
+    - name: k8saudit
+      library_path: libk8saudit.so
+      init_config: ""
+      open_params: "http://:9765/k8s-audit"
+    - name: json
+      library_path: libjson.so
+      init_config: ""
+  load_plugins: [k8saudit, json]

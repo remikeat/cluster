@@ -162,6 +162,57 @@ lapi:
       value: "<ENROLL_KEY>"
     - name: BOUNCER_KEY_nginx
       value: "<BOUNCER_KEY>"
+config:
+  notifications:
+    email.yaml: |
+      type: email           # Don't change
+      name: email_default   # Must match the registered plugin in the profile
+
+      # One of "trace", "debug", "info", "warn", "error", "off"
+      log_level: info
+
+      # group_wait:         # Time to wait collecting alerts before relaying a message to this plugin, eg "30s"
+      # group_threshold:    # Amount of alerts that triggers a message before <group_wait> has expired, eg "10"
+      # max_retry:          # Number of attempts to relay messages to plugins in case of error
+      timeout: 20s          # Time to wait for response from the plugin before considering the attempt a failure, eg "10s"
+
+      #-------------------------
+      # plugin-specific options
+
+      # The following template receives a list of models.Alert objects
+      # The output goes in the email message body
+      format: |
+        <html><body>
+        {{range . -}}
+          {{$alert := . -}}
+          {{range .Decisions -}}
+            <p><a href="https://www.whois.com/whois/{{.Value}}">{{.Value}}</a> will get <b>{{.Type}}</b> for next <b>{{.Duration}}</b> for triggering <b>{{.Scenario}}</b> on machine <b>{{$alert.MachineID}}</b>.</p> <p><a href="https://app.crowdsec.net/cti/{{.Value}}">CrowdSec CTI</a></p>
+          {{end -}}
+        {{end -}}
+        </body></html>
+
+      smtp_host: smtp.sendgrid.net # example: smtp.gmail.com
+      smtp_username: apikey        # Replace with your actual username
+      smtp_password:               # Replace with your actual password
+      smtp_port: 587               # Common values are any of [25, 465, 587, 2525]
+      auth_type: login             # Valid choices are "none", "crammd5", "login", "plain"
+      sender_name: "CrowdSec"
+      sender_email: contact@remikeat.com         # example: foo@gmail.com
+      email_subject: "CrowdSec Notification"
+      receiver_emails:
+        - contact@remikeat.com
+      # - email2@gmail.com
+
+      # One of "ssltls", "starttls", "none"
+      encryption_type: "ssltls"
+
+      # If you need to set the HELO hostname:
+      # helo_host: "localhost"
+
+      # If the email server is hitting the default timeouts (10 seconds), you can increase them here
+      #
+      # connect_timeout: 10s
+      # send_timeout: 10s
 ```
 
 - name: supabase.yaml
@@ -294,4 +345,11 @@ echo "alias tailscale=\"/mnt/c/Program\ Files/Tailscale/tailscale.exe\"" >> ~/.b
 ```
 tailscale completion bash | sudo tee -a /etc/bash_completion.d/tailscale
 echo "source '/etc/bash_completion.d/tailscale'" >> ~/.bashr
+```
+
+### Retrieve kubeconfig
+
+```
+talosctl kubeconfig
+tailscale configure kubeconfig tailscale-operator
 ```
