@@ -267,6 +267,15 @@ username=
 password=
 ```
 
+- name: falco.yaml
+- value:
+
+```
+falcosidekick:
+  webui:
+    user: "admin:adminpassword"
+```
+
 And update argocd/applications/bitwarden/secrets.yaml
 
 # How to encode in base64
