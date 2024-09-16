@@ -32,3 +32,24 @@ spec:
       name: istio-validator-istio-system
       jqPathExpressions:
         - .webhooks[] | select(.name == "rev.validation.istio.io") | .failurePolicy
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: istio-gateway
+  namespace: argo-cd
+spec:
+  project: default
+  sources:
+    - repoURL: https://istio-release.storage.googleapis.com/charts
+      targetRevision: 1.23.0
+      chart: gateway
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: istio-ingress
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=false
