@@ -459,6 +459,17 @@ spec:
     automated:
       prune: true
       selfHeal: true
+  ignoreDifferences:
+    - group: rbac.authorization.k8s.io
+      kind: ClusterRole
+      name: knative-eventing-operator-aggregated-stable
+      jqPathExpressions:
+        - .rules
+    - group: rbac.authorization.k8s.io
+      kind: ClusterRole
+      name: knative-serving-operator-aggregated-stable
+      jqPathExpressions:
+        - .rules
 # ---
 # apiVersion: argoproj.io/v1alpha1
 # kind: Application
