@@ -1,0 +1,22 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  generateName: app-setup-index-template-
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+spec:
+  template:
+    spec:
+      containers:
+        - name: setup-index-template
+          image: curlimages/curl
+          command:
+            - "curl"
+            - "-X"
+            - "PUT"
+            - "elasticsearch-es-http.default:9200/_index_template/custom_template"
+            - "--data-urlencode"
+            - 'payload={"index_patterns": ["*"],"template": {"settings": {"number_of_shards": 1,"number_of_replicas": 0}}}'
+      restartPolicy: Never
+  backoffLimit: 2
