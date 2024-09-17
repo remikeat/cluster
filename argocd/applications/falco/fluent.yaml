@@ -1,0 +1,23 @@
+apiVersion: fluentbit.fluent.io/v1alpha2
+kind: ClusterInput
+metadata:
+  name: audit-tail
+  labels:
+    fluentbit.fluent.io/enabled: "true"
+spec:
+  tail:
+    tag: audit.*
+    path: /var/log/audit/kube/*.log
+    parser: audit-parser
+    ignoreOlder: true
+---
+apiVersion: fluentbit.fluent.io/v1alpha2
+kind: ClusterParser
+metadata:
+  name: audit-parser
+  labels:
+    fluentbit.fluent.io/enabled: "true"
+spec:
+  json:
+    timeFormat: "%Y-%m-%dT%H:%M:%S.%L%z"
+    timeKey: "@timestamp"
