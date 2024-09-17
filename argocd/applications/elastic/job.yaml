@@ -23,8 +23,11 @@ spec:
             - "elastic:$PASSWORD"
             - "-X"
             - "PUT"
-            - "elasticsearch-es-http.default:9200/_index_template/custom_template"
-            - "--data-urlencode"
-            - 'payload={"index_patterns": ["ks-*"],"template": {"settings": {"number_of_shards": 1,"number_of_replicas": 0}}}'
+            - "-L"
+            - "https://elasticsearch.remikeat.com/_index_template/custom_template"
+            - "-H"
+            - "Content-Type: application/json"
+            - "-d"
+            - '{"index_patterns": ["ks-*"],"template": {"settings": {"number_of_shards": 1,"number_of_replicas": 0}}}'
       restartPolicy: Never
   backoffLimit: 2
