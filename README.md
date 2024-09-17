@@ -353,7 +353,7 @@ echo "alias tailscale=\"/mnt/c/Program\ Files/Tailscale/tailscale.exe\"" >> ~/.b
 
 ```
 tailscale completion bash | sudo tee -a /etc/bash_completion.d/tailscale
-echo "source '/etc/bash_completion.d/tailscale'" >> ~/.bashr
+echo "source '/etc/bash_completion.d/tailscale'" >> ~/.bashrc
 ```
 
 ### Retrieve kubeconfig
@@ -361,4 +361,11 @@ echo "source '/etc/bash_completion.d/tailscale'" >> ~/.bashr
 ```
 talosctl kubeconfig
 tailscale configure kubeconfig tailscale-operator
+```
+
+### helm auto-completion
+
+```
+helm completion bash | sudo tee /etc/bash_completion.d/helm
+echo "source '/etc/bash_completion.d/helm'" >> ~/.bashrc
 ```

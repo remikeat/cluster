@@ -3,9 +3,31 @@ global:
   affinity:
     podAntiAffinity: soft
 configs:
+  cm:
+    resource.exclusion: |
+      - apiGroups:
+          - cilium.io
+        kinds:
+          - CiliumIdentity
+        clusters:
+          - "*"
   params:
     server:
       insecure: true
+  cmp:
+    create: true
+    plugins:
+      custom-cmp:
+        init:
+          command: [bash, -c]
+          args:
+            - |
+              values.py
+        generate:
+          command: [bash, -c]
+          args:
+            - |
+              template.py
 server:
   replicas: 2
   ingress:
@@ -26,9 +48,9 @@ repoServer:
       secret:
         secretName: bw-secrets
         optional: true
-    - name: custom-cmp-config
+    - name: argocd-cmp-cm
       configMap:
-        name: custom-cmp-config
+        name: argocd-cmp-cm
     - name: cmp-tmp
       emptyDir: {}
     - name: repo
@@ -90,8 +112,8 @@ repoServer:
         - mountPath: /home/argocd/cmp-server/plugins
           name: plugins
         - mountPath: /home/argocd/cmp-server/config/plugin.yaml
-          name: custom-cmp-config
-          subPath: plugin.yaml
+          subPath: custom-cmp.yaml
+          name: argocd-cmp-cm
         - mountPath: /tmp
           name: cmp-tmp
         - mountPath: /bw-secrets
