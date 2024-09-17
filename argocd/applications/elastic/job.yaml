@@ -11,12 +11,20 @@ spec:
       containers:
         - name: setup-index-template
           image: curlimages/curl
+          env:
+            - name: PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: elasticsearch-es-elastic-user
+                  key: elastic
           command:
             - "curl"
+            - "-u"
+            - "elastic:$PASSWORD"
             - "-X"
             - "PUT"
             - "elasticsearch-es-http.default:9200/_index_template/custom_template"
             - "--data-urlencode"
-            - 'payload={"index_patterns": ["*"],"template": {"settings": {"number_of_shards": 1,"number_of_replicas": 0}}}'
+            - 'payload={"index_patterns": ["ks-*"],"template": {"settings": {"number_of_shards": 1,"number_of_replicas": 0}}}'
       restartPolicy: Never
   backoffLimit: 2
