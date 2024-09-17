@@ -20,3 +20,34 @@ spec:
   json:
     timeFormat: "%Y-%m-%dT%H:%M:%S.%L%z"
     timeKey: "requestReceivedTimestamp"
+---
+apiVersion: fluentbit.fluent.io/v1alpha2
+kind: ClusterOutput
+metadata:
+  name: audit-es
+  labels:
+    fluentbit.fluent.io/enabled: 'true'
+spec:
+  es:
+    bufferSize: 20MB
+    generateID: true
+    host: elasticsearch-es-http.default
+    httpPassword:
+      valueFrom:
+        secretKeyRef:
+          key: password
+          name: elasticsearch-secrets
+    httpUser:
+      valueFrom:
+        secretKeyRef:
+          key: username
+          name: elasticsearch-secrets
+    logstashFormat: true
+    logstashPrefix: audit-log
+    port: 9200
+    replaceDots: false
+    suppressTypeName: 'true'
+    timeKey: '@timestamp'
+    traceError: true
+    writeOperation: create
+  matchRegex: (?:audit)\.(.*)
