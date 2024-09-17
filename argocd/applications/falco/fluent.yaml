@@ -9,7 +9,6 @@ spec:
     tag: audit.*
     path: /var/log/audit/kube/*.log
     parser: audit-parser
-    ignoreOlder: true
 ---
 apiVersion: fluentbit.fluent.io/v1alpha2
 kind: ClusterParser
