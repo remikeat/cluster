@@ -278,13 +278,22 @@ falcosidekick:
 
 And update argocd/applications/bitwarden/secrets.yaml
 
-# How to encode in base64
+### Setup number of replicas for elasticsearch
+
+```
+curl -X PUT -L 'https://elasticsearch.remikeat.com/*/_settings' \
+-u "elastic:$PASSWORD" \
+-H 'Content-Type: application/json' \
+-d '{"index": {"number_of_replicas": 0}}'
+```
+
+### How to encode in base64
 
 ```
 echo -n "username:password" | base64
 ```
 
-# How to create htpasswd data
+### How to create htpasswd data
 
 ```
 htpasswd -n username
