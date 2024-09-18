@@ -64,4 +64,4 @@ spec:
     uri: /k8s-audit
     port: 9765
     format: json
-  matchRegex: '*'
+  match: '*'
