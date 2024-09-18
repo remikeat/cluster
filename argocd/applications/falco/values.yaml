@@ -21,7 +21,14 @@ falcosidekick:
     hosts:
       - host: falco
         paths:
-          - path: /
+          - pathType: Prefix
+            path: /
+            backend:
+              service:
+                name: falco-falcosidekick-ui
+                port:
+                  number: 30128
+
     tls:
       - hosts:
           - "falco"
