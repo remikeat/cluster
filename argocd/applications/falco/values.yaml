@@ -18,6 +18,10 @@ falcosidekick:
   ingress:
     enabled: true
     ingressClassName: "tailscale"
+    hosts:
+      - host: falco
+        paths:
+          - path: /
     tls:
       - hosts:
           - "falco"
