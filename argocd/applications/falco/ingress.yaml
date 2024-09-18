@@ -14,7 +14,7 @@ spec:
               service:
                 name: falco-falcosidekick-ui
                 port:
-                  number: 30128
+                  number: 2802
   tls:
     - hosts:
         - "falco"
