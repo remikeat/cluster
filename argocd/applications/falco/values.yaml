@@ -15,6 +15,12 @@ falcosidekick:
       port: 2802
       targetPort: 2802
       nodePort: 30128
+  ingress:
+    enabled: true
+    ingressClassName: "tailscale"
+    tls:
+      - hosts:
+          - "falco"
 
 falcoctl:
   artifact:

@@ -84,6 +84,8 @@ kubectl delete -n argo-cd secrets/argocd-initial-admin-secret
 kubectl get secrets elasticsearch-es-elastic-user -o json | jq -r .data.elastic | base64 -d
 ```
 
+Update password in bitwarden secret manager : fluent.env
+
 ### Portainer
 
 Create admin account for portainer by accessing portainer.remikeat.com IMMEDIATELY
