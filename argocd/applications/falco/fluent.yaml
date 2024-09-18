@@ -51,3 +51,17 @@ spec:
     traceError: true
     writeOperation: create
   matchRegex: (?:audit)\.(.*)
+---
+apiVersion: fluentbit.fluent.io/v1alpha2
+kind: ClusterOutput
+metadata:
+  name: k8s-audit
+  labels:
+    fluentbit.fluent.io/enabled: 'true'
+spec:
+  http:
+    host: falco-k8saudit-webhook.falco.svc.cluster.local
+    uri: /k8s-audit
+    port: 9765
+    format: json
+  matchRegex: '*'
