@@ -16,22 +16,7 @@ falcosidekick:
       targetPort: 2802
       nodePort: 30128
   ingress:
-    enabled: true
-    ingressClassName: "tailscale"
-    hosts:
-      - host: falco
-        paths:
-          - pathType: Prefix
-            path: /
-            backend:
-              service:
-                name: falco-falcosidekick-ui
-                port:
-                  number: 30128
-
-    tls:
-      - hosts:
-          - "falco"
+    enabled: false
 
 falcoctl:
   artifact:
