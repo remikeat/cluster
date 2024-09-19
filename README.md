@@ -206,7 +206,7 @@ config:
       # - email2@gmail.com
 
       # One of "ssltls", "starttls", "none"
-      encryption_type: "ssltls"
+      encryption_type: "starttls"
 
       # If you need to set the HELO hostname:
       # helo_host: "localhost"
