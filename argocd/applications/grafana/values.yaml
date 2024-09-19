@@ -3,6 +3,9 @@ prometheus:
     scrapeInterval: 30s
     evaluationInterval: 30s
 grafana:
+  persistence:
+    enabled: true
+    storageClassName: longhorn
   dashboards:
     default:
       mesh-dashboard:
