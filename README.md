@@ -13,6 +13,8 @@ Prepare the cluster
 talosctl apply-config --insecure -n 192.168.0.122 --file controlplane.yaml
 talosctl bootstrap -n 192.168.0.122
 talosctl kubeconfig -n 192.168.0.122
+talosctl config endpoint 192.168.0.122
+talosctl config nodes 192.168.0.122
 ```
 
 ### Terraform installation
