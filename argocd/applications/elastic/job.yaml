@@ -20,9 +20,6 @@ spec:
               mountPath: /home/curl_user/index_template.json
               subPath: index_template.json
             - name: elasticsearch-index-config
-              mountPath: /home/curl_user/index_auto_delete_template.json
-              subPath: index_auto_delete_template.json
-            - name: elasticsearch-index-config
               mountPath: /home/curl_user/index_lifecycle_policy.json
               subPath: index_lifecycle_policy.json
           env:
