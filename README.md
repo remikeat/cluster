@@ -90,6 +90,7 @@ kubectl get secrets elasticsearch-es-elastic-user -o json | jq -r .data.elastic 
 ```
 
 Update password in bitwarden secret manager : fluent.env
+And update password in bitwarden password manager for kibana/elasticsearch
 
 ### Portainer
 
@@ -120,6 +121,10 @@ redmineUsername: <REDMINE_USERNAME>
 redminePassword: <REDMINE_PASSWORD>
 redmineEmail: <REDMINE_EMAIL>
 smtpPassword: "<SMTP_API_KEY>"
+postgresql:
+  auth:
+    username: bn_redmine
+    password: ""
 ```
 
 - name: remikeat.com.dockerconfigjson
