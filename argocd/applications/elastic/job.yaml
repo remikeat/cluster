@@ -24,10 +24,10 @@ spec:
             - "-X"
             - "PUT"
             - "-L"
-            - "https://elasticsearch.remikeat.com/_index_template/custom_template"
+            - "https://elasticsearch.remikeat.com/_index_template/single_node_template"
             - "-H"
             - "Content-Type: application/json"
             - "-d"
-            - '{"index_patterns": ["[^.].*"],"template": {"settings": {"number_of_shards": 1,"number_of_replicas": 0}}}'
+            - '{"index_patterns": ["*"],"priority": 2, "template": {"settings": {"number_of_shards": 1,"number_of_replicas": 0}}}'
       restartPolicy: Never
   backoffLimit: 2
