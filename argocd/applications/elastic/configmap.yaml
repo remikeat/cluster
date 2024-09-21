@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: elasticsearch-index-config
+data:
+  index_template.json: |
+    {
+      "index_patterns": ["*"],
+      "priority": 2,
+      "template": {
+        "settings": {
+          "number_of_shards": 1,
+          "number_of_replicas": 0
+        }
+      }
+    }
+  index_lifecycle_policy.json: |
+    {
+      "policy": {
+        "phases": {
+          "hot": {
+            "min_age": "0ms",
+            "actions": {
+              "set_priority": {
+                "priority": 100
+              },
+              "rollover": {
+                "max_age": "30d",
+                "max_primary_shard_size": "50gb"
+              }
+            }
+          },
+          "delete": {
+            "min_age": "7d",
+            "actions": {
+              "delete": {
+                "delete_searchable_snapshot": true
+              }
+            }
+          }
+        }
+      }
+    }

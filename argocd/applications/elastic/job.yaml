@@ -1,16 +1,27 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  generateName: app-setup-index-template-
+  generateName: app-setup-index-
   annotations:
     argocd.argoproj.io/hook: PostSync
-    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+    # argocd.argoproj.io/hook-delete-policy: HookSucceeded
 spec:
   template:
     spec:
+      volumes:
+        - name: elasticsearch-index-config
+          configMap:
+            name: elasticsearch-index-config
       containers:
-        - name: setup-index-template
+        - name: setup-index
           image: curlimages/curl
+          volumeMounts:
+            - name: elasticsearch-index-template
+              mountPath: /home/curl_user/index_template.json
+              subPath: index_template.json
+            - name: elasticsearch-index-lifecycle-policy
+              mountPath: /home/curl_user/index_lifecycle_policy.json
+              subPath: index_lifecycle_policy.json
           env:
             - name: PASSWORD
               valueFrom:
@@ -20,6 +31,7 @@ spec:
           command: ["sh", "-c"]
           args:
             - |
-              curl -u "elastic:$PASSWORD" -X PUT -L https://elasticsearch.remikeat.com/_index_template/single_node_template -H "Content-Type: application/json" -d '{"index_patterns": ["*"],"priority": 2, "template": {"settings": {"number_of_shards": 1,"number_of_replicas": 0}}}'
+              curl -u "elastic:$PASSWORD" -X PUT -L https://elasticsearch.remikeat.com/_index_template/single_node_template -H "Content-Type: application/json" -d @index_template.json
+              curl -u "elastic:$PASSWORD" -X PUT -L https://elasticsearch.remikeat.com/_ilm/policy/auto-delete -H "Content-Type: application/json" -d @index_lifecycle_policy.json
       restartPolicy: Never
   backoffLimit: 2
