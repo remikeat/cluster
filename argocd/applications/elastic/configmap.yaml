@@ -5,7 +5,7 @@ metadata:
 data:
   index_template.json: |
     {
-      "index_patterns": ["*", "-.*"],
+      "index_patterns": ["*"; "-.*"],
       "priority": 2,
       "template": {
         "settings": {
