@@ -4,6 +4,7 @@ metadata:
   name: kibana
   annotations:
     argocd.argoproj.io/sync-wave: "1"
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
   version: 8.15.1
   count: 1
