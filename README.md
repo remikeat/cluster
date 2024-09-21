@@ -10,11 +10,9 @@ xz -d metal-arm64.raw.xz
 Prepare the cluster
 
 ```
-talosctl apply-config --insecure -n 192.168.0.138 --file controlplane.yaml
-talosctl apply-config --insecure -n 192.168.0.168 --file worker.yaml
-talosctl apply-config --insecure -n 192.168.0.226 --file worker.yaml
-talosctl bootstrap -n 192.168.0.138
-talosctl kubeconfig -n 192.168.0.138
+talosctl apply-config --insecure -n 192.168.0.122 --file controlplane.yaml
+talosctl bootstrap -n 192.168.0.122
+talosctl kubeconfig -n 192.168.0.122
 ```
 
 ### Terraform installation
@@ -76,6 +74,13 @@ argocd account update-password
 
 kubectl delete -n argo-cd secrets/argocd-initial-admin-secret
 
+```
+
+### Create applications
+
+```
+kubectl apply -f applicationset.yaml
+kubectl apply -f applications.yaml
 ```
 
 ### Get initial password for elasticsearch
@@ -310,7 +315,7 @@ kubectl apply -f applications.yaml
 ### Cluster shutdown
 
 ```
-talosctl -n 192.168.0.138 -n 192.168.0.168 -n 192.168.0.226 shutdown
+talosctl shutdown
 ```
 
 ### talosctl
@@ -379,4 +384,10 @@ tailscale configure kubeconfig tailscale-operator
 ```
 helm completion bash | sudo tee /etc/bash_completion.d/helm
 echo "source '/etc/bash_completion.d/helm'" >> ~/.bashrc
+```
+
+### Reset machine
+
+```
+talosctl reset --graceful=false --system-labels-to-wipe STATE --system-labels-to-wipe EPHEMERAL --reboot
 ```
