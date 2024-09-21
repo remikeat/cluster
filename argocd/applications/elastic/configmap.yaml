@@ -24,10 +24,6 @@ data:
             "actions": {
               "set_priority": {
                 "priority": 100
-              },
-              "rollover": {
-                "max_age": "0d",
-                "max_primary_shard_size": "0b"
               }
             }
           },
