@@ -11,7 +11,8 @@ data:
         "settings": {
           "number_of_shards": 1,
           "number_of_replicas": 0,
-          "index.lifecycle.name": "auto-delete"
+          "index.lifecycle.name": "auto-delete",
+          "index.lifecycle.rollover_alias": "rollover-alias"
         }
       }
     }
