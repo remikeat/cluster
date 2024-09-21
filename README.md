@@ -174,15 +174,6 @@ NEXT_PUBLIC_WEB3FORMS_TOKEN=""
 NEXT_PUBLIC_HCAPTCHA_TOKEN=""
 ```
 
-- name: tailscale.yaml
-- value:
-
-```
-oauth:
-  clientId: <CLIENT_ID>
-  clientSecret: <CLIENT_SECRET>
-```
-
 - name: crowdsec.yaml
 - value:
 
