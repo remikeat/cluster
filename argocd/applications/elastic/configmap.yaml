@@ -6,6 +6,7 @@ data:
   index_template.json: |
     {
       "index_patterns": ["*", "-.*"],
+      "priority": 2,
       "template": {
         "settings": {
           "number_of_shards": 1,
