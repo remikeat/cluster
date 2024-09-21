@@ -16,17 +16,9 @@ spec:
                 secretKeyRef:
                   name: elasticsearch-es-elastic-user
                   key: elastic
-          command:
-            - "curl"
-            - "-u"
-            - "elastic:$PASSWORD"
-            - "-X"
-            - "PUT"
-            - "-L"
-            - "https://elasticsearch.remikeat.com/_index_template/single_node_template"
-            - "-H"
-            - "Content-Type: application/json"
-            - "-d"
-            - '{"index_patterns": ["*"],"priority": 2, "template": {"settings": {"number_of_shards": 1,"number_of_replicas": 0}}}'
+          command: ["sh", "-c"]
+          args:
+            - |
+              curl -u elastic:$PASSWORD -X PUT -L https://elasticsearch.remikeat.com/_index_template/single_node_template -H Content-Type: application/json -d '{"index_patterns": ["*"],"priority": 2, "template": {"settings": {"number_of_shards": 1,"number_of_replicas": 0}}}'
       restartPolicy: Never
   backoffLimit: 2
