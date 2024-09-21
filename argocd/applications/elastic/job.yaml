@@ -20,6 +20,9 @@ spec:
               mountPath: /home/curl_user/index_template.json
               subPath: index_template.json
             - name: elasticsearch-index-config
+              mountPath: /home/curl_user/index_auto_delete_template.json
+              subPath: index_auto_delete_template.json
+            - name: elasticsearch-index-config
               mountPath: /home/curl_user/index_lifecycle_policy.json
               subPath: index_lifecycle_policy.json
           env:
@@ -31,7 +34,8 @@ spec:
           command: ["sh", "-c"]
           args:
             - |
-              curl -u "elastic:$PASSWORD" -X PUT -L https://elasticsearch.remikeat.com/_index_template/single_node_template -H "Content-Type: application/json" -d @index_template.json
+              curl -u "elastic:$PASSWORD" -X PUT -L https://elasticsearch.remikeat.com/_index_template/single-node-template -H "Content-Type: application/json" -d @index_template.json
+              curl -u "elastic:$PASSWORD" -X PUT -L https://elasticsearch.remikeat.com/_index_template/auto-delete-template -H "Content-Type: application/json" -d @index_auto_delete_template.json
               curl -u "elastic:$PASSWORD" -X PUT -L https://elasticsearch.remikeat.com/_ilm/policy/auto-delete -H "Content-Type: application/json" -d @index_lifecycle_policy.json
       restartPolicy: Never
   backoffLimit: 2

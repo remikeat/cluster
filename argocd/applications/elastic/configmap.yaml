@@ -14,6 +14,15 @@ data:
         }
       }
     }
+  index_auto_delete_template.json: |
+    {
+      "index_patterns": ["ks-*", "audit-*"],
+      "template": {
+        "settings": {
+          "index.lifecycle.name": "auto-delete"
+        }
+      }
+    }
   index_lifecycle_policy.json: |
     {
       "policy": {
