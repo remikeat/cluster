@@ -1,0 +1,61 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: infra-app
+  namespace: argo-cd
+spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+  - list:
+      elements:
+      - app: longhorn
+      - app: bitwarden
+      - app: istio
+      - app: kiali
+      - app: grafana
+      - app: metrics-server
+      - app: descheduler
+      - app: tailscale
+      - app: portainer
+      - app: crowdsec
+      - app: kubevirt
+      - app: kubevirt-manager
+        plugin: true
+      - app: external-snapshotter
+      - app: system-upgrade-controller
+      - app: local-path-provisioner
+      - app: tekton
+      - app: harbor
+      - app: elastic
+      - app: fluent
+        plugin: true
+      - app: falco
+      - app: redmine
+      - app: supabase
+      - app: remikeat.com
+        plugin: true
+      # - app: harvester
+  template:
+    metadata:
+      name: '{{.app}}-app'
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/remikeat/cluster.git
+        targetRevision: HEAD
+        path: argocd/applications/{{.app}}
+      destination:
+        server: 'https://kubernetes.default.svc'
+        namespace: default
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+  templatePatch: |
+    {{- if hasKey . "plugin" }}
+    spec:
+      source:
+        plugin:
+          name: custom-cmp
+    {{- end }}
