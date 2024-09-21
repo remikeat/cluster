@@ -1,5 +1,5 @@
 global:
-  domain: "argocd.remikeat.com"
+  domain: "argocd"
   affinity:
     podAntiAffinity: soft
 configs:
@@ -32,15 +32,10 @@ server:
   replicas: 2
   ingress:
     enabled: true
-    ingressClassName: "nginx"
-    annotations:
-      cert-manager.io/cluster-issuer: "letsencrypt-production"
-      nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
-      nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+    ingressClassName: "tailscale"
     extraTls:
       - hosts:
-          - "argocd.remikeat.com"
-        secretName: "argocd-tls"
+          - "argocd"
 repoServer:
   replicas: 2
   volumes:

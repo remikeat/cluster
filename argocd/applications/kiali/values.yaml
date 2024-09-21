@@ -28,6 +28,6 @@ cr:
       grafana:
         enabled: true
         in_cluster_url: 'http://kube-prometheus-stack-grafana.kube-prometheus-stack'
-        url: 'https://grafana.remikeat.com'
+        url: 'https://grafana.tail4d334.ts.net'
       prometheus:
         url: "http://kube-prometheus-stack-prometheus.kube-prometheus-stack:9090/"

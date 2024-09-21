@@ -5,12 +5,10 @@ metadata:
   namespace: kube-prometheus-stack
   annotations:
     argocd.argoproj.io/sync-wave: "1"
-    cert-manager.io/cluster-issuer: letsencrypt-production
 spec:
-  ingressClassName: nginx
+  ingressClassName: tailscale
   rules:
-    - host: grafana.remikeat.com
-      http:
+    - http:
         paths:
           - path: /
             pathType: Prefix
@@ -21,8 +19,7 @@ spec:
                   number: 80
   tls:
     - hosts:
-        - grafana.remikeat.com
-      secretName: grafana-tls
+        - "grafana"
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress

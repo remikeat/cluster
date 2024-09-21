@@ -15,4 +15,4 @@ spec:
       selfSignedCertificate:
         disabled: true
   config:
-    server.publicBaseUrl: "https://kibana.remikeat.com"
+    server.publicBaseUrl: "https://kibana.tail4d334.ts.net"

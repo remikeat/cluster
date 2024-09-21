@@ -4,6 +4,17 @@ resource "kubernetes_namespace" "argo-cd" {
   }
 }
 
+resource "kubernetes_namespace" "tailscale" {
+  metadata {
+    name = "tailscale"
+    labels = {
+      "pod-security.kubernetes.io/enforce"         = "privileged"
+      "pod-security.kubernetes.io/enforce-version" = "latest"
+    }
+  }
+}
+
+
 resource "kubernetes_config_map" "git_askpass" {
   metadata {
     name      = "git-askpass"

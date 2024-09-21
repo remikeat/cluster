@@ -4,3 +4,6 @@ operatorConfig:
   extraEnv:
     - name: TS_DEBUG_FIREWALL_MODE
       value: "auto"
+oauth:
+  clientId: ${clientId}
+  clientSecret: ${clientSecret}

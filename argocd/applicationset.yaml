@@ -9,32 +9,34 @@ spec:
   generators:
   - list:
       elements:
-      - app: longhorn
       - app: bitwarden
-      - app: istio
-      - app: kiali
-      - app: grafana
-      - app: metrics-server
-      - app: descheduler
-      - app: tailscale
-      - app: portainer
-      - app: crowdsec
-      - app: kubevirt
-      - app: kubevirt-manager
-        plugin: true
-      - app: external-snapshotter
-      - app: system-upgrade-controller
-      - app: local-path-provisioner
-      - app: tekton
-      - app: harbor
+      - app: ingress-nginx
+      - app: cert-manager
+      - app: rancher
+      - app: longhorn
       - app: elastic
       - app: fluent
         plugin: true
+      - app: metrics-server
+      - app: grafana
+      - app: crowdsec
       - app: falco
+      - app: istio
+      - app: kiali
+      - app: kubevirt
+      - app: kubevirt-manager
+        plugin: true
+      - app: tekton
+      - app: harbor
+      - app: portainer
       - app: redmine
       - app: supabase
       - app: remikeat.com
         plugin: true
+      # - app: descheduler
+      # - app: external-snapshotter
+      # - app: system-upgrade-controller
+      # - app: local-path-provisioner
       # - app: harvester
   template:
     metadata:

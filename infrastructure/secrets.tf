@@ -24,24 +24,11 @@ resource "kubernetes_secret" "github_https" {
   }
 
   data = {
-    username = var.github_username
+    username = "remikeat"
     password = var.github_token
   }
 
   type = "kubernetes.io/basic-auth"
-
-  depends_on = [kubernetes_namespace.argo-cd]
-}
-
-resource "kubernetes_secret" "bt_auth_token" {
-  metadata {
-    name      = "bw-auth-token"
-    namespace = "argo-cd"
-  }
-
-  data = {
-    token = var.bitwarden_token
-  }
 
   depends_on = [kubernetes_namespace.argo-cd]
 }
@@ -58,12 +45,25 @@ resource "kubernetes_secret" "github_registry" {
     ".dockerconfigjson" = jsonencode({
       auths = {
         "ghcr.io" = {
-          "username" = var.registry_username
+          "username" = "remikeat"
           "password" = var.registry_password
-          "auth"     = base64encode("${var.registry_username}:${var.registry_password}")
+          "auth"     = base64encode("remikeat:${var.registry_password}")
         }
       }
     })
+  }
+
+  depends_on = [kubernetes_namespace.argo-cd]
+}
+
+resource "kubernetes_secret" "bt_auth_token" {
+  metadata {
+    name      = "bw-auth-token"
+    namespace = "argo-cd"
+  }
+
+  data = {
+    token = var.bitwarden_token
   }
 
   depends_on = [kubernetes_namespace.argo-cd]

@@ -4,13 +4,11 @@ metadata:
   name: kibana
   namespace: default
   annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-production
     argocd.argoproj.io/sync-wave: "1"
 spec:
-  ingressClassName: nginx
+  ingressClassName: tailscale
   rules:
-    - host: kibana.remikeat.com
-      http:
+    - http:
         paths:
           - path: /
             pathType: Prefix
@@ -21,8 +19,7 @@ spec:
                   number: 5601
   tls:
     - hosts:
-        - kibana.remikeat.com
-      secretName: kibana-tls
+        - kibana
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -30,12 +27,11 @@ metadata:
   name: elasticsearch
   namespace: default
   annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-production
+    argocd.argoproj.io/sync-wave: "1"
 spec:
-  ingressClassName: nginx
+  ingressClassName: tailscale
   rules:
-    - host: elasticsearch.remikeat.com
-      http:
+    - http:
         paths:
           - path: /
             pathType: Prefix
@@ -46,5 +42,4 @@ spec:
                   number: 9200
   tls:
     - hosts:
-        - elasticsearch.remikeat.com
-      secretName: elasticsearch-tls
+        - elasticsearch

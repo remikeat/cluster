@@ -58,7 +58,7 @@ argocd admin initial-password -n argo-cd
 
 ```
 
-argocd login argocd.remikeat.com
+argocd login argocd.tail4d334.ts.net
 
 ```
 
@@ -96,7 +96,7 @@ And update password in bitwarden password manager for kibana/elasticsearch
 
 ### Portainer
 
-Create admin account for portainer by accessing portainer.remikeat.com IMMEDIATELY
+Create admin account for portainer by accessing portainer.tail4d334.ts.net IMMEDIATELY
 
 ### Redmine
 
@@ -107,7 +107,29 @@ Create admin account for portainer by accessing portainer.remikeat.com IMMEDIATE
 
 Create a secret in bitwarden secret manager with the following values
 
-- name: grafana
+- name: ingress-nginx.yaml
+- value:
+
+```
+controller:
+  extraInitContainers:
+  - name: init-clone-crowdsec-bouncer
+    image: crowdsecurity/lua-bouncer-plugin
+    imagePullPolicy: IfNotPresent
+    env:
+      - name: API_URL
+        value: "http://crowdsec-service.crowdsec.svc.cluster.local:8080"
+      - name: API_KEY
+        value: ""
+      - name: BOUNCER_CONFIG
+        value: "/crowdsec/crowdsec-bouncer.conf"
+    command: ['sh', '-c', "sh /docker_start.sh; mkdir -p /lua_plugins/crowdsec/; cp -R /crowdsec/* /lua_plugins/crowdsec/"]
+    volumeMounts:
+    - name: crowdsec-bouncer-plugin
+      mountPath: /lua_plugins
+```
+
+- name: grafana.yaml
 - value:
 
 ```
@@ -115,7 +137,7 @@ Create a secret in bitwarden secret manager with the following values
     adminPassword: <GRAFANA_PASSWORD>
 ```
 
-- name: redmine
+- name: redmine.yaml
 - value:
 
 ```
@@ -295,7 +317,7 @@ And update argocd/applications/bitwarden/secrets.yaml
 ### Setup number of replicas for elasticsearch
 
 ```
-curl -X PUT -L 'https://elasticsearch.remikeat.com/*/_settings' \
+curl -X PUT -L 'https://elasticsearch.tail4d334.ts.net/*/_settings' \
 -u "elastic:$PASSWORD" \
 -H 'Content-Type: application/json' \
 -d '{"index": {"number_of_replicas": 0}}'

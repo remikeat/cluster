@@ -1,0 +1,13 @@
+controller:
+  publishService:
+    enabled: true
+  extraVolumes:
+  - name: crowdsec-bouncer-plugin
+    emptyDir: {}
+  extraVolumeMounts:
+  - name: crowdsec-bouncer-plugin
+    mountPath: /etc/nginx/lua/plugins/crowdsec
+    subPath: crowdsec
+  config:
+    plugins: "crowdsec"
+    lua-shared-dicts: "crowdsec_cache: 50m"

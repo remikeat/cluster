@@ -1,0 +1,6 @@
+hostname: rancher
+ingress:
+  includeDefaultExtraAnnotations: false
+  ingressClassName: "tailscale"
+antiAffinity: preferred
+replicas: 3
