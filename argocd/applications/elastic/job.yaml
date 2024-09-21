@@ -34,8 +34,8 @@ spec:
           command: ["sh", "-c"]
           args:
             - |
-              curl -u "elastic:$PASSWORD" -X PUT -L https://elasticsearch.remikeat.com/_index_template/single-node-template -H "Content-Type: application/json" -d @index_template.json
-              curl -u "elastic:$PASSWORD" -X PUT -L https://elasticsearch.remikeat.com/_index_template/auto-delete-template -H "Content-Type: application/json" -d @index_auto_delete_template.json
-              curl -u "elastic:$PASSWORD" -X PUT -L https://elasticsearch.remikeat.com/_ilm/policy/auto-delete -H "Content-Type: application/json" -d @index_lifecycle_policy.json
+              curl -u "elastic:$PASSWORD" -X PUT -L https://elasticsearch-es-http.default:9200/_index_template/single-node-template -H "Content-Type: application/json" -d @index_template.json
+              curl -u "elastic:$PASSWORD" -X PUT -L https://elasticsearch-es-http.default:9200/_index_template/auto-delete-template -H "Content-Type: application/json" -d @index_auto_delete_template.json
+              curl -u "elastic:$PASSWORD" -X PUT -L https://elasticsearch-es-http.default:9200/_ilm/policy/auto-delete -H "Content-Type: application/json" -d @index_lifecycle_policy.json
       restartPolicy: Never
   backoffLimit: 2
