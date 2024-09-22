@@ -17,7 +17,7 @@ spec:
           - name: repo_revision
             string: HEAD
           - name: repo_values
-            string: argocd/redmine/values.yaml
+            string: argocd/apps/redmine/values.yaml
           - name: secrets
             string: redmine.yaml
   destination:

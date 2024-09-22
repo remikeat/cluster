@@ -11,7 +11,7 @@ spec:
       chart: portainer
       helm:
         valueFiles:
-          - $repo/argocd/portainer/values.yaml
+          - $repo/argocd/apps/portainer/values.yaml
     - repoURL: https://github.com/remikeat/cluster.git
       targetRevision: HEAD
       ref: repo

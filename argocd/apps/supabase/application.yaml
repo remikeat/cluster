@@ -17,7 +17,7 @@ spec:
           - name: repo_revision
             string: HEAD
           - name: repo_values
-            string: argocd/supabase/values.yaml
+            string: argocd/apps/supabase/values.yaml
           - name: secrets
             string: supabase.yaml
   destination:
