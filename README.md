@@ -303,7 +303,7 @@ falcosidekick:
     user: "admin:adminpassword"
 ```
 
-And update argocd/applications/bitwarden/secrets.yaml
+And update argocd/bitwarden/secrets.yaml
 
 ### Setup number of replicas for elasticsearch
 

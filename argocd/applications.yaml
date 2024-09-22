@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/remikeat/cluster.git
     targetRevision: HEAD
-    path: argocd/applications/pipelines/knative
+    path: argocd/pipelines/knative
   destination:
     server: https://kubernetes.default.svc
     namespace: default
