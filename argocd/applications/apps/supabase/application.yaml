@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: supabase
+  namespace: argocd
+spec:
+  project: default
+  sources:
+    - repoURL: https://github.com/supabase-community/supabase-kubernetes
+      path: charts/supabase
+      targetRevision: main
+      plugin:
+        name: custom-cmp
+        parameters:
+          - name: repo_url
+            string: https://github.com/remikeat/cluster.git
+          - name: repo_revision
+            string: HEAD
+          - name: repo_values
+            string: argocd/applications/supabase/values.yaml
+          - name: secrets
+            string: supabase.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: supabase
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=false

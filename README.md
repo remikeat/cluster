@@ -50,7 +50,7 @@ kubectl get secret --namespace cattle-system bootstrap-secret -o go-template='{{
 
 ```
 
-argocd admin initial-password -n argo-cd
+argocd admin initial-password -n argocd
 
 ```
 
@@ -74,7 +74,7 @@ argocd account update-password
 
 ```
 
-kubectl delete -n argo-cd secrets/argocd-initial-admin-secret
+kubectl delete -n argocd secrets/argocd-initial-admin-secret
 
 ```
 

@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: fluent-crds
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+spec:
+  project: default
+  sources:
+    - repoURL: https://github.com/fluent/fluent-operator.git
+      path: charts/fluent-operator/charts/fluent-bit-crds
+      targetRevision: v3.1.0
+    - repoURL: https://github.com/fluent/fluent-operator.git
+      path: charts/fluent-operator/charts/fluentd-crds
+      targetRevision: v3.1.0
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: fluent
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=false
+      - ServerSideApply=true

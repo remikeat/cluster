@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: fluent
+  namespace: argocd
+spec:
+  project: default
+  sources:
+    - repoURL: https://fluent.github.io/helm-charts
+      targetRevision: 3.1.0
+      chart: fluent-operator
+      plugin:
+        name: custom-cmp
+        parameters:
+          - name: repo_url
+            string: https://github.com/remikeat/cluster.git
+          - name: repo_revision
+            string: HEAD
+          - name: repo_values
+            string: argocd/applications/fluent/values.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: fluent
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=false

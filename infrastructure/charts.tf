@@ -32,15 +32,15 @@ resource "helm_release" "tailscale" {
   depends_on = [kubectl_manifest.ippool, kubectl_manifest.l2advertisement, kubernetes_namespace.tailscale]
 }
 
-resource "helm_release" "argo-cd" {
-  name             = "argo-cd"
-  namespace        = "argo-cd"
+resource "helm_release" "argocd" {
+  name             = "argocd"
+  namespace        = "argocd"
   repository       = "https://argoproj.github.io/argo-helm"
   chart            = "argo-cd"
   create_namespace = false
 
   values = [
-    file("${path.module}/values/argo-cd-values.yaml")
+    file("${path.module}/values/argocd-values.yaml")
   ]
 
   depends_on = [helm_release.tailscale, kubernetes_config_map.git_askpass, kubernetes_config_map.template, kubernetes_config_map.values]

@@ -2,45 +2,45 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: infra-app
-  namespace: argo-cd
+  namespace: argocd
 spec:
   goTemplate: true
   goTemplateOptions: ["missingkey=error"]
   generators:
   - list:
       elements:
-      - app: bitwarden
-      - app: ingress-nginx
-      - app: cert-manager
-      - app: rancher
-      - app: longhorn
-      - app: elastic
-      - app: fluent
+      - app: core/bitwarden
+      - app: core/cert-manager
+      # - app: core/descheduler
+      - app: core/ingress-nginx
+      - app: core/istio
+      - app: core/longhorn
+      - app: core/rancher
+      - app: monitoring/crowdsec
+      - app: monitoring/elastic
+      - app: monitoring/falco
+      - app: monitoring/fluent
         plugin: true
-      - app: metrics-server
-      - app: grafana
-      - app: crowdsec
-      - app: falco
-      - app: istio
-      - app: kiali
-      - app: kubevirt
-      - app: kubevirt-manager
+      - app: monitoring/grafana
+      - app: monitoring/kiali
+      - app: monitoring/metrics-server
+      - app: pipelines/harbor
+      - app: pipelines/tekton
+      - app: vm/kubevirt
+      - app: vm/kubevirt-manager
         plugin: true
-      - app: tekton
-      - app: harbor
-      - app: portainer
-      - app: redmine
-      - app: supabase
-      - app: remikeat.com
+      # - app: vm/external-snapshotter
+      # - app: vm/harvester
+      # - app: vm/local-path-provisioner
+      # - app: vm/system-upgrade-controller
+      - app: apps/portainer
+      - app: apps/redmine
+      - app: apps/supabase
+      - app: apps/remikeat.com
         plugin: true
-      # - app: descheduler
-      # - app: external-snapshotter
-      # - app: system-upgrade-controller
-      # - app: local-path-provisioner
-      # - app: harvester
   template:
     metadata:
-      name: '{{.app}}-app'
+      name: '{{base .app}}-app'
     spec:
       project: default
       source:

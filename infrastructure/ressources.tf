@@ -1,6 +1,6 @@
-resource "kubernetes_namespace" "argo-cd" {
+resource "kubernetes_namespace" "argocd" {
   metadata {
-    name = "argo-cd"
+    name = "argocd"
   }
 }
 
@@ -18,38 +18,38 @@ resource "kubernetes_namespace" "tailscale" {
 resource "kubernetes_config_map" "git_askpass" {
   metadata {
     name      = "git-askpass"
-    namespace = "argo-cd"
+    namespace = "argocd"
   }
 
   data = {
     "git_askpass.sh" = "${file("${path.module}/files/git_askpass.sh")}"
   }
 
-  depends_on = [kubernetes_namespace.argo-cd]
+  depends_on = [kubernetes_namespace.argocd]
 }
 
 resource "kubernetes_config_map" "template" {
   metadata {
     name      = "template"
-    namespace = "argo-cd"
+    namespace = "argocd"
   }
 
   data = {
     "template.py" = "${file("${path.module}/files/template.py")}"
   }
 
-  depends_on = [kubernetes_namespace.argo-cd]
+  depends_on = [kubernetes_namespace.argocd]
 }
 
 resource "kubernetes_config_map" "values" {
   metadata {
     name      = "values"
-    namespace = "argo-cd"
+    namespace = "argocd"
   }
 
   data = {
     "values.py" = "${file("${path.module}/files/values.py")}"
   }
 
-  depends_on = [kubernetes_namespace.argo-cd]
+  depends_on = [kubernetes_namespace.argocd]
 }
