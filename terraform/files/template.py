@@ -14,6 +14,8 @@ def get_value(params, name, value):
 
 
 argocd_app_parameters = json.loads(os.getenv("ARGOCD_APP_PARAMETERS", "[]"))
+argocd_app_name = os.getenv("ARGOCD_APP_NAME")
+argocd_app_namespace = os.getenv("ARGOCD_APP_NAMESPACE")
 
 if os.path.isfile("Chart.yaml"):
     cmd = ["helm", "template"]
@@ -24,14 +26,13 @@ if os.path.isfile("Chart.yaml"):
 
     repo_values = get_value(argocd_app_parameters, "repo_values", "string")
     if repo_values:
-        cmd.extend(["-f", "custom_values.yaml"])
+        cmd.extend(["-f", f"{argocd_app_name}-custom_values.yaml"])
 
     args = get_value(argocd_app_parameters, "args", "string")
     if args:
         cmd.extend(args.split())
 
-    cmd.extend(["-n", os.getenv("ARGOCD_APP_NAMESPACE"),
-               os.getenv("ARGOCD_APP_NAME"), "."])
+    cmd.extend(["-n", argocd_app_namespace, argocd_app_name, "."])
 
     subprocess.run(cmd, check=True)
 
