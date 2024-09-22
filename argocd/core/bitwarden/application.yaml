@@ -13,7 +13,7 @@ spec:
       chart: sm-operator
       helm:
         valueFiles:
-          - $repo/argocd/bitwarden/values.yaml
+          - $repo/argocd/core/bitwarden/values.yaml
     - repoURL: https://github.com/remikeat/cluster.git
       targetRevision: HEAD
       ref: repo

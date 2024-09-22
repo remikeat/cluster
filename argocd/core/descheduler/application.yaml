@@ -13,7 +13,7 @@ spec:
       chart: descheduler
       helm:
         valueFiles:
-          - $repo/argocd/descheduler/values.yaml
+          - $repo/argocd/core/descheduler/values.yaml
     - repoURL: https://github.com/remikeat/cluster.git
       targetRevision: HEAD
       ref: repo

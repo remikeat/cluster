@@ -17,7 +17,7 @@ spec:
           - name: repo_revision
             string: HEAD
           - name: repo_values
-            string: argocd/ingress-nginx/values.yaml
+            string: argocd/core/ingress-nginx/values.yaml
           - name: secrets
             string: ingress-nginx.yaml
   destination:

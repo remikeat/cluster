@@ -11,7 +11,7 @@ spec:
       chart: longhorn
       helm:
         valueFiles:
-          - $repo/argocd/longhorn/values.yaml
+          - $repo/argocd/core/longhorn/values.yaml
     - repoURL: https://github.com/remikeat/cluster.git
       targetRevision: HEAD
       ref: repo

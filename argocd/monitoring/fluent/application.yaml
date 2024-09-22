@@ -17,7 +17,7 @@ spec:
           - name: repo_revision
             string: HEAD
           - name: repo_values
-            string: argocd/fluent/values.yaml
+            string: argocd/monitoring/fluent/values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: fluent

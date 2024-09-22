@@ -11,7 +11,7 @@ spec:
       chart: cert-manager
       helm:
         valueFiles:
-          - $repo/argocd/cert-manager/values.yaml
+          - $repo/argocd/core/cert-manager/values.yaml
     - repoURL: https://github.com/remikeat/cluster.git
       targetRevision: HEAD
       ref: repo

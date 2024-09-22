@@ -17,7 +17,7 @@ spec:
           - name: repo_revision
             string: HEAD
           - name: repo_values
-            string: argocd/crowdsec/values.yaml
+            string: argocd/monitoring/crowdsec/values.yaml
           - name: secrets
             string: crowdsec.yaml
   destination:

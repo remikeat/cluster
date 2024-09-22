@@ -19,7 +19,7 @@ spec:
           - name: repo_revision
             string: HEAD
           - name: repo_values
-            string: argocd/grafana/values.yaml
+            string: argocd/monitoring/grafana/values.yaml
           - name: secrets
             string: grafana.yaml
           - name: args

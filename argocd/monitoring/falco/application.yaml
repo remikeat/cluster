@@ -17,7 +17,7 @@ spec:
           - name: repo_revision
             string: HEAD
           - name: repo_values
-            string: argocd/falco/values.yaml
+            string: argocd/monitoring/falco/values.yaml
           - name: secrets
             string: falco.yaml
   destination:

@@ -11,7 +11,7 @@ spec:
       chart: rancher
       helm:
         valueFiles:
-          - $repo/argocd/rancher/values.yaml
+          - $repo/argocd/core/rancher/values.yaml
     - repoURL: https://github.com/remikeat/cluster.git
       targetRevision: HEAD
       ref: repo
