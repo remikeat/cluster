@@ -2,5 +2,7 @@ hostname: rancher
 ingress:
   includeDefaultExtraAnnotations: false
   ingressClassName: "tailscale"
+  tls:
+    source: secret
 antiAffinity: preferred
 replicas: 3
