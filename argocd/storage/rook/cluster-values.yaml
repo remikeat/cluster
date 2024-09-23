@@ -15,3 +15,5 @@ cephClusterSpec:
   mgr:
     count: 1
     allowMultiplePerNode: true
+  dashboard:
+    ssl: false
