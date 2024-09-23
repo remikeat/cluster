@@ -33,3 +33,16 @@ operator:
   replicas: 1
 prometheus:
   enabled: true
+hubble:
+  relay:
+    enabled: true
+  ui:
+    enabled: true
+    ingress:
+      enabled: true
+      className: tailscale
+      hosts:
+        - hubble
+      tls:
+       - hosts:
+           - hubble
