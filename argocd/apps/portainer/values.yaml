@@ -1,7 +1,7 @@
 service:
   type: ClusterIP
 tls:
-  force: false
+  force: true
 ingress:
   enabled: true
   ingressClassName: tailscale
