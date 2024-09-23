@@ -1,0 +1,8 @@
+monitoring:
+  enabled: true
+ingress:
+  dashboard:
+    ingressClassName: tailscale
+    tls:
+      - hosts:
+          - ceph

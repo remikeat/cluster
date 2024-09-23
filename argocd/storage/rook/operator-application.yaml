@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: rook
+  name: rook-operator
   namespace: argocd
 spec:
   project: default
@@ -11,7 +11,7 @@ spec:
       chart: rook-ceph
       helm:
         valueFiles:
-          - $repo/argocd/storage/rook/values.yaml
+          - $repo/argocd/storage/rook/operator-values.yaml
     - repoURL: https://github.com/remikeat/cluster.git
       targetRevision: HEAD
       ref: repo
