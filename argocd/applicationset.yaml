@@ -14,8 +14,9 @@ spec:
       # - app: core/descheduler
       - app: core/ingress-nginx
       - app: core/istio
-      - app: core/longhorn
       - app: core/rancher
+      # - app: storage/local-path-provisioner
+      - app: storage/longhorn
       - app: monitoring/crowdsec
       - app: monitoring/elastic
       - app: monitoring/falco
@@ -32,7 +33,6 @@ spec:
       - app: vm/multus
       # - app: vm/external-snapshotter
       # - app: vm/harvester
-      # - app: vm/local-path-provisioner
       # - app: vm/system-upgrade-controller
       - app: apps/portainer
       - app: apps/redmine
