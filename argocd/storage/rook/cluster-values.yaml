@@ -6,3 +6,9 @@ ingress:
     tls:
       - hosts:
           - ceph
+cephClusterSpec:
+  mon:
+    allowMultiplePerNode: true
+
+  mgr:
+    allowMultiplePerNode: true
