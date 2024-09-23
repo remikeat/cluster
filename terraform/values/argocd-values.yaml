@@ -4,6 +4,7 @@ global:
     podAntiAffinity: soft
 configs:
   cm:
+    kustomize.buildOptions: --enable-helm
     resource.exclusion: |
       - apiGroups:
           - cilium.io

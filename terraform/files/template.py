@@ -37,7 +37,7 @@ if os.path.isfile("Chart.yaml"):
     subprocess.run(cmd, check=True)
 
 elif os.path.isfile("kustomization.yaml"):
-    subprocess.run(["kustomize", "build"], check=True)
+    subprocess.run(["kustomize", "build", "--enable-helm"], check=True)
 
 else:
     print("Neither Chart.yaml nor kustomization.yaml found.", file=sys.stderr)
