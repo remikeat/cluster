@@ -29,6 +29,7 @@ spec:
       - app: vm/kubevirt
       - app: vm/kubevirt-manager
         plugin: true
+      - app: vm/multus
       # - app: vm/external-snapshotter
       # - app: vm/harvester
       # - app: vm/local-path-provisioner
