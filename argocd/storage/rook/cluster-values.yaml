@@ -17,3 +17,33 @@ cephClusterSpec:
     allowMultiplePerNode: true
   dashboard:
     ssl: false
+  resources:
+    mgr:
+      requests:
+        cpu: "100m"
+    mon:
+      requests:
+        cpu: "200m"
+    osd:
+      requests:
+        cpu: "200m"
+    prepareosd:
+      requests:
+        cpu: "100m"
+    cleanup:
+      requests:
+        cpu: "100m"
+cephFileSystems:
+  - name: ceph-filesystem
+    spec:
+      metadataServer:
+        resources:
+          requests:
+            cpu: "200m"
+cephObjectStores:
+  - name: ceph-objectstore
+    spec:
+      gateway:
+        resources:
+          requests:
+            cpu: "200m"

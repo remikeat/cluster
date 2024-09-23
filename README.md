@@ -46,6 +46,12 @@ kubectl get secret --namespace cattle-system bootstrap-secret -o go-template='{{
 
 ```
 
+### Get password for ceph dashboard
+
+```
+kubectl get -n rook-ceph secrets/rook-ceph-dashboard-password -o jsonpath={.data.password} | base64 -d
+```
+
 ### Get initial password for argocd
 
 ```
