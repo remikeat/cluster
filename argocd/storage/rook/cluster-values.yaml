@@ -33,17 +33,17 @@ cephClusterSpec:
     cleanup:
       requests:
         cpu: "100m"
-cephFileSystems:
-  - name: ceph-filesystem
-    spec:
-      metadataServer:
-        resources:
-          requests:
-            cpu: "200m"
-cephObjectStores:
-  - name: ceph-objectstore
-    spec:
-      gateway:
-        resources:
-          requests:
-            cpu: "200m"
+# cephFileSystems:
+#   - name: ceph-filesystem
+#     spec:
+#       metadataServer:
+#         resources:
+#           requests:
+#             cpu: "200m"
+# cephObjectStores:
+#   - name: ceph-objectstore
+#     spec:
+#       gateway:
+#         resources:
+#           requests:
+#             cpu: "200m"
