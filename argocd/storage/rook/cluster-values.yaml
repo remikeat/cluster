@@ -15,6 +15,9 @@ cephClusterSpec:
   mgr:
     count: 1
     allowMultiplePerNode: true
+    modules:
+      - name: rook
+        enabled: true
   dashboard:
     ssl: false
   resources:
