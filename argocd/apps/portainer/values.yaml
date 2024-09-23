@@ -1,12 +1,10 @@
 service:
   type: ClusterIP
 tls:
-  force: true
+  force: false
 ingress:
   enabled: true
   ingressClassName: tailscale
-  annotations:
-    kubernetes.io/ingress.class: tailscale
   hosts:
     - host: portainer
       paths:
