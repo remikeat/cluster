@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: rook
+  namespace: argocd
+spec:
+  project: default
+  sources:
+    - repoURL: https://charts.rook.io/release
+      targetRevision: 1.15.2
+      chart: rook-ceph
+      helm:
+        valueFiles:
+          - $repo/argocd/storage/rook/values.yaml
+    - repoURL: https://github.com/remikeat/cluster.git
+      targetRevision: HEAD
+      ref: repo
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: rook-ceph
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

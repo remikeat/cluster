@@ -17,6 +17,7 @@ spec:
       - app: core/rancher
       # - app: storage/local-path-provisioner
       - app: storage/longhorn
+      - app: storage/rook
       - app: monitoring/crowdsec
       - app: monitoring/elastic
       - app: monitoring/falco
