@@ -1,0 +1,73 @@
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  labels:
+    kubevirt.io/os: linux
+  name: vm
+spec:
+  running: true
+  dataVolumeTemplates:
+    - metadata:
+        name: vm
+      spec:
+        storage:
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 64Gi
+          storageClassName: longhorn
+        source:
+          pvc:
+            name: ubuntu-image-2404
+            namespace: vm
+  template:
+    metadata:
+      labels:
+        kubevirt.io/domain: vm
+    spec:
+      hostname: vm
+      domain:
+        cpu:
+          cores: 1
+        memory:
+          guest: 4Gi
+        devices:
+          disks:
+          - disk:
+              bus: virtio
+            name: disk0
+            bootOrder: 1
+          - cdrom:
+              bus: sata
+              readonly: true
+            name: cloudinitdisk
+            bootOrder: 2
+          interfaces:
+          - name: default
+            masquerade: {}
+            bootOrder: 3
+          - name: vm
+            bridge: {}
+            bootOrder: 4
+        resources:
+          requests:
+            cpu: 500m
+            memory: 512Mi
+          limits:
+            cpu: 1000m
+            memory: 4Gi
+      networks:
+      - name: default
+        pod: {}
+      - name: vm
+        multus:
+          networkName: vm/vm-bridge
+      volumes:
+      - name: disk0
+        persistentVolumeClaim:
+          claimName: vm
+      - name: cloudinitdisk
+        cloudInitNoCloud:
+          secretRef:
+            name: cloudinit

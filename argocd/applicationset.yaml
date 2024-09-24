@@ -40,6 +40,8 @@ spec:
       - app: apps/supabase
       - app: apps/remikeat.com
         plugin: true
+      - app: apps/vm
+        plugin: true
   template:
     metadata:
       name: '{{base .app}}-app'
