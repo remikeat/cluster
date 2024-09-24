@@ -1,0 +1,8 @@
+machine:
+  files:
+    - op: create
+      path: /etc/cri/conf.d/20-customization.part
+      content: |
+        [plugins]
+          [plugins."io.containerd.grpc.v1.cri"]
+            device_ownership_from_security_context = true

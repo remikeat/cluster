@@ -33,3 +33,9 @@ patches:
       name: ceph-objectstore
       namespace: rook-ceph
     path: ./patches/object_cpu_requests.yaml
+  - target:
+      group: storage.k8s.io
+      version: v1
+      kind: StorageClass
+      name: ceph-block
+    path: ./patches/disable_default.yaml

@@ -17,6 +17,9 @@ spec:
   - name: var-folder
     hostPath:
       path: /var/
+  - name: etc-folder
+    hostPath:
+      path: /etc/
   containers:
   - name: debug
     image: busybox
@@ -25,4 +28,6 @@ spec:
     volumeMounts:
     - name: var-folder
       mountPath: /node/var
+    - name: etc-folder
+      mountPath: /node/etc
     command: ["sh", "-c", "while true; do sleep 3600; done"]
