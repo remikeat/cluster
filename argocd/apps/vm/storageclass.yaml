@@ -2,6 +2,8 @@ kind: StorageClass
 apiVersion: storage.k8s.io/v1
 metadata:
   name: longhorn-migratable
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
 provisioner: driver.longhorn.io
 allowVolumeExpansion: true
 parameters:
