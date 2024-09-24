@@ -2,6 +2,7 @@ apiVersion: cdi.kubevirt.io/v1beta1
 kind: DataVolume
 metadata:
   name: ubuntu-image-2404
+  namespace: vm
 spec:
   storage:
     accessModes:
