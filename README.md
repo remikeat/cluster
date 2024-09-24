@@ -436,3 +436,11 @@ echo "source '/etc/bash_completion.d/cilium'" >> ~/.bashrc
 ```
 talosctl reset --graceful=false --system-labels-to-wipe STATE --system-labels-to-wipe EPHEMERAL --reboot
 ```
+
+### Debugging
+
+```
+kubectl apply -f debug-pod.yaml
+kubectl -n debug exec -it pods/debug -- /bin/sh
+kubectl delete -f debug-pod.yaml
+```
