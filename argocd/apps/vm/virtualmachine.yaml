@@ -4,6 +4,7 @@ metadata:
   labels:
     kubevirt.io/os: linux
   name: vm
+  namespace: vm
 spec:
   running: true
   template:

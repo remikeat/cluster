@@ -1,12 +1,6 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-resources:
-  - namespace.yaml
-  - networkattachmentdefinition.yaml
-  - datavolume.yaml
-  - virtualmachine.yaml
-  - service.yaml
 generatorOptions:
   disableNameSuffixHash: true
 secretGenerator:
@@ -15,3 +9,10 @@ secretGenerator:
     files:
       - userData=bw-secrets/vm-userdata.yaml
       - networkData=bw-secrets/vm-networkdata.yaml
+
+resources:
+  - namespace.yaml
+  - networkattachmentdefinition.yaml
+  - datavolume.yaml
+  - virtualmachine.yaml
+  - service.yaml
