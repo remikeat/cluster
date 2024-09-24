@@ -7,7 +7,8 @@ resources:
   - datavolume.yaml
   - virtualmachine.yaml
   - service.yaml
-
+generatorOptions:
+  disableNameSuffixHash: true
 secretGenerator:
   - name: cloudinit
     namespace: vm
