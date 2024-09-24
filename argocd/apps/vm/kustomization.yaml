@@ -12,6 +12,7 @@ secretGenerator:
 
 resources:
   - namespace.yaml
+  - storageclass.yaml
   - networkattachmentdefinition.yaml
   - datavolume.yaml
   - virtualmachine.yaml
