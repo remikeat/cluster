@@ -1,0 +1,3 @@
+- op: replace
+  path: /spec/metadataServer/resources/requests/cpu
+  value: "100m"
