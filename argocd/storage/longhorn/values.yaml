@@ -6,3 +6,4 @@ ingress:
   enabled: true
   ingressClassName: tailscale
   host: longhorn
+  tls: true
