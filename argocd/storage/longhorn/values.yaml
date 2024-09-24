@@ -2,3 +2,7 @@ preUpgradeChecker:
   jobEnabled: false
 persistence:
   defaultClassReplicaCount: 1
+ingress:
+  enabled: true
+  ingressClassName: tailscale
+  host: longhorn
