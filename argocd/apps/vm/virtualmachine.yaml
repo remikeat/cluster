@@ -6,21 +6,6 @@ metadata:
   name: vm
 spec:
   running: true
-  dataVolumeTemplates:
-    - metadata:
-        name: vm
-      spec:
-        storage:
-          accessModes:
-            - ReadWriteOnce
-          resources:
-            requests:
-              storage: 64Gi
-          storageClassName: longhorn
-        source:
-          pvc:
-            name: ubuntu-image-2404
-            namespace: vm
   template:
     metadata:
       labels:
@@ -66,7 +51,7 @@ spec:
       volumes:
       - name: disk0
         persistentVolumeClaim:
-          claimName: vm
+          claimName: ubuntu-image-2404
       - name: cloudinitdisk
         cloudInitNoCloud:
           secretRef:
