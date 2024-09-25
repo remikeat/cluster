@@ -20,40 +20,40 @@ spec:
           guest: 4Gi
         devices:
           disks:
-          - disk:
-              bus: virtio
-            name: disk0
-            bootOrder: 1
-          - cdrom:
-              bus: sata
-              readonly: true
-            name: cloudinitdisk
-            bootOrder: 2
+            - disk:
+                bus: virtio
+              name: disk0
+              bootOrder: 1
+            - cdrom:
+                bus: sata
+                readonly: true
+              name: cloudinitdisk
+              bootOrder: 2
           interfaces:
-          # - name: default
-          #   masquerade: {}
+            - name: default
+              masquerade: {}
+              bootOrder: 3
+          # - name: vm
+          #   bridge: {}
           #   bootOrder: 3
-          - name: vm
-            bridge: {}
-            bootOrder: 3
         resources:
           requests:
             cpu: 500m
             memory: 512Mi
           limits:
-            cpu: '1'
+            cpu: "1"
             memory: 4Gi
       networks:
-      # - name: default
-      #   pod: {}
-      - name: vm
-        multus:
-          networkName: vm/vm-bridge
+        - name: default
+          pod: {}
+      # - name: vm
+      #   multus:
+      #     networkName: vm/vm-bridge
       volumes:
-      - name: disk0
-        persistentVolumeClaim:
-          claimName: ubuntu-image-2404
-      - name: cloudinitdisk
-        cloudInitNoCloud:
-          secretRef:
-            name: cloudinit
+        - name: disk0
+          persistentVolumeClaim:
+            claimName: ubuntu-image-2404
+        - name: cloudinitdisk
+          cloudInitNoCloud:
+            secretRef:
+              name: cloudinit
