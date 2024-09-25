@@ -29,7 +29,7 @@ spec:
               readonly: true
             name: cloudinitdisk
             bootOrder: 2
-          interfaces: []
+          # interfaces:
           # - name: default
           #   masquerade: {}
           #   bootOrder: 3
@@ -41,9 +41,9 @@ spec:
             cpu: 500m
             memory: 512Mi
           limits:
-            cpu: 1000m
+            cpu: '1'
             memory: 4Gi
-      networks: []
+      # networks:
       # - name: default
       #   pod: {}
       # - name: vm
