@@ -22,7 +22,7 @@ spec:
       path: /etc/
   containers:
   - name: debug
-    image: busybox
+    image: ubuntu
     securityContext:
       privileged: true
     volumeMounts:
@@ -30,4 +30,4 @@ spec:
       mountPath: /node/var
     - name: etc-folder
       mountPath: /node/etc
-    command: ["sh", "-c", "while true; do sleep 3600; done"]
+    command: ["/bin/bash", "-c", "trap : TERM INT; sleep infinity & wait"]
