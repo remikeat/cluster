@@ -43,12 +43,12 @@ spec:
           limits:
             cpu: '1'
             memory: 4Gi
-      # networks:
+      networks:
       # - name: default
       #   pod: {}
-      # - name: vm
-      #   multus:
-      #     networkName: vm/vm-bridge
+      - name: vm
+        multus:
+          networkName: vm/vm-bridge
       volumes:
       - name: disk0
         persistentVolumeClaim:
