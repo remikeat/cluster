@@ -1,0 +1,7 @@
+#cloud-config
+users:
+  - name: remi
+    ssh_import_id:
+      - gh:remikeat
+    plain_text_passwd: remi
+    lock_passwd: False

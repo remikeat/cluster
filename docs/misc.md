@@ -35,3 +35,9 @@ kubectl apply -f debug-pod.yaml
 kubectl -n debug exec -it pods/debug -- /bin/sh
 kubectl delete -f debug-pod.yaml
 ```
+
+### Validate cloudinit
+
+```
+cloud-init schema -c user-data --annotate
+```

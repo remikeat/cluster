@@ -7,3 +7,5 @@
 worker.yaml
 controlplane.yaml
 talosconfig
+*.img
+*.qcow2

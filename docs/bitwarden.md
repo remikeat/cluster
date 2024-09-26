@@ -207,13 +207,11 @@ falcosidekick:
 #cloud-config
 hostname: vm
 users:
-- name: remi
-  ssh_import_id: gh:remikeat
-  lock_passwd: true
-  passwd:
-  shell: /bin/bash
-  sudo: ALL=(ALL)
-  uid: 1000
+  - name: remi
+    ssh_import_id:
+      - gh:remikeat
+    plain_text_passwd:
+    lock_passwd: False
 ssh_pwauth: false
 disable_root: false
 ```
