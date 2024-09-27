@@ -111,3 +111,4 @@ kind: ExtensionServiceConfig
 name: tailscale
 environment:
     - TS_AUTHKEY=
+    - TS_EXTRA_ARGS=--advertise-exit-node
