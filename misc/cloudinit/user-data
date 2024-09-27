@@ -6,5 +6,6 @@ users:
     plain_text_passwd: remi
     lock_passwd: False
     shell: /bin/bash
+    sudo: ALL=(ALL) ALL
 bootcmd:
   - setenforce 0

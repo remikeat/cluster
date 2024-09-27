@@ -213,6 +213,7 @@ users:
     plain_text_passwd:
     lock_passwd: False
     shell: /bin/bash
+    sudo: ALL=(ALL) ALL
 ssh_pwauth: false
 disable_root: false
 bootcmd:
