@@ -29,10 +29,10 @@ spec:
                 readonly: true
               name: cloudinitdisk
               bootOrder: 2
-          # interfaces:
-          #   - name: default
-          #     masquerade: {}
-          #     bootOrder: 3
+          interfaces:
+            - name: default
+              masquerade: {}
+              bootOrder: 3
           #   - name: vm
           #     bridge: {}
           #     bootOrder: 4
@@ -43,9 +43,9 @@ spec:
           limits:
             cpu: "1"
             memory: 4Gi
-      # networks:
-      #   - name: default
-      #     pod: {}
+      networks:
+        - name: default
+          pod: {}
       #   - name: vm
       #     multus:
       #       networkName: vm/vm-bridge
