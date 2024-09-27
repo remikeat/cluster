@@ -212,6 +212,7 @@ users:
       - gh:remikeat
     plain_text_passwd:
     lock_passwd: False
+    shell: /bin/bash
 ssh_pwauth: false
 disable_root: false
 ```

@@ -5,3 +5,4 @@ users:
       - gh:remikeat
     plain_text_passwd: remi
     lock_passwd: False
+    shell: /bin/bash

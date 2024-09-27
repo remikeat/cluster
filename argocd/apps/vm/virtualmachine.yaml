@@ -51,8 +51,9 @@ spec:
       #       networkName: vm/vm-bridge
       volumes:
         - name: disk0
-          persistentVolumeClaim:
-            claimName: ubuntu-image-2404
+          ephemeral:
+            persistentVolumeClaim:
+              claimName: ubuntu-image-2404
         - name: cloudinitdisk
           cloudInitNoCloud:
             secretRef:
