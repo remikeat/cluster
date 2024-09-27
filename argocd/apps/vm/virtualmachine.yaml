@@ -58,3 +58,12 @@ spec:
           cloudInitNoCloud:
             secretRef:
               name: cloudinit
+      accessCredentials:
+      - sshPublicKey:
+          source:
+            secret:
+              secretName: vm-pubkey
+          propagationMethod:
+            qemuGuestAgent:
+              users:
+              - remi

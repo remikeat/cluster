@@ -41,3 +41,9 @@ kubectl delete -f debug-pod.yaml
 ```
 cloud-init schema -c user-data --annotate
 ```
+
+### Get public key from github
+
+```
+curl -s https://api.github.com/users/remikeat/keys | jq -r .[].key
+```

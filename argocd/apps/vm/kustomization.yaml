@@ -9,6 +9,10 @@ secretGenerator:
     files:
       - userData=bw-secrets/vm-userdata.yaml
       - networkData=bw-secrets/vm-networkdata.yaml
+  - name: vm-pubkey
+    namespace: vm
+    files:
+      - key1=bw-secrets/vm-pubkey.pub
 
 resources:
   - namespace.yaml

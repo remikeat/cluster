@@ -6,3 +6,5 @@ users:
     plain_text_passwd: remi
     lock_passwd: False
     shell: /bin/bash
+bootcmd:
+  - setenforce 0
