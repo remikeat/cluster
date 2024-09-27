@@ -4,6 +4,8 @@
 *.tfstate.lock.info
 .env
 .dockerconfigjson
+controlplane.yaml
+worker.yaml
 secrets.yaml
 talosconfig
 *.img
