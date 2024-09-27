@@ -1,0 +1,85 @@
+version: v1alpha1
+debug: false
+persist: true
+machine:
+    type: worker
+    ca:
+        key: ""
+    certSANs: []
+    kubelet:
+        image: ghcr.io/siderolabs/kubelet:v1.30.3
+        extraArgs:
+            rotate-server-certificates: "true"
+        extraMounts:
+            - destination: /var/lib/longhorn
+              type: bind
+              source: /var/lib/longhorn
+              options:
+                - bind
+                - rshared
+                - rw
+            - destination: /oem
+              type: bind
+              source: /var/oem
+              options:
+                - bind
+                - rshared
+                - rw
+        extraConfig:
+            maxPods: 440
+        defaultRuntimeSeccompProfileEnabled: true
+        disableManifestsDirectory: true
+    network: {}
+    install:
+        disk: /dev/nvme0n1
+        image: ghcr.io/siderolabs/installer:v1.7.6
+        wipe: false
+    files:
+        - content: |
+            [plugins]
+              [plugins."io.containerd.grpc.v1.cri"]
+                device_ownership_from_security_context = true
+          permissions: 0o0
+          path: /etc/cri/conf.d/20-customization.part
+          op: create
+    features:
+        rbac: true
+        stableHostname: true
+        apidCheckExtKeyUsage: true
+        diskQuotaSupport: true
+        kubePrism:
+            enabled: true
+            port: 7445
+        hostDNS:
+            enabled: true
+cluster:
+    controlPlane:
+        endpoint: https://192.168.0.122:6443
+    network:
+        cni:
+            name: none
+        dnsDomain: cluster.local
+        podSubnets:
+            - 10.244.0.0/16
+        serviceSubnets:
+            - 10.96.0.0/12
+    ca:
+        key: ""
+    controllerManager:
+        extraArgs:
+            node-cidr-mask-size: "22"
+    proxy:
+        disabled: true
+    discovery:
+        enabled: true
+        registries:
+            kubernetes:
+                disabled: true
+            service: {}
+    allowSchedulingOnControlPlanes: true
+---
+apiVersion: v1alpha1
+kind: ExtensionServiceConfig
+name: tailscale
+environment:
+    - TS_AUTHKEY=

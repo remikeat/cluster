@@ -1,0 +1,113 @@
+version: v1alpha1
+debug: false
+persist: true
+machine:
+    type: controlplane
+    certSANs: []
+    kubelet:
+        image: ghcr.io/siderolabs/kubelet:v1.30.3
+        extraArgs:
+            rotate-server-certificates: "true"
+        extraMounts:
+            - destination: /var/lib/longhorn
+              type: bind
+              source: /var/lib/longhorn
+              options:
+                - bind
+                - rshared
+                - rw
+            - destination: /oem
+              type: bind
+              source: /var/oem
+              options:
+                - bind
+                - rshared
+                - rw
+        extraConfig:
+            maxPods: 440
+        defaultRuntimeSeccompProfileEnabled: true
+        disableManifestsDirectory: true
+    network: {}
+    install:
+        disk: /dev/nvme0n1
+        image: ghcr.io/siderolabs/installer:v1.7.6
+        wipe: false
+    files:
+        - content: |
+            [plugins]
+              [plugins."io.containerd.grpc.v1.cri"]
+                device_ownership_from_security_context = true
+          permissions: 0o0
+          path: /etc/cri/conf.d/20-customization.part
+          op: create
+    features:
+        rbac: true
+        stableHostname: true
+        apidCheckExtKeyUsage: true
+        diskQuotaSupport: true
+        kubePrism:
+            enabled: true
+            port: 7445
+        hostDNS:
+            enabled: true
+cluster:
+    controlPlane:
+        endpoint: https://192.168.0.122:6443
+    clusterName: cluster
+    network:
+        cni:
+            name: none
+        dnsDomain: cluster.local
+        podSubnets:
+            - 10.244.0.0/16
+        serviceSubnets:
+            - 10.96.0.0/12
+    apiServer:
+        image: registry.k8s.io/kube-apiserver:v1.30.3
+        certSANs:
+            - 192.168.0.122
+        disablePodSecurityPolicy: true
+        admissionControl:
+            - name: PodSecurity
+              configuration:
+                apiVersion: pod-security.admission.config.k8s.io/v1alpha1
+                defaults:
+                    audit: restricted
+                    audit-version: latest
+                    enforce: baseline
+                    enforce-version: latest
+                    warn: restricted
+                    warn-version: latest
+                exemptions:
+                    namespaces:
+                        - kube-system
+                    runtimeClasses: []
+                    usernames: []
+                kind: PodSecurityConfiguration
+        auditPolicy:
+            apiVersion: audit.k8s.io/v1
+            kind: Policy
+            rules:
+                - level: Metadata
+    controllerManager:
+        image: registry.k8s.io/kube-controller-manager:v1.30.3
+        extraArgs:
+            node-cidr-mask-size: "22"
+    proxy:
+        disabled: true
+        image: registry.k8s.io/kube-proxy:v1.30.3
+    scheduler:
+        image: registry.k8s.io/kube-scheduler:v1.30.3
+    discovery:
+        enabled: true
+        registries:
+            kubernetes:
+                disabled: true
+            service: {}
+    allowSchedulingOnControlPlanes: true
+---
+apiVersion: v1alpha1
+kind: ExtensionServiceConfig
+name: tailscale
+environment:
+    - TS_AUTHKEY=
