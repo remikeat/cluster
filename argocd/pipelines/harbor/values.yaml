@@ -6,7 +6,9 @@ expose:
     annotations:
       cert-manager.io/cluster-issuer: letsencrypt-production
   tls:
-    secretName: harbor-tls
+    certSource: secret
+    secret:
+      secretName: harbor-tls
 externalURL: https://harbor.remikeat.com
 # nginx:
 #   image:
