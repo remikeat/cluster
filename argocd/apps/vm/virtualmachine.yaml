@@ -48,7 +48,7 @@ spec:
           pod: {}
         - name: vm
           multus:
-            networkName: vm/vm-bridge
+            networkName: vm-bridge
       volumes:
         - name: disk0
           ephemeral:
