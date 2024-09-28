@@ -9,6 +9,6 @@ ingress:
     - host: portainer
       paths:
         - path: "/"
-  # tls:
-  #   - hosts:
-  #       - portainer
+  tls:
+    - hosts:
+        - portainer
