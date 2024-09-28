@@ -43,4 +43,5 @@ spec:
     - name: DOCKERFILE
       value: $(params.dockerfile)
     - name: EXTRA_ARGS
-      value: $(params.extra-args)
+      value:
+        - $(params.extra-args)
