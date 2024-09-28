@@ -216,8 +216,6 @@ users:
     sudo: ALL=(ALL) ALL
 ssh_pwauth: false
 disable_root: false
-bootcmd:
-  - setenforce 0
 ```
 
 - name: vm-networkdata.yaml

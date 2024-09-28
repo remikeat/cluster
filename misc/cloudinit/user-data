@@ -7,5 +7,3 @@ users:
     lock_passwd: False
     shell: /bin/bash
     sudo: ALL=(ALL) ALL
-bootcmd:
-  - setenforce 0

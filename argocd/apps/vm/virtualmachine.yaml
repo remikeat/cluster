@@ -33,9 +33,9 @@ spec:
             - name: default
               masquerade: {}
               bootOrder: 3
-          #   - name: vm
-          #     bridge: {}
-          #     bootOrder: 4
+            - name: vm
+              bridge: {}
+              bootOrder: 4
         resources:
           requests:
             cpu: 500m
@@ -46,9 +46,9 @@ spec:
       networks:
         - name: default
           pod: {}
-      #   - name: vm
-      #     multus:
-      #       networkName: vm/vm-bridge
+        - name: vm
+          multus:
+            networkName: vm/vm-bridge
       volumes:
         - name: disk0
           ephemeral:
