@@ -79,3 +79,18 @@ rm cilium-${GOOS}-${GOARCH}.tar.gz{,.sha256sum}
 cilium completion bash | sudo tee /etc/bash_completion.d/cilium
 echo "source '/etc/bash_completion.d/cilium'" >> ~/.bashrc
 ```
+
+### tekton cli
+
+```
+wget https://github.com/tektoncd/cli/releases/download/v0.38.1/tektoncd-cli-0.38.1_Linux-64bit.deb
+sudo dpkg -i tektoncd-cli-0.38.1_Linux-64bit.deb
+rm tektoncd-cli-0.38.1_Linux-64bit.deb
+```
+
+### tekton cli auto-completion
+
+```
+tkn completion bash > /etc/bash_completion.d/tkn
+echo "source /etc/bash_completion.d/tkn" >> ~/.bashrc
+```

@@ -1,9 +1,13 @@
 expose:
   ingress:
     hosts:
-      core: harbor
-    className: "tailscale"
-externalURL: https://harbor.tail4d334.ts.net
+      core: harbor.remikeat.com
+    className: nginx
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-production
+  tls:
+    secretName: harbor-tls
+externalURL: https://harbor.remikeat.com
 # nginx:
 #   image:
 #     repository: ghcr.io/octohelm/harbor/nginx-photon
