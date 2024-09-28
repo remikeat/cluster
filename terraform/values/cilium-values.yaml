@@ -46,3 +46,5 @@ hubble:
       tls:
        - hosts:
            - hubble
+socketLB:
+  hostNamespaceOnly: true

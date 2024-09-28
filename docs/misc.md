@@ -47,3 +47,9 @@ cloud-init schema -c user-data --annotate
 ```
 curl -s https://api.github.com/users/remikeat/keys | jq -r .[].key
 ```
+
+### Merge talosconfig
+
+```
+talosctl config merge ./talosconfig
+```
