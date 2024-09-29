@@ -5,3 +5,11 @@ helmCharts:
     valuesFile: values.yaml
     version: 0.28.1
     repo: https://helm.releases.hashicorp.com
+
+patches:
+  - target:
+      version: v1
+      group: networking.k8s.io
+      kind: Ingress
+      name: vault
+    path: ./patches/ingress-class.yaml
