@@ -28,6 +28,7 @@ spec:
       - app: monitoring/kiali
       - app: monitoring/metrics-server
       - app: pipelines/harbor
+      - app: pipelines/knative
       - app: pipelines/tekton
       - app: vm/kubevirt
       - app: vm/kubevirt-manager
