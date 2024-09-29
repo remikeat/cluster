@@ -1,5 +1,6 @@
 helmCharts:
   - name: vault
+    namespace: vault
     valuesFile: values.yaml
     version: 0.28.1
     repo: https://helm.releases.hashicorp.com
