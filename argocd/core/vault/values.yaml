@@ -1,0 +1,15 @@
+server:
+  dataStorage:
+    enabled: true
+  auditStorage:
+    enabled: true
+  ingress:
+    enabled: true
+    annotations:
+      kubernetes.io/ingress.class: tailscale
+    hosts:
+      - host: vault
+    tls:
+     - secretName: vault-tls
+       hosts:
+         - vault
