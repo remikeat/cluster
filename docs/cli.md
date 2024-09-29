@@ -1,5 +1,7 @@
 # CLI
 
+## taloctl
+
 ### talosctl
 
 ```
@@ -14,6 +16,8 @@ echo "source '$HOME/.talos/completion.bash.inc'" >> ~/.bashrc
 source $HOME/.bashrc
 ```
 
+## argocd
+
 ### argocd
 
 ```
@@ -25,6 +29,8 @@ brew install argocd
 ```
 echo "source <(/home/linuxbrew/.linuxbrew/bin/argocd completion bash)" >> ~/.bashrc
 ```
+
+## virtctl
 
 ### virtctl
 
@@ -41,6 +47,8 @@ virtctl completion bash > ~/.virtctl-completion.bash
 echo "source '/home/remi/.virtctl-completion.bash'" >> ~/.bashrc
 ```
 
+## tailscale
+
 ### tailscale
 
 ```
@@ -54,12 +62,16 @@ tailscale completion bash | sudo tee -a /etc/bash_completion.d/tailscale
 echo "source '/etc/bash_completion.d/tailscale'" >> ~/.bashrc
 ```
 
+## helm
+
 ### helm auto-completion
 
 ```
 helm completion bash | sudo tee /etc/bash_completion.d/helm
 echo "source '/etc/bash_completion.d/helm'" >> ~/.bashrc
 ```
+
+## cilium
 
 ### cilium cli
 
@@ -80,6 +92,8 @@ cilium completion bash | sudo tee /etc/bash_completion.d/cilium
 echo "source '/etc/bash_completion.d/cilium'" >> ~/.bashrc
 ```
 
+## tekton
+
 ### tekton cli
 
 ```
@@ -93,4 +107,22 @@ rm tektoncd-cli-0.38.1_Linux-64bit.deb
 ```
 tkn completion bash > /etc/bash_completion.d/tkn
 echo "source /etc/bash_completion.d/tkn" >> ~/.bashrc
+```
+
+## knative
+
+### knative cli
+
+```
+brew install knative/client/kn
+wget https://github.com/knative/func/releases/download/knative-v1.15.1/func_linux_amd64
+mv func_linux_amd64 kn-func
+chmod +x kn-func
+sudo mv kn-func /usr/local/bin
+```
+
+### knative cli auto-completion
+
+```
+echo "source <(kn completion bash)" >> ~/.bashrc
 ```
