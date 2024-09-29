@@ -1,8 +1,10 @@
 server:
   dataStorage:
     enabled: true
+    storageClass: longhorn
   auditStorage:
     enabled: true
+    storageClass: longhorn
   ingress:
     enabled: true
     annotations:
