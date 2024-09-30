@@ -106,7 +106,7 @@ rm tektoncd-cli-0.38.1_Linux-64bit.deb
 
 ```
 tkn completion bash > /etc/bash_completion.d/tkn
-echo "source /etc/bash_completion.d/tkn" >> ~/.bashrc
+echo "source '/etc/bash_completion.d/tkn'" >> ~/.bashrc
 ```
 
 ## knative
@@ -119,10 +119,14 @@ wget https://github.com/knative/func/releases/download/knative-v1.15.1/func_linu
 mv func_linux_amd64 kn-func
 chmod +x kn-func
 sudo mv kn-func /usr/local/bin
+echo "alias func='kn func'" >> ~/.bashrc
 ```
 
 ### knative cli auto-completion
 
 ```
-echo "source <(kn completion bash)" >> ~/.bashrc
+kn completion bash > /etc/bash_completion.d/kn
+echo "source '/etc/bash_completion.d/kn'" >> ~/.bashrc
+func completion bash > /etc/bash_completion.d/func
+echo "source '/etc/bash_completion.d/func'" >> ~/.bashrc
 ```
