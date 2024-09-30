@@ -42,6 +42,8 @@ configs:
             - argocd-vault-plugin
             - generate
             - "."
+            - "-s"
+            - "vault-configuration"
         lockRepo: false
       argocd-vault-plugin-helm:
         allowConcurrency: true
@@ -57,7 +59,7 @@ configs:
             - "-c"
             - |
               helm template $ARGOCD_APP_NAME --include-crds -n $ARGOCD_APP_NAMESPACE ${ARGOCD_ENV_HELM_ARGS} . |
-              argocd-vault-plugin generate -
+              argocd-vault-plugin generate - -s vault-configuration
         lockRepo: false
       argocd-vault-plugin-kustomize:
         allowConcurrency: true
@@ -72,7 +74,7 @@ configs:
           command:
             - sh
             - "-c"
-            - "kustomize build . | argocd-vault-plugin generate -"
+            - "kustomize build . | argocd-vault-plugin generate - -s vault-configuration"
         lockRepo: false
 server:
   replicas: 2
