@@ -29,6 +29,20 @@ configs:
           args:
             - |
               template.py
+      argocd-vault-plugin:
+        allowConcurrency: true
+        discover:
+          find:
+            command:
+              - sh
+              - "-c"
+              - "find . -name '*.yaml' | xargs -I {} grep \"<path\\|avp\\.kubernetes\\.io\" {} | grep ."
+        generate:
+          command:
+            - argocd-vault-plugin
+            - generate
+            - "."
+        lockRepo: false
 server:
   replicas: 2
   ingress:
@@ -40,17 +54,19 @@ server:
 repoServer:
   replicas: 2
   volumes:
-    - name: bw-secrets
-      secret:
-        secretName: bw-secrets
-        optional: true
     - name: argocd-cmp-cm
       configMap:
         name: argocd-cmp-cm
     - name: cmp-tmp
       emptyDir: {}
+
+    - name: bw-secrets
+      secret:
+        secretName: bw-secrets
+        optional: true
     - name: repo
       emptyDir: {}
+
     - name: git-askpass
       configMap:
         name: git-askpass
@@ -72,6 +88,24 @@ repoServer:
         items:
           - key: values.py
             path: values.py
+
+    - name: custom-tools
+      emptyDir: {}
+  initContainers:
+    - name: download-tools
+      image: registry.access.redhat.com/ubi8
+      env:
+        - name: AVP_VERSION
+          value: 1.16.1
+      command: [sh, -c]
+      args:
+        - >-
+          curl -L https://github.com/argoproj-labs/argocd-vault-plugin/releases/download/v$(AVP_VERSION)/argocd-vault-plugin_$(AVP_VERSION)_linux_amd64 -o argocd-vault-plugin &&
+          chmod +x argocd-vault-plugin &&
+          mv argocd-vault-plugin /custom-tools/
+      volumeMounts:
+        - mountPath: /custom-tools
+          name: custom-tools
   extraContainers:
     - name: custom-cmp
       command:
@@ -103,18 +137,44 @@ repoServer:
         - name: template
           mountPath: /usr/local/bin/template.py
           subPath: template.py
+
         - mountPath: /var/run/argocd
           name: var-files
         - mountPath: /home/argocd/cmp-server/plugins
           name: plugins
+        - mountPath: /tmp
+          name: cmp-tmp
+
         - mountPath: /home/argocd/cmp-server/config/plugin.yaml
           subPath: custom-cmp.yaml
           name: argocd-cmp-cm
-        - mountPath: /tmp
-          name: cmp-tmp
+
         - mountPath: /bw-secrets
           name: bw-secrets
         - mountPath: /repo
           name: repo
+    - name: avp
+      command: [/var/run/argocd/argocd-cmp-server]
+      image: registry.access.redhat.com/ubi8
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 999
+      volumeMounts:
+        - mountPath: /var/run/argocd
+          name: var-files
+        - mountPath: /home/argocd/cmp-server/plugins
+          name: plugins
+        - mountPath: /tmp
+          name: tmp
+
+        # Register plugins into sidecar
+        - mountPath: /home/argocd/cmp-server/config/plugin.yaml
+          subPath: argo-vault-plugin.yaml
+          name: argocd-cmp-cm
+
+        # Important: Mount tools into $PATH
+        - name: custom-tools
+          subPath: argocd-vault-plugin
+          mountPath: /usr/local/bin/argocd-vault-plugin
   imagePullSecrets:
     - name: github-registry
