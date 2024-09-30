@@ -23,7 +23,7 @@ spec:
       - app: monitoring/elastic
       - app: monitoring/falco
       - app: monitoring/fluent
-        plugin: true
+        plugin: custom-cmp
       - app: monitoring/grafana
       - app: monitoring/kiali
       - app: monitoring/metrics-server
@@ -32,7 +32,7 @@ spec:
       - app: pipelines/tekton
       - app: vm/kubevirt
       - app: vm/kubevirt-manager
-        plugin: true
+        plugin: custom-cmp
       - app: vm/multus
       # - app: vm/external-snapshotter
       # - app: vm/harvester
@@ -41,9 +41,9 @@ spec:
       - app: apps/redmine
       - app: apps/supabase
       - app: apps/remikeat.com
-        plugin: true
+        plugin: custom-cmp
       - app: apps/vm
-        plugin: true
+        plugin: custom-cmp
   template:
     metadata:
       name: '{{base .app}}-app'
@@ -71,5 +71,5 @@ spec:
     spec:
       source:
         plugin:
-          name: custom-cmp
+          name: {{.plugin}}
     {{- end }}
