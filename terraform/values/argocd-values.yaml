@@ -50,7 +50,7 @@ configs:
             command:
               - sh
               - "-c"
-              - "find . -name 'Chart.yaml' && find . -name 'values.yaml'"
+              - "find . -name 'Chart.yaml'"
         generate:
           command:
             - sh
