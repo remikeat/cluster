@@ -187,6 +187,9 @@ repoServer:
     - name: avp
       command: [/var/run/argocd/argocd-cmp-server]
       image: quay.io/argoproj/argocd:v2.12.0
+      envFrom:
+        - secretRef:
+            name: vault-configuration
       securityContext:
         runAsNonRoot: true
         runAsUser: 999
@@ -210,6 +213,9 @@ repoServer:
     - name: avp-helm
       command: [/var/run/argocd/argocd-cmp-server]
       image: quay.io/argoproj/argocd:v2.12.0
+      envFrom:
+        - secretRef:
+            name: vault-configuration
       securityContext:
         runAsNonRoot: true
         runAsUser: 999
@@ -233,6 +239,9 @@ repoServer:
     - name: avp-kustomize
       command: [/var/run/argocd/argocd-cmp-server]
       image: quay.io/argoproj/argocd:v2.12.0
+      envFrom:
+        - secretRef:
+            name: vault-configuration
       securityContext:
         runAsNonRoot: true
         runAsUser: 999
@@ -255,6 +264,3 @@ repoServer:
           mountPath: /usr/local/bin/argocd-vault-plugin
   imagePullSecrets:
     - name: github-registry
-  envFrom:
-    - secretRef:
-        name: vault-configuration
