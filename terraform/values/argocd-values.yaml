@@ -169,7 +169,7 @@ repoServer:
 
         # Register plugins into sidecar
         - mountPath: /home/argocd/cmp-server/config/plugin.yaml
-          subPath: argo-vault-plugin.yaml
+          subPath: argocd-vault-plugin.yaml
           name: argocd-cmp-cm
 
         # Important: Mount tools into $PATH
