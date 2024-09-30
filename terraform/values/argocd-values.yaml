@@ -72,7 +72,7 @@ configs:
           command:
             - sh
             - "-c"
-            - "kustomize build . | argocd-vault-plugin generate -"
+            - "kustomize build --enable-helm . | argocd-vault-plugin generate -"
         lockRepo: false
 server:
   replicas: 2
