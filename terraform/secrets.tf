@@ -17,22 +17,6 @@ resource "kubernetes_secret" "private_repo" {
   depends_on = [kubernetes_namespace.argocd]
 }
 
-resource "kubernetes_secret" "github_https" {
-  metadata {
-    name      = "github-https"
-    namespace = "argocd"
-  }
-
-  data = {
-    username = "remikeat"
-    password = var.github_token
-  }
-
-  type = "kubernetes.io/basic-auth"
-
-  depends_on = [kubernetes_namespace.argocd]
-}
-
 resource "kubernetes_secret" "github_registry" {
   metadata {
     name      = "github-registry"

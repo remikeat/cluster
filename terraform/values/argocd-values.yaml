@@ -18,17 +18,6 @@ configs:
   cmp:
     create: true
     plugins:
-      custom-cmp:
-        init:
-          command: [bash, -c]
-          args:
-            - |
-              values.py
-        generate:
-          command: [bash, -c]
-          args:
-            - |
-              template.py
       argocd-vault-plugin-kustomize:
         allowConcurrency: true
         discover:
@@ -57,38 +46,6 @@ repoServer:
     - name: argocd-cmp-cm
       configMap:
         name: argocd-cmp-cm
-    - name: cmp-tmp
-      emptyDir: {}
-
-    - name: bw-secrets
-      secret:
-        secretName: bw-secrets
-        optional: true
-    - name: repo
-      emptyDir: {}
-
-    - name: git-askpass
-      configMap:
-        name: git-askpass
-        defaultMode: 0555
-        items:
-          - key: git_askpass.sh
-            path: git_askpass.sh
-    - name: template
-      configMap:
-        name: template
-        defaultMode: 0555
-        items:
-          - key: template.py
-            path: template.py
-    - name: values
-      configMap:
-        name: values
-        defaultMode: 0555
-        items:
-          - key: values.py
-            path: values.py
-
     - name: custom-tools
       emptyDir: {}
   initContainers:
@@ -107,52 +64,6 @@ repoServer:
         - mountPath: /custom-tools
           name: custom-tools
   extraContainers:
-    - name: custom-cmp
-      command:
-        - "/var/run/argocd/argocd-cmp-server"
-      image: ghcr.io/remikeat/cluster:latest
-      env:
-        - name: GIT_ASKPASS
-          value: /usr/local/bin/git_askpass.sh
-        - name: GIT_USERNAME
-          valueFrom:
-            secretKeyRef:
-              name: github-https
-              key: username
-        - name: GIT_TOKEN
-          valueFrom:
-            secretKeyRef:
-              name: github-https
-              key: password
-      securityContext:
-        runAsNonRoot: true
-        runAsUser: 999
-      volumeMounts:
-        - name: git-askpass
-          mountPath: /usr/local/bin/git_askpass.sh
-          subPath: git_askpass.sh
-        - name: values
-          mountPath: /usr/local/bin/values.py
-          subPath: values.py
-        - name: template
-          mountPath: /usr/local/bin/template.py
-          subPath: template.py
-
-        - mountPath: /var/run/argocd
-          name: var-files
-        - mountPath: /home/argocd/cmp-server/plugins
-          name: plugins
-        - mountPath: /tmp
-          name: cmp-tmp
-
-        - mountPath: /home/argocd/cmp-server/config/plugin.yaml
-          subPath: custom-cmp.yaml
-          name: argocd-cmp-cm
-
-        - mountPath: /bw-secrets
-          name: bw-secrets
-        - mountPath: /repo
-          name: repo
     - name: avp-kustomize
       command: [/var/run/argocd/argocd-cmp-server]
       image: quay.io/argoproj/argocd:v2.12.0

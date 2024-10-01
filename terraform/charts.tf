@@ -37,5 +37,5 @@ resource "helm_release" "argocd" {
     file("${path.module}/values/argocd-values.yaml")
   ]
 
-  depends_on = [helm_release.tailscale, kubernetes_config_map.git_askpass, kubernetes_config_map.template, kubernetes_config_map.values]
+  depends_on = [helm_release.tailscale]
 }
