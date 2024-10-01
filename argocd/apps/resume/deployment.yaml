@@ -1,8 +1,8 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: "remikeat-com"
-  namespace: "remikeat-com"
+  name: remikeat-com
+  namespace: resume
   labels:
     app: remikeat.com
 spec:
