@@ -23,7 +23,6 @@ spec:
       - app: monitoring/elastic
       - app: monitoring/falco
       - app: monitoring/fluent
-        plugin: custom-cmp
       - app: monitoring/grafana
       - app: monitoring/kiali
       - app: monitoring/metrics-server
