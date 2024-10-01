@@ -40,18 +40,18 @@ resource "kubernetes_secret" "github_registry" {
   depends_on = [kubernetes_namespace.argocd]
 }
 
-resource "kubernetes_secret" "bt_auth_token" {
-  metadata {
-    name      = "bw-auth-token"
-    namespace = "argocd"
-  }
+# resource "kubernetes_secret" "bt_auth_token" {
+#   metadata {
+#     name      = "bw-auth-token"
+#     namespace = "argocd"
+#   }
 
-  data = {
-    token = var.bitwarden_token
-  }
+#   data = {
+#     token = var.bitwarden_token
+#   }
 
-  depends_on = [kubernetes_namespace.argocd]
-}
+#   depends_on = [kubernetes_namespace.argocd]
+# }
 
 resource "kubernetes_secret" "vault_configuration" {
   metadata {
