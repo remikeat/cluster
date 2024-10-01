@@ -130,3 +130,14 @@ echo "source '/etc/bash_completion.d/kn'" >> ~/.bashrc
 func completion bash > /etc/bash_completion.d/func
 echo "source '/etc/bash_completion.d/func'" >> ~/.bashrc
 ```
+
+## Vault
+
+### Vault cli
+
+```
+wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+sudo apt update && sudo apt install vault
+echo "export VAULT_ADDR=https://vault.tail4d334.ts.net" >> ~/.bashrc
+```

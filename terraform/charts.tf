@@ -9,12 +9,6 @@ resource "helm_release" "cilium" {
   ]
 }
 
-resource "time_sleep" "wait_few_seconds" {
-  depends_on = [helm_release.cilium]
-
-  create_duration = "10s"
-}
-
 resource "helm_release" "tailscale" {
   name             = "tailscale"
   namespace        = "tailscale"
