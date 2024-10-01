@@ -26,3 +26,6 @@ vault secrets enable -version=2 kv
 - kv/data/elastic#password
 
 - kv/data/kubevirt-manager#htpasswd
+
+- kv/data/redmine#password
+- kv/data/redmine#db_password

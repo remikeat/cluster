@@ -20,3 +20,12 @@ updateStrategy:
   type: Recreate
   rollingUpdate: null
 resourcesPreset: "small"
+
+redmineUsername: remi
+redminePassword: <path:kv/data/redmine#password>
+redmineEmail: contact@remikeat.com
+smtpPassword: <path:kv/data/sendgrid#smtp_password>
+postgresql:
+  auth:
+    username: bn_redmine
+    password: <path:kv/data/redmine#db_password>
