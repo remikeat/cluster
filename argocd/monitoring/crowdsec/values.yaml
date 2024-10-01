@@ -72,7 +72,7 @@ config:
 
       smtp_host: smtp.sendgrid.net # example: smtp.gmail.com
       smtp_username: apikey        # Replace with your actual username
-      smtp_password: <path:kv/data/crowdsec#smtp_password>               # Replace with your actual password
+      smtp_password: <path:kv/data/sendgrid#smtp_password>               # Replace with your actual password
       smtp_port: 587               # Common values are any of [25, 465, 587, 2525]
       auth_type: login             # Valid choices are "none", "crammd5", "login", "plain"
       sender_name: "CrowdSec"

@@ -15,9 +15,12 @@ vault secrets enable -version=2 kv
 
 ## Items
 
+- kv/data/sendgrid#smtp_password
+
 - kv/data/crowdsec#agent_password
 - kv/data/crowdsec#enroll_key
 - kv/data/crowdsec#bouncer_key
-- kv/data/crowdsec#smtp_password
 
 - kv/data/falco#password
+
+- kv/data/elastic#password

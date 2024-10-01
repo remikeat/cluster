@@ -8,8 +8,9 @@ secretGenerator:
   - name: elasticsearch-secrets
     namespace: fluent
     type: kubernetes.io/opaque
-    envs:
-      - bw-secrets/fluent.env
+    literals:
+      - username=elastic
+      - password=<path:kv/data/elastic#password>
 
 resources:
   - namespace.yaml
