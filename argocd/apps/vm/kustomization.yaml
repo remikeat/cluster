@@ -4,15 +4,10 @@ kind: Kustomization
 generatorOptions:
   disableNameSuffixHash: true
 secretGenerator:
-  - name: cloudinit
-    namespace: vm
-    files:
-      - userData=bw-secrets/vm-userdata.yaml
-      - networkData=bw-secrets/vm-networkdata.yaml
   - name: vm-pubkey
     namespace: vm
-    files:
-      - key1=bw-secrets/vm-pubkey.pub
+    literals:
+      - key1=<path:kv/data/vm#pub_key>
 
 resources:
   - namespace.yaml

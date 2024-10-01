@@ -56,8 +56,28 @@ spec:
               claimName: ubuntu-image-2404
         - name: cloudinitdisk
           cloudInitNoCloud:
-            secretRef:
-              name: cloudinit
+            userData: |
+              #cloud-config
+              hostname: vm
+              users:
+                - name: remi
+                  ssh_import_id:
+                    - gh:remikeat
+                  passwd: <path:kv/data/vm#password>
+                  lock_passwd: False
+                  shell: /bin/bash
+                  sudo: ALL=(ALL) ALL
+              ssh_pwauth: false
+              disable_root: false
+            networkData: |
+              version: 2
+              ethernets:
+                enp1s0:
+                  dhcp4: true
+              #  enp2s0:
+              #    dhcp4: false
+              #    addresses: [192.168.1.100/22]
+              #    gateway4: 192.168.0.1
       accessCredentials:
       - sshPublicKey:
           source:

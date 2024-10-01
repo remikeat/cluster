@@ -36,3 +36,6 @@ vault secrets enable -version=2 kv
 - kv/data/supabase#password
 - kv/data/supabase#db_password
 - kv/data/supabase#analytics_api_key
+
+- kv/data/vm#password
+- kv/data/vm#pub_key
