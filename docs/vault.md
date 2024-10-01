@@ -19,3 +19,5 @@ vault secrets enable -version=2 kv
 - kv/data/crowdsec#enroll_key
 - kv/data/crowdsec#bouncer_key
 - kv/data/crowdsec#smtp_password
+
+- kv/data/falco#password
