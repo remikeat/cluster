@@ -8,8 +8,6 @@ helmCharts:
     valuesFile: values.yaml
     version: 1.89.0
     repo: https://kiali.org/helm-charts
-    additionalValuesFiles:
-      - bw-secrets/kiali.yaml
 
 resources:
   - https://github.com/kiali/helm-charts/blob/v1.89.0/kiali-operator/crds/crds.yaml
