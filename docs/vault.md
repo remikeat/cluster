@@ -24,3 +24,5 @@ vault secrets enable -version=2 kv
 - kv/data/falco#password
 
 - kv/data/elastic#password
+
+- kv/data/kubevirt-manager#htpasswd

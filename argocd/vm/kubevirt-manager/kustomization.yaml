@@ -12,8 +12,8 @@ generatorOptions:
 secretGenerator:
   - name: auth-secret
     namespace: kubevirt-manager
-    files:
-      - .htpasswd=bw-secrets/htpasswd
+    literals:
+      - .htpasswd=<path:kv/data/kubevirt-manager#htpasswd>
     options:
       labels:
         app: kubevirt-manager

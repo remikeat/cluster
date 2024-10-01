@@ -31,7 +31,6 @@ spec:
       - app: pipelines/tekton
       - app: vm/kubevirt
       - app: vm/kubevirt-manager
-        plugin: custom-cmp
       - app: vm/multus
       # - app: vm/external-snapshotter
       # - app: vm/harvester
