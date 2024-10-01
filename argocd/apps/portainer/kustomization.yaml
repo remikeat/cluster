@@ -1,0 +1,10 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+helmCharts:
+  - name: portainer
+    namespace: portainer
+    releaseName: portainer
+    valuesFile: values.yaml
+    version: 1.0.53
+    repo: https://portainer.github.io/k8s/

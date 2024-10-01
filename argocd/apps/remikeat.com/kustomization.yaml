@@ -1,5 +1,6 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+
 secretGenerator:
   - name: github-com
     namespace: remikeat-com
@@ -11,6 +12,7 @@ secretGenerator:
     type: kubernetes.io/opaque
     envs:
       - bw-secrets/remikeat.com.env
+
 resources:
   - namespace.yaml
   - deployment.yaml
