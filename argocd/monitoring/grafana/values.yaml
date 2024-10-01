@@ -16,6 +16,7 @@ prometheus:
           replacement: ${1}:${2}
           target_label: __address__
 grafana:
+  adminPassword: <path:kv/data/grafana#password>
   persistence:
     enabled: true
     storageClassName: longhorn
