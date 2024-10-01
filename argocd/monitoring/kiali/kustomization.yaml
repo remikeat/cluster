@@ -10,4 +10,4 @@ helmCharts:
     repo: https://kiali.org/helm-charts
 
 resources:
-  - https://github.com/kiali/helm-charts/blob/v1.89.0/kiali-operator/crds/crds.yaml
+  - https://raw.githubusercontent.com/kiali/helm-charts/refs/tags/v1.89.0/kiali-operator/crds/crds.yaml
