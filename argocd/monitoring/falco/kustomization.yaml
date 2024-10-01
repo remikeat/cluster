@@ -8,8 +8,6 @@ helmCharts:
     valuesFile: values.yaml
     version: 4.8.2
     repo: https://falcosecurity.github.io/charts
-    additionalValuesFiles:
-      - bw-secrets/falco.yaml
 
 resources:
   - fluent.yaml
