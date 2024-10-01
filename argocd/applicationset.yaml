@@ -37,8 +37,8 @@ spec:
       # - app: vm/system-upgrade-controller
       - app: apps/portainer
       - app: apps/redmine
+      - app: apps/resume
       - app: apps/supabase
-      - app: apps/remikeat.com
       - app: apps/vm
   template:
     metadata:
