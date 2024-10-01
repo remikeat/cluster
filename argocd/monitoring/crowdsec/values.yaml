@@ -9,6 +9,11 @@ lapi:
       value: <path:kv/data/crowdsec#enroll_key>
     - name: BOUNCER_KEY_nginx
       value: <path:kv/data/crowdsec#bouncer_key>
+  persistentVolume:
+    data:
+      storageClassName: longhorn
+    config:
+      storageClassName: longhorn
 container_runtime: containerd
 agent:
   acquisition:
@@ -18,6 +23,9 @@ agent:
   env:
     - name: COLLECTIONS
       value: "crowdsecurity/nginx"
+  persistentVolume:
+    config:
+      storageClassName: longhorn
 config:
   profiles.yaml: |
     name: default_ip_remediation
