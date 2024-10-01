@@ -1,5 +1,39 @@
 # Password
 
+## Initial passwords
+
+### Get bootstrap password for Rancher
+
+```
+kubectl get secret --namespace cattle-system bootstrap-secret -o go-template='{{.data.bootstrapPassword|base64decode}}{{"\n"}}'
+```
+
+### Get password for ceph dashboard
+
+```
+kubectl get -n rook-ceph secrets/rook-ceph-dashboard-password -o jsonpath={.data.password} | base64 -d
+```
+
+### Get initial password for argocd and change password
+
+```
+argocd admin initial-password -n argocd
+argocd login argocd.tail4d334.ts.net
+argocd account update-password
+kubectl delete -n argocd secrets/argocd-initial-admin-secret
+```
+
+### Get initial password for elasticsearch
+
+```
+kubectl get secrets elasticsearch-es-elastic-user -o json | jq -r .data.elastic | base64 -d
+```
+
+Update password in bitwarden secret manager : fluent.env
+And update password in bitwarden password manager for kibana/elasticsearch
+
+## Password creation
+
 ### How to encode in base64
 
 ```
