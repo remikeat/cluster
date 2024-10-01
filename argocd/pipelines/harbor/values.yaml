@@ -1,3 +1,4 @@
+harborAdminPassword: <path:kv/data/harbor#password>
 expose:
   ingress:
     hosts:

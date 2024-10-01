@@ -8,5 +8,3 @@ helmCharts:
     valuesFile: values.yaml
     version: 1.15.1
     repo: https://helm.goharbor.io
-    additionalValuesFiles:
-      - bw-secrets/harbor.yaml
