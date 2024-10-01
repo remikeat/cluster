@@ -3,7 +3,7 @@ kind: Kustomization
 
 secretGenerator:
   - name: github-com
-    namespace: remikeat-com
+    namespace: resume
     type: kubernetes.io/dockerconfigjson
     literals:
       - |
@@ -18,7 +18,7 @@ secretGenerator:
             }
         }
   - name: remikeat-com-secrets
-    namespace: remikeat-com
+    namespace: resume
     type: kubernetes.io/opaque
     literals:
       - NEXT_PUBLIC_WEB3FORMS_TOKEN=<path:kv/data/resume#web3form_token>
