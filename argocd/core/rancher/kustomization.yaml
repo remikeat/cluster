@@ -1,0 +1,10 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+helmCharts:
+  - name: rancher
+    namespace: rancher
+    releaseName: rancher
+    valuesFile: values.yaml
+    version: 2.9.2
+    repo: https://releases.rancher.com/server-charts/latest

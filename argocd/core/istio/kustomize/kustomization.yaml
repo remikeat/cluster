@@ -1,0 +1,22 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+helmCharts:
+  - name: base
+    namespace: istio-system
+    releaseName: base
+    version: 1.23.0
+    repo: https://istio-release.storage.googleapis.com/charts
+  - name: istiod
+    namespace: istio-system
+    releaseName: istiod
+    version: 1.23.0
+    repo: https://istio-release.storage.googleapis.com/charts
+  - name: gateway
+    namespace: istio-ingress
+    releaseName: gateway
+    version: 1.23.0
+    repo: https://istio-release.storage.googleapis.com/charts
+
+resources:
+  - namespace.yaml
