@@ -45,3 +45,5 @@ vault secrets enable -version=2 kv
 
 - kv/data/ghcr#password
 - kv/data/ghcr#auth
+
+- kv/data/grafana#password

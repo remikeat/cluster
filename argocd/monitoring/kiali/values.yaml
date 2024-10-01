@@ -29,5 +29,9 @@ cr:
         enabled: true
         in_cluster_url: 'http://kube-prometheus-stack-grafana.kube-prometheus-stack'
         url: 'https://grafana.tail4d334.ts.net'
+        auth:
+          type: basic
+          username: "admin"
+          password: <path:kv/data/grafana#password>
       prometheus:
         url: "http://kube-prometheus-stack-prometheus.kube-prometheus-stack:9090/"
