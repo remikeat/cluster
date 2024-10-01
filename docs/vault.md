@@ -29,3 +29,10 @@ vault secrets enable -version=2 kv
 
 - kv/data/redmine#password
 - kv/data/redmine#db_password
+
+- kv/data/supabase#anon_key
+- kv/data/supabase#service_key
+- kv/data/supabase#secret
+- kv/data/supabase#password
+- kv/data/supabase#db_password
+- kv/data/supabase#analytics_api_key

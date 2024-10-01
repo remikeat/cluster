@@ -9,17 +9,12 @@ spec:
     - repoURL: https://github.com/supabase-community/supabase-kubernetes
       path: charts/supabase
       targetRevision: main
-      plugin:
-        name: custom-cmp
-        parameters:
-          - name: repo_url
-            string: https://github.com/remikeat/cluster.git
-          - name: repo_revision
-            string: HEAD
-          - name: repo_values
-            string: argocd/apps/supabase/values.yaml
-          - name: secrets
-            string: supabase.yaml
+      helm:
+        valueFiles:
+          - $repo/argocd/apps/supabase/values.yaml
+    - repoURL: https://github.com/remikeat/cluster.git
+      targetRevision: HEAD
+      ref: repo
   destination:
     server: https://kubernetes.default.svc
     namespace: supabase
