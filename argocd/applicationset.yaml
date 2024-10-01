@@ -39,9 +39,7 @@ spec:
       - app: apps/redmine
       - app: apps/supabase
       - app: apps/remikeat.com
-        plugin: custom-cmp
       - app: apps/vm
-        plugin: custom-cmp
   template:
     metadata:
       name: '{{base .app}}-app'

@@ -5,13 +5,24 @@ secretGenerator:
   - name: github-com
     namespace: remikeat-com
     type: kubernetes.io/dockerconfigjson
-    files:
-      - .dockerconfigjson=bw-secrets/remikeat.com.dockerconfigjson
+    literals:
+      - |
+        .dockerconfigjson=
+        {
+            "auths": {
+                "ghcr.io": {
+                    "username": "remikeat",
+                    "password": "<path:kv/data/ghcr#password>",
+                    "auth": "<path:kv/data/ghcr#auth>"
+                }
+            }
+        }
   - name: remikeat-com-secrets
     namespace: remikeat-com
     type: kubernetes.io/opaque
-    envs:
-      - bw-secrets/remikeat.com.env
+    literals:
+      - NEXT_PUBLIC_WEB3FORMS_TOKEN=<path:kv/data/resume#web3form_token>
+      - NEXT_PUBLIC_HCAPTCHA_TOKEN=<path:kv/data/resume#hcaptcha_token>
 
 resources:
   - namespace.yaml

@@ -39,3 +39,9 @@ vault secrets enable -version=2 kv
 
 - kv/data/vm#password
 - kv/data/vm#pub_key
+
+- kv/data/resume#web3form_token
+- kv/data/resume#hcaptcha_token
+
+- kv/data/ghcr#password
+- kv/data/ghcr#auth
