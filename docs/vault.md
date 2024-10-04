@@ -13,6 +13,18 @@ kubectl exec -it -n vault pods/vault-0 -- vault operator unseal
 vault secrets enable -version=2 kv
 ```
 
+## Backup vault
+
+```
+vault operator raft snapshot save backup.snap
+```
+
+## Restore backup
+
+```
+vault operator raft snapshot restore backup.snap
+```
+
 ## Items
 
 - kv/data/sendgrid#smtp_password
