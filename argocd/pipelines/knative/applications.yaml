@@ -11,7 +11,7 @@ spec:
     path: argocd/pipelines/knative/kustomize
   destination:
     server: https://kubernetes.default.svc
-    namespace: default
+    namespace: knative
   syncPolicy:
     automated:
       prune: true
