@@ -9,3 +9,5 @@ helmCharts:
     valuesFile: values.yaml
     repo: https://aquasecurity.github.io/helm-charts/
     includeCRDs: true
+    apiVersions:
+      - monitoring.coreos.com/v1
