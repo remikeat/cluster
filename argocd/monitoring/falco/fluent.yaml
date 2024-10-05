@@ -31,7 +31,7 @@ spec:
   es:
     bufferSize: 20MB
     generateID: true
-    host: elasticsearch-es-http.default
+    host: elasticsearch-es-http.elastic-system
     httpPassword:
       valueFrom:
         secretKeyRef:

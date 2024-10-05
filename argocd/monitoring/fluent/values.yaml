@@ -5,7 +5,7 @@ fluentbit:
   output:
     es:
       enable: true
-      host: elasticsearch-es-http.default
+      host: elasticsearch-es-http.elastic-system
       suppressTypeName: On
       httpPassword:
         valueFrom:
@@ -23,7 +23,7 @@ fluentd:
   output:
     es:
       enable: true
-      host: elasticsearch-es-http.default
+      host: elasticsearch-es-http.elastic-system
       suppressTypeName: On
       httpPassword:
         valueFrom:
