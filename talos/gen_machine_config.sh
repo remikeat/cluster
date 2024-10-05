@@ -7,6 +7,7 @@ talosctl gen config --with-secrets secrets.yaml \
     --config-patch @patches/pods-per-node.yaml \
     --config-patch @patches/device-ownership.yaml \
     --config-patch @patches/tailscale.yaml \
+    --config-patch @patches/udev-rules.yaml \
     --with-docs=false \
     --with-examples=false \
     cluster https://192.168.0.122:6443
