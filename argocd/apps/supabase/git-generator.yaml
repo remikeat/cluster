@@ -1,0 +1,15 @@
+apiVersion: remikeat.com/v1
+kind: GitGenerator
+metadata:
+  name: git-generator
+  annotations:
+    config.kubernetes.io/function: |
+      exec: 
+        path: ../../_generators/git-generator.sh      
+spec:
+  repoURL: https://github.com/supabase-community/supabase-kubernetes
+  path: charts/supabase
+  targetRevision: main
+  valuesFile: values.yaml
+  name: supabase
+  namespace: supabase

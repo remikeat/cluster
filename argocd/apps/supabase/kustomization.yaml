@@ -3,4 +3,6 @@ kind: Kustomization
 
 resources:
   - namespace.yaml
-  - application.yaml
+
+generators:
+  - git-generator.yaml

@@ -179,4 +179,7 @@ brew install kustomize
 ```
 kustomize completion bash > /etc/bash_completion.d/kustomize
 echo "source '/etc/bash_completion.d/kustomize'" >> ~/.bashrc
+echo 'alias rook-ceph="kubectl rook-ceph"' >> ~/.bashrc
+kubectl rook-ceph completion bash > /etc/bash_completion.d/rook-ceph
+echo "source '/etc/bash_completion.d/rook-ceph'" >> ~/.bashrc
 ```
