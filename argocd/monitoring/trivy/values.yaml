@@ -1,2 +1,4 @@
 operator:
   configAuditScannerEnabled: false
+serviceMonitor:
+  enabled: true
