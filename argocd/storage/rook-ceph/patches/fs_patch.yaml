@@ -1,0 +1,9 @@
+- op: replace
+  path: /spec/metadataServer/resources/requests/cpu
+  value: "100m"
+- op: replace
+  path: /spec/metadataPool/replicated/size
+  value: 1
+- op: replace
+  path: /spec/dataPools/0/replicated/size
+  value: 1

@@ -25,14 +25,14 @@ patches:
       kind: CephFilesystem
       name: ceph-filesystem
       namespace: rook-ceph
-    path: ./patches/fs_cpu_requests.yaml
+    path: ./patches/fs_patch.yaml
   - target:
       group: ceph.rook.io
       version: v1
       kind: CephObjectStore
       name: ceph-objectstore
       namespace: rook-ceph
-    path: ./patches/object_cpu_requests.yaml
+    path: ./patches/object_patch.yaml
   - target:
       group: storage.k8s.io
       version: v1

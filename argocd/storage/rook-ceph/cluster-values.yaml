@@ -50,3 +50,9 @@ cephClusterSpec:
 #         resources:
 #           requests:
 #             cpu: "200m"
+configOverride: |
+  [global]
+  osd_pool_default_size = 1
+  mon_warn_on_pool_no_redundancy = false
+toolbox:
+  enabled: true
