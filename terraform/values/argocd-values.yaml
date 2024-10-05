@@ -20,6 +20,11 @@ configs:
     plugins:
       argocd-vault-plugin-kustomize:
         allowConcurrency: true
+        init:
+          command:
+            - sh
+            - "-c"
+            - "find . -name git-generator.sh -exec chmod +x {} \\;"
         discover:
           find:
             command:
