@@ -30,7 +30,7 @@ configs:
           command:
             - sh
             - "-c"
-            - "kustomize build --enable-helm . | argocd-vault-plugin generate -"
+            - "kustomize build --enable-helm --enable-alpha-plugins --enable-exec . | argocd-vault-plugin generate -"
         lockRepo: false
 server:
   replicas: 2
@@ -54,12 +54,19 @@ repoServer:
       env:
         - name: AVP_VERSION
           value: 1.16.1
+        - name: YQ_VERSION
+          value: v4.44.3
+        - name: YQ_BINARY
+          value: yq_linux_amd64
       command: [sh, -c]
       args:
         - >-
           curl -L https://github.com/argoproj-labs/argocd-vault-plugin/releases/download/v$(AVP_VERSION)/argocd-vault-plugin_$(AVP_VERSION)_linux_amd64 -o argocd-vault-plugin &&
           chmod +x argocd-vault-plugin &&
-          mv argocd-vault-plugin /custom-tools/
+          mv argocd-vault-plugin /custom-tools/ &&
+          curl -L https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/${YQ_BINARY}.tar.gz -o ${YQ_BINARY}.tar.gz &&
+          tar vfxz ${YQ_BINARY}.tar.gz &&
+          mv ${YQ_BINARY} /custom-tools/yq
       volumeMounts:
         - mountPath: /custom-tools
           name: custom-tools
@@ -90,5 +97,8 @@ repoServer:
         - name: custom-tools
           subPath: argocd-vault-plugin
           mountPath: /usr/local/bin/argocd-vault-plugin
+        - name: custom-tools
+          subPath: yq
+          mountPath: /usr/local/bin/yq
   imagePullSecrets:
     - name: github-registry

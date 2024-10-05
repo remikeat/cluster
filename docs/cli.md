@@ -165,3 +165,18 @@ echo 'export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"' >> ~/.bashrc
 ```
 kubectl krew install rook-ceph
 ```
+
+## Kustomize
+
+### Kustomize cli
+
+```
+brew install kustomize
+```
+
+### Kustomize auto-completion
+
+```
+kustomize completion bash > /etc/bash_completion.d/kustomize
+echo "source '/etc/bash_completion.d/kustomize'" >> ~/.bashrc
+```
