@@ -67,7 +67,7 @@ spec:
                   lock_passwd: False
                   shell: /bin/bash
                   sudo: ALL=(ALL) ALL
-              ssh_pwauth: false
+              ssh_pwauth: true
               disable_root: false
             networkData: |
               version: 2
