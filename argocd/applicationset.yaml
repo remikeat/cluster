@@ -21,6 +21,7 @@ spec:
       - app: storage/rook
       - app: monitoring/crowdsec
       - app: monitoring/elastic
+        namespace: elastic-system
       - app: monitoring/falco
       - app: monitoring/fluent
       - app: monitoring/grafana
@@ -65,9 +66,11 @@ spec:
             maxDuration: 3m0s
             factor: 2
   templatePatch: |
-    {{- if hasKey . "plugin" }}
     spec:
-      source:
-        plugin:
-          name: {{.plugin}}
-    {{- end }}
+      destination:
+        {{- if hasKey . "namespace" }}
+        namespace: {{.namespace}}
+        {{- else }}
+        namespace: {{base .app}}
+        {{- end }}
+      

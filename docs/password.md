@@ -26,7 +26,7 @@ kubectl delete -n argocd secrets/argocd-initial-admin-secret
 ### Get initial password for elasticsearch
 
 ```
-kubectl get secrets elasticsearch-es-elastic-user -o json | jq -r .data.elastic | base64 -d
+kubectl -n elastic-system get secrets elasticsearch-es-elastic-user -o json | jq -r .data.elastic | base64 -d
 ```
 
 Update password in bitwarden secret manager : fluent.env
