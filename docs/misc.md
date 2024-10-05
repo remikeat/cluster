@@ -53,3 +53,9 @@ curl -s https://api.github.com/users/remikeat/keys | jq -r .[].key
 ```
 talosctl config merge ./talosconfig
 ```
+
+### Debug pod
+
+```
+kubectl run -it --rm -n rook-ceph --image ubuntu:latest --privileged debug
+```

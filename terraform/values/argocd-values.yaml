@@ -66,7 +66,7 @@ repoServer:
           mv argocd-vault-plugin /custom-tools/ &&
           curl -L https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/${YQ_BINARY}.tar.gz -o ${YQ_BINARY}.tar.gz &&
           tar vfxz ${YQ_BINARY}.tar.gz &&
-          chmox +x ${YQ_BINARY} &&
+          chmod +x ${YQ_BINARY} &&
           mv ${YQ_BINARY} /custom-tools/yq
       volumeMounts:
         - mountPath: /custom-tools
