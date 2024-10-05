@@ -3,7 +3,7 @@ kind: Kustomization
 
 helmCharts:
   - name: kiali-operator
-    namespace: kiali-operator
+    namespace: kiali
     releaseName: kiali-operator
     valuesFile: values.yaml
     version: 1.89.0

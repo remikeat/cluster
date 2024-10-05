@@ -2,6 +2,7 @@ apiVersion: fluentbit.fluent.io/v1alpha2
 kind: ClusterInput
 metadata:
   name: audit-tail
+  namespace: falco
   labels:
     fluentbit.fluent.io/enabled: "true"
 spec:
@@ -14,6 +15,7 @@ apiVersion: fluentbit.fluent.io/v1alpha2
 kind: ClusterParser
 metadata:
   name: audit-parser
+  namespace: falco
   labels:
     fluentbit.fluent.io/enabled: "true"
 spec:
@@ -25,6 +27,7 @@ apiVersion: fluentbit.fluent.io/v1alpha2
 kind: ClusterOutput
 metadata:
   name: audit-es
+  namespace: falco
   labels:
     fluentbit.fluent.io/enabled: 'true'
 spec:
@@ -56,6 +59,7 @@ apiVersion: fluentbit.fluent.io/v1alpha2
 kind: ClusterOutput
 metadata:
   name: k8s-audit
+  namespace: falco
   labels:
     fluentbit.fluent.io/enabled: 'true'
 spec:

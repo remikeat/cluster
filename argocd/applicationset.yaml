@@ -14,17 +14,20 @@ spec:
       # - app: core/descheduler
       - app: core/ingress-nginx
       - app: core/istio
+        namespace: istio-system
       - app: core/rancher
       - app: core/vault
       # - app: storage/local-path-provisioner
       - app: storage/longhorn
-      - app: storage/rook
+        namespace: longhorn-system
+      - app: storage/rook-ceph
       - app: monitoring/crowdsec
       - app: monitoring/elastic
         namespace: elastic-system
       - app: monitoring/falco
       - app: monitoring/fluent
       - app: monitoring/grafana
+        namespace: kube-prometheus-stack
       - app: monitoring/kiali
       - app: monitoring/metrics-server
       - app: monitoring/trivy
@@ -36,6 +39,7 @@ spec:
       - app: vm/kubevirt-manager
       - app: vm/multus
       # - app: vm/external-snapshotter
+      #   namespace: kube-system
       # - app: vm/harvester
       # - app: vm/system-upgrade-controller
       - app: apps/portainer
