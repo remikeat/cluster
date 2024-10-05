@@ -2,3 +2,5 @@ operator:
   configAuditScannerEnabled: false
 serviceMonitor:
   enabled: true
+service:
+  headless: false
