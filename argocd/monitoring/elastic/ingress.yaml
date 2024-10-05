@@ -2,7 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: kibana
-  namespace: default
+  namespace: elastic
   annotations:
     argocd.argoproj.io/sync-wave: "1"
 spec:
@@ -25,7 +25,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: elasticsearch
-  namespace: default
+  namespace: elastic
   annotations:
     argocd.argoproj.io/sync-wave: "1"
 spec:
