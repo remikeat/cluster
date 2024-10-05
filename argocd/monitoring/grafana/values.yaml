@@ -15,6 +15,9 @@ prometheus:
           regex: ([^:]+)(?::\d+)?;(\d+)
           replacement: ${1}:${2}
           target_label: __address__
+    serviceMonitorSelectorNilUsesHelmValues: false
+    serviceMonitorSelector: {}
+    serviceMonitorNamespaceSelector: {}
 grafana:
   adminPassword: <path:kv/data/grafana#password>
   persistence:
