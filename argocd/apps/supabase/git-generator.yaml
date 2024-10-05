@@ -5,7 +5,7 @@ metadata:
   annotations:
     config.kubernetes.io/function: |
       exec: 
-        path: ../../_generators/git-generator.sh      
+        path: ./git-generator.sh      
 spec:
   repoURL: https://github.com/supabase-community/supabase-kubernetes
   path: charts/supabase
