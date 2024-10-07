@@ -22,20 +22,22 @@ configs:
         allowConcurrency: true
         init:
           command:
-            - sh
-            - "-c"
-            - "find . -name git-generator.sh -exec chmod +x {} \\;"
+            - bash
+            - -c
+            - find . -name git-generator.sh -exec chmod +x {} \;
         discover:
           find:
             command:
-              - sh
-              - "-c"
-              - "find . -maxdepth 1 -name kustomization.yaml"
+              - bash
+              - -c
+              - find . -maxdepth 1 -name kustomization.yaml
         generate:
           command:
-            - sh
-            - "-c"
-            - "kustomize build --enable-helm --enable-alpha-plugins --enable-exec . | argocd-vault-plugin generate -"
+            - bash
+            - -c
+            - |
+              [ -e values.yaml ] && (cat <(echo 'kind: Values') values.yaml | argocd-vault-plugin generate - > gen_values.yaml) && mv gen_values.yaml values.yaml; \
+              kustomize build --enable-helm --enable-alpha-plugins --enable-exec . | argocd-vault-plugin generate -
         lockRepo: false
 server:
   replicas: 2
