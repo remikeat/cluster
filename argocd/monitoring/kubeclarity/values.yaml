@@ -1,0 +1,11 @@
+global:
+  databasePassword: <path:kv/data/kubeclarity#db_password>
+
+  ingress:
+    enabled: true
+    ingressClassName: tailscale
+    hosts:
+      - host: kubeclarity
+    tls:
+      - hosts:
+          - kubeclarity

@@ -29,6 +29,7 @@ spec:
       - app: monitoring/grafana
         namespace: kube-prometheus-stack
       - app: monitoring/kiali
+      - app: monitoring/kubeclarity
       - app: monitoring/metrics-server
       - app: monitoring/trivy
         namespace: trivy-system
