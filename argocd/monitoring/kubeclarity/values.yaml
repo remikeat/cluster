@@ -1,6 +1,6 @@
 global:
   databasePassword: <path:kv/data/kubeclarity#db_password>
-
+kubeclarity:
   ingress:
     enabled: true
     ingressClassName: tailscale
