@@ -1,3 +1,4 @@
+kind: Values
 secret:
   jwt:
     anonKey: <path:kv/data/supabase#anon_key>

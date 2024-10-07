@@ -183,3 +183,14 @@ echo 'alias rook-ceph="kubectl rook-ceph"' >> ~/.bashrc
 kubectl rook-ceph completion bash > /etc/bash_completion.d/rook-ceph
 echo "source '/etc/bash_completion.d/rook-ceph'" >> ~/.bashrc
 ```
+
+## ArgoCD vault plugin
+
+### argocd-vault-plugin
+
+```
+export AVP_VERSION=1.16.1
+curl -L https://github.com/argoproj-labs/argocd-vault-plugin/releases/download/v${AVP_VERSION}/argocd-vault-plugin_${AVP_VERSION}_linux_amd64 -o argocd-vault-plugin
+chmod +x argocd-vault-plugin
+sudo mv argocd-vault-plugin /usr/local/bin/
+```
