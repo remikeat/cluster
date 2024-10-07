@@ -9,3 +9,13 @@ kubeclarity:
     tls:
       - hosts:
           - kubeclarity
+kubeclarity-runtime-scan:
+  vulnerability-scanner:
+    analyzer:
+      analyzerList: "syft gomod trivy"
+      trivy:
+        enabled: true
+    scanner:
+      scannerList: "grype trivy"
+      trivy:
+        enabled: true
