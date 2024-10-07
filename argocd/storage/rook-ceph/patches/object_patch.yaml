@@ -4,3 +4,6 @@
 - op: replace
   path: /spec/metadataPool/replicated/size
   value: 1
+- op: replace
+  path: spec/dataPool/erasureCoded/dataChunks
+  value: 1

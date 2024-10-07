@@ -182,6 +182,7 @@ echo "source '/etc/bash_completion.d/kustomize'" >> ~/.bashrc
 echo 'alias rook-ceph="kubectl rook-ceph"' >> ~/.bashrc
 kubectl rook-ceph completion bash > /etc/bash_completion.d/rook-ceph
 echo "source '/etc/bash_completion.d/rook-ceph'" >> ~/.bashrc
+echo 'alias ceph="kubectl rook-ceph ceph"' >> ~/.bashrc
 ```
 
 ## ArgoCD vault plugin
