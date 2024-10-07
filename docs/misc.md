@@ -59,3 +59,16 @@ talosctl config merge ./talosconfig
 ```
 kubectl run -it --rm -n rook-ceph --image ubuntu:latest --privileged debug
 ```
+
+### Wipe disk for ceph to use
+
+Carefully check which disk to wipe with
+
+```
+lsblk
+```
+
+```
+apt update && apt install gdisk -y
+sgdisk --zap-all /dev/sda
+```
