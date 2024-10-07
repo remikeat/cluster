@@ -9,6 +9,8 @@ kubeclarity:
     tls:
       - hosts:
           - kubeclarity
+kubeclarity-trivy-server:
+  enabled: true
 kubeclarity-runtime-scan:
   vulnerability-scanner:
     analyzer:
