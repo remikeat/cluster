@@ -1,0 +1,44 @@
+ingress:
+  api:
+    enabled: true
+    ingressClassName: tailscale
+    tls:
+      - hosts:
+          - minio
+        secretName: minio-tls
+    host: minio
+    path: /
+    pathType: Prefix
+  console:
+    enabled: true
+    ingressClassName: tailscale
+    tls:
+      - hosts:
+          - minio-console
+        secretName: minio-console-tls
+    host: minio-console
+    path: /
+    pathType: Prefix
+tenant:
+  pools:
+    - servers: 1
+      name: pool-0
+      volumesPerServer: 1
+      size: 100Gi
+      storageClassName: ceph-block
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+        fsGroupChangePolicy: "OnRootMismatch"
+        runAsNonRoot: true
+      containerSecurityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+        runAsNonRoot: true
+        allowPrivilegeEscalation: false
+        capabilities:
+          drop:
+            - ALL
+        seccompProfile:
+          type: RuntimeDefault
