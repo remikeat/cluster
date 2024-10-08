@@ -5,7 +5,7 @@ metadata:
   namespace: argocd
 spec:
   goTemplate: true
-  goTemplateOptions: ["missingkey=error"]
+  goTemplateOptions: ["missingkey=zero"]
   generators:
   - list:
       elements:
@@ -21,6 +21,7 @@ spec:
       - app: storage/longhorn
         namespace: longhorn-system
       - app: storage/minio
+        prune: false
       - app: storage/rook-ceph
       - app: monitoring/crowdsec
       - app: monitoring/elastic
@@ -60,7 +61,7 @@ spec:
         path: argocd/{{.app}}
       destination:
         server: 'https://kubernetes.default.svc'
-        namespace: "{{base .app}}"
+        namespace: '{{default (base .app) .namespace}}'
       syncPolicy:
         syncOptions:
           - CreateNamespace=true
@@ -75,10 +76,6 @@ spec:
             factor: 2
   templatePatch: |
     spec:
-      destination:
-        {{- if hasKey . "namespace" }}
-        namespace: {{.namespace}}
-        {{- else }}
-        namespace: {{base .app}}
-        {{- end }}
-      
+      syncPolicy:
+        automated:
+          prune: {{default true .prune}}
