@@ -20,6 +20,10 @@ ingress:
     path: /
     pathType: Prefix
 tenant:
+  configSecret:
+    name: myminio-env-configuration
+    accessKey: minio
+    secretKey: <path:kv/data/minio#secret_key>
   pools:
     - servers: 1
       name: pool-0

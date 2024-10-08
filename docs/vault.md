@@ -66,3 +66,5 @@ vault operator raft snapshot restore backup.snap
 
 - kv/data/rook-ceph#object_access_key
 - kv/data/rook-ceph#object_secret_key
+
+- kv/data/minio#secret_key
