@@ -21,7 +21,7 @@ spec:
         command:
           - sh
           - -c
-          - minio gateway s3 http://rook-ceph-rgw-ceph-objectstore.rook-ceph.svc.cluster.local:80
+          - gateway s3 http://rook-ceph-rgw-ceph-objectstore.rook-ceph.svc.cluster.local:80
         ports:
         - containerPort: 9000
         env:
