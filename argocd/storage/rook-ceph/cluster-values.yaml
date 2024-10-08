@@ -36,20 +36,117 @@ cephClusterSpec:
     cleanup:
       requests:
         cpu: "100m"
-# cephFileSystems:
-#   - name: ceph-filesystem
-#     spec:
-#       metadataServer:
-#         resources:
-#           requests:
-#             cpu: "200m"
-# cephObjectStores:
-#   - name: ceph-objectstore
-#     spec:
-#       gateway:
-#         resources:
-#           requests:
-#             cpu: "200m"
+cephBlockPools:
+  - name: ceph-blockpool
+    spec:
+      failureDomain: host
+      replicated:
+        size: 1
+        requireSafeReplicaSize: false
+    storageClass:
+      enabled: true
+      name: ceph-block
+      annotations: {}
+      labels: {}
+      isDefault: false
+      reclaimPolicy: Delete
+      allowVolumeExpansion: true
+      volumeBindingMode: "Immediate"
+      mountOptions: []
+      allowedTopologies: []
+      parameters:
+        imageFormat: "2"
+
+        imageFeatures: layering
+
+        csi.storage.k8s.io/provisioner-secret-name: rook-csi-rbd-provisioner
+        csi.storage.k8s.io/provisioner-secret-namespace: rook-ceph
+        csi.storage.k8s.io/controller-expand-secret-name: rook-csi-rbd-provisioner
+        csi.storage.k8s.io/controller-expand-secret-namespace: rook-ceph
+        csi.storage.k8s.io/node-stage-secret-name: rook-csi-rbd-node
+        csi.storage.k8s.io/node-stage-secret-namespace: rook-ceph
+        csi.storage.k8s.io/fstype: ext4
+cephFileSystems:
+  - name: ceph-filesystem
+    spec:
+      metadataPool:
+        replicated:
+          size: 1
+      dataPools:
+        - failureDomain: host
+          replicated:
+            size: 1
+          name: data0
+      metadataServer:
+        activeCount: 1
+        activeStandby: true
+        resources:
+          limits:
+            memory: "4Gi"
+          requests:
+            cpu: "100m"
+            memory: "4Gi"
+        priorityClassName: system-cluster-critical
+    storageClass:
+      enabled: true
+      isDefault: false
+      name: ceph-filesystem
+      pool: data0
+      reclaimPolicy: Delete
+      allowVolumeExpansion: true
+      volumeBindingMode: "Immediate"
+      annotations: {}
+      labels: {}
+      mountOptions: []
+      parameters:
+        csi.storage.k8s.io/provisioner-secret-name: rook-csi-cephfs-provisioner
+        csi.storage.k8s.io/provisioner-secret-namespace: rook-ceph
+        csi.storage.k8s.io/controller-expand-secret-name: rook-csi-cephfs-provisioner
+        csi.storage.k8s.io/controller-expand-secret-namespace: rook-ceph
+        csi.storage.k8s.io/node-stage-secret-name: rook-csi-cephfs-node
+        csi.storage.k8s.io/node-stage-secret-namespace: rook-ceph
+        csi.storage.k8s.io/fstype: ext4
+cephObjectStores:
+  - name: ceph-objectstore
+    spec:
+      metadataPool:
+        failureDomain: host
+        replicated:
+          size: 1
+      dataPool:
+        failureDomain: host
+        replicated:
+          size: 1
+      preservePoolsOnDelete: true
+      gateway:
+        port: 80
+        resources:
+          limits:
+            memory: "2Gi"
+          requests:
+            cpu: "100m"
+            memory: "1Gi"
+        instances: 1
+        priorityClassName: system-cluster-critical
+    storageClass:
+      enabled: true
+      isDefault: false
+      name: ceph-bucket
+      reclaimPolicy: Delete
+      volumeBindingMode: "Immediate"
+      annotations: {}
+      labels: {}
+      parameters:
+        region: us-east-1
+    ingress:
+      enabled: true
+      host:
+        name: objectstore
+        path: /
+      tls:
+      - hosts:
+          - objectstore
+      ingressClassName: tailscale
 configOverride: |
   [global]
   osd_pool_default_size = 1

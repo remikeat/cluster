@@ -1,3 +1,0 @@
-- op: replace
-  path: /metadata/annotations/storageclass.kubernetes.io~1is-default-class
-  value: false
