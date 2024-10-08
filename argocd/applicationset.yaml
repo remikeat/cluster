@@ -78,4 +78,8 @@ spec:
     spec:
       syncPolicy:
         automated:
-          prune: {{default true .prune}}
+          {{- if hasKey . "prune" }}
+          prune: {{.prune}}
+          {{- else }}
+          prune: true
+          {{- end }}
