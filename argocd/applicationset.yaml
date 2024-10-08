@@ -20,6 +20,7 @@ spec:
       # - app: storage/local-path-provisioner
       - app: storage/longhorn
         namespace: longhorn-system
+      - app: storage/minio
       - app: storage/rook-ceph
       - app: monitoring/crowdsec
       - app: monitoring/elastic
