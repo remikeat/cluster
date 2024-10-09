@@ -6,10 +6,11 @@ cluster:
   instances: 1
   roles:
     - name: kong
+      connectionLimit: -1
       ensure: present
       comment: Kong user
       login: true
-      superuser: false
+      inherit: true
       inRoles:
         - pg_monitor
         - pg_signal_backend
