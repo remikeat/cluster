@@ -11,12 +11,6 @@ secretGenerator:
       - password=<path:kv/data/kong#pg_password>
 
 helmCharts:
-  - name: cloudnative-pg
-    namespace: cnpg-system
-    releaseName: cnpg
-    valuesFile: values-op.yaml
-    version: 0.22.0
-    repo: https://cloudnative-pg.github.io/charts
   - name: cluster
     namespace: cnpg-database
     releaseName: cnpg

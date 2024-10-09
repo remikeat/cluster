@@ -8,9 +8,15 @@ metadata:
 spec:
   project: default
   sources:
-    - repoURL: https://github.com/cloudnative-pg/charts.git
-      path: charts/cloudnative-pg/templates/crds
-      targetRevision: cloudnative-pg-v0.22.0
+    - repoURL: https://cloudnative-pg.github.io/charts
+      targetRevision: 0.22.0
+      chart: cloudnative-pg
+      helm:
+        valueFiles:
+          - $repo/argocd/storage/cloudnativepg/values-op.yaml
+    - repoURL: https://github.com/remikeat/cluster.git
+      targetRevision: HEAD
+      ref: repo
   destination:
     server: https://kubernetes.default.svc
     namespace: cnpg-system
