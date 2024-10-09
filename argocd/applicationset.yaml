@@ -19,6 +19,7 @@ spec:
       - app: core/rancher
       - app: core/vault
       - app: storage/cloudnativepg
+        namespace: cnpg-system
       # - app: storage/local-path-provisioner
       - app: storage/longhorn
         namespace: longhorn-system

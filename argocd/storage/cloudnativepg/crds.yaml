@@ -9,7 +9,7 @@ spec:
   project: default
   sources:
     - repoURL: https://github.com/cloudnative-pg/charts.git
-      path: charts/cloudnative-pg/templates/crds/crds.yaml
+      path: charts/cloudnative-pg/templates/crds
       targetRevision: cloudnative-pg-v0.22.0
   destination:
     server: https://kubernetes.default.svc
