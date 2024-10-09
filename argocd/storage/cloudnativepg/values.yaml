@@ -1,0 +1,19 @@
+type: postgresql
+mode: standalone
+version:
+  postgresql: "16"
+cluster:
+  instances: 1
+  roles:
+    - name: kong
+      ensure: present
+      comment: Kong user
+      login: true
+      superuser: false
+      inRoles:
+        - pg_monitor
+        - pg_signal_backend
+      passwordSecret:
+        name: kong-credentials
+backups:
+  enabled: false
