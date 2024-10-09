@@ -45,6 +45,7 @@ admin:
     path: /
     pathType: Prefix
     ingressClassName: tailscale
+    tls: kong-admin-tls
 
 cluster:
   enabled: true
@@ -69,6 +70,7 @@ manager:
     path: /
     pathType: Prefix
     ingressClassName: tailscale
+    tls: kong-manager-tls
 
 proxy:
   enabled: false
