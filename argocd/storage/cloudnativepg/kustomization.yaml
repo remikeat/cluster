@@ -14,11 +14,15 @@ helmCharts:
   - name: cloudnative-pg
     namespace: cnpg-system
     releaseName: cnpg
+    valuesFile: values-op.yaml
     version: 0.22.0
     repo: https://cloudnative-pg.github.io/charts
   - name: cluster
     namespace: cnpg-database
     releaseName: cnpg
-    valuesFile: values.yaml
+    valuesFile: values-db.yaml
     version: 0.0.11
     repo: https://cloudnative-pg.github.io/charts
+
+resources:
+  - crds.yaml
