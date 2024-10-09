@@ -11,9 +11,7 @@ cluster:
       comment: Kong user
       login: true
       inherit: true
-      inRoles:
-        - pg_monitor
-        - pg_signal_backend
+      superuser: true
       passwordSecret:
         name: kong-credentials
   initdb:
