@@ -25,4 +25,5 @@ helmCharts:
     repo: https://cloudnative-pg.github.io/charts
 
 resources:
+  - namespace.yaml
   - crds.yaml
