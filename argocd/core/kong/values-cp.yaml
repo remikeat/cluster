@@ -22,20 +22,29 @@ env:
 
   password: <path:kv/data/kong#password>
 
+  admin_gui_url: https://kong-manager.tail4d334.ts.net
+  admin_gui_api_url: https://kong-admin.tail4d334.ts.net
+  admin_gui_session_conf: '{"secret":"secret","storage":"kong","cookie_secure":false}'
+
 enterprise:
   enabled: false
   license_secret: kong-enterprise-license
+  rbac:
+    enabled: true
+    admin_gui_auth: basic-auth
 
 admin:
   enabled: true
   http:
     enabled: true
+  tls:
+    enabled: false
   ingress:
     enabled: true
-    ingressClassName: tailscale
-    hostname: kong
+    hostname: kong-admin
     path: /
-    pathType: ImplementationSpecific
+    pathType: Prefix
+    ingressClassName: tailscale
 
 cluster:
   enabled: true
@@ -48,7 +57,18 @@ clustertelemetry:
     enabled: true
 
 manager:
-  enabled: false
+  enabled: true
+  http:
+    enabled: true
+  tls:
+    enabled: false
+     
+  ingress:
+    enabled: true
+    hostname: kong-manager
+    path: /
+    pathType: Prefix
+    ingressClassName: tailscale
 
 proxy:
   enabled: false
