@@ -16,5 +16,11 @@ cluster:
         - pg_signal_backend
       passwordSecret:
         name: kong-credentials
+  initdb:
+    database: kong
+    owner: kong
+    secret:
+      name: kong-credentials
+    encoding: UTF8
 backups:
   enabled: false
