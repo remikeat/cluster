@@ -20,4 +20,4 @@ helmCharts:
 
 resources:
   - namespace.yaml
-  - crds.yaml
+  - application.yaml
