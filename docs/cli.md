@@ -195,3 +195,27 @@ curl -L https://github.com/argoproj-labs/argocd-vault-plugin/releases/download/v
 chmod +x argocd-vault-plugin
 sudo mv argocd-vault-plugin /usr/local/bin/
 ```
+
+## CloudNativePG
+
+### CloudNativePG CLI
+
+```
+kubectl krew install cnpg
+```
+
+### CloudNativePG CLI auto-completion
+
+```
+cat > kubectl_complete-cnpg <<EOF
+#!/usr/bin/env sh
+
+# Call the __complete command passing it all arguments
+kubectl cnpg __complete "\$@"
+EOF
+
+chmod +x kubectl_complete-cnpg
+
+# Important: the following command may require superuser permission
+sudo mv kubectl_complete-cnpg /usr/local/bin
+```
