@@ -51,3 +51,11 @@ htpasswd -n username
 ```
 openssl passwd -6 password
 ```
+
+### Generate TLS certificates
+
+```
+openssl req -new -x509 -nodes -newkey ec:<(openssl ecparam -name secp384r1) -keyout ./tls.key -out ./tls.crt -days 1095 -subj "/CN=kong_clustering"
+vault kv put -mount=kv kong certificate=@tls.crt private_key=@tls.key
+rm tls.key tls.crt
+```

@@ -1,0 +1,54 @@
+ingressController:
+  enabled: false
+
+image:
+  repository: kong
+  tag: "3.8.0"
+
+secretVolumes:
+  - kong-cluster-cert
+
+env:
+  role: control_plane
+  cluster_cert: /etc/secrets/kong-cluster-cert/tls.crt
+  cluster_cert_key: /etc/secrets/kong-cluster-cert/tls.key
+
+  database: postgres
+  pg_database: kong
+  pg_user: kong
+  pg_password: <path:kv/data/kong#pg_password>
+  pg_host: kong-cp-postgresql.kong.svc.cluster.local
+  pg_ssl: "on"
+
+  password: <path:kv/data/kong#password>
+
+enterprise:
+  enabled: false
+  license_secret: kong-enterprise-license
+
+admin:
+  enabled: true
+  http:
+    enabled: true
+  ingress:
+    enabled: true
+    ingressClassName: tailscale
+    hostname: kong
+    path: /
+    pathType: ImplementationSpecific
+
+cluster:
+  enabled: true
+  tls:
+    enabled: true
+
+clustertelemetry:
+  enabled: true
+  tls:
+    enabled: true
+
+manager:
+  enabled: false
+
+proxy:
+  enabled: false

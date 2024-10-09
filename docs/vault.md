@@ -68,3 +68,8 @@ vault operator raft snapshot restore backup.snap
 - kv/data/rook-ceph#object_secret_key
 
 - kv/data/minio#secret_key
+
+- kv/data/kong#certificate
+- kv/data/kong#private_key
+- kv/data/kong#pg_password
+- kv/data/kong#password
