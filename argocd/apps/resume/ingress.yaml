@@ -6,7 +6,7 @@ metadata:
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-production
 spec:
-  ingressClassName: nginx
+  ingressClassName: kong
   rules:
     - host: "www2.remikeat.com"
       http:
