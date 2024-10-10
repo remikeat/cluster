@@ -72,3 +72,9 @@ lsblk
 apt update && apt install gdisk -y
 sgdisk --zap-all /dev/sda
 ```
+
+### Get kong ip
+
+```
+kubectl get service --namespace kong kong-dp-kong-proxy -o jsonpath='{range .status.loadBalancer.ingress[0]}{@.ip}{@.hostname}{end}'
+```
