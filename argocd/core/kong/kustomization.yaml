@@ -21,6 +21,7 @@ helmCharts:
     valuesFile: values-cp.yaml
     version: 2.42.0
     repo: https://charts.konghq.com
+    includeCRDs: true
     apiVersions:
       - gateway.networking.k8s.io/v1
   - name: kong
