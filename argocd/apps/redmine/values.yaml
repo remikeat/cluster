@@ -4,7 +4,7 @@ ingress:
   pathType: ImplementationSpecific
   hostname: redmine.remikeat.com
   annotations:
-    kubernetes.io/ingress.class: nginx
+    kubernetes.io/ingress.class: kong
     cert-manager.io/cluster-issuer: letsencrypt-production
   extraTls:
     - hosts:
