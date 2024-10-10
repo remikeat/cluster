@@ -1,5 +1,6 @@
 ingress:
   enabled: true
+  tls: true
   ingressClassName: kong
   pathType: ImplementationSpecific
   hostname: redmine.remikeat.com
