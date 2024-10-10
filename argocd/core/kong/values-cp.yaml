@@ -1,5 +1,7 @@
 ingressController:
   enabled: true
+  env:
+    publish_service: kong/kong-dp-kong-proxy
 
 image:
   repository: kong
