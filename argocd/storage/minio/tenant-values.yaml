@@ -86,6 +86,8 @@ tenant:
      keystore:
        vault:
          endpoint: "http://vault.vault.svc.cluster.local:8200" # The Vault endpoint
+         engine: "kv"
+         version: "v2"
          namespace: "" # An optional Vault namespace. See: https://www.vaultproject.io/docs/enterprise/namespaces/index.html
          prefix: "my-minio"    # An optional K/V prefix. The server will store keys under this prefix.
          approle:    # AppRole credentials. See: https://www.vaultproject.io/docs/auth/approle.html
