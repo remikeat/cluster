@@ -219,3 +219,28 @@ chmod +x kubectl_complete-cnpg
 # Important: the following command may require superuser permission
 sudo mv kubectl_complete-cnpg /usr/local/bin
 ```
+
+## MinIO CLI
+
+### MinIO CLI
+
+```
+curl https://dl.min.io/client/mc/release/linux-amd64/mc \
+  --create-dirs \
+  -o $HOME/minio-binaries/mc
+
+chmod +x $HOME/minio-binaries/mc
+echo 'export PATH=$PATH:$HOME/minio-binaries/' >> ~/.bashrc
+```
+
+### MinIO auto-completion
+
+```
+mc --autocompletion
+```
+
+### Set alias
+
+```
+mc alias set myminio https://minio.tail4d334.ts.net
+```
