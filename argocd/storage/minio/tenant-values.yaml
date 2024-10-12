@@ -75,7 +75,7 @@ tenant:
          header:
            cert: X-Tls-Client-Cert
      admin:
-       identity: disabled
+       identity: ${MINIO_KES_IDENTITY}
      cache:
        expiry:
          any: 5m0s
