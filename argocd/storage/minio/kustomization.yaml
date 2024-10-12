@@ -1,6 +1,15 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
+generatorOptions:
+  disableNameSuffixHash: true
+
+secretGenerator:
+  - name: pg-backup-user
+    literals:
+      - CONSOLE_ACCESS_KEY=<path:kv/data/minio#pg-backup-access-key>
+      - CONSOLE_SECRET_KEY=<path:kv/data/minio#pg-backup-secret-key>
+
 helmCharts:
   - name: operator
     namespace: minio

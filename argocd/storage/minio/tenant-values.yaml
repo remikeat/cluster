@@ -51,3 +51,7 @@ tenant:
   env:
     - name: MINIO_BROWSER_REDIRECT_URL
       value: https://minio-console.tail4d334.ts.net
+  buckets:
+    - name: pg-backup
+  users:
+    - name: pg-backup-user
