@@ -58,3 +58,72 @@ tenant:
       region: ap-northeast-1
   users:
     - name: pg-backup-user
+  kes:
+   image:
+     repository: quay.io/minio/kes
+     tag: 2024-09-11T07-22-50Z
+     pullPolicy: IfNotPresent
+   env: [ ]
+   replicas: 1
+   configuration: |-
+     address: :7373
+     # tls:
+     #   key: /tmp/kes/server.key   # Path to the TLS private key
+     #   cert: /tmp/kes/server.crt # Path to the TLS certificate
+     #   proxy:
+     #     identities: []
+     #     header:
+     #       cert: X-Tls-Client-Cert
+     admin:
+       identity: disabled
+     cache:
+       expiry:
+         any: 5m0s
+         unused: 20s
+     log:
+       error: on
+       audit: off
+     keystore:
+       vault:
+         endpoint: "http://vault.vault.svc.cluster.local:8200" # The Vault endpoint
+         namespace: "" # An optional Vault namespace. See: https://www.vaultproject.io/docs/enterprise/namespaces/index.html
+         prefix: "my-minio"    # An optional K/V prefix. The server will store keys under this prefix.
+         approle:    # AppRole credentials. See: https://www.vaultproject.io/docs/auth/approle.html
+           id: "<path:kv/data/minio#kes-id>"      # Your AppRole Role ID
+           secret: "<path:kv/data/minio#kes-secret>"  # Your AppRole Secret ID
+           retry: 15s  # Duration until the server tries to re-authenticate after connection loss.
+         tls:        # The Vault client TLS configuration for mTLS authentication and certificate verification
+           key: ""     # Path to the TLS client private key for mTLS authentication to Vault
+           cert: ""    # Path to the TLS client certificate for mTLS authentication to Vault
+           ca: ""      # Path to one or multiple PEM root CA certificates
+         status:     # Vault status configuration. The server will periodically reach out to Vault to check its status.
+           ping: 10s   # Duration until the server checks Vault's status again.
+   imagePullPolicy: "IfNotPresent"
+   externalCertSecret: null
+   clientCertSecret: null
+   keyName: ""
+   resources: { }
+   nodeSelector: { }
+   affinity:
+     nodeAffinity: { }
+     podAffinity: { }
+     podAntiAffinity: { }
+   tolerations: [ ]
+   annotations: { }
+   labels: { }
+   serviceAccountName: ""
+   securityContext:
+     runAsUser: 1000
+     runAsGroup: 1000
+     runAsNonRoot: true
+     fsGroup: 1000
+   containerSecurityContext:
+     runAsUser: 1000
+     runAsGroup: 1000
+     runAsNonRoot: true
+     allowPrivilegeEscalation: false
+     capabilities:
+       drop:
+         - ALL
+     seccompProfile:
+       type: RuntimeDefault

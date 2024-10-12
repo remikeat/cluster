@@ -13,6 +13,12 @@ kubectl exec -it -n vault pods/vault-0 -- vault operator unseal
 vault secrets enable -version=2 kv
 ```
 
+## Enable AppRole auth
+
+```
+vault auth enable approle
+```
+
 ## Backup vault
 
 ```
@@ -70,6 +76,8 @@ vault operator raft snapshot restore backup.snap
 - kv/data/minio#secret_key
 - kv/data/minio#pg-backup-access-key
 - kv/data/minio#pg-backup-secret-key
+- kv/data/minio#kes-id
+- kv/data/minio#kes-secret
 
 - kv/data/kong#certificate
 - kv/data/kong#private_key
