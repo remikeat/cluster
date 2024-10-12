@@ -21,4 +21,12 @@ cluster:
       name: kong-credentials
     encoding: UTF8
 backups:
-  enabled: false
+  enabled: true
+  endpointURL: https://minio.minio.svc.cluster.local
+  provider: s3
+  s3:
+    region: ap-northeast-1
+    bucket: pg-backup
+    path: "/"
+    accessKey: <path:kv/data/minio#pg-backup-access-key>
+    secretKey: <path:kv/data/minio#pg-backup-secret-key>

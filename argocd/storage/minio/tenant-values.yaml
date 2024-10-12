@@ -53,5 +53,6 @@ tenant:
       value: https://minio-console.tail4d334.ts.net
   buckets:
     - name: pg-backup
+      region: ap-northeast-1
   users:
     - name: pg-backup-user
