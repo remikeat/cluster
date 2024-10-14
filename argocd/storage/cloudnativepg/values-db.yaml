@@ -28,5 +28,5 @@ backups:
     region: ap-northeast-1
     bucket: pg-backup
     path: "/"
-    accessKey: <path:kv/data/minio#pg-backup-access-key>
-    secretKey: <path:kv/data/minio#pg-backup-secret-key>
+    accessKey: <path:kv/data/cloudnativepg#pg-backup-access-key>
+    secretKey: <path:kv/data/cloudnativepg#pg-backup-secret-key>

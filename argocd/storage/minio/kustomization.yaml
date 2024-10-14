@@ -7,8 +7,8 @@ generatorOptions:
 secretGenerator:
   - name: pg-backup-user
     literals:
-      - CONSOLE_ACCESS_KEY=<path:kv/data/minio#pg-backup-access-key>
-      - CONSOLE_SECRET_KEY=<path:kv/data/minio#pg-backup-secret-key>
+      - CONSOLE_ACCESS_KEY=<path:kv/data/cloudnativepg#pg-backup-access-key>
+      - CONSOLE_SECRET_KEY=<path:kv/data/cloudnativepg#pg-backup-secret-key>
 
 helmCharts:
   - name: operator
