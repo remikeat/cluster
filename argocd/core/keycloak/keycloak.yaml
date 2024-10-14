@@ -15,8 +15,8 @@ spec:
       name: keycloak-db-secret
       key: password
   hostname:
-    hostname: keycloak
-    admin: keycloak-admin
+    hostname: https://keycloak.tail4d334.ts.net
+    admin: https://keycloak-admin.tail4d334.ts.net
   http:
     httpEnabled: true
   ingress:
