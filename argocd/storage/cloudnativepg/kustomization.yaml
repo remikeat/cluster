@@ -9,12 +9,23 @@ secretGenerator:
     literals:
       - username=kong
       - password=<path:kv/data/kong#pg_password>
+  - name: keycloak-credentials
+    namespace: cnpg-database
+    literals:
+      - username=keycloak
+      - password=<path:kv/data/keycloak#pg_password>
 
 helmCharts:
-  - name: cluster
+  - name: kongdb
     namespace: cnpg-database
-    releaseName: cnpg
-    valuesFile: values-db.yaml
+    releaseName: kongdb
+    valuesFile: values-kongdb.yaml
+    version: 0.0.11
+    repo: https://cloudnative-pg.github.io/charts
+  - name: keycloakdb
+    namespace: cnpg-database
+    releaseName: keycloakdb
+    valuesFile: values-keycloakdb.yaml
     version: 0.0.11
     repo: https://cloudnative-pg.github.io/charts
 

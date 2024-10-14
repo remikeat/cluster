@@ -5,20 +5,20 @@ version:
 cluster:
   instances: 1
   roles:
-    - name: kong
+    - name: keycloak
       connectionLimit: -1
       ensure: present
-      comment: Kong user
+      comment: Keycloak user
       login: true
       inherit: true
       superuser: true
       passwordSecret:
-        name: kong-credentials
+        name: keycloak-credentials
   initdb:
-    database: kong
-    owner: kong
+    database: keycloak
+    owner: keycloak
     secret:
-      name: kong-credentials
+      name: keycloak-credentials
     encoding: UTF8
 backups:
   enabled: true
@@ -27,6 +27,6 @@ backups:
   s3:
     region: ap-northeast-1
     bucket: pg-backup
-    path: "/"
+    path: "/keycloakdb/"
     accessKey: <path:kv/data/cloudnativepg#pg-backup-access-key>
     secretKey: <path:kv/data/cloudnativepg#pg-backup-secret-key>

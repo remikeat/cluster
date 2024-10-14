@@ -1,0 +1,32 @@
+type: postgresql
+mode: standalone
+version:
+  postgresql: "16"
+cluster:
+  instances: 1
+  roles:
+    - name: kong
+      connectionLimit: -1
+      ensure: present
+      comment: Kong user
+      login: true
+      inherit: true
+      superuser: true
+      passwordSecret:
+        name: kong-credentials
+  initdb:
+    database: kong
+    owner: kong
+    secret:
+      name: kong-credentials
+    encoding: UTF8
+backups:
+  enabled: true
+  endpointURL: http://minio.minio.svc.cluster.local
+  provider: s3
+  s3:
+    region: ap-northeast-1
+    bucket: pg-backup
+    path: "/kongdb/"
+    accessKey: <path:kv/data/cloudnativepg#pg-backup-access-key>
+    secretKey: <path:kv/data/cloudnativepg#pg-backup-secret-key>
