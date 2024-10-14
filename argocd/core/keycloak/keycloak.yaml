@@ -16,7 +16,7 @@ spec:
       key: password
   hostname:
     hostname: https://keycloak.tail4d334.ts.net
-    admin: https://keycloak.tail4d334.ts.net/admin
+    admin: https://keycloak.tail4d334.ts.net
   http:
     httpEnabled: true
   ingress:
