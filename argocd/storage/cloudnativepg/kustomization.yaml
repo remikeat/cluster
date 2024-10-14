@@ -16,13 +16,13 @@ secretGenerator:
       - password=<path:kv/data/keycloak#pg_password>
 
 helmCharts:
-  - name: kongdb
+  - name: cluster
     namespace: cnpg-database
     releaseName: kongdb
     valuesFile: values-kongdb.yaml
     version: 0.0.11
     repo: https://cloudnative-pg.github.io/charts
-  - name: keycloakdb
+  - name: cluster
     namespace: cnpg-database
     releaseName: keycloakdb
     valuesFile: values-keycloakdb.yaml
