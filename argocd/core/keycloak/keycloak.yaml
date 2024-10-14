@@ -21,9 +21,8 @@ spec:
     httpEnabled: true
   ingress:
     enabled: false
-  additionalOptions:
-    - name: proxy
-      value: edge
+  proxy:
+      headers: forwarded
   bootstrapAdmin:
     user:
       secret: keycloak-admin
