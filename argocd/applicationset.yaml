@@ -15,6 +15,7 @@ spec:
       - app: core/ingress-nginx
       - app: core/istio
         namespace: istio-system
+      - app: core/keycloak
       - app: core/kong
       - app: core/rancher
       - app: core/vault
