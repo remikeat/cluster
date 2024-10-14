@@ -18,6 +18,6 @@ spec:
     hostname: keycloak
     admin: keycloak-admin
   http:
-    tlsSecret: keycloak-tls
+    httpEnabled: true
   ingress:
     enabled: false

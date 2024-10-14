@@ -18,4 +18,3 @@ spec:
   tls:
     - hosts:
         - "keycloak"
-      secretName: keycloak-tls
