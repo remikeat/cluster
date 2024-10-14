@@ -18,5 +18,4 @@ spec:
     hostname: keycloak
     admin: keycloak-admin
   ingress:
-    enabled: true
-    className: tailscale
+    enabled: false
