@@ -14,8 +14,6 @@ spec:
     passwordSecret:
       name: keycloak-db-secret
       key: password
-  http:
-    tlsSecret: keycloak-tls-secret
   hostname:
     hostname: keycloak
     admin: keycloak-admin
