@@ -24,3 +24,6 @@ spec:
   additionalOptions:
     - name: proxy
       value: edge
+  bootstrapAdmin:
+    user:
+      secret: keycloak-admin

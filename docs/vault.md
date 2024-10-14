@@ -85,4 +85,5 @@ vault operator raft snapshot restore backup.snap
 - kv/data/kong#pg_password
 - kv/data/kong#password
 
+- kv/data/keycloak#password
 - kv/data/keycloak#pg_password
