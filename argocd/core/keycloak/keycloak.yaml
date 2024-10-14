@@ -21,3 +21,6 @@ spec:
     httpEnabled: true
   ingress:
     enabled: false
+  additionalOptions:
+    - name: proxy
+      value: edge
