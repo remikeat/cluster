@@ -28,6 +28,8 @@ env:
   admin_gui_api_url: https://kong-admin.tail4d334.ts.net
   admin_gui_session_conf: '{"secret":"secret","storage":"kong","cookie_secure":false}'
 
+  plugins: auth
+
 enterprise:
   enabled: false
   license_secret: kong-enterprise-license
