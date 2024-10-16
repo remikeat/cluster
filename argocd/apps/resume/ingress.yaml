@@ -5,6 +5,7 @@ metadata:
   namespace: resume
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-production
+    konghq.com/plugins: auth
 spec:
   ingressClassName: kong
   rules:
