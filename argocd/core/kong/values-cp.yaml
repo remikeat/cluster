@@ -78,3 +78,8 @@ manager:
 
 proxy:
   enabled: false
+
+plugins:
+  configMaps:
+    - name: kong-plugin-auth
+      pluginName: auth
