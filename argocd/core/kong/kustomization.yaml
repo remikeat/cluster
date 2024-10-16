@@ -3,6 +3,7 @@ kind: Kustomization
 
 generatorOptions:
   disableNameSuffixHash: true
+
 secretGenerator:
   - name: kong-enterprise-license
     namespace: kong
@@ -13,6 +14,12 @@ secretGenerator:
     literals:
       - tls.crt=<path:kv/data/kong#certificate>
       - tls.key=<path:kv/data/kong#private_key>
+
+configMapGenerator:
+  - name: kong-plugin-auth
+    files:
+      - kong-plugin-auth/handler.lua
+      - kong-plugin-auth/schema.lua
 
 helmCharts:
   - name: kong
