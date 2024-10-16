@@ -1,5 +1,5 @@
 apiVersion: configuration.konghq.com/v1
-kind: KongPlugin
+kind: KongClusterPlugin
 metadata:
   name: auth
   namespace: kong
