@@ -42,6 +42,7 @@ resources:
   - https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.1.0/standard-install.yaml
   - gatewayclass.yaml
   - gateway.yaml
+  - kongplugin.yaml
 
 patches:
   - target:
