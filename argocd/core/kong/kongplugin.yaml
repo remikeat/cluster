@@ -1,7 +1,7 @@
 apiVersion: configuration.konghq.com/v1
 kind: KongPlugin
 metadata:
-  name: auth-plugin
+  name: auth
   namespace: kong
 config:
   introspect_url: http://keycloak-service.keycloak.svc.cluster.local:8080/auth/realms/users/protocol/openid-connect/token/introspect
