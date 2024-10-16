@@ -6,7 +6,7 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: kong
 config:
-  introspect_url: http://keycloak-service.keycloak.svc.cluster.local:8080/auth/realms/users/protocol/openid-connect/token/introspect
+  introspect_url: http://keycloak-service.keycloak.svc.cluster.local:8080/realms/users/protocol/openid-connect/token/introspect
   client_id: <path:kv/data/kong#client_id>
   client_secret: <path:kv/data/kong#client_secret>
 plugin: auth
