@@ -3,7 +3,7 @@ expose:
   ingress:
     hosts:
       core: harbor.remikeat.com
-    className: nginx
+    className: kong
     annotations:
       cert-manager.io/cluster-issuer: letsencrypt-production
   tls:
