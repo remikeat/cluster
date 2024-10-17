@@ -19,7 +19,7 @@ env:
   cluster_cert: /etc/secrets/kong-cluster-cert/tls.crt
   cluster_cert_key: /etc/secrets/kong-cluster-cert/tls.key
 
-  plugins: auth
+  plugins: bundled,auth
 
 enterprise:
   enabled: false
