@@ -7,7 +7,6 @@ helmCharts:
     releaseName: kafka-operator
     version: 0.43.0
     repo: https://strimzi.io/charts/
-    includeCRDs: true
 
 resources:
   - namespace.yaml
