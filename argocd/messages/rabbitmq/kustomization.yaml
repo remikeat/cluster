@@ -11,3 +11,4 @@ helmCharts:
 
 resources:
   - rabbitmq.yaml
+  - ingress.yaml
