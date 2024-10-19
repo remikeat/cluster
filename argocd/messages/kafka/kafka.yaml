@@ -27,7 +27,7 @@ spec:
       volumes:
         - id: 0
           type: persistent-claim
-          size: 100Gi
+          size: 50Gi
           deleteClaim: false
     template:
       persistentVolumeClaim:
@@ -39,7 +39,7 @@ spec:
     replicas: 1
     storage:
       type: persistent-claim
-      size: 100Gi
+      size: 50Gi
       deleteClaim: false
     template:
       persistentVolumeClaim:

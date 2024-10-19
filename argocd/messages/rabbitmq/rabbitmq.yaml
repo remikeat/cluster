@@ -20,7 +20,7 @@ spec:
       - rabbitmq_management
   persistence:
     storageClassName: longhorn
-    storage: "100Gi"
+    storage: "50Gi"
   affinity:
     podAntiAffinity:
       preferredDuringSchedulingIgnoredDuringExecution:

@@ -28,7 +28,7 @@ tenant:
     - servers: 1
       name: pool-0
       volumesPerServer: 1
-      size: 100Gi
+      size: 50Gi
       storageClassName: ceph-block
       securityContext:
         runAsUser: 1000
