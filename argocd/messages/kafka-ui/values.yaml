@@ -1,0 +1,11 @@
+yamlApplicationConfig:
+  kafka:
+    clusters:
+      - name: yaml
+        bootstrapServers: kafka-kafka-bootstrap.kafka:9092
+  auth:
+    type: disabled
+  management:
+    health:
+      ldap:
+        enabled: false

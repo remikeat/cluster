@@ -41,6 +41,7 @@ spec:
         namespace: trivy-system
       - app: messages/kafka
         prune: false
+      - app: messages/kafka-ui
       - app: pipelines/harbor
       - app: pipelines/knative
       - app: pipelines/tekton
