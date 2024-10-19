@@ -5,7 +5,6 @@ helmCharts:
   - name: rabbitmq-cluster-operator
     namespace: rabbitmq
     releaseName: rabbitmq-operator
-    valuesFile: values.yaml
     version: 4.3.25
     repo: https://charts.bitnami.com/bitnami
     includeCRDs: true
