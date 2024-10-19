@@ -78,3 +78,13 @@ sgdisk --zap-all /dev/sda
 ```
 kubectl get service --namespace kong kong-dp-kong-proxy -o jsonpath='{range .status.loadBalancer.ingress[0]}{@.ip}{@.hostname}{end}'
 ```
+
+### Kafka
+
+```
+kubectl -n kafka run kafka-producer -it --image=quay.io/strimzi/kafka:0.43.0-kafka-3.8.0 --rm --restart=Never -- bin/kafka-console-producer.sh --bootstrap-server kafka-kafka-bootstrap:9092 --topic my-topic
+```
+
+```
+kubectl -n kafka run kafka-consumer -it --image=quay.io/strimzi/kafka:0.43.0-kafka-3.8.0 --rm --restart=Never -- bin/kafka-console-consumer.sh --bootstrap-server kafka-kafka-bootstrap:9092 --topic my-topic --from-beginning
+```
