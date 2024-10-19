@@ -11,5 +11,4 @@ helmCharts:
 
 resources:
   - namespace.yaml
-  - kafkanodepool.yaml
   - kafka.yaml

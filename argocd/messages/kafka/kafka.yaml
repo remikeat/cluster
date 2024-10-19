@@ -2,13 +2,10 @@ apiVersion: kafka.strimzi.io/v1beta2
 kind: Kafka
 metadata:
   name: kafka
-  annotations:
-    strimzi.io/node-pools: enabled
-    strimzi.io/kraft: enabled
 spec:
   kafka:
     version: 3.8.0
-    metadataVersion: 3.8-IV0
+    replicas: 1
     listeners:
       - name: plain
         port: 9092
@@ -24,6 +21,20 @@ spec:
       transaction.state.log.min.isr: 1
       default.replication.factor: 1
       min.insync.replicas: 1
+      inter.broker.protocol.version: "3.8"
+    storage:
+      type: jbod
+      volumes:
+        - id: 0
+          type: persistent-claim
+          size: 100Gi
+          deleteClaim: false
+  zookeeper:
+    replicas: 1
+    storage:
+      type: persistent-claim
+      size: 100Gi
+      deleteClaim: false
   entityOperator:
     topicOperator: {}
     userOperator: {}
