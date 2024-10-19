@@ -13,3 +13,6 @@ ingress:
   enabled: true
   ingressClassName: tailscale
   host: kafka-ui
+  tls:
+    enabled: true
+    secretName: kafka-ui-tls
