@@ -16,6 +16,8 @@ spec:
       cluster_partition_handling = pause_minority
       disk_free_limit.relative = 1.0
       collect_statistics_interval = 10000
+    additionalPlugins:
+      - rabbitmq_management
   persistence:
     storageClassName: longhorn
     storage: "100Gi"

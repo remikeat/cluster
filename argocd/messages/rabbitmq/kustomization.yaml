@@ -6,7 +6,7 @@ helmCharts:
     namespace: rabbitmq
     releaseName: rabbitmq-operator
     valuesFile: values.yaml
-    version: 15.0.3
+    version: 4.3.25
     repo: https://charts.bitnami.com/bitnami
 
 resources:

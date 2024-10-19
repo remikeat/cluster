@@ -90,4 +90,5 @@ vault operator raft snapshot restore backup.snap
 - kv/data/keycloak#password
 - kv/data/keycloak#pg_password
 
-- kv/data/rabbitmq#password
+<!-- - kv/data/rabbitmq#username
+- kv/data/rabbitmq#password -->

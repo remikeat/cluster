@@ -59,3 +59,12 @@ openssl req -new -x509 -nodes -newkey ec:<(openssl ecparam -name secp384r1) -key
 vault kv put -mount=kv kong certificate=@tls.crt private_key=@tls.key
 rm tls.key tls.crt
 ```
+
+## RabbitMQ
+
+### User
+
+```
+kubectl -n rabbitmq get secret rabbitmq-default-user -o jsonpath="{.data.username}" | base64 -d
+kubectl -n rabbitmq get secret rabbitmq-default-user -o jsonpath="{.data.password}" | base64 -d
+```
