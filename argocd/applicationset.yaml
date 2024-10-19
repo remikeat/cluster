@@ -39,6 +39,7 @@ spec:
       - app: monitoring/metrics-server
       - app: monitoring/trivy
         namespace: trivy-system
+      - app: messages/kafka
       - app: pipelines/harbor
       - app: pipelines/knative
       - app: pipelines/tekton
