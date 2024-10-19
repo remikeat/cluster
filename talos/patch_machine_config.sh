@@ -7,6 +7,9 @@ talosctl machineconfig patch worker.yaml \
     --patch @patches/scheduling-control-plane.yaml \
     --patch @patches/pods-per-node.yaml \
     --patch @patches/device-ownership.yaml \
+    --patch @patches/tailscale.yaml \
+    --patch @patches/udev-rules.yaml \
+    --patch @patches/node-labels.yaml \
     -o worker.yaml
 
 talosctl machineconfig patch controlplane.yaml \
@@ -17,4 +20,7 @@ talosctl machineconfig patch controlplane.yaml \
     --patch @patches/scheduling-control-plane.yaml \
     --patch @patches/pods-per-node.yaml \
     --patch @patches/device-ownership.yaml \
+    --patch @patches/tailscale.yaml \
+    --patch @patches/udev-rules.yaml \
+    --patch @patches/node-labels.yaml \
     -o controlplane.yaml

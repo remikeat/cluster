@@ -1,0 +1,3 @@
+machine:
+  nodeLabels:
+    topology.kubernetes.io/zone: ap-northeast-1a
