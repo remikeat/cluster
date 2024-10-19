@@ -1,0 +1,44 @@
+apiVersion: rabbitmq.com/v1beta1
+kind: RabbitmqCluster
+metadata:
+  name: rabbitmq
+spec:
+  replicas: 1
+  resources:
+    requests:
+      cpu: 500m
+      memory: 1Gi
+    limits:
+      cpu: 500m
+      memory: 1Gi
+  rabbitmq:
+    additionalConfig: |
+      cluster_partition_handling = pause_minority
+      disk_free_limit.relative = 1.0
+      collect_statistics_interval = 10000
+  persistence:
+    storageClassName: longhorn
+    storage: "100Gi"
+  affinity:
+    podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchExpressions:
+              - key: app.kubernetes.io/name
+                operator: In
+                values:
+                  - rabbitmq
+          topologyKey: kubernetes.io/hostname
+  override:
+    statefulSet:
+      spec:
+        template:
+          spec:
+            containers: []
+            topologySpreadConstraints:
+              - maxSkew: 1
+                topologyKey: "topology.kubernetes.io/zone"
+                whenUnsatisfiable: DoNotSchedule
+                labelSelector:
+                  matchLabels:
+                    app.kubernetes.io/name: rabbitmq

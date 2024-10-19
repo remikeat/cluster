@@ -1,0 +1,4 @@
+auth:
+  username: user
+  password: <path:kv/data/rabbitmq#password>
+extraPlugins: "rabbitmq_auth_backend_ldap rabbitmq_management"

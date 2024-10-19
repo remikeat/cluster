@@ -42,6 +42,7 @@ spec:
       - app: messages/kafka
         prune: false
       - app: messages/kafka-ui
+      - app: messages/rabbitmq
       - app: pipelines/harbor
       - app: pipelines/knative
       - app: pipelines/tekton

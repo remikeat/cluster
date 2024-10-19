@@ -1,0 +1,13 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+helmCharts:
+  - name: rabbitmq-cluster-operator
+    namespace: rabbitmq
+    releaseName: rabbitmq-operator
+    valuesFile: values.yaml
+    version: 15.0.3
+    repo: https://charts.bitnami.com/bitnami
+
+resources:
+  - rabbitmq.yaml

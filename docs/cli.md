@@ -244,3 +244,9 @@ mc --autocompletion
 ```
 mc alias set myminio https://minio.tail4d334.ts.net
 ```
+
+### RabbitMQ CLI
+
+```
+kubectl krew install rabbitmq
+```
