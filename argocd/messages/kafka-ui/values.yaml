@@ -9,3 +9,7 @@ yamlApplicationConfig:
     health:
       ldap:
         enabled: false
+ingress:
+  enabled: true
+  ingressClassName: tailscale
+  host: kafka-ui
