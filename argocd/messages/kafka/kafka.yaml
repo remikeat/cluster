@@ -29,12 +29,24 @@ spec:
           type: persistent-claim
           size: 100Gi
           deleteClaim: false
+    template:
+      persistentVolumeClaim:
+        metadata:
+          annotations:
+            argocd.argoproj.io/compare-options: IgnoreExtraneous
+            argocd.argoproj.io/sync-options: Prune=false
   zookeeper:
     replicas: 1
     storage:
       type: persistent-claim
       size: 100Gi
       deleteClaim: false
+    template:
+      persistentVolumeClaim:
+        metadata:
+          annotations:
+            argocd.argoproj.io/compare-options: IgnoreExtraneous
+            argocd.argoproj.io/sync-options: Prune=false
   entityOperator:
     topicOperator: {}
     userOperator: {}
