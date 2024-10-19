@@ -14,6 +14,7 @@ spec:
     volumes:
       - id: 0
         type: persistent-claim
+        class: longhorn
         size: 100Gi
         deleteClaim: false
         kraftMetadata: shared
