@@ -29,3 +29,5 @@ postgresql:
   auth:
     username: bn_redmine
     password: <path:kv/data/redmine#db_password>
+service:
+  type: ClusterIP
