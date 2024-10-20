@@ -61,8 +61,7 @@ vault operator raft snapshot restore backup.snap
 - kv/data/resume#web3form_token
 - kv/data/resume#hcaptcha_token
 
-- kv/data/ghcr#password
-- kv/data/ghcr#auth
+- kv/data/ghcr#user
 
 - kv/data/grafana#password
 

@@ -11,9 +11,9 @@ secretGenerator:
         {
             "auths": {
                 "ghcr.io": {
-                    "username": "remikeat",
-                    "password": "<path:kv/data/ghcr#password>",
-                    "auth": "<path:kv/data/ghcr#auth>"
+                    "username": "<path:kv/data/ghcr#user | yamlParse | jsonPath {.username}>",
+                    "password": "<path:kv/data/ghcr#user | yamlParse | jsonPath {.password}>",
+                    "auth": "<path:kv/data/ghcr#user | yamlParse | jsonPath {.username}{':'}{.password} | base64encode>"
                 }
             }
         }
