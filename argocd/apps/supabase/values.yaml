@@ -109,10 +109,10 @@ kong:
     KONG_LOG_LEVEL: info
   ingress:
     enabled: true
-    className: "nginx"
+    className: kong
     annotations:
       nginx.ingress.kubernetes.io/rewrite-target: /
-      kubernetes.io/ingress.class: nginx
+      kubernetes.io/ingress.class: kong
       cert-manager.io/cluster-issuer: letsencrypt-production
     tls:
       - secretName: supabase-ingress-tls
