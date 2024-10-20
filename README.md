@@ -48,14 +48,3 @@ cert-manager.io/issuer-kind: Issuer
 kubectl apply -f applicationset.yaml
 kubectl apply -f applications.yaml
 ```
-
-## Initial configuration (after argocd)
-
-### Portainer
-
-Create admin account for portainer by accessing portainer.tail4d334.ts.net IMMEDIATELY
-
-### Redmine
-
-- Setup authentication needed
-- Disable user self registration
