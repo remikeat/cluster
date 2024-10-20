@@ -8,12 +8,6 @@ variable "external_cidr" {
   type        = string
 }
 
-# variable "bitwarden_token" {
-#   description = "Bitwarden token"
-#   type        = string
-#   sensitive   = true
-# }
-
 variable "github_token" {
   description = "Github token"
   type        = string

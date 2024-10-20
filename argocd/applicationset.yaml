@@ -9,7 +9,6 @@ spec:
   generators:
   - list:
       elements:
-      # - app: core/bitwarden
       - app: core/cert-manager
       # - app: core/descheduler
       - app: core/ingress-nginx

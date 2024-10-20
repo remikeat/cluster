@@ -29,8 +29,8 @@ kubectl delete -n argocd secrets/argocd-initial-admin-secret
 kubectl -n elastic-system get secrets elasticsearch-es-elastic-user -o json | jq -r .data.elastic | base64 -d
 ```
 
-Update password in bitwarden secret manager : fluent.env
-And update password in bitwarden password manager for kibana/elasticsearch
+Update password in vault : kv/data/elastic#password
+And update password in password manager for kibana/elasticsearch
 
 ## Password creation
 
