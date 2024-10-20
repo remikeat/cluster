@@ -61,11 +61,14 @@ vault operator raft snapshot restore backup.snap
 - kv/data/resume#web3form_token
 - kv/data/resume#hcaptcha_token
 
-- kv/data/ghcr#user
-
 - kv/data/grafana#password
 
+- kv/data/ghcr#user
+
 - kv/data/harbor#user
+- kv/data/harbor#registry_user
+- kv/data/harbor#db_password
+- kv/data/harbor#secret_key
 
 - kv/data/kubeclarity#db_password
 
@@ -91,3 +94,17 @@ vault operator raft snapshot restore backup.snap
 
 <!-- - kv/data/rabbitmq#username
 - kv/data/rabbitmq#password -->
+
+### Container registry
+
+- kv/data/ghcr#user
+
+- kv/data/harbor#user
+- kv/data/harbor#registry_user
+
+Value should be
+
+```
+username: ""
+password: ""
+```

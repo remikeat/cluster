@@ -11,6 +11,14 @@ expose:
     secret:
       secretName: harbor-tls
 externalURL: https://harbor.remikeat.com
+database:
+  internal:
+    password: <path:kv/data/harbor#db_password>
+registry:
+  credentials:
+    username: <path:kv/data/harbor#registry_user | yamlParse | jsonPath {.username}>
+    password: <path:kv/data/harbor#registry_user | yamlParse | jsonPath {.password}>
+secretKey: <path:kv/data/harbor#secret_key>
 # nginx:
 #   image:
 #     repository: ghcr.io/octohelm/harbor/nginx-photon
