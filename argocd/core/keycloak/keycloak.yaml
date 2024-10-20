@@ -6,13 +6,13 @@ spec:
   instances: 1
   db:
     vendor: postgres
-    host: keycloakdb-cluster-rw.cnpg-database.svc.cluster.local
+    host: keycloakdb-cluster-rw.keycloak.svc.cluster.local
     database: keycloak
     usernameSecret:
-      name: keycloak-db-secret
+      name: keycloak-credentials
       key: username
     passwordSecret:
-      name: keycloak-db-secret
+      name: keycloak-credentials
       key: password
   hostname:
     hostname: https://keycloak.tail4d334.ts.net

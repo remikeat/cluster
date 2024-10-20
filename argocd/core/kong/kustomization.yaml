@@ -14,6 +14,11 @@ secretGenerator:
     literals:
       - tls.crt=<path:kv/data/kong#certificate>
       - tls.key=<path:kv/data/kong#private_key>
+  - name: kong-credentials
+    namespace: kong
+    literals:
+      - username=kong
+      - password=<path:kv/data/kong#pg_password>
 
 configMapGenerator:
   - name: kong-plugin-auth
@@ -37,6 +42,12 @@ helmCharts:
     valuesFile: values-dp.yaml
     version: 2.42.0
     repo: https://charts.konghq.com
+  - name: cluster
+    namespace: kong-cp
+    releaseName: kongdb
+    valuesFile: values-kongdb.yaml
+    version: 0.0.11
+    repo: https://cloudnative-pg.github.io/charts
 
 resources:
   - https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.1.0/standard-install.yaml

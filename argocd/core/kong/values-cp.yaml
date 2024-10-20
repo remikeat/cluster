@@ -19,7 +19,7 @@ env:
   pg_database: kong
   pg_user: kong
   pg_password: <path:kv/data/kong#pg_password>
-  pg_host: 	kongdb-cluster-rw.cnpg-database.svc.cluster.local
+  pg_host: 	kongdb-cluster-rw.kong.svc.cluster.local
   pg_ssl: "on"
 
   password: <path:kv/data/kong#password>
