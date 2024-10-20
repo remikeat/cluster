@@ -66,7 +66,7 @@ vault operator raft snapshot restore backup.snap
 
 - kv/data/grafana#password
 
-- kv/data/harbor#password
+- kv/data/harbor#user
 
 - kv/data/kubeclarity#db_password
 

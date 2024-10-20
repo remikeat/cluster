@@ -1,4 +1,4 @@
-harborAdminPassword: <path:kv/data/harbor#password>
+harborAdminPassword: <path:kv/data/harbor#user | yamlParse | jsonPath {.password}>
 expose:
   ingress:
     hosts:
