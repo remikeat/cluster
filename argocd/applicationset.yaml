@@ -53,11 +53,7 @@ spec:
       #   namespace: kube-system
       # - app: vm/harvester
       # - app: vm/system-upgrade-controller
-      - app: apps/portainer
-      - app: apps/redmine
-      - app: apps/resume
       - app: apps/supabase
-      - app: apps/vm
   template:
     metadata:
       name: '{{base .app}}-app'
