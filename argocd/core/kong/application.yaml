@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kong
+  namespace: argocd
+spec:
+  project: default
+  sources:
+    - repoURL: https://github.com/openappsec/openappsec.git
+      targetRevision: 1.1.18
+      path: build_system/charts/open-appsec-kong
+      helm:
+        valueFiles:
+          - $repo/argocd/core/kong/values-cp.yaml
+    - repoURL: https://github.com/openappsec/openappsec.git
+      targetRevision: 1.1.18
+      path: build_system/charts/open-appsec-kong
+      helm:
+        valueFiles:
+          - $repo/argocd/core/kong/values-dp.yaml
+    - repoURL: https://github.com/remikeat/cluster.git
+      targetRevision: HEAD
+      ref: repo
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: kong
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=false

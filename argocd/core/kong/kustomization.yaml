@@ -27,21 +27,6 @@ configMapGenerator:
       - kong-plugin-auth/schema.lua
 
 helmCharts:
-  - name: kong
-    namespace: kong
-    releaseName: kong-cp
-    valuesFile: values-cp.yaml
-    version: 2.42.0
-    repo: https://charts.konghq.com
-    includeCRDs: true
-    apiVersions:
-      - gateway.networking.k8s.io/v1
-  - name: kong
-    namespace: kong
-    releaseName: kong-dp
-    valuesFile: values-dp.yaml
-    version: 2.42.0
-    repo: https://charts.konghq.com
   - name: cluster
     namespace: kong-cp
     releaseName: kongdb
@@ -53,6 +38,7 @@ resources:
   - https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.1.0/standard-install.yaml
   - gatewayclass.yaml
   - gateway.yaml
+  - application.yaml
   - kongclusterplugin.yaml
 
 patches:

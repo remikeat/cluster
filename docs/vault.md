@@ -94,6 +94,9 @@ vault operator raft snapshot restore backup.snap
 
 - kv/data/pgadmin#password
 
+- kv/data/open-appsec#email
+- kv/data/open-appsec#token
+
 <!-- - kv/data/rabbitmq#username
 - kv/data/rabbitmq#password -->
 

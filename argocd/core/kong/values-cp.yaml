@@ -83,3 +83,9 @@ plugins:
   configMaps:
     - name: kong-plugin-auth
       pluginName: auth
+
+appsec:
+  persistence:
+    enabled: true
+  userEmail: <path:kv/data/open-appsec#email>
+  agentToken: <path:kv/data/open-appsec#token>
