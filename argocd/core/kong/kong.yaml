@@ -1,7 +1,7 @@
 apiVersion: remikeat.com/v1
 kind: GitGenerator
 metadata:
-  name: kong-dp
+  name: kong
   annotations:
     config.kubernetes.io/function: |
       exec: 
@@ -10,7 +10,7 @@ spec:
   repoURL: https://github.com/openappsec/openappsec.git
   path: build_system/charts/open-appsec-kong
   targetRevision: 1.1.18
-  valuesFile: values-dp.yaml
-  name: kong-dp
+  valuesFile: values.yaml
+  name: kong
   namespace: kong
-  skipCrds: true
+  skipCrds: false

@@ -28,7 +28,7 @@ configMapGenerator:
 
 helmCharts:
   - name: cluster
-    namespace: kong-cp
+    namespace: kong
     releaseName: kongdb
     valuesFile: values-kongdb.yaml
     version: 0.0.11
@@ -41,8 +41,7 @@ resources:
   - kongclusterplugin.yaml
 
 generators:
-  - kong-cp.yaml
-  - kong-dp.yaml
+  - kong.yaml
 
 patches:
   - target:

@@ -11,7 +11,10 @@ secretVolumes:
   - kong-cluster-cert
 
 env:
-  role: control_plane
+  cluster_control_plane: kong-kong-cluster.kong.svc.cluster.local:8005
+  cluster_telemetry_endpoint: kong-kong-clustertelemetry.kong.svc.cluster.local:8006
+
+  lua_ssl_trusted_certificate: /etc/secrets/kong-cluster-cert/tls.crt
   cluster_cert: /etc/secrets/kong-cluster-cert/tls.crt
   cluster_cert_key: /etc/secrets/kong-cluster-cert/tls.key
 
@@ -77,7 +80,7 @@ manager:
     tls: kong-manager-tls
 
 proxy:
-  enabled: false
+  enabled: true
 
 plugins:
   configMaps:
