@@ -1,7 +1,7 @@
 ingressController:
   enabled: true
   env:
-    publish_service: kong/kong-dp-kong-proxy
+    publish_service: kong/kong-open-appsec-kong-proxy
 
 image:
   repository: kong
@@ -11,8 +11,8 @@ secretVolumes:
   - kong-cluster-cert
 
 env:
-  cluster_control_plane: kong-kong-cluster.kong.svc.cluster.local:8005
-  cluster_telemetry_endpoint: kong-kong-clustertelemetry.kong.svc.cluster.local:8006
+  cluster_control_plane: kong-open-appsec-kong-cluster.kong.svc.cluster.local:8005
+  cluster_telemetry_endpoint: kong-open-appsec-kong-clustertelemetry.kong.svc.cluster.local:8006
 
   lua_ssl_trusted_certificate: /etc/secrets/kong-cluster-cert/tls.crt
   cluster_cert: /etc/secrets/kong-cluster-cert/tls.crt
