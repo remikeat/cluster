@@ -25,6 +25,7 @@ agent:
     - namespace: kong
       podName: kong-open-appsec-*
       program: openappsec
+      poll_without_inotify: true
   env:
     - name: PARSERS
       value: "crowdsecurity/cri-logs crowdsecurity/dateparse-enrich"
