@@ -88,3 +88,10 @@ kubectl -n kafka run kafka-producer -it --image=quay.io/strimzi/kafka:0.43.0-kaf
 ```
 kubectl -n kafka run kafka-consumer -it --image=quay.io/strimzi/kafka:0.43.0-kafka-3.8.0 --rm --restart=Never -- bin/kafka-console-consumer.sh --bootstrap-server kafka-kafka-bootstrap:9092 --topic my-topic --from-beginning
 ```
+
+### Deploy advanced model
+
+```
+kubectl create configmap -n kong advanced-model-config --from-file open-appsec-advanced-model.tgz
+kubectl rollout restart deployment -n kong kong-open-appsec-kong
+```
