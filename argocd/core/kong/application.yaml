@@ -18,6 +18,7 @@ spec:
       helm:
         valueFiles:
           - $repo/argocd/core/kong/values-dp.yaml
+        skipCrds: true
     - repoURL: https://github.com/remikeat/cluster.git
       targetRevision: HEAD
       ref: repo
