@@ -8,7 +8,6 @@ configMapGenerator:
   - name: pgadmin-config
     files:
       - servers.json
-    behavior: replace
 
 secretGenerator:
   - name: pgadmin
