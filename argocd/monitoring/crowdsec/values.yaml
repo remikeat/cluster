@@ -30,7 +30,7 @@ agent:
     - name: PARSERS
       value: "crowdsecurity/cri-logs crowdsecurity/dateparse-enrich"
     - name: COLLECTIONS
-      value: "crowdsecurity/nginx openappsec/openappsec"
+      value: "crowdsecurity/nginx openappsec/openappsec crowdsecurity/base-http-scenarios"
   persistentVolume:
     config:
       storageClassName: longhorn
