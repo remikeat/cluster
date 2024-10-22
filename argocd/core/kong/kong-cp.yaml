@@ -7,10 +7,10 @@ metadata:
       exec: 
         path: ./git-generator.sh      
 spec:
-  repoURL: https://github.com/supabase-community/supabase-kubernetes
-  path: charts/supabase
-  targetRevision: main
-  valuesFile: values.yaml
-  name: supabase
-  namespace: supabase
+  repoURL: https://github.com/openappsec/openappsec.git
+  path: build_system/charts/open-appsec-kong
+  targetRevision: 1.1.18
+  valuesFile: values-cp.yaml
+  name: kong-cp
+  namespace: kong
   skipCrds: false
