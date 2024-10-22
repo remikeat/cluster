@@ -35,8 +35,8 @@ configs:
           command:
             - bash
             - -c
-            - |
-              for file in *values*.yaml; do cat <(echo 'kind: Values') $file | argocd-vault-plugin generate - > gen_$file; mv gen_$file $file; done; \
+            - >
+              find . -name "*values*.yaml" -exec sh -c 'echo "kind: Values" | cat - {} | argocd-vault-plugin generate - > temp && sed -i "/^kind: Values$/d" temp && mv temp {}' \; &&
               kustomize build --enable-helm --enable-alpha-plugins --enable-exec . | argocd-vault-plugin generate -
         lockRepo: false
 server:
