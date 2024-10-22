@@ -13,17 +13,17 @@ skipCrds=$(echo "$resourceList" | yq e '.functionConfig.spec.skipCrds // ""' - )
 apiVersions=$(echo "$resourceList" | yq e '.functionConfig.spec.apiVersions // ""' - )
 
 git clone -q --single-branch --branch=$targetRevision $repoURL $name &> /dev/null
-if [ -z "$patch" ]; then
+if [ ! -z "$patch" ]; then
     patch -d $name -p1 < $patch &> /dev/null
 fi
 helmCommand=("helm" "template" "$name" "-n" "$namespace")
-if [ -z "$valuesFile" ]; then
+if [ ! -z "$valuesFile" ]; then
     helmCommand+=("-f" "$valuesFile")
 fi
 if [ "$skipCrds" = "true" ]; then
     helmCommand+=("--skip-crds")
 fi
-if [ -z "$apiVersions" ]; then
+if [ ! -z "$apiVersions" ]; then
     helmCommand+=("-a" "$apiVersions")
 fi
 helmCommand+=("$name/$path")
