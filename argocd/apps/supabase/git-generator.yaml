@@ -9,7 +9,7 @@ metadata:
 spec:
   repoURL: https://github.com/supabase-community/supabase-kubernetes
   path: charts/supabase
-  targetRevision: main
+  targetRevision: 17e14e812fd60a7b5eedb56bf3b359f42ebf91a4
   valuesFile: values.yaml
   name: supabase
   namespace: supabase
