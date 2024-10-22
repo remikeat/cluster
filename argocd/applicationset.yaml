@@ -25,6 +25,7 @@ spec:
         namespace: longhorn-system
       - app: storage/minio
         prune: false
+      - app: storage/pgadmin
       - app: storage/rook-ceph
       - app: monitoring/crowdsec
       - app: monitoring/elastic
