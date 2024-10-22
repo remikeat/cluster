@@ -92,3 +92,17 @@ appsec:
     enabled: true
   userEmail: <path:kv/data/open-appsec#email>
   agentToken: <path:kv/data/open-appsec#token>
+  configMapContent:
+    crowdsec:
+      enabled: true
+      mode: prevent
+      logging: enabled
+      api:
+        url: http://crowdsec-service.crowdsec:8080/v1/decisions/stream
+      auth:
+        method: apikey
+  secretName: appsec-settings-secret
+  secretContent:
+    crowdsec:
+      auth:
+        data: <path:kv/data/crowdsec#bouncer_key>
