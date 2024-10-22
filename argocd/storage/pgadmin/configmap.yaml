@@ -14,7 +14,7 @@ data:
             "Host": "	kongdb-cluster-rw.kong",
             "SSLMode": "prefer",
             "MaintenanceDB": "postgres"
-          }
+          },
           "2": {
             "Name": "Keycloak PostgreSQL DB",
             "Group": "Servers",
