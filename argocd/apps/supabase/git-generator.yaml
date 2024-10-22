@@ -13,4 +13,3 @@ spec:
   valuesFile: values.yaml
   name: supabase
   namespace: supabase
-  skipCrds: false

@@ -15,3 +15,4 @@ spec:
   name: kong
   namespace: kong
   skipCrds: false
+  apiVersions: gateway.networking.k8s.io/v1
