@@ -17,7 +17,6 @@ secretGenerator:
 
 resources:
   - namespace.yaml
-  - configmap.yaml
   - service.yaml
   - statefulset.yaml
   - ingress.yaml
