@@ -1,0 +1,22 @@
+{
+    "Servers": {
+        "1": {
+            "Name": "Kong PostgreSQL DB",
+            "Group": "Servers",
+            "Port": 5432,
+            "Username": "kong",
+            "Host": "kongdb-cluster-rw.kong",
+            "SSLMode": "prefer",
+            "MaintenanceDB": "postgres"
+        },
+        "2": {
+            "Name": "Keycloak PostgreSQL DB",
+            "Group": "Servers",
+            "Port": 5432,
+            "Username": "keycloak",
+            "Host": "keycloakdb-cluster-rw.keycloak",
+            "SSLMode": "prefer",
+            "MaintenanceDB": "postgres"
+        }
+    }
+}

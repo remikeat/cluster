@@ -4,6 +4,11 @@ kind: Kustomization
 generatorOptions:
   disableNameSuffixHash: true
 
+configMapGenerator:
+  - name: pgadmin-config
+    files:
+      - servers.json
+
 secretGenerator:
   - name: pgadmin
     literals:
