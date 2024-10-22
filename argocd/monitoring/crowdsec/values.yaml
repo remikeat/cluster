@@ -7,7 +7,7 @@ lapi:
       value: "my-k8s-cluster"
     - name: ENROLL_KEY
       value: <path:kv/data/crowdsec#enroll_key>
-    - name: BOUNCER_KEY_nginx
+    - name: BOUNCER_KEY_kong
       value: <path:kv/data/crowdsec#bouncer_key>
   persistentVolume:
     data:
@@ -15,14 +15,21 @@ lapi:
     config:
       storageClassName: longhorn
 container_runtime: containerd
+image:
+  repository: crowdsecurity/crowdsec
+  pullPolicy: IfNotPresent
+  pullSecrets: []
+  tag: v1.6.3
 agent:
   acquisition:
-    - namespace: ingress-nginx
-      podName: ingress-nginx-controller-*
-      program: nginx
+    - namespace: kong
+      podName: kong-open-appsec-*
+      program: openappsec
   env:
+    - name: PARSERS
+      value: "crowdsecurity/cri-logs crowdsecurity/dateparse-enrich"
     - name: COLLECTIONS
-      value: "crowdsecurity/nginx"
+      value: "crowdsecurity/nginx openappsec/openappsec"
   persistentVolume:
     config:
       storageClassName: longhorn

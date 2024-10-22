@@ -111,7 +111,6 @@ kong:
     enabled: true
     className: kong
     annotations:
-      nginx.ingress.kubernetes.io/rewrite-target: /
       kubernetes.io/ingress.class: kong
       cert-manager.io/cluster-issuer: letsencrypt-production
     tls:
