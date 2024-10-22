@@ -1,7 +1,7 @@
 apiVersion: remikeat.com/v1
 kind: GitGenerator
 metadata:
-  name: git-generator
+  name: kong-cp
   annotations:
     config.kubernetes.io/function: |
       exec: 
