@@ -10,6 +10,7 @@ spec:
   repoURL: https://github.com/openappsec/openappsec.git
   path: build_system/charts/open-appsec-kong
   targetRevision: 1.1.18
+  patch: fix.patch
   valuesFile: values.yaml
   name: kong
   namespace: kong

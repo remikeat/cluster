@@ -1,0 +1,12 @@
+diff --git a/build_system/charts/open-appsec-kong/templates/appsec.yaml b/build_system/charts/open-appsec-kong/templates/appsec.yaml
+index 8af1b5d..4bbba47 100644
+--- a/build_system/charts/open-appsec-kong/templates/appsec.yaml
++++ b/build_system/charts/open-appsec-kong/templates/appsec.yaml
+@@ -174,7 +174,6 @@ spec:
+         - --proxy
+         - {{ .Values.appsec.proxy }}
+       {{- end }}
+-        imagePullPolicy: {{ .Values.appsec.image.pullPolicy }}
+         env:
+           - name: registered_server
+             value: "Kong Server"
