@@ -10,7 +10,7 @@ name=$(echo "$resourceList" | yq e '.functionConfig.spec.name' - )
 namespace=$(echo "$resourceList" | yq e '.functionConfig.spec.namespace' - )
 skipCrds=$(echo "$resourceList" | yq e '.functionConfig.spec.skipCrds' - )
 
-git clone -q --single-branch --branch=$targetRevision $repoURL $name > /dev/null
+git clone -q --single-branch --branch=$targetRevision $repoURL $name &> /dev/null
 helmCommand=("helm" "template" "$name" "-n" "$namespace" "-f" "$valuesFile" "$name/$path")
 if [ "$skipCrds" = "true" ]; then
     helmCommand+=("--skip-crds")
