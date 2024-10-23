@@ -1,5 +1,6 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+
 resources:
   - https://github.com/knative/operator/releases/download/knative-v1.15.2/operator.yaml
   - knative-serving.yaml
@@ -8,4 +9,6 @@ resources:
   - https://github.com/knative-extensions/eventing-kafka-broker/releases/download/knative-v1.15.2/eventing-kafka-controller.yaml
   - https://github.com/knative-extensions/eventing-kafka-broker/releases/download/knative-v1.15.2/eventing-kafka-broker.yaml
   - kafka-broker-config.yaml
-  - config-br-defaults.yaml
+
+patches:
+  - path: patches/config-br-defaults.yaml
