@@ -8,7 +8,7 @@ resources:
   - https://github.com/knative/serving/releases/download/knative-v1.15.2/serving-default-domain.yaml
   - https://github.com/knative-extensions/eventing-kafka-broker/releases/download/knative-v1.15.2/eventing-kafka-controller.yaml
   - https://github.com/knative-extensions/eventing-kafka-broker/releases/download/knative-v1.15.2/eventing-kafka-broker.yaml
-  - kafka-broker-config.yaml
 
 patches:
   - path: patches/config-br-defaults.yaml
+  - path: patches/kafka-broker-config.yaml
