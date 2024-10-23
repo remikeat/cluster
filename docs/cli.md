@@ -120,6 +120,7 @@ mv func_linux_amd64 kn-func
 chmod +x kn-func
 sudo mv kn-func /usr/local/bin
 echo "alias func='kn func'" >> ~/.bashrc
+echo "export FUNC_REGISTRY=harbor.remikeat.com/library" >> ~/.bashrc
 ```
 
 ### knative cli auto-completion
