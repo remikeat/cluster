@@ -7,4 +7,4 @@ data:
   default.topic.partitions: "10"
   default.topic.replication.factor: "1"
   bootstrap.servers: "kafka-kafka-bootstrap.kafka:9092"
-  default.topic.config.retention.ms: "3600"
+  default.topic.config.retention.ms: "86400000"
