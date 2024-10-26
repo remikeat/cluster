@@ -95,3 +95,10 @@ kubectl -n kafka run kafka-consumer -it --image=quay.io/strimzi/kafka:0.43.0-kaf
 kubectl create configmap -n kong advanced-model-config --from-file open-appsec-advanced-model.tgz
 kubectl rollout restart deployment -n kong kong-open-appsec-kong
 ```
+
+### Vault
+
+```
+vault kv get --mount=kv app
+vault kv put --mount=kv app password=
+```

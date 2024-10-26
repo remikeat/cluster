@@ -1,0 +1,50 @@
+controller:
+  persistence:
+    postgresql:
+      host: argo-workflows-cluster-rw.argo-workflows.svc.cluster.local
+      port: 5432
+      database: argo-workflows
+      tableName: argo_workflows
+      userNameSecret:
+        name: argo-workflows-credentials
+        key: username
+      passwordSecret:
+        name: argo-workflows-credentials
+        key: password
+      ssl: true
+      sslMode: require
+server:
+  authModes:
+    - sso
+  sso:
+    enabled: true
+    issuer: https://keycloak.tail4d334.ts.net
+    clientId:
+      name: argo-server-sso
+      key: client-id
+    clientSecret:
+      name: argo-server-sso
+      key: client-secret
+    redirectUrl: "argo-workflows.tail4d334.ts.net/oauth2/callback"
+  ingress:
+    enabled: true
+    ingressClassName: tailscale
+    hosts:
+      - argo-workflows.tail4d334.ts.net
+    tls:
+      - secretName: argoworkflows-example-tls
+        hosts:
+          - argo-workflows.tail4d334.ts.net
+artifactRepository:
+  archiveLogs: false
+  s3:
+    accessKeySecret:
+      name: argo-s3-credentials
+      key: access_key
+    secretKeySecret:
+      name: argo-s3-credentials
+      key: secret_key
+    insecure: true
+    bucket: argo-artifacts
+    endpoint: http://minio.minio.svc.cluster.local
+    region: ap-northeast-1

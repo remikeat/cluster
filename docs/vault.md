@@ -97,6 +97,12 @@ vault operator raft snapshot restore backup.snap
 - kv/data/open-appsec#email
 - kv/data/open-appsec#token
 
+- kv/data/argo-workflows#pg_password
+- kv/data/argo-workflows#client_id
+- kv/data/argo-workflows#client_secret
+- kv/data/argo-workflows#access_key
+- kv/data/argo-workflows#secret_key
+
 <!-- - kv/data/rabbitmq#username
 - kv/data/rabbitmq#password -->
 

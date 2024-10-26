@@ -56,8 +56,11 @@ tenant:
   buckets:
     - name: pg-backup
       region: ap-northeast-1
+    - name: argo-artifacts
+      region: ap-northeast-1
   users:
     - name: pg-backup-user
+    - name: argo-workflows
   kes:
    image:
      repository: quay.io/minio/kes

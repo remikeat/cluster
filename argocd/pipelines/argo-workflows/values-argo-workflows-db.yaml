@@ -1,0 +1,32 @@
+type: postgresql
+mode: standalone
+version:
+  postgresql: "16"
+cluster:
+  instances: 1
+  roles:
+    - name: argo-workflows
+      connectionLimit: -1
+      ensure: present
+      comment: Argo workflows user
+      login: true
+      inherit: true
+      superuser: true
+      passwordSecret:
+        name: argo-workflows-credentials
+  initdb:
+    database: argo-workflows
+    owner: argo-workflows
+    secret:
+      name: argo-workflows-credentials
+    encoding: UTF8
+backups:
+  enabled: true
+  endpointURL: http://minio.minio.svc.cluster.local
+  provider: s3
+  s3:
+    region: ap-northeast-1
+    bucket: pg-backup
+    path: "/argo-workflows-db/"
+    accessKey: <path:kv/data/cloudnativepg#pg-backup-access-key>
+    secretKey: <path:kv/data/cloudnativepg#pg-backup-secret-key>

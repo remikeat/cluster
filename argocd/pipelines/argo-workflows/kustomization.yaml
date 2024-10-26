@@ -1,0 +1,36 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+generatorOptions:
+  disableNameSuffixHash: true
+
+secretGenerator:
+  - name: argo-workflows-credentials
+    namespace: argo-workflows
+    literals:
+      - username=argo-workflows
+      - password=<path:kv/data/argo-workflows#pg_password>
+  - name: argo-server-sso
+    namespace: argo-workflows
+    literals:
+      - client-id=<path:kv/data/argo-workflows#client_id>
+      - client-secret=<path:kv/data/argo-workflows#client_secret>
+  - name: argo-s3-credentials
+    namespace: argo-workflows
+    literals:
+      - access_key=<path:kv/data/argo-workflows#access_key>
+      - secret_key=<path:kv/data/argo-workflows#secret_key>
+
+helmCharts:
+  - name: cluster
+    namespace: argo-workflows
+    releaseName: argo-workflows-db
+    valuesFile: values-argo-workflows-db.yaml
+    version: 0.0.11
+    repo: https://cloudnative-pg.github.io/charts
+  - name: argo-workflows
+    namespace: argo-workflows
+    releaseName: argo-workflows
+    valuesFile: values.yaml
+    version: 0.42.5
+    repo: https://argoproj.github.io/argo-helm
