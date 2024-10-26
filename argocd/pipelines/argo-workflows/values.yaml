@@ -1,7 +1,7 @@
 controller:
   persistence:
     postgresql:
-      host: argo-workflows-cluster-rw.argo-workflows.svc.cluster.local
+      host: argo-workflows-db-cluster-rw.argo-workflows.svc.cluster.local
       port: 5432
       database: argo-workflows
       tableName: argo_workflows
