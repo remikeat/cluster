@@ -20,8 +20,10 @@ password = os.getenv("password")
 
 realm_url = f"{url}/realms/{realm}"
 public_key_url = realm_url
-token_url = f"{realm_url}/protocol/openid-connect/token"
+protocol_url = f"{realm_url}/protocol/openid-connect"
+token_url = f"{protocol_url}/token"
 introspect_url = f"{token_url}/introspect"
+user_info_url = f"{protocol_url}/userinfo"
 
 
 def get_public_key(public_key_url):
@@ -33,7 +35,7 @@ def get_public_key(public_key_url):
     return public_key
 
 
-def get_data(url, payload):
+def get_data_with_post(url, payload):
     client_payload = {
         "client_id": client_id,
         "client_secret": client_secret
@@ -47,8 +49,18 @@ def get_data(url, payload):
     return json_res
 
 
+def get_data_with_get(url, access_token):
+    headers = {
+        'Authorization': f'Bearer {access_token}'
+    }
+    response = requests.request(
+        "GET", url, headers=headers)
+    json_res = json.loads(response.text)
+    return json_res
+
+
 def get_token(token_url, grant_type, payload, token_type):
-    data = get_data(token_url, {"grant_type": grant_type} | payload)
+    data = get_data_with_post(token_url, {"grant_type": grant_type} | payload)
     if token_type in data:
         token = data[token_type]
     else:
@@ -69,7 +81,7 @@ def validate_token_offline(public_key_url, access_token):
 
 
 def validate_token_online(introspect_url, access_token):
-    return get_data(introspect_url, {"token": access_token})
+    return get_data_with_post(introspect_url, {"token": access_token})
 
 
 def pretty_print_dict(dict):
@@ -90,3 +102,6 @@ if "active" in res:
     print(res["active"])
 else:
     print(res)
+
+res = get_data_with_get(user_info_url, access_token)
+pretty_print_dict(res)
