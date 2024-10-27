@@ -19,5 +19,5 @@ spec:
   ignoreDifferences:
     - group: ""
       kind: Secret
-      name: argo-workflow
+      name: argo-workflow.service-account-token
       namespace: argo-workflows
