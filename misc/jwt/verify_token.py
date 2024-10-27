@@ -49,14 +49,22 @@ def get_data(url, payload):
 
 def get_token(token_url, grant_type, payload, token_type):
     data = get_data(token_url, {"grant_type": grant_type} | payload)
-    token = data[token_type]
+    if token_type in data:
+        token = data[token_type]
+    else:
+        token = ""
+        print(data)
     return token
 
 
 def validate_token_offline(public_key_url, access_token):
     public_key = get_public_key(public_key_url)
-    res = jwt.decode(access_token, public_key, algorithms=["RS256"], options={
-        "verify_aud": False, "verify_signature": True})
+    try:
+        res = jwt.decode(access_token, public_key, algorithms=["RS256"], options={
+            "verify_aud": False, "verify_signature": True})
+    except Exception as e:
+        res = {}
+        print(e)
     return res
 
 
@@ -78,4 +86,7 @@ res = validate_token_offline(public_key_url, access_token)
 pretty_print_dict(res)
 
 res = validate_token_online(introspect_url, access_token)
-print(res["active"])
+if "active" in res:
+    print(res["active"])
+else:
+    print(res)

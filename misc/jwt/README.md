@@ -1,7 +1,7 @@
 Create .env file with below content
 
 ```
-url="https://keycloak.tail4d334.ts.net"
+url="https://keycloak.remikeat.com"
 realm="users"
 client_id="test-client"
 client_secret=""

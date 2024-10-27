@@ -15,7 +15,7 @@ spec:
       name: keycloak-credentials
       key: password
   hostname:
-    hostname: https://keycloak.tail4d334.ts.net
+    hostname: https://keycloak.remikeat.com
     admin: https://keycloak-admin.tail4d334.ts.net
   http:
     httpEnabled: true
