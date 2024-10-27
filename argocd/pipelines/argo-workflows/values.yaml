@@ -18,14 +18,14 @@ server:
     - sso
   sso:
     enabled: true
-    issuer: http://keycloak-service.keycloak.svc.cluster.local:8080/realms/master
+    issuer: https://keycloak.remikeat.com/realms/master
     clientId:
       name: argo-server-sso
       key: client-id
     clientSecret:
       name: argo-server-sso
       key: client-secret
-    redirectUrl: "argo-workflows.tail4d334.ts.net/oauth2/callback"
+    redirectUrl: argo-workflows.tail4d334.ts.net/oauth2/callback
   ingress:
     enabled: true
     ingressClassName: tailscale
