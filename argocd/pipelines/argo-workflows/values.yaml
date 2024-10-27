@@ -13,6 +13,17 @@ controller:
         key: password
       ssl: true
       sslMode: require
+  workflowDefaults:
+    spec:
+      serviceAccountName: argo-workflow
+workflow:
+  serviceAccount:
+    create: true
+    annotations:
+      workflows.argoproj.io/rbac-rule: "'admin' in groups"
+      workflows.argoproj.io/rbac-rule-precedence: "1"
+    name: "argo-workflow"
+    pullSecrets: []
 server:
   authModes:
     - sso
@@ -26,6 +37,10 @@ server:
       name: argo-server-sso
       key: client-secret
     redirectUrl: https://argo-workflows.tail4d334.ts.net/oauth2/callback
+    scopes:
+      - groups
+    rbac:
+      enabled: true
   ingress:
     enabled: true
     ingressClassName: tailscale
