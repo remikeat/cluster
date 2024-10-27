@@ -16,7 +16,7 @@ spec:
       key: password
   hostname:
     hostname: https://keycloak.remikeat.com
-    admin: https://keycloak-admin.tail4d334.ts.net
+    admin: https://keycloak.remikeat.com/admin
   http:
     httpEnabled: true
   ingress:
