@@ -13,6 +13,8 @@ spec:
     server: https://kubernetes.default.svc
     namespace: argo-workflows
   syncPolicy:
+    syncOptions:
+      - RespectIgnoreDifferences=true
     automated:
       prune: true
       selfHeal: true
@@ -20,3 +22,5 @@ spec:
     - kind: Secret
       name: argo-workflow.service-account-token
       namespace: argo-workflows
+      jsonPointers:
+        - /data
