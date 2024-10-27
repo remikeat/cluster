@@ -18,7 +18,7 @@ server:
     - sso
   sso:
     enabled: true
-    issuer: http://keycloak-service.keycloak.svc.cluster.local:8080
+    issuer: http://keycloak-service.keycloak.svc.cluster.local:8080/auth/realms/master
     clientId:
       name: argo-server-sso
       key: client-id
