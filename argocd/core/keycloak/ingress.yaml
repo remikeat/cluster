@@ -3,6 +3,8 @@ kind: Ingress
 metadata:
   name: keycloak
   namespace: keycloak
+  annotations:
+    cert-manager.io/issuer: letsencrypt-production
 spec:
   ingressClassName: kong
   rules:
