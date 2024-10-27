@@ -18,13 +18,7 @@ controller:
       serviceAccountName: argo-workflow
 workflow:
   serviceAccount:
-    create: true
-    annotations:
-      # workflows.argoproj.io/rbac-rule: "'admins' in groups"
-      workflows.argoproj.io/rbac-rule: "true"
-      workflows.argoproj.io/rbac-rule-precedence: "1"
-    name: argo-workflow
-    pullSecrets: []
+    create: false
 server:
   authModes:
     - sso
