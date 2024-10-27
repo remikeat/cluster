@@ -8,7 +8,21 @@ spec:
   rules:
     - http:
         paths:
-          - path: /
+          - path: /realms/
+            pathType: Prefix
+            backend:
+              service:
+                name: keycloak-service
+                port:
+                  name: http
+          - path: /resources/
+            pathType: Prefix
+            backend:
+              service:
+                name: keycloak-service
+                port:
+                  name: http
+          - path: /robots.txt
             pathType: Prefix
             backend:
               service:
