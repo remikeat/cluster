@@ -25,7 +25,7 @@ server:
     clientSecret:
       name: argo-server-sso
       key: client-secret
-    redirectUrl: argo-workflows.tail4d334.ts.net/oauth2/callback
+    redirectUrl: https://argo-workflows.tail4d334.ts.net/oauth2/callback
   ingress:
     enabled: true
     ingressClassName: tailscale

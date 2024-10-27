@@ -5,6 +5,6 @@ url="https://keycloak.remikeat.com"
 realm="users"
 client_id="test-client"
 client_secret=""
-username="user"
+username="remi"
 password=""
 ```
