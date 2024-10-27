@@ -24,3 +24,8 @@ spec:
       namespace: argo-workflows
       jsonPointers:
         - /data
+    - kind: Secret
+      name: argo-admin.service-account-token
+      namespace: argo-workflows
+      jsonPointers:
+        - /data

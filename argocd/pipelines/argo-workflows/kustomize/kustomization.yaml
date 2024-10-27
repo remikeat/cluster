@@ -22,6 +22,8 @@ secretGenerator:
       - secret_key=<path:kv/data/argo-workflows#secret_key>
   - name: argo-workflow.service-account-token
     namespace: argo-workflows
+  - name: argo-admin.service-account-token
+    namespace: argo-workflows
 
 helmCharts:
   - name: cluster
@@ -52,3 +54,13 @@ patches:
       - op: add
         path: /metadata/annotations
         value: {"kubernetes.io/service-account.name": "argo-workflow"}
+  - target:
+      kind: Secret
+      name: argo-admin.service-account-token
+    patch: |-
+      - op: add
+        path: /type
+        value: kubernetes.io/service-account-token
+      - op: add
+        path: /metadata/annotations
+        value: {"kubernetes.io/service-account.name": "argo-admin"}
