@@ -17,7 +17,6 @@ spec:
       prune: true
       selfHeal: true
   ignoreDifferences:
-    - group: ""
-      kind: Secret
+    - kind: Secret
       name: argo-workflow.service-account-token
       namespace: argo-workflows
