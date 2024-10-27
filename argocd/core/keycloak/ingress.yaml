@@ -11,27 +11,34 @@ spec:
     - host: keycloak.remikeat.com
       http:
         paths:
-          - path: /realms/
+          - path: /
             pathType: Prefix
             backend:
               service:
                 name: keycloak-service
                 port:
                   name: http
-          - path: /resources/
-            pathType: Prefix
-            backend:
-              service:
-                name: keycloak-service
-                port:
-                  name: http
-          - path: /robots.txt
-            pathType: Prefix
-            backend:
-              service:
-                name: keycloak-service
-                port:
-                  name: http
+          # - path: /realms/
+          #   pathType: Prefix
+          #   backend:
+          #     service:
+          #       name: keycloak-service
+          #       port:
+          #         name: http
+          # - path: /resources/
+          #   pathType: Prefix
+          #   backend:
+          #     service:
+          #       name: keycloak-service
+          #       port:
+          #         name: http
+          # - path: /robots.txt
+          #   pathType: Prefix
+          #   backend:
+          #     service:
+          #       name: keycloak-service
+          #       port:
+          #         name: http
   tls:
     - hosts:
         - keycloak.remikeat.com
