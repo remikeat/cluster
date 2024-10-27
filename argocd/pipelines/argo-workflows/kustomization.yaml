@@ -21,7 +21,7 @@ secretGenerator:
       - access_key=<path:kv/data/argo-workflows#access_key>
       - secret_key=<path:kv/data/argo-workflows#secret_key>
   - name: argo-workflow.service-account-token
-    namespace: argo-workflow
+    namespace: argo-workflows
 
 helmCharts:
   - name: cluster
