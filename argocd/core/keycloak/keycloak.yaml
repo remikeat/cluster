@@ -17,8 +17,10 @@ spec:
   hostname:
     hostname: https://keycloak.remikeat.com
     admin: https://keycloak.remikeat.com/admin
+    strict: false
   http:
     httpEnabled: true
+    tlsSecret: keycloak-tls
   ingress:
     enabled: false
   proxy:
