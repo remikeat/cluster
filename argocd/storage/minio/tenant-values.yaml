@@ -80,14 +80,8 @@ tenant:
             - "s3:ListBucket"
             - "s3:PutObject"
   users:
-    - accessKey: pg-backup-user
-      existingSecret: minio-secret
-      existingSecretKey: pg-backup-user-password
-      policy: pg-backup-policy
-    - accessKey: argo-workflows
-      existingSecret: minio-secret
-      existingSecretKey: argo-workflows-password
-      policy: argo-artifacts-policy
+    - name: pg-backup-user
+    - name: argo-workflows-user
   kes:
     image:
       repository: quay.io/minio/kes
