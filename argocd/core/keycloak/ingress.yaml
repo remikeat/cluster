@@ -4,7 +4,7 @@ metadata:
   name: keycloak
   namespace: keycloak
 spec:
-  ingressClassName: tailscale
+  ingressClassName: kong
   rules:
     - http:
         paths:
@@ -31,7 +31,7 @@ spec:
                   name: http
   tls:
     - hosts:
-        - keycloak
+        - keycloak.remikeat.com
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
