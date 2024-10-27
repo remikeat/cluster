@@ -16,8 +16,7 @@ spec:
       key: password
   hostname:
     hostname: https://keycloak.remikeat.com
-    admin: https://keycloak-admin.tail4d334.ts.net
-    strict: false
+    # admin: https://keycloak-admin.tail4d334.ts.net
   http:
     httpEnabled: true
     tlsSecret: keycloak-tls
