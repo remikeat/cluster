@@ -53,6 +53,14 @@ spec:
         - name: git-askpass
           configMap:
             name: git-askpass
+      initContainers:
+        - name: set-permissions
+          image: busybox
+          command: ["sh", "-c", "chmod +x /git-askpass.sh"]
+          volumeMounts:
+            - mountPath: /git-askpass.sh
+              name: git-askpass
+              subPath: git-askpass.sh
       container:
         volumeMounts:
           - mountPath: /work
@@ -77,9 +85,7 @@ spec:
                 key: password
         command: [sh, -c]
         args:
-          - >
-            chmod +x /git-askpass.sh &&
-            git clone --branch "{{inputs.parameters.branch}}" --single-branch "{{inputs.parameters.repo}}" .
+          - git clone --branch "{{inputs.parameters.branch}}" --single-branch "{{inputs.parameters.repo}}" .
     - name: build-push
       inputs:
         parameters:
