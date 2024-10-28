@@ -78,7 +78,7 @@ spec:
                 key: password
         command: [sh, -c]
         args:
-          - git clone --branch "{{inputs.parameters.branch}}" --single-branch "{{inputs.parameters.repo}}" .
+          - git clone --branch "{{inputs.parameters.branch}}" --single-branch "{{inputs.parameters.repo}}" repo
     - name: build-push
       inputs:
         parameters:
@@ -98,7 +98,7 @@ spec:
             mountPath: /work
           - name: docker-config
             mountPath: /.docker
-        workingDir: /work/{{inputs.parameters.path}}
+        workingDir: /work/repo/{{inputs.parameters.path}}
         env:
           - name: BUILDKITD_FLAGS
             value: --oci-worker-no-process-sandbox
