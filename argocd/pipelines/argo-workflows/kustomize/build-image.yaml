@@ -75,7 +75,7 @@ spec:
               secretKeyRef:
                 name: git-credentials
                 key: password
-        command: [bash, -c]
+        command: [sh, -c]
         args:
           - >
             chmod + x /git-askpass.sh &&
