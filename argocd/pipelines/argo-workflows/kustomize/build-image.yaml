@@ -53,14 +53,7 @@ spec:
         - name: git-askpass
           configMap:
             name: git-askpass
-      initContainers:
-        - name: set-permissions
-          image: busybox
-          command: ["sh", "-c", "chmod +x /git-askpass.sh"]
-          volumeMounts:
-            - mountPath: /git-askpass.sh
-              name: git-askpass
-              subPath: git-askpass.sh
+            defaultMode: 0777
       container:
         volumeMounts:
           - mountPath: /work
