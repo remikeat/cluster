@@ -55,10 +55,7 @@ spec:
             name: git-askpass
             defaultMode: 0777
       securityContext:
-        appArmorProfile:
-          type: Unconfined
-        seccompProfile:
-          type: Unconfined
+        privileged: true
       container:
         volumeMounts:
           - mountPath: /work
