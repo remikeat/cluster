@@ -54,10 +54,11 @@ spec:
           configMap:
             name: git-askpass
             defaultMode: 0777
-      metadata:
-        annotations:
-          container.apparmor.security.beta.kubernetes.io/buildkitd: unconfined
-          container.seccomp.security.alpha.kubernetes.io/buildkitd: unconfined
+      securityContext:
+        appArmorProfile:
+          type: Unconfined
+        seccompProfile:
+          type: Unconfined
       container:
         volumeMounts:
           - mountPath: /work
