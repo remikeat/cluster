@@ -78,7 +78,7 @@ spec:
         command: [sh, -c]
         args:
           - >
-            chmod + x /git-askpass.sh &&
+            chmod +x /git-askpass.sh &&
             git clone --branch "{{inputs.parameters.branch}}" --single-branch "{{inputs.parameters.repo}}" .
     - name: build-push
       inputs:
