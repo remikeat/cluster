@@ -35,8 +35,8 @@ spec:
                   value: "{{workflow.parameters.repo}}"
                 - name: branch
                   value: "{{workflow.parameters.branch}}"
-          - name: build_push
-            template: build_push
+          - name: build-push
+            template: build-push
             arguments:
               parameters:
                 - name: path
@@ -80,7 +80,7 @@ spec:
           - >
             chmod + x /git-askpass.sh &&
             git clone --branch "{{inputs.parameters.branch}}" --single-branch "{{inputs.parameters.repo}}" .
-    - name: build_push
+    - name: build-push
       inputs:
         parameters:
           - name: path
