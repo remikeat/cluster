@@ -4,6 +4,12 @@ kind: Kustomization
 generatorOptions:
   disableNameSuffixHash: true
 
+configMapGenerator:
+  - name: git-askpass
+    namespace: argo-workflows
+    files:
+      - git-askpass.sh
+
 secretGenerator:
   - name: argo-workflows-credentials
     namespace: argo-workflows
@@ -22,6 +28,26 @@ secretGenerator:
       - secret_key=<path:kv/data/argo-workflows#secret_key>
   - name: argo-admin.service-account-token
     namespace: argo-workflows
+  - name: git-credentials
+    namespace: argo-workflows
+    literals:
+      - username=<path:kv/data/github#username>
+      - password=<path:kv/data/github#password>
+  - name: docker-config
+    namespace: argo-workflows
+    type: kubernetes.io/dockerconfigjson
+    literals:
+      - |
+        .dockerconfigjson=
+        {
+            "auths": {
+                "harbor.remikeat.com": {
+                    "username": "<path:kv/data/harbor#user | yamlParse | jsonPath {.username}>",
+                    "password": "<path:kv/data/harbor#user | yamlParse | jsonPath {.password}>",
+                    "auth": "<path:kv/data/harbor#user | yamlParse | jsonPath {.username}{':'}{.password} | base64encode>"
+                }
+            }
+        }
 
 helmCharts:
   - name: cluster
@@ -40,6 +66,7 @@ helmCharts:
 resources:
   - serviceaccount.yaml
   - clusterrolebinding.yaml
+  - build-image.yaml
 
 patches:
   - target:

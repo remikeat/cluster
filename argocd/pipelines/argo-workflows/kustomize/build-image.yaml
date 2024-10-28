@@ -1,0 +1,119 @@
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: build-image
+  namespace: argo-workflows
+spec:
+  arguments:
+    parameters:
+      - name: repo
+        value: ""
+      - name: branch
+        value: ""
+      - name: path
+        value: ""
+      - name: image
+        value: ""
+  entrypoint: main
+  volumeClaimTemplates:
+    - metadata:
+        name: work
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 500Mi
+  templates:
+    - name: main
+      dag:
+        tasks:
+          - name: clone
+            template: clone
+            arguments:
+              parameters:
+                - name: repo
+                  value: "{{workflow.parameters.repo}}"
+                - name: branch
+                  value: "{{workflow.parameters.branch}}"
+          - name: build_push
+            template: build_push
+            arguments:
+              parameters:
+                - name: path
+                  value: "{{workflow.parameters.path}}"
+                - name: image
+                  value: "{{workflow.parameters.image}}"
+            depends: clone
+    - name: clone
+      inputs:
+        parameters:
+          - name: repo
+          - name: branch
+      volumes:
+        - name: git-askpass
+          configMap:
+            name: git-askpass
+      container:
+        volumeMounts:
+          - mountPath: /work
+            name: work
+          - mountPath: /git-askpass.sh
+            name: git-askpass
+            subPath: git-askpass.sh
+        image: alpine/git:v2.26.2
+        workingDir: /work
+        env:
+          - name: GIT_ASKPASS
+            value: /git-askpass.sh
+          - name: GIT_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: git-credentials
+                key: username
+          - name: GIT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: git-credentials
+                key: password
+        command: [bash, -c]
+        args:
+          - >
+            chmod + x /git-askpass.sh &&
+            git clone --branch "{{inputs.parameters.branch}}" --single-branch "{{inputs.parameters.repo}}" .
+    - name: build_push
+      inputs:
+        parameters:
+          - name: path
+          - name: image
+      volumes:
+        - name: docker-config
+          secret:
+            secretName: docker-config
+      container:
+        readinessProbe:
+          exec:
+            command: [sh, -c, "buildctl debug workers"]
+        image: moby/buildkit:v0.9.3-rootless
+        volumeMounts:
+          - name: work
+            mountPath: /work
+          - name: docker-config
+            mountPath: /.docker
+        workingDir: /work/{{inputs.parameters.path}}
+        env:
+          - name: BUILDKITD_FLAGS
+            value: --oci-worker-no-process-sandbox
+          - name: DOCKER_CONFIG
+            value: /.docker
+        command:
+          - buildctl-daemonless.sh
+        args:
+          - build
+          - --frontend
+          - dockerfile.v0
+          - --local
+          - context=.
+          - --local
+          - dockerfile=.
+          - --output
+          - type=image,name=harbor.remikeat.com/{{inputs.parameters.image}},push=true

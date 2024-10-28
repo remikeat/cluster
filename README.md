@@ -48,3 +48,7 @@ cert-manager.io/issuer-kind: Issuer
 kubectl apply -f applicationset.yaml
 kubectl apply -f applications.yaml
 ```
+
+### Configuation
+
+Make sure harbor project is private

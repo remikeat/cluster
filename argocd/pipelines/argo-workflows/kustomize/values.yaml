@@ -13,6 +13,9 @@ controller:
         key: password
       ssl: true
       sslMode: require
+  workflowDefaults:
+    spec:
+      serviceAccountName: argo-admin
 workflow:
   serviceAccount:
     create: false

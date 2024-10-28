@@ -103,6 +103,9 @@ vault operator raft snapshot restore backup.snap
 - kv/data/argo-workflows#access_key
 - kv/data/argo-workflows#secret_key
 
+- kv/data/github#username
+- kv/data/github#password
+
 <!-- - kv/data/rabbitmq#username
 - kv/data/rabbitmq#password -->
 
