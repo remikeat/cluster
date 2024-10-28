@@ -64,6 +64,7 @@ helmCharts:
     repo: https://argoproj.github.io/argo-helm
 
 resources:
+  - namespace.yaml
   - serviceaccount.yaml
   - clusterrolebinding.yaml
   - build-image.yaml

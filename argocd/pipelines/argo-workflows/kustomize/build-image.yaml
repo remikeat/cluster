@@ -54,9 +54,6 @@ spec:
           configMap:
             name: git-askpass
             defaultMode: 0777
-      metadata:
-        annotations:
-          pod-security.kubernetes.io/exempt: "true"
       securityContext:
         appArmorProfile:
           type: Unconfined
