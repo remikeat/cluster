@@ -33,13 +33,13 @@ spec:
             memory: 100Mi
     - name: mt-broker-filter
       resources:
-        - container: mt-broker-filter
+        - container: filter
           requests:
             cpu: 50m
             memory: 100Mi
     - name: mt-broker-ingress
       resources:
-        - container: mt-broker-ingress
+        - container: ingress
           requests:
             cpu: 50m
             memory: 100Mi
