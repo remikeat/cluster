@@ -1,0 +1,6 @@
+- op: replace
+  path: /spec/template/spec/containers/0/resources/requests/cpu
+  value: 100m
+- op: replace
+  path: /spec/template/spec/containers/0/resources/limits/cpu
+  value: 200m

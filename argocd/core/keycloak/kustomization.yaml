@@ -30,3 +30,11 @@ resources:
   - https://raw.githubusercontent.com/keycloak/keycloak-k8s-resources/26.0.0/kubernetes/kubernetes.yml
   - keycloak.yaml
   - ingress.yaml
+
+patches:
+  - target:
+      version: v1
+      group: apps
+      kind: Deployment
+      name: keycloak-operator
+    path: patches/keycloak-operator.yaml
