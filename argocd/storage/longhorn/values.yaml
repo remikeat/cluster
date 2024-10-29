@@ -9,4 +9,4 @@ ingress:
   tls: true
 defaultSettings:
   guaranteedInstanceManagerCPU: 3
-  v2DataEngineGuaranteedInstanceManagerCPU: 500m
+  v2DataEngineGuaranteedInstanceManagerCPU: 500
