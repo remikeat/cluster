@@ -102,3 +102,15 @@ kubectl rollout restart deployment -n kong kong-open-appsec-kong
 vault kv get --mount=kv app
 vault kv put --mount=kv app password=
 ```
+
+### List cpu/memory requests
+
+```
+kubectl get pods -A -o custom-columns="NAMESPACE:.metadata.namespace,NAME:.metadata.name,REQUEST_CPU:.spec.containers[*].resources.requests.cpu,REQUEST_MEM:.spec.containers[*].resources.requests.memory" --sort-by="{.spec.containers[*].resources.requests.cpu}"
+```
+
+### List all IPs
+
+```
+kubectl get svc -A -o custom-columns="NAME:.metadata.name,IP:.status.loadBalancer.ingress[*].ip" --sort-by="{.status.loadBalancer.ingress[*].ip}" | grep -v "<none>"
+```
