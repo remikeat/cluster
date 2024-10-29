@@ -4,6 +4,13 @@ metadata:
   name: keycloak
 spec:
   instances: 1
+  resources:
+    requests:
+      cpu: 300m
+      memory: 450Mi
+    limits:
+      cpu: 700m
+      memory: 450Mi
   db:
     vendor: postgres
     host: keycloakdb-cluster-rw.keycloak.svc.cluster.local
