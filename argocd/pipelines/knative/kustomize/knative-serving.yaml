@@ -15,3 +15,22 @@ spec:
         - name: knative-local-gateway
           namespace: knative-serving
           service: knative-local-gateway.istio-system.svc.cluster.local
+  workloads:
+  - name: controller
+    resources:
+    - container: controller
+      requests:
+        cpu: 100m
+        memory: 100Mi
+      limits:
+        cpu: '1'
+        memory: 1000Mi
+  - name: activator
+    resources:
+    - container: activator
+      requests:
+        cpu: 100m
+        memory: 60Mi
+      limits:
+        cpu: '1'
+        memory: 600Mi

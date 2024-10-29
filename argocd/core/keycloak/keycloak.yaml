@@ -9,7 +9,7 @@ spec:
       cpu: 100m
       memory: 500Mi
     limits:
-      cpu: 100m
+      cpu: '1'
       memory: 2Gi
   db:
     vendor: postgres
