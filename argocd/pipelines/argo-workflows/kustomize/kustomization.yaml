@@ -66,6 +66,7 @@ helmCharts:
 resources:
   - namespace.yaml
   - serviceaccount.yaml
+  - clusterrole.yaml
   - clusterrolebinding.yaml
   - build-image.yaml
 
