@@ -8,5 +8,5 @@ ingress:
   host: longhorn
   tls: true
 defaultSettings:
-  guaranteedInstanceManagerCPU: 3
+  guaranteedInstanceManagerCPU: 1
   v2DataEngineGuaranteedInstanceManagerCPU: 1000
