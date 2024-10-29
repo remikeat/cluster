@@ -11,6 +11,7 @@ helmCharts:
     namespace: istio-system
     releaseName: istiod
     version: 1.23.0
+    valuesFile: values.yaml
     repo: https://istio-release.storage.googleapis.com/charts
   - name: gateway
     namespace: istio-system

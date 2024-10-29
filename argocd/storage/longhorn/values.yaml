@@ -7,3 +7,6 @@ ingress:
   ingressClassName: tailscale
   host: longhorn
   tls: true
+defaultSettings:
+  guaranteedInstanceManagerCPU: 3
+  v2DataEngineGuaranteedInstanceManagerCPU: 500m

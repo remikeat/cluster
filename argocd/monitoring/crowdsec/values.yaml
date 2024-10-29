@@ -14,6 +14,13 @@ lapi:
       storageClassName: longhorn
     config:
       storageClassName: longhorn
+  resources:
+    limits:
+      memory: 500Mi
+      cpu: 100m
+    requests:
+      cpu: 100m
+      memory: 500Mi
 container_runtime: containerd
 image:
   repository: crowdsecurity/crowdsec
@@ -34,6 +41,13 @@ agent:
   persistentVolume:
     config:
       storageClassName: longhorn
+  resources:
+    limits:
+      memory: 250Mi
+      cpu: 100m
+    requests:
+      cpu: 100m
+      memory: 250Mi
 config:
   profiles.yaml: |
     name: default_ip_remediation
