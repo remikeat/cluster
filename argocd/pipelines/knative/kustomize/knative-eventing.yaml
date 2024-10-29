@@ -8,3 +8,20 @@ kind: KnativeEventing
 metadata:
   name: knative-eventing
   namespace: knative-eventing
+spec:
+  workloads:
+    - name: eventing-controller
+      resources:
+        - container: eventing-controller
+          requests:
+            cpu: 50m
+            memory: 100M
+    - name: eventing-webhook
+      resources:
+        - container: eventing-webhook
+          requests:
+            cpu: 50m
+            memory: 50M
+          limits:
+            cpu: 200m
+            memory: 200M
