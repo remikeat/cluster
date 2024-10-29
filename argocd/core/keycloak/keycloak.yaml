@@ -6,7 +6,7 @@ spec:
   instances: 1
   resources:
     requests:
-      cpu: 300m
+      cpu: 100m
       memory: 450Mi
     limits:
       cpu: 700m
