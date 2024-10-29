@@ -10,7 +10,7 @@ spec:
       memory: 450Mi
     limits:
       cpu: 700m
-      memory: 450Mi
+      memory: 3Gi
   db:
     vendor: postgres
     host: keycloakdb-cluster-rw.keycloak.svc.cluster.local
