@@ -12,3 +12,9 @@ resources:
 
 patches:
   - path: patches/kafka-broker-config.yaml
+  - target:
+      version: v1
+      group: apps
+      kind: StatefulSet
+      name: kafka-broker-dispatcher
+    path: ./patches/kafka-broker-dispatcher.yaml
