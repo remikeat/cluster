@@ -25,3 +25,21 @@ spec:
           limits:
             cpu: 200m
             memory: 200M
+    - name: mt-broker-controller
+      resources:
+        - container: mt-broker-controller
+          requests:
+            cpu: 50m
+            memory: 100Mi
+    - name: mt-broker-filter
+      resources:
+        - container: mt-broker-filter
+          requests:
+            cpu: 50m
+            memory: 100Mi
+    - name: mt-broker-ingress
+      resources:
+        - container: mt-broker-ingress
+          requests:
+            cpu: 50m
+            memory: 100Mi
