@@ -102,8 +102,6 @@ spec:
             mountPath: /.docker
         workingDir: /work/repo/{{inputs.parameters.path}}
         env:
-          - name: BUILDKITD_FLAGS
-            value: --oci-worker-no-process-sandbox
           - name: DOCKER_CONFIG
             value: /.docker
         command:
