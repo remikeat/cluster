@@ -100,6 +100,7 @@ spec:
             mountPath: /work
           - name: docker-config
             mountPath: /.docker
+            subPath: .dockerconfigjson
         workingDir: /work/repo/{{inputs.parameters.path}}
         env:
           - name: DOCKER_CONFIG
