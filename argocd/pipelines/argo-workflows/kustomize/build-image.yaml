@@ -54,8 +54,6 @@ spec:
           configMap:
             name: git-askpass
             defaultMode: 0777
-      securityContext:
-        privileged: true
       container:
         volumeMounts:
           - mountPath: /work
@@ -90,11 +88,13 @@ spec:
         - name: docker-config
           secret:
             secretName: docker-config
+      securityContext:
+        privileged: true
       container:
         readinessProbe:
           exec:
             command: [sh, -c, "buildctl debug workers"]
-        image: moby/buildkit:v0.9.3-rootless
+        image: moby/buildkit:v0.16.0
         volumeMounts:
           - name: work
             mountPath: /work
