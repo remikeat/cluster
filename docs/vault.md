@@ -45,21 +45,12 @@ vault operator raft snapshot restore backup.snap
 
 - kv/data/kubevirt-manager#htpasswd
 
-- kv/data/redmine#password
-- kv/data/redmine#db_password
-
 - kv/data/supabase#anon_key
 - kv/data/supabase#service_key
 - kv/data/supabase#secret
 - kv/data/supabase#password
 - kv/data/supabase#db_password
 - kv/data/supabase#analytics_api_key
-
-- kv/data/vm#password
-- kv/data/vm#pub_key
-
-- kv/data/resume#web3form_token
-- kv/data/resume#hcaptcha_token
 
 - kv/data/grafana#password
 
