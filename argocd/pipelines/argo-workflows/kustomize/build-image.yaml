@@ -88,13 +88,13 @@ spec:
         - name: docker-config
           secret:
             secretName: docker-config
-      securityContext:
-        privileged: true
       container:
         readinessProbe:
           exec:
             command: [sh, -c, "buildctl debug workers"]
         image: moby/buildkit:v0.16.0
+        securityContext:
+          privileged: true
         volumeMounts:
           - name: work
             mountPath: /work
