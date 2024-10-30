@@ -11,6 +11,7 @@ rules:
       - get
       - watch
       - patch
+      - list
   - apiGroups:
       - ""
     resources:
@@ -18,3 +19,4 @@ rules:
     verbs:
       - get
       - watch
+      - list
