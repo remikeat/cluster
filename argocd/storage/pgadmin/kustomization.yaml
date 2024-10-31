@@ -12,7 +12,7 @@ configMapGenerator:
 secretGenerator:
   - name: pgadmin
     literals:
-      - password=<path:kv/data/pgadmin#password>
+      - password=<path:kv/data/infra/pgadmin#password>
 
 resources:
   - namespace.yaml

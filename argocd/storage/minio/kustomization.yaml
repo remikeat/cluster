@@ -7,12 +7,12 @@ generatorOptions:
 secretGenerator:
   - name: pg-backup-user
     literals:
-      - CONSOLE_ACCESS_KEY=<path:kv/data/cloudnativepg#pg-backup-access-key>
-      - CONSOLE_SECRET_KEY=<path:kv/data/cloudnativepg#pg-backup-secret-key>
+      - CONSOLE_ACCESS_KEY=<path:kv/data/infra/cloudnativepg#pg-backup-access-key>
+      - CONSOLE_SECRET_KEY=<path:kv/data/infra/cloudnativepg#pg-backup-secret-key>
   - name: argo-workflows-user
     literals:
-      - CONSOLE_ACCESS_KEY=<path:kv/data/argo-workflows#access_key>
-      - CONSOLE_SECRET_KEY=<path:kv/data/argo-workflows#secret_key>
+      - CONSOLE_ACCESS_KEY=<path:kv/data/infra/argo-workflows#access_key>
+      - CONSOLE_SECRET_KEY=<path:kv/data/infra/argo-workflows#secret_key>
 
 helmCharts:
   - name: operator

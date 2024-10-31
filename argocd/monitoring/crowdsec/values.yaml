@@ -1,14 +1,14 @@
 secrets:
   username: agent
-  password: <path:kv/data/crowdsec#agent_password>
+  password: <path:kv/data/infra/crowdsec#agent_password>
 lapi:
   env:
     - name: ENROLL_INSTANCE_NAME
       value: "my-k8s-cluster"
     - name: ENROLL_KEY
-      value: <path:kv/data/crowdsec#enroll_key>
+      value: <path:kv/data/infra/crowdsec#enroll_key>
     - name: BOUNCER_KEY_kong
-      value: <path:kv/data/crowdsec#bouncer_key>
+      value: <path:kv/data/infra/crowdsec#bouncer_key>
   persistentVolume:
     data:
       storageClassName: longhorn
@@ -94,7 +94,7 @@ config:
 
       smtp_host: smtp.sendgrid.net # example: smtp.gmail.com
       smtp_username: apikey        # Replace with your actual username
-      smtp_password: <path:kv/data/sendgrid#smtp_password>               # Replace with your actual password
+      smtp_password: <path:kv/data/infra/sendgrid#smtp_password>               # Replace with your actual password
       smtp_port: 587               # Common values are any of [25, 465, 587, 2525]
       auth_type: login             # Valid choices are "none", "crammd5", "login", "plain"
       sender_name: "CrowdSec"

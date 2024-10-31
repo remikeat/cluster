@@ -10,7 +10,7 @@ secretGenerator:
     type: kubernetes.io/opaque
     literals:
       - username=elastic
-      - password=<path:kv/data/elastic#password>
+      - password=<path:kv/data/infra/elastic#password>
 
 resources:
   - namespace.yaml

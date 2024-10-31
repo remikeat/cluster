@@ -12,13 +12,13 @@ secretGenerator:
   - name: kong-cluster-cert
     namespace: kong
     literals:
-      - tls.crt=<path:kv/data/kong#certificate>
-      - tls.key=<path:kv/data/kong#private_key>
+      - tls.crt=<path:kv/data/infra/kong#certificate>
+      - tls.key=<path:kv/data/infra/kong#private_key>
   - name: kong-credentials
     namespace: kong
     literals:
       - username=kong
-      - password=<path:kv/data/kong#pg_password>
+      - password=<path:kv/data/infra/kong#pg_password>
 
 configMapGenerator:
   - name: kong-plugin-auth

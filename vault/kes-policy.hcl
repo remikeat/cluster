@@ -1,4 +1,4 @@
-path "kv/data/*" {
+path "kv/data/infra/*" {
       capabilities = [ "create", "read"]
 }
 

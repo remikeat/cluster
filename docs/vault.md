@@ -33,79 +33,79 @@ vault operator raft snapshot restore backup.snap
 
 ## Items
 
-- kv/data/sendgrid#smtp_password
+- kv/data/infra/sendgrid#smtp_password
 
-- kv/data/crowdsec#agent_password
-- kv/data/crowdsec#enroll_key
-- kv/data/crowdsec#bouncer_key
+- kv/data/infra/crowdsec#agent_password
+- kv/data/infra/crowdsec#enroll_key
+- kv/data/infra/crowdsec#bouncer_key
 
-- kv/data/falco#password
+- kv/data/infra/falco#password
 
-- kv/data/elastic#password
+- kv/data/infra/elastic#password
 
-- kv/data/kubevirt-manager#htpasswd
+- kv/data/infra/kubevirt-manager#htpasswd
 
-- kv/data/supabase#anon_key
-- kv/data/supabase#service_key
-- kv/data/supabase#secret
-- kv/data/supabase#password
-- kv/data/supabase#db_password
-- kv/data/supabase#analytics_api_key
+- kv/data/infra/supabase#anon_key
+- kv/data/infra/supabase#service_key
+- kv/data/infra/supabase#secret
+- kv/data/infra/supabase#password
+- kv/data/infra/supabase#db_password
+- kv/data/infra/supabase#analytics_api_key
 
-- kv/data/grafana#password
+- kv/data/infra/grafana#password
 
-- kv/data/ghcr#user
+- kv/data/infra/ghcr#user
 
-- kv/data/harbor#user
-- kv/data/harbor#registry_user
-- kv/data/harbor#db_password
-- kv/data/harbor#secret_key
+- kv/data/infra/harbor#user
+- kv/data/infra/harbor#registry_user
+- kv/data/infra/harbor#db_password
+- kv/data/infra/harbor#secret_key
 
-- kv/data/kubeclarity#db_password
+- kv/data/infra/kubeclarity#db_password
 
-- kv/data/rook-ceph#object_access_key
-- kv/data/rook-ceph#object_secret_key
+- kv/data/infra/rook-ceph#object_access_key
+- kv/data/infra/rook-ceph#object_secret_key
 
-- kv/data/cloudnativepg#pg-backup-access-key
-- kv/data/cloudnativepg#pg-backup-secret-key
+- kv/data/infra/cloudnativepg#pg-backup-access-key
+- kv/data/infra/cloudnativepg#pg-backup-secret-key
 
-- kv/data/minio#secret_key
-- kv/data/minio#kes-id
-- kv/data/minio#kes-secret
+- kv/data/infra/minio#secret_key
+- kv/data/infra/minio#kes-id
+- kv/data/infra/minio#kes-secret
 
-- kv/data/kong#certificate
-- kv/data/kong#private_key
-- kv/data/kong#pg_password
-- kv/data/kong#password
-- kv/data/kong#client_id
-- kv/data/kong#client_secret
+- kv/data/infra/kong#certificate
+- kv/data/infra/kong#private_key
+- kv/data/infra/kong#pg_password
+- kv/data/infra/kong#password
+- kv/data/infra/kong#client_id
+- kv/data/infra/kong#client_secret
 
-- kv/data/keycloak#password
-- kv/data/keycloak#pg_password
+- kv/data/infra/keycloak#password
+- kv/data/infra/keycloak#pg_password
 
-- kv/data/pgadmin#password
+- kv/data/infra/pgadmin#password
 
-- kv/data/open-appsec#email
-- kv/data/open-appsec#token
+- kv/data/infra/open-appsec#email
+- kv/data/infra/open-appsec#token
 
-- kv/data/argo-workflows#pg_password
-- kv/data/argo-workflows#client_id
-- kv/data/argo-workflows#client_secret
-- kv/data/argo-workflows#access_key
-- kv/data/argo-workflows#secret_key
+- kv/data/infra/argo-workflows#pg_password
+- kv/data/infra/argo-workflows#client_id
+- kv/data/infra/argo-workflows#client_secret
+- kv/data/infra/argo-workflows#access_key
+- kv/data/infra/argo-workflows#secret_key
 
-- kv/data/github#username
-- kv/data/github#password
+- kv/data/infra/github#username
+- kv/data/infra/github#password
 
-<!-- - kv/data/rabbitmq#username
-- kv/data/rabbitmq#password -->
+<!-- - kv/data/infra/rabbitmq#username
+- kv/data/infra/rabbitmq#password -->
 
 ### Container registry
 
-- kv/data/ghcr#user
+- kv/data/infra/ghcr#user
 
-- kv/data/harbor#user
-- kv/data/harbor#registry_user
+- kv/data/infra/harbor#user
+- kv/data/infra/harbor#registry_user
 
 Value should be
 

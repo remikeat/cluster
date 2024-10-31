@@ -105,15 +105,11 @@ spec:
         env:
           - name: DOCKER_CONFIG
             value: /.docker
-        command:
-          - buildctl-daemonless.sh
+        command: [sh, -c]
         args:
-          - build
-          - --frontend
-          - dockerfile.v0
-          - --local
-          - context=.
-          - --local
-          - dockerfile=.
-          - --output
-          - type=image,name=harbor.remikeat.com/{{inputs.parameters.image}},push=true
+          - |
+            buildctl-daemonless.sh build \
+            --frontend dockerfile.v0 \
+            --local context=. \
+            --local dockerfile=. \
+            --output type=image,name=harbor.remikeat.com/{{inputs.parameters.image}},push=true

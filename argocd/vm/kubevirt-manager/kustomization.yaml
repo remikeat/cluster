@@ -13,7 +13,7 @@ secretGenerator:
   - name: auth-secret
     namespace: kubevirt-manager
     literals:
-      - .htpasswd=<path:kv/data/kubevirt-manager#htpasswd>
+      - .htpasswd=<path:kv/data/infra/kubevirt-manager#htpasswd>
     options:
       labels:
         app: kubevirt-manager

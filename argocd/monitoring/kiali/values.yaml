@@ -32,6 +32,6 @@ cr:
         auth:
           type: basic
           username: "admin"
-          password: <path:kv/data/grafana#password>
+          password: <path:kv/data/infra/grafana#password>
       prometheus:
         url: "http://kube-prometheus-stack-prometheus.kube-prometheus-stack:9090/"

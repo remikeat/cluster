@@ -9,12 +9,12 @@ secretGenerator:
     namespace: keycloak
     literals:
       - username=keycloak
-      - password=<path:kv/data/keycloak#password>
+      - password=<path:kv/data/infra/keycloak#password>
   - name: keycloak-credentials
     namespace: keycloak
     literals:
       - username=keycloak
-      - password=<path:kv/data/keycloak#pg_password>
+      - password=<path:kv/data/infra/keycloak#pg_password>
 
 helmCharts:
   - name: cluster

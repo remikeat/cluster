@@ -21,11 +21,11 @@ env:
   database: postgres
   pg_database: kong
   pg_user: kong
-  pg_password: <path:kv/data/kong#pg_password>
+  pg_password: <path:kv/data/infra/kong#pg_password>
   pg_host: 	kongdb-cluster-rw.kong.svc.cluster.local
   pg_ssl: "on"
 
-  password: <path:kv/data/kong#password>
+  password: <path:kv/data/infra/kong#password>
 
   admin_gui_url: https://kong-manager.tail4d334.ts.net
   admin_gui_api_url: https://kong-admin.tail4d334.ts.net
@@ -90,8 +90,8 @@ plugins:
 appsec:
   persistence:
     enabled: true
-  userEmail: <path:kv/data/open-appsec#email>
-  agentToken: <path:kv/data/open-appsec#token>
+  userEmail: <path:kv/data/infra/open-appsec#email>
+  agentToken: <path:kv/data/infra/open-appsec#token>
   configMapContent:
     crowdsec:
       enabled: true
@@ -105,4 +105,4 @@ appsec:
   secretContent:
     crowdsec:
       auth:
-        data: <path:kv/data/crowdsec#bouncer_key>
+        data: <path:kv/data/infra/crowdsec#bouncer_key>

@@ -15,24 +15,24 @@ secretGenerator:
     namespace: argo-workflows
     literals:
       - username=argo-workflows
-      - password=<path:kv/data/argo-workflows#pg_password>
+      - password=<path:kv/data/infra/argo-workflows#pg_password>
   - name: argo-server-sso
     namespace: argo-workflows
     literals:
-      - client-id=<path:kv/data/argo-workflows#client_id>
-      - client-secret=<path:kv/data/argo-workflows#client_secret>
+      - client-id=<path:kv/data/infra/argo-workflows#client_id>
+      - client-secret=<path:kv/data/infra/argo-workflows#client_secret>
   - name: argo-s3-credentials
     namespace: argo-workflows
     literals:
-      - access_key=<path:kv/data/argo-workflows#access_key>
-      - secret_key=<path:kv/data/argo-workflows#secret_key>
+      - access_key=<path:kv/data/infra/argo-workflows#access_key>
+      - secret_key=<path:kv/data/infra/argo-workflows#secret_key>
   - name: argo-admin.service-account-token
     namespace: argo-workflows
   - name: git-credentials
     namespace: argo-workflows
     literals:
-      - username=<path:kv/data/github#username>
-      - password=<path:kv/data/github#password>
+      - username=<path:kv/data/infra/github#username>
+      - password=<path:kv/data/infra/github#password>
   - name: docker-config
     namespace: argo-workflows
     type: kubernetes.io/dockerconfigjson
@@ -42,9 +42,9 @@ secretGenerator:
         {
             "auths": {
                 "harbor.remikeat.com": {
-                    "username": "<path:kv/data/harbor#user | yamlParse | jsonPath {.username}>",
-                    "password": "<path:kv/data/harbor#user | yamlParse | jsonPath {.password}>",
-                    "auth": "<path:kv/data/harbor#user | yamlParse | jsonPath {.username}{':'}{.password} | base64encode>"
+                    "username": "<path:kv/data/infra/harbor#user | yamlParse | jsonPath {.username}>",
+                    "password": "<path:kv/data/infra/harbor#user | yamlParse | jsonPath {.password}>",
+                    "auth": "<path:kv/data/infra/harbor#user | yamlParse | jsonPath {.username}{':'}{.password} | base64encode>"
                 }
             }
         }
