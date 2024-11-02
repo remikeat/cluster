@@ -38,8 +38,11 @@ spec:
     - name: clone-build-push
       inputs:
         parameters:
+          - name: repo
+          - name: branch
           - name: path
           - name: image
+          - name: buildArgs
         artifacts:
           - name: repo-source
             path: /work
