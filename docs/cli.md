@@ -251,3 +251,17 @@ mc alias set myminio https://minio.tail4d334.ts.net
 ```
 kubectl krew install rabbitmq
 ```
+
+## Camel-K
+
+### Camel-K CLI
+
+```
+brew install kamel
+```
+
+### Camel-K CLI auto completion
+
+```
+echo ". <(kamel completion bash)" >> ~/.bashrc
+```
