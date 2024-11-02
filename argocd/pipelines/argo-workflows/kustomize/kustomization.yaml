@@ -4,12 +4,6 @@ kind: Kustomization
 generatorOptions:
   disableNameSuffixHash: true
 
-configMapGenerator:
-  - name: git-askpass
-    namespace: argo-workflows
-    files:
-      - git-askpass.sh
-
 secretGenerator:
   - name: argo-workflows-credentials
     namespace: argo-workflows
