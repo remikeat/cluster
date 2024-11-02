@@ -14,76 +14,44 @@ spec:
         value: ""
       - name: image
         value: ""
+      - name: buildArgs
+        value: ""
   entrypoint: main
-  volumeClaimTemplates:
-    - metadata:
-        name: work
-      spec:
-        accessModes: ["ReadWriteOnce"]
-        resources:
-          requests:
-            storage: 500Mi
   templates:
     - name: main
       dag:
         tasks:
-          - name: clone
-            template: clone
+          - name: clone-build-push
+            template: clone-build-push
             arguments:
               parameters:
                 - name: repo
                   value: "{{workflow.parameters.repo}}"
                 - name: branch
                   value: "{{workflow.parameters.branch}}"
-          - name: build-push
-            template: build-push
-            arguments:
-              parameters:
                 - name: path
                   value: "{{workflow.parameters.path}}"
                 - name: image
                   value: "{{workflow.parameters.image}}"
-            depends: clone
-    - name: clone
-      inputs:
-        parameters:
-          - name: repo
-          - name: branch
-      volumes:
-        - name: git-askpass
-          configMap:
-            name: git-askpass
-            defaultMode: 0777
-      container:
-        volumeMounts:
-          - mountPath: /work
-            name: work
-          - mountPath: /git-askpass.sh
-            name: git-askpass
-            subPath: git-askpass.sh
-        image: alpine/git:v2.26.2
-        workingDir: /work
-        env:
-          - name: GIT_ASKPASS
-            value: /git-askpass.sh
-          - name: GIT_USERNAME
-            valueFrom:
-              secretKeyRef:
-                name: git-credentials
-                key: username
-          - name: GIT_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: git-credentials
-                key: password
-        command: [sh, -c]
-        args:
-          - git clone --branch "{{inputs.parameters.branch}}" --single-branch "{{inputs.parameters.repo}}" repo
-    - name: build-push
+                - name: buildArgs
+                  value: "{{workflow.parameters.buildArgs}}"
+    - name: clone-build-push
       inputs:
         parameters:
           - name: path
           - name: image
+        artifacts:
+          - name: repo-source
+            path: /work
+            git:
+              repo: "{{inputs.parameters.repo}}"
+              revision: "{{inputs.parameters.branch}}"
+              usernameSecret:
+                name: git-credentials
+                key: username
+              passwordSecret:
+                name: git-credentials
+                key: password
       volumes:
         - name: docker-config
           secret:
@@ -96,8 +64,6 @@ spec:
         securityContext:
           privileged: true
         volumeMounts:
-          - name: work
-            mountPath: /work
           - name: docker-config
             mountPath: /.docker/config.json
             subPath: .dockerconfigjson
@@ -112,4 +78,5 @@ spec:
             --frontend dockerfile.v0 \
             --local context=. \
             --local dockerfile=. \
+            $(for arg in {{inputs.parameters.buildArgs}}; do echo "--opt build-arg:$arg"; done) \
             --output type=image,name=harbor.remikeat.com/{{inputs.parameters.image}},push=true
