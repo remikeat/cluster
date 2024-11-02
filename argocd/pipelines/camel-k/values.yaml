@@ -1,0 +1,6 @@
+platform:
+  build:
+    registry:
+      address: harbor.remikeat.com
+      organization: library
+      secret: harbor-credentials

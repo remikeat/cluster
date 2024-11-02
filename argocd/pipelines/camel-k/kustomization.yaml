@@ -1,0 +1,30 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+generatorOptions:
+  disableNameSuffixHash: true
+
+secretGenerator:
+  - name: harbor-credentials
+    namespace: camel-k
+    type: kubernetes.io/dockerconfigjson
+    literals:
+      - |
+        .dockerconfigjson=
+        {
+            "auths": {
+                "harbor.remikeat.com": {
+                    "username": "<path:kv/data/infra/harbor#user | yamlParse | jsonPath {.username}>",
+                    "password": "<path:kv/data/infra/harbor#user | yamlParse | jsonPath {.password}>",
+                    "auth": "<path:kv/data/infra/harbor#user | yamlParse | jsonPath {.username}{':'}{.password} | base64encode>"
+                }
+            }
+        }
+
+helmCharts:
+  - name: camel-k
+    namespace: camel-k
+    releaseName: camel-k
+    valuesFile: values.yaml
+    version: 2.4.0
+    repo: https://apache.github.io/camel-k/charts/

@@ -44,6 +44,7 @@ spec:
       - app: messages/kafka-ui
       - app: messages/rabbitmq
       - app: pipelines/argo-workflows
+      - app: pipelines/camel-k
       - app: pipelines/knative
       - app: pipelines/tekton
       - app: vm/kubevirt
