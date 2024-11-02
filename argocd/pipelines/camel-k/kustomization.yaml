@@ -28,3 +28,4 @@ helmCharts:
     valuesFile: values.yaml
     version: 2.4.0
     repo: https://apache.github.io/camel-k/charts/
+    includeCRDs: true
