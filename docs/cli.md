@@ -263,5 +263,6 @@ brew install kamel
 ### Camel-K CLI auto completion
 
 ```
-echo ". <(kamel completion bash)" >> ~/.bashrc
+kamel completion bash > /etc/bash_completion.d/kamel
+echo "source '/etc/bash_completion.d/kamel'" >> ~/.bashrc
 ```
