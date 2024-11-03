@@ -31,7 +31,7 @@ agent:
   acquisition:
     - namespace: kong
       podName: kong-open-appsec-*
-      program: openappsec
+      program: nginx
       poll_without_inotify: true
   env:
     - name: PARSERS
