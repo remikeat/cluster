@@ -52,3 +52,10 @@ kubectl apply -f applications.yaml
 ### Configuation
 
 Make sure harbor project is private
+
+Change password of emqx dashboard IMMEDIATELY
+
+EMQX dashboard initial credentials:
+
+- username: admin
+- password: public
