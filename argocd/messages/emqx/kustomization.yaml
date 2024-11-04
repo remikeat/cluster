@@ -1,0 +1,12 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+helmCharts:
+  - name: emqx-operator
+    namespace: emqx-operator-system
+    releaseName: emqx-operator
+    version: 2.2.25
+    repo: https://repos.emqx.io/charts
+
+resources:
+  - emqx.yaml

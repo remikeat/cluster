@@ -40,6 +40,7 @@ spec:
       - app: monitoring/metrics-server
       - app: monitoring/trivy
         namespace: trivy-system
+      - app: messages/emqx
       - app: messages/kafka
         prune: false
       - app: messages/kafka-ui
