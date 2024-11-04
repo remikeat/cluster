@@ -59,6 +59,8 @@ tenant:
       region: ap-northeast-1
     - name: argo-artifacts
       region: ap-northeast-1
+    - name: website
+      region: ap-northeast-1
   users:
     - name: pg-backup-user
     - name: argo-workflows-user
