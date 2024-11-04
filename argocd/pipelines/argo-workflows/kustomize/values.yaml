@@ -22,6 +22,7 @@ workflow:
 server:
   authModes:
     - sso
+    - client
   sso:
     enabled: true
     issuer: https://keycloak.remikeat.com/realms/master
