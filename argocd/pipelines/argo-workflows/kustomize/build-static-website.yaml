@@ -92,6 +92,7 @@ spec:
               none: {}
             s3:
               endpoint: minio.minio.svc.cluster.local
+              insecure: true
               bucket: "{{inputs.parameters.bucket}}"
               region: ap-northeast-1
               key: "{{inputs.parameters.key}}"
