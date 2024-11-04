@@ -11,7 +11,7 @@ spec:
       elements:
       - app: core/cert-manager
       # - app: core/descheduler
-      - app: external-secrets
+      - app: core/external-secrets
       - app: core/istio
         namespace: istio-system
       - app: core/keycloak
