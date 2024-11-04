@@ -41,6 +41,7 @@ spec:
       - app: monitoring/trivy
         namespace: trivy-system
       - app: messages/emqx
+        namespace: emqx-operator-system
       - app: messages/kafka
         prune: false
       - app: messages/kafka-ui
