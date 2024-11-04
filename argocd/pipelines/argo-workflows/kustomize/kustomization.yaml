@@ -5,43 +5,43 @@ generatorOptions:
   disableNameSuffixHash: true
 
 secretGenerator:
-  - name: argo-workflows-credentials
-    namespace: argo-workflows
-    literals:
-      - username=argo-workflows
-      - password=<path:kv/data/infra/argo-workflows#pg_password>
-  - name: argo-server-sso
-    namespace: argo-workflows
-    literals:
-      - client-id=<path:kv/data/infra/argo-workflows#client_id>
-      - client-secret=<path:kv/data/infra/argo-workflows#client_secret>
-  - name: argo-s3-credentials
-    namespace: argo-workflows
-    literals:
-      - access_key=<path:kv/data/infra/argo-workflows#access_key>
-      - secret_key=<path:kv/data/infra/argo-workflows#secret_key>
+  # - name: argo-workflows-credentials
+  #   namespace: argo-workflows
+  #   literals:
+  #     - username=argo-workflows
+  #     - password=<path:kv/data/infra/argo-workflows#pg_password>
+  # - name: argo-server-sso
+  #   namespace: argo-workflows
+  #   literals:
+  #     - client-id=<path:kv/data/infra/argo-workflows#client_id>
+  #     - client-secret=<path:kv/data/infra/argo-workflows#client_secret>
+  # - name: argo-s3-credentials
+  #   namespace: argo-workflows
+  #   literals:
+  #     - access_key=<path:kv/data/infra/argo-workflows#access_key>
+  #     - secret_key=<path:kv/data/infra/argo-workflows#secret_key>
   - name: argo-admin.service-account-token
     namespace: argo-workflows
-  - name: git-credentials
-    namespace: argo-workflows
-    literals:
-      - username=<path:kv/data/infra/github#username>
-      - password=<path:kv/data/infra/github#password>
-  - name: docker-config
-    namespace: argo-workflows
-    type: kubernetes.io/dockerconfigjson
-    literals:
-      - |
-        .dockerconfigjson=
-        {
-            "auths": {
-                "harbor.remikeat.com": {
-                    "username": "<path:kv/data/infra/harbor#user | yamlParse | jsonPath {.username}>",
-                    "password": "<path:kv/data/infra/harbor#user | yamlParse | jsonPath {.password}>",
-                    "auth": "<path:kv/data/infra/harbor#user | yamlParse | jsonPath {.username}{':'}{.password} | base64encode>"
-                }
-            }
-        }
+  # - name: git-credentials
+  #   namespace: argo-workflows
+  #   literals:
+  #     - username=<path:kv/data/infra/github#username>
+  #     - password=<path:kv/data/infra/github#password>
+  # - name: docker-config
+  #   namespace: argo-workflows
+  #   type: kubernetes.io/dockerconfigjson
+  #   literals:
+  #     - |
+  #       .dockerconfigjson=
+  #       {
+  #           "auths": {
+  #               "harbor.remikeat.com": {
+  #                   "username": "<path:kv/data/infra/harbor#user | yamlParse | jsonPath {.username}>",
+  #                   "password": "<path:kv/data/infra/harbor#user | yamlParse | jsonPath {.password}>",
+  #                   "auth": "<path:kv/data/infra/harbor#user | yamlParse | jsonPath {.username}{':'}{.password} | base64encode>"
+  #               }
+  #           }
+  #       }
 
 helmCharts:
   - name: cluster
@@ -59,6 +59,7 @@ helmCharts:
 
 resources:
   - namespace.yaml
+  - externalsecret.yaml
   - serviceaccount.yaml
   - clusterrole.yaml
   - clusterrolebinding.yaml
