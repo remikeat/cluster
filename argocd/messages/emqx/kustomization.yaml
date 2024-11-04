@@ -10,3 +10,4 @@ helmCharts:
 
 resources:
   - emqx.yaml
+  - ingress.yaml
