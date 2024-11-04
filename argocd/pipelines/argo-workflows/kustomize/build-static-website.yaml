@@ -73,7 +73,7 @@ spec:
       container:
         image: node:lts-alpine
         workingDir: /work/{{inputs.parameters.path}}
-        command: [bash, -c]
+        command: [sh, -c]
         args:
           - |
             npm install && \
