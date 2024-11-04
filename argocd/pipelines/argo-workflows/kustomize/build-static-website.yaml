@@ -87,7 +87,7 @@ spec:
       outputs:
         artifacts:
           - name: output-dir
-            path: /work/{{inputs.parameters.output-dir}}
+            path: /work/{{inputs.parameters.path}}/{{inputs.parameters.output-dir}}
             archive:
               none: {}
             s3:
