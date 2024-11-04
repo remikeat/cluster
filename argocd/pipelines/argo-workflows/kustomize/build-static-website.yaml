@@ -71,16 +71,11 @@ spec:
                 name: git-credentials
                 key: password
       container:
-        image: ubuntu:24.04
+        image: node:lts-alpine
         workingDir: /work/{{inputs.parameters.path}}
         command: [bash, -c]
         args:
           - |
-            apt update && \
-            apt install -y curl && \
-            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash && \
-            source $HOME/.nvm/nvm.sh && \
-            nvm install node && \
             npm install && \
             $(for env in {{inputs.parameters.env}}; do export $env; done) && \
             {{inputs.parameters.build-cmd}}
