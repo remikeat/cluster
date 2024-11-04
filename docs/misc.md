@@ -114,3 +114,9 @@ kubectl get pods -A -o custom-columns="NAMESPACE:.metadata.namespace,NAME:.metad
 ```
 kubectl get svc -A -o custom-columns="NAME:.metadata.name,IP:.status.loadBalancer.ingress[*].ip" --sort-by="{.status.loadBalancer.ingress[*].ip}" | grep -v "<none>"
 ```
+
+### Get token to log in argo workflows
+
+```
+kubectl -n argo-workflows exec -it $(kubectl -n argo-workflows get pods -l app=server -o json | jq -r .items[].metadata.name) -- argo auth token
+```
