@@ -77,8 +77,7 @@ spec:
         args:
           - |
             npm install && \
-            $(for env in {{inputs.parameters.env}}; do export $env; done) && \
-            {{inputs.parameters.build-cmd}}
+            env {{inputs.parameters.env}} {{inputs.parameters.build-cmd}}
       outputs:
         artifacts:
           - name: output-dir
