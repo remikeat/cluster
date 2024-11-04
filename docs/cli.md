@@ -243,7 +243,7 @@ mc --autocompletion
 ### Set alias
 
 ```
-mc alias set myminio https://minio.tail4d334.ts.net
+mc alias set minio https://minio.tail4d334.ts.net
 ```
 
 ### RabbitMQ CLI
