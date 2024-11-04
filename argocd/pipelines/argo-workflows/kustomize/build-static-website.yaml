@@ -92,9 +92,9 @@ spec:
               none: {}
             s3:
               endpoint: minio.minio.svc.cluster.local
-              bucket: { { inputs.parameters.bucket } }
+              bucket: "{{inputs.parameters.bucket}}"
               region: ap-northeast-1
-              key: { { inputs.parameters.key } }
+              key: "{{inputs.parameters.key}}"
               accessKeySecret:
                 name: argo-s3-credentials
                 key: access_key
