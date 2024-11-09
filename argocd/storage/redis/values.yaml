@@ -1,0 +1,4 @@
+redisStandalone:
+  redisSecret:
+    secretName: redis-credentials
+    secretKey: password

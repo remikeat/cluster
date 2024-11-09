@@ -1,0 +1,19 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+helmCharts:
+  - name: redis-operator
+    namespace: redis
+    releaseName: redis-operator
+    valuesFile: operator-values.yaml
+    version: 0.18.5
+    repo: https://ot-container-kit.github.io/helm-charts/
+  - name: redis
+    namespace: redis
+    releaseName: redis
+    valuesFile: values.yaml
+    version: 0.16.1
+    repo: https://ot-container-kit.github.io/helm-charts/
+
+resources:
+  - externalsecret.yaml

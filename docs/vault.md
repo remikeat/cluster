@@ -97,6 +97,8 @@ vault operator raft snapshot restore backup.snap
 - kv/data/infra/github#username
 - kv/data/infra/github#password
 
+- kv/data/infra/redis#password
+
 <!-- - kv/data/infra/rabbitmq#username
 - kv/data/infra/rabbitmq#password -->
 
