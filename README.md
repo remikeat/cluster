@@ -45,8 +45,7 @@ cert-manager.io/issuer-kind: Issuer
 ### Create applications
 
 ```
-kubectl apply -f applicationset.yaml
-kubectl apply -f applications.yaml
+kubectl apply --server-side --request-timeout 0 -f applicationset.yaml
 ```
 
 ### Configuation
