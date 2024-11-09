@@ -15,7 +15,6 @@ helmCharts:
     valuesFile: values.yaml
     version: 0.16.1
     repo: https://ot-container-kit.github.io/helm-charts/
-    includeCRDs: true
 
 resources:
   - externalsecret.yaml
