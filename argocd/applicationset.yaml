@@ -28,7 +28,6 @@ spec:
         prune: false
       - app: storage/pgadmin
       - app: storage/redis
-        ServerSideApply: true
       - app: storage/rook-ceph
       - app: monitoring/crowdsec
       - app: monitoring/elastic
@@ -73,6 +72,8 @@ spec:
         server: 'https://kubernetes.default.svc'
         namespace: '{{default (base .app) .namespace}}'
       syncPolicy:
+        syncOptions:
+          - CreateNamespace=true
         automated:
           prune: true
           selfHeal: true
@@ -85,11 +86,6 @@ spec:
   templatePatch: |
     spec:
       syncPolicy:
-        syncOptions:
-          - CreateNamespace=true
-          {{- if hasKey . "ServerSideApply" }}
-          - ServerSideApply={{.ServerSideApply}}
-          {{- end }}
         automated:
           {{- if hasKey . "prune" }}
           prune: {{.prune}}
