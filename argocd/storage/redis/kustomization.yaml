@@ -8,6 +8,7 @@ helmCharts:
     valuesFile: operator-values.yaml
     version: 0.18.5
     repo: https://ot-container-kit.github.io/helm-charts/
+    includeCRDs: true
   - name: redis
     namespace: redis
     releaseName: redis
