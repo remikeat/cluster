@@ -15,6 +15,7 @@ configs:
   params:
     server:
       insecure: true
+    controller.diff.server.side: "true"
   cmp:
     create: true
     plugins:
