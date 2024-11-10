@@ -15,8 +15,6 @@ spec:
         producer:
           topic: jaeger-spans
           brokers: kafka-kafka-bootstrap.kafka:9092
-      es:
-        use-aliases: true
   query:
     options:
       es:
