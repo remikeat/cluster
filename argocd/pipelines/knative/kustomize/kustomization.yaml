@@ -12,6 +12,7 @@ resources:
 
 patches:
   - path: patches/kafka-broker-config.yaml
+  - path: patches/config-tracing.yaml
   - target:
       version: v1
       group: apps
