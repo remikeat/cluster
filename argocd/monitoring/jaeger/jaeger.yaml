@@ -1,0 +1,55 @@
+apiVersion: jaegertracing.io/v1
+kind: Jaeger
+metadata:
+  name: jaeger
+  strategy: streaming
+  collector:
+    maxReplicas: 5
+    resources:
+      limits:
+        cpu: 100m
+        memory: 128Mi
+    options:
+      kafka:
+        producer:
+          topic: jaeger-spans
+          brokers: kafka-kafka-bootstrap.kafka:9092
+      es:
+        use-aliases: true
+  query:
+    options:
+      es:
+        use-aliases: true
+  ingester:
+    maxReplicas: 8
+    resources:
+      limits:
+        cpu: 100m
+        memory: 128Mi
+    options:
+      kafka:
+        consumer:
+          topic: jaeger-spans
+          brokers: kafka-kafka-bootstrap.kafka:9092
+      ingester:
+        deadlockInterval: 5s
+  storage:
+    type: elasticsearch
+    options:
+      es:
+        create-index-templates: false
+        server-urls: http://elasticsearch-es-http.elastic-system:9200
+    esIndexCleaner:
+      enabled: true
+      numberOfDays: 7
+      schedule: "55 23 * * *"
+    secretName: jaeger-secret
+  ingress:
+    enabled: true
+    ingressClassName: tailscale
+    hosts:
+      - jaeger
+    tls:
+      - hosts:
+          - jaeger
+        secretName: jaeger-cert

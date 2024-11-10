@@ -1,0 +1,8 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - namespace.yaml
+  - https://github.com/jaegertracing/jaeger-operator/releases/download/v1.62.0.0/jaeger-operator.yaml
+  - externalsecret.yaml
+  - jaeger.yaml

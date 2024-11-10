@@ -9,6 +9,11 @@
 xz -d metal-arm64.raw.xz
 ```
 
+Add tokens to below files
+
+- registries.yaml
+- tailscale.yaml
+
 Prepare the cluster
 
 ```

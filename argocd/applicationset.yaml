@@ -36,6 +36,8 @@ spec:
       - app: monitoring/fluent
       - app: monitoring/grafana
         namespace: kube-prometheus-stack
+      - app: monitoring/jaeger
+        namespace: observability
       - app: monitoring/kiali
       - app: monitoring/kubeclarity
       - app: monitoring/metrics-server
