@@ -21,8 +21,8 @@ spec:
       # NOTE: Prior to v0.86.0 use `logging` instead of `debug`.
       debug:
 
-      jaeger:
-        endpoint: "jaeger-collector.observability:14250"
+      otlp:
+        endpoint: jaeger-collector.observability:14250
         tls:
           insecure: true
 
@@ -31,4 +31,4 @@ spec:
         traces:
           receivers: [otlp, zipkin]
           processors: []
-          exporters: [debug, jaeger]
+          exporters: [debug, otlp]
