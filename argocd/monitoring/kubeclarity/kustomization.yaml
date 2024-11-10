@@ -8,3 +8,11 @@ helmCharts:
     valuesFile: values.yaml
     version: 2.23.3
     repo: https://openclarity.github.io/kubeclarity
+
+patches:
+  - target:
+      version: v1
+      group: apps
+      kind: StatefulSet
+      name: kubeclarity-kubeclarity-postgresql
+    path: patches/kubeclarity-kubeclarity-postgresql.yaml
