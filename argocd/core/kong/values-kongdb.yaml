@@ -28,5 +28,5 @@ backups:
     region: ap-northeast-1
     bucket: pg-backup
     path: "/kongdb/"
-    accessKey: <path:kv/data/infra/cloudnativepg#pg-backup-access-key>
-    secretKey: <path:kv/data/infra/cloudnativepg#pg-backup-secret-key>
+    accessKey: <path:kv/data/infra/cloudnativepg#pg_backup_access_key>
+    secretKey: <path:kv/data/infra/cloudnativepg#pg_backup_secret_key>
