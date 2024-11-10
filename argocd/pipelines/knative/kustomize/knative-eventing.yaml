@@ -22,9 +22,7 @@ spec:
           requests:
             cpu: 50m
             memory: 50M
-          limits:
-            cpu: 200m
-            memory: 200M
+          limits: {}
     - name: mt-broker-controller
       resources:
         - container: mt-broker-controller
