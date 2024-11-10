@@ -22,7 +22,7 @@ spec:
       debug:
 
       otlp:
-        endpoint: jaeger-collector.observability:14250
+        endpoint: jaeger-collector.observability:4317
         tls:
           insecure: true
 
