@@ -1,0 +1,19 @@
+# Redis Insight service with name 'redisinsight-service'
+apiVersion: v1
+kind: Service
+metadata:
+  name:
+    redisinsight-service # name should not be 'redisinsight'
+    # since the service creates
+    # environment variables that
+    # conflicts with redisinsight
+    # application's environment
+    # variables `RI_APP_HOST` and
+    # `RI_APP_PORT`
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: 5540
+  selector:
+    app: redisinsight

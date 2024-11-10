@@ -27,6 +27,7 @@ spec:
       - app: storage/minio
       - app: storage/pgadmin
       - app: storage/redis
+      - app: storage/redis-insight
       - app: storage/rook-ceph
       - app: monitoring/crowdsec
       - app: monitoring/elastic
