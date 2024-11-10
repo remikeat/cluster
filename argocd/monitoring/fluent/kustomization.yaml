@@ -12,7 +12,13 @@ secretGenerator:
       - username=elastic
       - password=<path:kv/data/infra/elastic#password>
 
+helmCharts:
+  - name: fluent-operator
+    namespace: fluent
+    releaseName: fluent-operator
+    valuesFile: values.yaml
+    version: 3.1.0
+    repo: https://fluent.github.io/helm-charts
+
 resources:
   - namespace.yaml
-  - crds.yaml
-  - application.yaml

@@ -8,7 +8,7 @@ operator:
       cpu: 100m
       memory: 20Mi
 fluentbit:
-  crdsEnable: false
+  crdsEnable: true
   enable: true
   output:
     es:
@@ -26,7 +26,7 @@ fluentbit:
             name: elasticsearch-secrets
             key: username
 fluentd:
-  crdsEnable: false
+  crdsEnable: true
   enable: false
   output:
     es:
