@@ -6,3 +6,4 @@ admissionWebhooks:
     enabled: false
   autoGenerateCert:
     enabled: true
+    recreate: false
