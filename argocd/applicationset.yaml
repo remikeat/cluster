@@ -39,6 +39,7 @@ spec:
       - app: monitoring/kiali
       - app: monitoring/kubeclarity
       - app: monitoring/metrics-server
+      - app: monitoring/open-telemetry
       - app: monitoring/trivy
         namespace: trivy-system
       - app: messages/emqx
