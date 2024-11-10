@@ -18,3 +18,9 @@ patches:
       kind: StatefulSet
       name: kafka-broker-dispatcher
     path: ./patches/kafka-broker-dispatcher.yaml
+  - target:
+      version: v1
+      group: admissionregistration.k8s.io
+      kind: MutatingWebhookConfiguration
+      name: pods.defaulting.webhook.kafka.eventing.knative.dev
+    path: ./patches/mutatingwebhookconfiguration.yaml

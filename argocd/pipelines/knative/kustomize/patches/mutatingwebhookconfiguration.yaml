@@ -1,0 +1,6 @@
+- op: add
+  path: /webhooks/0/namespaceSelector/matchExpressions
+  value: [{
+      "key": "webhooks.knative.dev/exclude",
+      "operator": "DoesNotExist"
+    }]
