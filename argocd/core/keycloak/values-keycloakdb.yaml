@@ -3,7 +3,11 @@ mode: standalone
 version:
   postgresql: "16"
 cluster:
+  priorityClassName: null
   instances: 1
+  storage:
+    size: 8Gi
+    storageClass: null
   roles:
     - name: keycloak
       connectionLimit: -1
@@ -19,7 +23,10 @@ cluster:
     owner: keycloak
     secret:
       name: keycloak-credentials
+    postInitApplicationSQL: null
     encoding: UTF8
+  postgresql:
+    shared_preload_libraries: null
 backups:
   enabled: true
   endpointURL: http://minio.minio.svc.cluster.local
