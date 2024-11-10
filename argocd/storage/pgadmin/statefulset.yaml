@@ -48,7 +48,9 @@ spec:
           configMap:
             name: pgadmin-config
   volumeClaimTemplates:
-    - metadata:
+    - apiVersion: v1
+      kind: PersistentVolumeClaim
+      metadata:
         name: pgadmin-data
       spec:
         accessModes: ["ReadWriteOnce"]
