@@ -44,12 +44,4 @@ spec:
       schedule: "55 23 * * *"
     secretName: jaeger-secret
   ingress:
-    enabled: true
-    ingressClassName: tailscale
-    security: none
-    hosts:
-      - jaeger
-    tls:
-      - hosts:
-          - jaeger
-        secretName: jaeger-cert
+    enabled: false
