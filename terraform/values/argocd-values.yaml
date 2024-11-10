@@ -109,5 +109,3 @@ repoServer:
         - name: custom-tools
           subPath: yq
           mountPath: /usr/local/bin/yq
-  imagePullSecrets:
-    - name: github-registry

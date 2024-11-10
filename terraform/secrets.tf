@@ -17,29 +17,6 @@ resource "kubernetes_secret" "private_repo" {
   depends_on = [kubernetes_namespace.argocd]
 }
 
-resource "kubernetes_secret" "github_registry" {
-  metadata {
-    name      = "github-registry"
-    namespace = "argocd"
-  }
-
-  type = "kubernetes.io/dockerconfigjson"
-
-  data = {
-    ".dockerconfigjson" = jsonencode({
-      auths = {
-        "ghcr.io" = {
-          "username" = "remikeat"
-          "password" = var.registry_password
-          "auth"     = base64encode("remikeat:${var.registry_password}")
-        }
-      }
-    })
-  }
-
-  depends_on = [kubernetes_namespace.argocd]
-}
-
 resource "kubernetes_secret" "vault_configuration" {
   metadata {
     name      = "vault-configuration"
