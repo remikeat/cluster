@@ -8,3 +8,23 @@ helmCharts:
     valuesFile: values.yaml
     version: 1.15.1
     repo: https://helm.goharbor.io
+
+patches:
+  - target:
+      version: v1
+      group: apps
+      kind: StatefulSet
+      name: harbor-database
+    path: patches/statefulset.yaml
+  - target:
+      version: v1
+      group: apps
+      kind: StatefulSet
+      name: harbor-redis
+    path: patches/statefulset.yaml
+  - target:
+      version: v1
+      group: apps
+      kind: StatefulSet
+      name: harbor-trivy
+    path: patches/statefulset.yaml
