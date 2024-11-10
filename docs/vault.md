@@ -66,8 +66,8 @@ vault operator raft snapshot restore backup.snap
 - kv/data/infra/rook-ceph#object_access_key
 - kv/data/infra/rook-ceph#object_secret_key
 
-- kv/data/infra/cloudnativepg#pg-backup-access-key
-- kv/data/infra/cloudnativepg#pg-backup-secret-key
+- kv/data/infra/cloudnativepg#pg_backup_access_key
+- kv/data/infra/cloudnativepg#pg_backup_secret_key
 
 - kv/data/infra/minio#secret_key
 - kv/data/infra/minio#kes-id
