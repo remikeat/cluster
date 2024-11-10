@@ -9,13 +9,9 @@ configMapGenerator:
     files:
       - servers.json
 
-secretGenerator:
-  - name: pgadmin
-    literals:
-      - password=<path:kv/data/infra/pgadmin#password>
-
 resources:
   - namespace.yaml
+  - externalsecret.yaml
   - service.yaml
   - statefulset.yaml
   - ingress.yaml

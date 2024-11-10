@@ -9,16 +9,6 @@ secretGenerator:
     namespace: kong
     literals:
       - license="'{}'"
-  - name: kong-cluster-cert
-    namespace: kong
-    literals:
-      - tls.crt=<path:kv/data/infra/kong#certificate>
-      - tls.key=<path:kv/data/infra/kong#private_key>
-  - name: kong-credentials
-    namespace: kong
-    literals:
-      - username=kong
-      - password=<path:kv/data/infra/kong#pg_password>
 
 configMapGenerator:
   - name: kong-plugin-auth
@@ -39,15 +29,7 @@ resources:
   - gatewayclass.yaml
   - gateway.yaml
   - kongclusterplugin.yaml
+  - externalsecret.yaml
 
 generators:
   - kong.yaml
-
-patches:
-  - target:
-      kind: Secret
-      name: kong-cluster-cert
-    patch: |-
-      - op: add
-        path: /type
-        value: kubernetes.io/tls

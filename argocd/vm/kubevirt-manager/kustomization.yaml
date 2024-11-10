@@ -3,19 +3,6 @@ kind: Kustomization
 
 resources:
   - https://raw.githubusercontent.com/kubevirt-manager/kubevirt-manager/main/kubernetes/bundled.yaml
+  - externalsecret.yaml
   - configmap.yaml
   - ingress.yaml
-
-generatorOptions:
-  disableNameSuffixHash: true
-
-secretGenerator:
-  - name: auth-secret
-    namespace: kubevirt-manager
-    literals:
-      - .htpasswd=<path:kv/data/infra/kubevirt-manager#htpasswd>
-    options:
-      labels:
-        app: kubevirt-manager
-        kubevirt-manager.io/version: 1.4.0
-        kubevirt-manager.io/managed: "true"

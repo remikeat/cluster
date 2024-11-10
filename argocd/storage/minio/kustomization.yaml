@@ -1,19 +1,6 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-generatorOptions:
-  disableNameSuffixHash: true
-
-secretGenerator:
-  - name: pg-backup-user
-    literals:
-      - CONSOLE_ACCESS_KEY=<path:kv/data/infra/cloudnativepg#pg-backup-access-key>
-      - CONSOLE_SECRET_KEY=<path:kv/data/infra/cloudnativepg#pg-backup-secret-key>
-  - name: argo-workflows-user
-    literals:
-      - CONSOLE_ACCESS_KEY=<path:kv/data/infra/argo-workflows#access_key>
-      - CONSOLE_SECRET_KEY=<path:kv/data/infra/argo-workflows#secret_key>
-
 helmCharts:
   - name: operator
     namespace: minio
@@ -27,3 +14,6 @@ helmCharts:
     valuesFile: tenant-values.yaml
     version: 6.0.3
     repo: https://operator.min.io
+
+resources:
+  - externalsecret.yaml
