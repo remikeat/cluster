@@ -46,6 +46,7 @@ spec:
   ingress:
     enabled: true
     ingressClassName: tailscale
+    security: none
     hosts:
       - jaeger
     tls:
