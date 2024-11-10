@@ -10,6 +10,7 @@ talosctl machineconfig patch worker.yaml \
     --patch @patches/tailscale.yaml \
     --patch @patches/udev-rules.yaml \
     --patch @patches/node-labels.yaml \
+    --patch @patches/registries.yaml \
     -o worker.yaml
 
 talosctl machineconfig patch controlplane.yaml \
@@ -23,4 +24,5 @@ talosctl machineconfig patch controlplane.yaml \
     --patch @patches/tailscale.yaml \
     --patch @patches/udev-rules.yaml \
     --patch @patches/node-labels.yaml \
+    --patch @patches/registries.yaml \
     -o controlplane.yaml

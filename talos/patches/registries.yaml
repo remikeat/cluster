@@ -1,0 +1,7 @@
+machine:
+  registries:
+    config:
+      https://index.docker.io/v1/:
+        auth:
+          username: remikeat
+          password: 
