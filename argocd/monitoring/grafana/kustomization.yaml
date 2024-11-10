@@ -8,9 +8,8 @@ helmCharts:
     valuesFile: values.yaml
     version: 61.8.0
     repo: https://prometheus-community.github.io/helm-charts
-    includeCRDs: false
+    includeCRDs: true
 
 resources:
   - namespace.yaml
-  - crds.yaml
   - ingress.yaml
