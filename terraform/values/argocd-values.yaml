@@ -5,7 +5,7 @@ global:
 configs:
   cm:
     kustomize.buildOptions: --enable-helm
-    resource.exclusion: |
+    resource.exclusions: |
       - apiGroups:
           - cilium.io
         kinds:
