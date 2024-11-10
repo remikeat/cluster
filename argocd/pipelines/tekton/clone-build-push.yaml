@@ -21,6 +21,7 @@ spec:
   tasks:
   - name: fetch-source
     taskRef:
+      kind: Task
       name: git-clone
     workspaces:
     - name: output
@@ -31,6 +32,7 @@ spec:
   - name: build-push
     runAfter: ["fetch-source"]
     taskRef:
+      kind: Task
       name: kaniko
     workspaces:
     - name: source
