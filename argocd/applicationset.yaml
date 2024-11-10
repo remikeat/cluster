@@ -25,7 +25,6 @@ spec:
       - app: storage/longhorn
         namespace: longhorn-system
       - app: storage/minio
-        prune: false
       - app: storage/pgadmin
       - app: storage/redis
       - app: storage/rook-ceph
@@ -44,7 +43,6 @@ spec:
       - app: messages/emqx
         namespace: emqx-operator-system
       - app: messages/kafka
-        prune: false
       - app: messages/kafka-ui
       - app: messages/rabbitmq
       - app: pipelines/argo-workflows
@@ -84,12 +82,3 @@ spec:
             duration: 5s
             maxDuration: 3m0s
             factor: 2
-  templatePatch: |
-    spec:
-      syncPolicy:
-        automated:
-          {{- if hasKey . "prune" }}
-          prune: {{.prune}}
-          {{- else }}
-          prune: true
-          {{- end }}
