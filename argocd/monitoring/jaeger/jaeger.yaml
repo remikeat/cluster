@@ -27,7 +27,7 @@ spec:
           topic: jaeger-spans
           brokers: kafka-kafka-bootstrap.kafka:9092
       ingester:
-        deadlockInterval: 0s
+        deadlockInterval: 5s
   storage:
     type: elasticsearch
     options:
