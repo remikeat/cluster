@@ -40,6 +40,7 @@ spec:
       es:
         create-index-templates: false
         server-urls: http://elasticsearch-es-http.elastic-system:9200
+        use-aliases: true
     esIndexCleaner:
       enabled: true
       numberOfDays: 7
