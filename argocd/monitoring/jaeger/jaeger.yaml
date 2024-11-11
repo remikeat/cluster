@@ -32,8 +32,6 @@ spec:
     options:
       prometheus:
         server-url: http://kube-prometheus-stack-prometheus.kube-prometheus-stack.svc.cluster.local:9090
-  metricsStorage:
-    type: prometheus
   storage:
     type: elasticsearch
     options:
