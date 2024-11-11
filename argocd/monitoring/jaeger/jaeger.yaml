@@ -28,19 +28,12 @@ spec:
           brokers: kafka-kafka-bootstrap.kafka:9092
       ingester:
         deadlockInterval: 0s
-      es:
-        use-aliases: true
-  query:
-    options:
-      es:
-        use-aliases: true
   storage:
     type: elasticsearch
     options:
       es:
         create-index-templates: false
         server-urls: http://elasticsearch-es-http.elastic-system:9200
-        use-aliases: true
     esIndexCleaner:
       enabled: true
       numberOfDays: 7
