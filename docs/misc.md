@@ -120,3 +120,9 @@ kubectl get svc -A -o custom-columns="NAME:.metadata.name,IP:.status.loadBalance
 ```
 kubectl -n argo-workflows exec -it $(kubectl -n argo-workflows get pods -l app=server -o json | jq -r .items[].metadata.name) -- argo auth token
 ```
+
+### Run cronjob manually
+
+```
+kubectl create job -n observability --from=cronjob/jaeger-spark-dependencies-cron jaeger-spark-dependencies-manual
+```
