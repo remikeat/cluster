@@ -33,6 +33,11 @@ spec:
     options:
       es:
         server-urls: http://elasticsearch-es-http.elastic-system:9200
+        num-shards: 1
+        num-replicas: 0
+        prioirity-dependencies-template: 1000
+        prioirity-service-template: 1000
+        prioirity-span-template: 1000
     esIndexCleaner:
       enabled: true
       numberOfDays: 7
