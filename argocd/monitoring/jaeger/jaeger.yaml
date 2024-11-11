@@ -28,10 +28,6 @@ spec:
           brokers: kafka-kafka-bootstrap.kafka:9092
       ingester:
         deadlockInterval: 5s
-  query:
-    options:
-      prometheus:
-        server-url: http://kube-prometheus-stack-prometheus.kube-prometheus-stack.svc.cluster.local:9090
   storage:
     type: elasticsearch
     options:
