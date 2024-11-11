@@ -15,12 +15,6 @@ spec:
         producer:
           topic: jaeger-spans
           brokers: kafka-kafka-bootstrap.kafka:9092
-      es:
-        use-aliases: true
-  query:
-    options:
-      es:
-        use-aliases: true
   ingester:
     maxReplicas: 8
     resources:
@@ -34,6 +28,12 @@ spec:
           brokers: kafka-kafka-bootstrap.kafka:9092
       ingester:
         deadlockInterval: 0s
+      es:
+        use-aliases: true
+  query:
+    options:
+      es:
+        use-aliases: true
   storage:
     type: elasticsearch
     options:
