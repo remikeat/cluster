@@ -1,0 +1,23 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: jaeger-spark-dependencies-cron
+spec:
+  schedule: "0 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: jaeger-spark-dependencies
+              image: ghcr.io/jaegertracing/spark-dependencies/spark-dependencies
+              env:
+                - name: STORAGE
+                  value: elasticsearch
+                - name: ES_NODES
+                  value: http://elasticsearch-es-http.elastic-system:9200
+              envFrom:
+                - secretRef:
+                    name: jaeger-secret
+          restartPolicy: Never
+      backoffLimit: 1
