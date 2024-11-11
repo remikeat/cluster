@@ -32,7 +32,6 @@ spec:
     type: elasticsearch
     options:
       es:
-        create-index-templates: false
         server-urls: http://elasticsearch-es-http.elastic-system:9200
     esIndexCleaner:
       enabled: true
