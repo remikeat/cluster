@@ -2,6 +2,7 @@ ingressController:
   enabled: true
   env:
     publish_service: kong/kong-open-appsec-kong-proxy
+    feature_gates: Knative=true
 
 image:
   repository: kong
