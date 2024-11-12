@@ -10,11 +10,13 @@ metadata:
   namespace: knative-serving
 spec:
   config:
-    istio:
-      local-gateways: |
-        - name: knative-local-gateway
-          namespace: knative-serving
-          service: knative-local-gateway.istio-system.svc.cluster.local
+    network:
+      ingress-class: kong
+    # istio:
+    #   local-gateways: |
+    #     - name: knative-local-gateway
+    #       namespace: knative-serving
+    #       service: knative-local-gateway.istio-system.svc.cluster.local
   workloads:
   - name: controller
     resources:
