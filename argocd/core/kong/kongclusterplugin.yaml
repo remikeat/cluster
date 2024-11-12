@@ -19,5 +19,5 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: kong
 config:
-  allow: 192.168.0.0/24
+  allow: [192.168.0.0/24]
 plugin: ip-restriction
