@@ -1,7 +1,7 @@
 apiVersion: configuration.konghq.com/v1
 kind: KongClusterPlugin
 metadata:
-  name: auth
+  name: keycloak-auth
   namespace: kong
   annotations:
     kubernetes.io/ingress.class: kong
@@ -10,3 +10,14 @@ config:
   client_id: <path:kv/data/infra/kong#client_id>
   client_secret: <path:kv/data/infra/kong#client_secret>
 plugin: auth
+---
+apiVersion: configuration.konghq.com/v1
+kind: KongClusterPlugin
+metadata:
+  name: local-ip-only
+  namespace: kong
+  annotations:
+    kubernetes.io/ingress.class: kong
+config:
+  allow: 192.168.0.0/24
+plugin: ip-restriction
