@@ -8,22 +8,22 @@ resources:
   - https://github.com/knative-extensions/eventing-kafka-broker/releases/download/knative-v1.15.2/eventing-kafka-controller.yaml
   - https://github.com/knative-extensions/eventing-kafka-broker/releases/download/knative-v1.15.2/eventing-kafka-broker.yaml
   - config-br-defaults.yaml
-  # - config-domain.yaml
-  # - config-network.yaml
+  - config-domain.yaml
+  - config-network.yaml
   # - https://github.com/knative/serving/releases/download/knative-v1.15.2/serving-default-domain.yaml
 
 patches:
   - path: patches/kafka-broker-config.yaml
-  # - path: patches/config-tracing.yaml
+  - path: patches/config-tracing.yaml
   - target:
       version: v1
       group: apps
       kind: StatefulSet
       name: kafka-broker-dispatcher
     path: ./patches/kafka-broker-dispatcher.yaml
-  # - target:
-  #     version: v1
-  #     group: admissionregistration.k8s.io
-  #     kind: MutatingWebhookConfiguration
-  #     name: pods.defaulting.webhook.kafka.eventing.knative.dev
-  #   path: ./patches/mutatingwebhookconfiguration.yaml
+  - target:
+      version: v1
+      group: admissionregistration.k8s.io
+      kind: MutatingWebhookConfiguration
+      name: pods.defaulting.webhook.kafka.eventing.knative.dev
+    path: ./patches/mutatingwebhookconfiguration.yaml
