@@ -15,4 +15,6 @@ spec:
   name: kong
   namespace: kong
   skipCrds: false
-  apiVersions: gateway.networking.k8s.io/v1
+  apiVersions:
+    - gateway.networking.k8s.io/v1
+    - networking.internal.knative.dev/v1alpha1

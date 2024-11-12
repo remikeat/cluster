@@ -10,7 +10,7 @@ valuesFile=$(echo "$resourceList" | yq e '.functionConfig.spec.valuesFile // ""'
 name=$(echo "$resourceList" | yq e '.functionConfig.spec.name // ""' - )
 namespace=$(echo "$resourceList" | yq e '.functionConfig.spec.namespace // ""' - )
 skipCrds=$(echo "$resourceList" | yq e '.functionConfig.spec.skipCrds // ""' - )
-apiVersions=$(echo "$resourceList" | yq e '.functionConfig.spec.apiVersions // ""' - )
+apiVersions=$(echo "$resourceList" | yq e '.functionConfig.spec.apiVersions // []' - )
 
 git clone -q --single-branch --branch=$targetRevision $repoURL $name &> /dev/null
 if [ ! -z "$patch" ]; then
@@ -23,9 +23,9 @@ fi
 if [ "$skipCrds" = "true" ]; then
     helmCommand+=("--skip-crds")
 fi
-if [ ! -z "$apiVersions" ]; then
-    helmCommand+=("-a" "$apiVersions")
-fi
+for apiVersion in $(echo "$apiVersions" | yq e '.[]' -); do
+    helmCommand+=("-a" "$apiVersion")
+done
 helmCommand+=("$name/$path")
 "${helmCommand[@]}" 2>/dev/null
 rm -rf $name
