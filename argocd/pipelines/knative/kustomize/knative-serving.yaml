@@ -12,6 +12,8 @@ spec:
   config:
     network:
       ingress-class: kong
+    domain:
+      remikeat.com: ""
     # istio:
     #   local-gateways: |
     #     - name: knative-local-gateway
