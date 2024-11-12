@@ -79,6 +79,7 @@ vault operator raft snapshot restore backup.snap
 - kv/data/infra/kong#password
 - kv/data/infra/kong#client_id
 - kv/data/infra/kong#client_secret
+- kv/data/infra/kong#ip
 
 - kv/data/infra/keycloak#password
 - kv/data/infra/keycloak#pg_password

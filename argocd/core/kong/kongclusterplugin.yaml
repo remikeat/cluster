@@ -14,10 +14,10 @@ plugin: auth
 apiVersion: configuration.konghq.com/v1
 kind: KongClusterPlugin
 metadata:
-  name: local-ip-only
+  name: my-ip-only
   namespace: kong
   annotations:
     kubernetes.io/ingress.class: kong
 config:
-  allow: [192.168.0.0/24]
+  allow: [<path:kv/data/infra/kong#ip>/32]
 plugin: ip-restriction
