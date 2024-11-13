@@ -5,3 +5,4 @@ metadata:
   namespace: knative-serving
 data:
   ingress-class: kong
+  domain-template: "{{.Name}}.{{.Namespace}}.kn.{{.Domain}}"
