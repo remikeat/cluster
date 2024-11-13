@@ -16,11 +16,10 @@ spec:
       external-domain-tls: Enabled
     domain:
       remikeat.com: ""
-    # istio:
-    #   local-gateways: |
-    #     - name: knative-local-gateway
-    #       namespace: knative-serving
-    #       service: knative-local-gateway.istio-system.svc.cluster.local
+    cert-manager:
+      issuerRef: |
+        kind: ClusterIssuer
+        name: letsencrypt-production
   workloads:
   - name: controller
     resources:
