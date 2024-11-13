@@ -12,6 +12,8 @@ spec:
   config:
     network:
       ingress-class: kong
+      domain-template: "{{.Name}}.{{.Namespace}}.kn. {{.Domain}}"
+      external-domain-tls: Enabled
     domain:
       remikeat.com: ""
     # istio:

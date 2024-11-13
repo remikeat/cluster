@@ -9,6 +9,12 @@ metadata:
   name: knative-eventing
   namespace: knative-eventing
 spec:
+  config:
+    tracing:
+      backend: zipkin
+      zipkin-endpoint: http://otel-collector-collector.open-telemetry:9411/api/v2/spans
+      sample-rate: "0.1"
+      debug: "true"
   workloads:
     - name: eventing-controller
       resources:
