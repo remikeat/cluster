@@ -10,7 +10,15 @@ metadata:
   namespace: knative-eventing
 spec:
   config:
-    tracing:
+    config-br-defaults:
+      default-br-config: |
+        clusterDefault:
+          brokerClass: Kafka
+          apiVersion: v1
+          kind: ConfigMap
+          name: kafka-broker-config
+          namespace: knative-eventing
+    config-tracing:
       backend: zipkin
       zipkin-endpoint: http://otel-collector-collector.open-telemetry:9411/api/v2/spans
       sample-rate: "0.1"

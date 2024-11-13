@@ -1,9 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: config-network
-  namespace: knative-serving
-data:
-  ingress-class: kong
-  domain-template: "{{.Name}}.{{.Namespace}}.kn.{{.Domain}}"
-  external-domain-tls: Enabled
