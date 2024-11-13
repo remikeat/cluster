@@ -21,12 +21,7 @@ env:
   cluster_cert: /etc/secrets/kong-cluster-cert/tls.crt
   cluster_cert_key: /etc/secrets/kong-cluster-cert/tls.key
 
-  database: postgres
-  pg_database: kong
-  pg_user: kong
-  pg_password: <path:kv/data/infra/kong#pg_password>
-  pg_host: 	kongdb-cluster-rw.kong.svc.cluster.local
-  pg_ssl: "on"
+  database: "off"
 
   password: <path:kv/data/infra/kong#password>
 

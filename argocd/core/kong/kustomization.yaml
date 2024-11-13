@@ -16,13 +16,13 @@ configMapGenerator:
       - kong-plugin-auth/handler.lua
       - kong-plugin-auth/schema.lua
 
-helmCharts:
-  - name: cluster
-    namespace: kong
-    releaseName: kongdb
-    valuesFile: values-kongdb.yaml
-    version: 0.0.11
-    repo: https://cloudnative-pg.github.io/charts
+# helmCharts:
+#   - name: cluster
+#     namespace: kong
+#     releaseName: kongdb
+#     valuesFile: values-kongdb.yaml
+#     version: 0.0.11
+#     repo: https://cloudnative-pg.github.io/charts
 
 resources:
   - https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.1.0/standard-install.yaml
