@@ -92,6 +92,10 @@ plugins:
     - name: kong-plugin-auth
       pluginName: auth
 
+deployment:
+  prefixDir:
+    sizeLimit: 1Gi
+
 appsec:
   persistence:
     enabled: true
