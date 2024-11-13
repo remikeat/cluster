@@ -75,7 +75,6 @@ vault operator raft snapshot restore backup.snap
 
 - kv/data/infra/kong#certificate
 - kv/data/infra/kong#private_key
-- kv/data/infra/kong#pg_password
 - kv/data/infra/kong#password
 - kv/data/infra/kong#client_id
 - kv/data/infra/kong#client_secret
