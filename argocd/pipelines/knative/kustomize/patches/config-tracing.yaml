@@ -1,0 +1,12 @@
+- op: add
+  path: /data/backend
+  value: zipkin
+- op: add
+  path: /data/zipkin-endpoint
+  value: http://otel-collector-collector.open-telemetry:9411/api/v2/spans
+- op: add
+  path: /data/sample-rate
+  value: "0.1"
+- op: add
+  path: /data/debug
+  value: "true"
