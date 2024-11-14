@@ -25,6 +25,7 @@ spec:
       - app: storage/longhorn
         namespace: longhorn-system
       - app: storage/minio
+      - app: storage/mongodb
       - app: storage/pgadmin
       - app: storage/redis
       - app: storage/redis-insight
