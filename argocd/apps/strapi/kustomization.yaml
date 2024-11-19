@@ -1,0 +1,14 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+helmCharts:
+  - name: cluster
+    namespace: strapi
+    releaseName: strapi-db
+    valuesFile: values-strapi-db.yaml
+    version: 0.0.11
+    repo: https://cloudnative-pg.github.io/charts
+
+resources:
+  - externalsecret.yaml
+  - deployment.yaml

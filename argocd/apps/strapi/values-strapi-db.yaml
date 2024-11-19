@@ -1,0 +1,32 @@
+type: postgresql
+mode: standalone
+version:
+  postgresql: "16"
+cluster:
+  instances: 1
+  roles:
+    - name: strapi
+      connectionLimit: -1
+      ensure: present
+      comment: Strapi user
+      login: true
+      inherit: true
+      superuser: true
+      passwordSecret:
+        name: strapi-credentials
+  initdb:
+    database: strapi
+    owner: strapi
+    secret:
+      name: strapi-credentials
+    encoding: UTF8
+backups:
+  enabled: true
+  endpointURL: http://minio.minio.svc.cluster.local
+  provider: s3
+  s3:
+    region: ap-northeast-1
+    bucket: pg-backup
+    path: "/strapi-db/"
+    accessKey: <path:kv/data/infra/cloudnativepg#pg_backup_access_key>
+    secretKey: <path:kv/data/infra/cloudnativepg#pg_backup_secret_key>

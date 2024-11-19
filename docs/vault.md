@@ -99,6 +99,12 @@ vault operator raft snapshot restore backup.snap
 
 - kv/data/infra/redis#password
 
+- kv/data/infra/strapi#db_password
+- kv/data/infra/strapi#app_keys
+- kv/data/infra/strapi#api_token_salt
+- kv/data/infra/strapi#admin_jwt_secret
+- kv/data/infra/strapi#transfer_token_salt
+
 <!-- - kv/data/infra/rabbitmq#username
 - kv/data/infra/rabbitmq#password -->
 
