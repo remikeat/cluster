@@ -51,6 +51,8 @@ spec:
               memory: 4Gi
           volumeMounts:
             - name: strapi-storage
+              mountPath: /opt/app/public/uploads
+            - name: yarn-cache
               mountPath: /tmp
           env:
             - name: HOST
@@ -78,6 +80,8 @@ spec:
         - name: strapi-storage
           persistentVolumeClaim:
             claimName: strapi-pvc
+        - name: yarn-cache
+          emptyDir: {}
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
