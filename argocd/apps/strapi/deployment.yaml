@@ -18,16 +18,6 @@ spec:
         - name: harbor-credentials
       containers:
         - name: strapi
-          securityContext:
-            runAsNonRoot: true
-            runAsUser: 2001
-            readOnlyRootFilesystem: true
-            allowPrivilegeEscalation: false
-            seccompProfile:
-              type: RuntimeDefault
-            capabilities:
-              drop:
-                - ALL
           image: harbor.remikeat.com/library/strapi:latest
           imagePullPolicy: IfNotPresent
           ports:
