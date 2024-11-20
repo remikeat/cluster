@@ -57,6 +57,8 @@ kubectl apply --server-side --request-timeout 0 -f applicationset.yaml
 
 Make sure harbor project is private
 
+Create account for strapi
+
 Change password of emqx dashboard IMMEDIATELY
 
 EMQX dashboard initial credentials:
