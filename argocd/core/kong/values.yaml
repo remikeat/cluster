@@ -5,6 +5,24 @@ ingressController:
   env:
     publish_service: kong/kong-open-appsec-kong-proxy
     feature_gates: Knative=true
+  resources:
+    limits:
+      cpu: 100m
+      memory: 256Mi
+    requests:
+      cpu: 50m
+      memory: 128Mi
+
+resources:
+  limits:
+    cpu: '4'
+    memory: 4G
+  requests:
+    cpu: 100m
+    memory: 500m
+
+autoscaling:
+  enabled: true
 
 image:
   repository: kong
@@ -68,7 +86,7 @@ manager:
     enabled: true
   tls:
     enabled: false
-     
+
   ingress:
     enabled: true
     hostname: kong-manager
