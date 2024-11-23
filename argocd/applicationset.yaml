@@ -61,6 +61,7 @@ spec:
       #   namespace: kube-system
       # - app: vm/harvester
       # - app: vm/system-upgrade-controller
+      - app: apps/directus
       - app: apps/strapi
       - app: apps/supabase
   template:

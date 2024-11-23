@@ -1,0 +1,15 @@
+adminEmail: contact@remikeat.com
+
+ingress:
+  enabled: true
+  enableTLS: true
+  className: tailscale
+  hosts:
+    - host: directus
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+   - secretName: directus-tls
+     hosts:
+       - directus
