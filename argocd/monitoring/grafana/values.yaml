@@ -49,3 +49,21 @@ grafana:
         gnetId: 13277
         revision: 184
         datasource: Prometheus
+  envFromSecrets:
+    - name: elasticsearch-secrets
+  datasources:
+    datasources.yaml:
+      apiVersion: 1
+      datasources:
+        - name: elasticsearch
+          type: elasticsearch
+          access: proxy
+          url: http://elasticsearch-es-http.elastic-system.svc.cluster.local:9200
+          basicAuth: true
+          basicAuthUser: elastic
+          jsonData:
+            index: ks-logstash-log-*
+            timeField: "@timestamp"
+            tlsSkipVerify: true
+          secureJsonData:
+            basicAuthPassword: $ES_PASSWORD
