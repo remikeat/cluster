@@ -3,7 +3,7 @@ manager:
     repository: otel/opentelemetry-collector-k8s
 admissionWebhooks:
   certManager:
-    enabled: false
+    enabled: true
   autoGenerateCert:
     enabled: true
     recreate: false
