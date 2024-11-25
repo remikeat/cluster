@@ -11,3 +11,4 @@ helmCharts:
 
 resources:
   - otel-collector.yaml
+  - instrumentation.yaml
