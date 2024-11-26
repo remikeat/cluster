@@ -39,5 +39,6 @@ cr:
         enabled: true
         use_grpc: true
         in_cluster_url: http://jaeger-query.observability:16685
-        internal_url: http://jaeger-query.observability:16685
-        external_url: https://jaeger.tail4d334.ts.net
+        url: https://jaeger.tail4d334.ts.net
+        # internal_url: http://jaeger-query.observability:16685
+        # external_url: https://jaeger.tail4d334.ts.net
