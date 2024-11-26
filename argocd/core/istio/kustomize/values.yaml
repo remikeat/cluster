@@ -3,3 +3,5 @@ pilot:
     requests:
       cpu: 100m
       memory: 1024Mi
+  cni:
+    enabled: true
