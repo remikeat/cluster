@@ -20,6 +20,9 @@ spec:
   - name: etc-folder
     hostPath:
       path: /etc/
+  - name: opt-folder
+    hostPath:
+      path: /opt/
   containers:
   - name: debug
     image: ubuntu
@@ -30,4 +33,6 @@ spec:
       mountPath: /node/var
     - name: etc-folder
       mountPath: /node/etc
+    - name: opt-folder
+      mountPath: /node/opt
     command: ["/bin/bash", "-c", "trap : TERM INT; sleep infinity & wait"]
