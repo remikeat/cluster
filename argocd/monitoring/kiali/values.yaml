@@ -35,3 +35,8 @@ cr:
           password: <path:kv/data/infra/grafana#password>
       prometheus:
         url: "http://kube-prometheus-stack-prometheus.kube-prometheus-stack:9090/"
+      tracing:
+        enabled: true
+        use_grpc: true
+        internal_url: "http://jaeger-query.observability:16685"
+        external_url: "https://jaeger.tail4d334.ts.net"
