@@ -48,3 +48,5 @@ hubble:
            - hubble
 socketLB:
   hostNamespaceOnly: true
+cni:
+  exclusive: false
