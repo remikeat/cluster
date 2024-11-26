@@ -56,7 +56,7 @@ spec:
       - app: pipelines/tekton
       - app: vm/kubevirt
       - app: vm/kubevirt-manager
-      - app: vm/multus
+      # - app: vm/multus
       # - app: vm/external-snapshotter
       #   namespace: kube-system
       # - app: vm/harvester
