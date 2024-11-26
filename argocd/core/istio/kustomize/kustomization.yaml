@@ -13,6 +13,12 @@ helmCharts:
     version: 1.23.0
     valuesFile: values.yaml
     repo: https://istio-release.storage.googleapis.com/charts
+  - name: cni
+    namespace: istio-system
+    releaseName: istio-cni
+    version: 1.23.0
+    valuesFile: values.yaml
+    repo: https://istio-release.storage.googleapis.com/charts
   # - name: gateway
   #   namespace: istio-system
   #   releaseName: istio-ingressgateway
