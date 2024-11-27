@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: infra-app
+  name: monitoring
   namespace: argocd
 spec:
   goTemplate: true
@@ -9,27 +9,6 @@ spec:
   generators:
   - list:
       elements:
-      - app: core/cert-manager
-      # - app: core/descheduler
-      - app: core/external-secrets
-      - app: core/istio
-        namespace: istio-system
-      - app: core/keycloak
-      - app: core/kong
-      - app: core/rancher
-      - app: core/vault
-      - app: storage/cloudnativepg
-        namespace: cnpg-system
-      - app: storage/harbor
-      # - app: storage/local-path-provisioner
-      - app: storage/longhorn
-        namespace: longhorn-system
-      - app: storage/minio
-      - app: storage/mongodb
-      - app: storage/pgadmin
-      - app: storage/redis
-      - app: storage/redis-insight
-      - app: storage/rook-ceph
       - app: monitoring/crowdsec
       - app: monitoring/elastic
         namespace: elastic-system
@@ -45,25 +24,6 @@ spec:
       - app: monitoring/open-telemetry
       - app: monitoring/trivy
         namespace: trivy-system
-      - app: messages/emqx
-        namespace: emqx-operator-system
-      - app: messages/kafka
-      - app: messages/kafka-ui
-      - app: messages/rabbitmq
-      - app: pipelines/argo-workflows
-      - app: pipelines/camel-k
-      - app: pipelines/knative
-      - app: pipelines/tekton
-      - app: vm/kubevirt
-      - app: vm/kubevirt-manager
-      # - app: vm/multus
-      # - app: vm/external-snapshotter
-      #   namespace: kube-system
-      # - app: vm/harvester
-      # - app: vm/system-upgrade-controller
-      - app: apps/directus
-      - app: apps/strapi
-      - app: apps/supabase
   template:
     metadata:
       name: '{{base .app}}-app'

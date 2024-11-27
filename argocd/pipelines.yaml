@@ -1,0 +1,40 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: pipelines
+  namespace: argocd
+spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=zero"]
+  generators:
+  - list:
+      elements:
+      - app: pipelines/argo-workflows
+      - app: pipelines/camel-k
+      - app: pipelines/knative
+      - app: pipelines/tekton
+  template:
+    metadata:
+      name: '{{base .app}}-app'
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/remikeat/cluster.git
+        targetRevision: HEAD
+        path: argocd/{{.app}}
+      destination:
+        server: 'https://kubernetes.default.svc'
+        namespace: '{{default (base .app) .namespace}}'
+      syncPolicy:
+        syncOptions:
+          - CreateNamespace=true
+          - ServerSideApply=true
+        automated:
+          prune: true
+          selfHeal: true
+        retry:
+          limit: 5
+          backoff:
+            duration: 5s
+            maxDuration: 3m0s
+            factor: 2

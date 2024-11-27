@@ -50,7 +50,13 @@ cert-manager.io/issuer-kind: Issuer
 ### Create applications
 
 ```
-kubectl apply --server-side --request-timeout 0 -f applicationset.yaml
+kubectl apply --server-side --request-timeout 0 -f core.yaml
+kubectl apply --server-side --request-timeout 0 -f storage.yaml
+kubectl apply --server-side --request-timeout 0 -f monitoring.yaml
+kubectl apply --server-side --request-timeout 0 -f messages.yaml
+kubectl apply --server-side --request-timeout 0 -f pipelines.yaml
+kubectl apply --server-side --request-timeout 0 -f vm.yaml
+kubectl apply --server-side --request-timeout 0 -f apps.yaml
 ```
 
 ### Configuation
