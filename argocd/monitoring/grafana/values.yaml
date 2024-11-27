@@ -61,6 +61,15 @@ grafana:
         gnetId: 13277
         revision: 184
         datasource: Prometheus
+      node-export-full:
+        gnetId: 12486
+        revision: 37
+        datasource: Prometheus
+      trivy-operator-dashboard:
+        gnetId: 17813
+        revision: 2
+        datasource: Prometheus
+        
   envFromSecrets:
     - name: elasticsearch-secrets
   datasources:
