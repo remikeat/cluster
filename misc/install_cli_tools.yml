@@ -1,0 +1,367 @@
+---
+- name: Install and configure CLI tools
+  hosts: localhost
+  become: no
+  tasks:
+    - name: Ensure brew is installed
+      shell: |
+        if ! command -v brew >/dev/null; then
+          NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)";
+        fi
+      args:
+        executable: /bin/bash
+
+    # Talosctl
+    - name: Install talosctl
+      command: brew install siderolabs/tap/talosctl
+      args:
+        creates: /home/linuxbrew/.linuxbrew/bin/talosctl
+
+    - name: Configure talosctl auto-completion
+      copy:
+        content: "{{ lookup('pipe', 'talosctl completion bash') }}"
+        dest: /etc/bash_completion.d/talosctl-completion.bash
+        mode: "0644"
+
+    - name: Add talosctl completion to .bashrc
+      lineinfile:
+        path: "{{ ansible_env.HOME }}/.bashrc"
+        line: "source '/etc/bash_completion.d/talosctl-completion.bash'"
+        state: present
+
+    # ArgoCD
+    - name: Install argocd
+      command: brew install argocd
+      args:
+        creates: /home/linuxbrew/.linuxbrew/bin/argocd
+
+    - name: Configure argocd auto-completion
+      copy:
+        content: "{{ lookup('pipe', 'argocd completion bash') }}"
+        dest: /etc/bash_completion.d/argocd-completion.bash
+        mode: "0644"
+
+    - name: Add argocd auto-completion to .bashrc
+      lineinfile:
+        path: "{{ ansible_env.HOME }}/.bashrc"
+        line: "source '/etc/bash_completion.d/argocd-completion.bash'"
+        state: present
+
+    # Virtctl
+    - name: Download virtctl
+      get_url:
+        url: https://github.com/kubevirt/kubevirt/releases/download/v1.3.1/virtctl-v1.3.1-linux-amd64
+        dest: /tmp/virtctl
+        mode: "0755"
+
+    - name: Move virtctl to /usr/local/bin
+      command: mv /tmp/virtctl /usr/local/bin/
+      args:
+        creates: /usr/local/bin/virtctl
+
+    - name: Configure virtctl auto-completion
+      copy:
+        content: "{{ lookup('pipe', 'virtctl completion bash') }}"
+        dest: /etc/bash_completion.d/virtctl-completion.bash
+        mode: "0644"
+
+    - name: Add virtctl completion to .bashrc
+      lineinfile:
+        path: "{{ ansible_env.HOME }}/.bashrc"
+        line: "source '/etc/bash_completion.d/virtctl-completion.bash'"
+        state: present
+
+    # Tailscale
+    - name: Add Tailscale alias to .bashrc
+      lineinfile:
+        path: "{{ ansible_env.HOME }}/.bashrc"
+        line: 'alias tailscale="/mnt/c/Program\ Files/Tailscale/tailscale.exe"'
+        state: present
+
+    - name: Add Tailscale auto-completion script
+      become: yes
+      command: bash -c "tailscale completion bash > /etc/bash_completion.d/tailscale-completion.bash"
+      args:
+        creates: /etc/bash_completion.d/tailscale-completion.bash
+
+    - name: Add Tailscale auto-completion to .bashrc
+      lineinfile:
+        path: "{{ ansible_env.HOME }}/.bashrc"
+        line: "source '/etc/bash_completion.d/tailscale-completion.bash'"
+        state: present
+
+    # Helm
+    - name: Configure helm auto-completion
+      copy:
+        content: "{{ lookup('pipe', 'helm completion bash') }}"
+        dest: /etc/bash_completion.d/helm-completion.bash
+        mode: "0644"
+
+    - name: Add helm completion to .bashrc
+      lineinfile:
+        path: "{{ ansible_env.HOME }}/.bashrc"
+        line: "source '/etc/bash_completion.d/helm-completion.bash'"
+        state: present
+
+    # Cilium
+    - name: Install Cilium CLI
+      shell: |
+        CILIUM_CLI_VERSION=$(curl -s https://raw.githubusercontent.com/cilium/cilium-cli/main/stable.txt)
+        GOOS=$(go env GOOS)
+        GOARCH=$(go env GOARCH)
+        curl -L --remote-name-all https://github.com/cilium/cilium-cli/releases/download/${CILIUM_CLI_VERSION}/cilium-${GOOS}-${GOARCH}.tar.gz{,.sha256sum}
+        sha256sum --check cilium-${GOOS}-${GOARCH}.tar.gz.sha256sum
+        sudo tar -C /usr/local/bin -xzvf cilium-${GOOS}-${GOARCH}.tar.gz
+        rm cilium-${GOOS}-${GOARCH}.tar.gz{,.sha256sum}
+      args:
+        creates: /usr/local/bin/cilium
+
+    - name: Configure Cilium auto-completion
+      copy:
+        content: "{{ lookup('pipe', 'cilium completion bash') }}"
+        dest: /etc/bash_completion.d/cilium-completion.bash
+        mode: "0644"
+
+    - name: Add Cilium completion to .bashrc
+      lineinfile:
+        path: "{{ ansible_env.HOME }}/.bashrc"
+        line: "source '/etc/bash_completion.d/cilium-completion.bash'"
+        state: present
+
+    # Tekton
+    - name: Download Tekton CLI .deb package
+      get_url:
+        url: https://github.com/tektoncd/cli/releases/download/v0.38.1/tektoncd-cli-0.38.1_Linux-64bit.deb
+        dest: /tmp/tektoncd-cli-0.38.1_Linux-64bit.deb
+        mode: "0644"
+      register: tekton_deb
+
+    - name: Install Tekton CLI
+      apt:
+        deb: /tmp/tektoncd-cli-0.38.1_Linux-64bit.deb
+      when: tekton_deb.changed
+
+    - name: Configure Tekton CLI auto-completion
+      copy:
+        content: "{{ lookup('pipe', 'tkn completion bash') }}"
+        dest: /etc/bash_completion.d/tkn-completion.bash
+        mode: "0644"
+
+    - name: Add Tekton CLI auto-completion to .bashrc
+      lineinfile:
+        path: "{{ ansible_env.HOME }}/.bashrc"
+        line: "source '/etc/bash_completion.d/tkn-completion.bash'"
+        state: present
+
+    # Knative CLI
+    - name: Install Knative CLI via brew
+      command: brew install knative/client/kn
+      args:
+        creates: /home/linuxbrew/.linuxbrew/bin/kn
+
+    - name: Download and configure Knative func CLI
+      get_url:
+        url: https://github.com/knative/func/releases/download/knative-v1.15.1/func_linux_amd64
+        dest: /tmp/kn-func
+        mode: "0755"
+
+    - name: Move Knative func to /usr/local/bin
+      command: mv /tmp/kn-func /usr/local/bin/kn-func
+      args:
+        creates: /usr/local/bin/kn-func
+
+    - name: Add Knative func alias and environment variable to .bashrc
+      blockinfile:
+        path: "{{ ansible_env.HOME }}/.bashrc"
+        block: |
+          alias func='kn func'
+          export FUNC_REGISTRY=harbor.remikeat.com/library
+        state: present
+
+    - name: Configure Knative CLI auto-completion
+      copy:
+        content: "{{ lookup('pipe', 'kn completion bash') }}"
+        dest: /etc/bash_completion.d/kn-completion.bash
+        mode: "0644"
+
+    - name: Add Knative CLI auto-completion to .bashrc
+      lineinfile:
+        path: "{{ ansible_env.HOME }}/.bashrc"
+        line: "source '/etc/bash_completion.d/kn-completion.bash'"
+        state: present
+
+    - name: Configure Knative func auto-completion
+      copy:
+        content: "{{ lookup('pipe', 'kn func completion bash') }}"
+        dest: /etc/bash_completion.d/func-completion.bash
+        mode: "0644"
+
+    - name: Add Knative func auto-completion to .bashrc
+      lineinfile:
+        path: "{{ ansible_env.HOME }}/.bashrc"
+        line: "source '/etc/bash_completion.d/func-completion.bash'"
+        state: present
+
+    # Vault CLI
+    - name: Add HashiCorp GPG key
+      command: >
+        wget -O- https://apt.releases.hashicorp.com/gpg |
+        gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+      args:
+        creates: /usr/share/keyrings/hashicorp-archive-keyring.gpg
+
+    - name: Add HashiCorp repository
+      apt_repository:
+        repo: "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com {{ ansible_lsb.codename }} main"
+        state: present
+
+    - name: Install Vault
+      apt:
+        name: vault
+        state: present
+
+    - name: Configure Vault environment variable
+      lineinfile:
+        path: "{{ ansible_env.HOME }}/.bashrc"
+        line: "export VAULT_ADDR=https://vault.tail4d334.ts.net"
+        state: present
+
+    # Krew CLI
+    - name: Install Krew CLI
+      shell: |
+        set -e
+        cd "$(mktemp -d)"
+        OS="$(uname | tr '[:upper:]' '[:lower:]')"
+        ARCH="$(uname -m | sed -e 's/x86_64/amd64/' -e 's/\(arm\)\(64\)\?.*/\1\2/' -e 's/aarch64$/arm64/')"
+        KREW="krew-${OS}_${ARCH}"
+        curl -fsSLO "https://github.com/kubernetes-sigs/krew/releases/latest/download/${KREW}.tar.gz"
+        tar zxvf "${KREW}.tar.gz"
+        ./"${KREW}" install krew
+      args:
+        creates: "{{ ansible_env.HOME }}/.krew/bin/kubectl-krew"
+
+    - name: Add Krew to PATH in .bashrc
+      lineinfile:
+        path: "{{ ansible_env.HOME }}/.bashrc"
+        line: 'export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"'
+        state: present
+
+    # Rook plugin
+    - name: Install Rook plugin via Krew
+      command: bash -c "kubectl krew install rook-ceph"
+      args:
+        creates: "{{ ansible_env.HOME }}/.krew/store/rook-ceph"
+
+    # Kustomize CLI
+    - name: Install Kustomize CLI via brew
+      command: brew install kustomize
+      args:
+        creates: /home/linuxbrew/.linuxbrew/bin/kustomize
+
+    - name: Configure Kustomize CLI auto-completion
+      copy:
+        content: "{{ lookup('pipe', 'kustomize completion bash') }}"
+        dest: /etc/bash_completion.d/kustomize-completion.bash
+        mode: "0644"
+
+    - name: Add Kustomize auto-completion to .bashrc
+      lineinfile:
+        path: "{{ ansible_env.HOME }}/.bashrc"
+        line: "source '/etc/bash_completion.d/kustomize-completion.bash'"
+        state: present
+
+    - name: Add aliases to .bashrc
+      blockinfile:
+        path: "{{ ansible_env.HOME }}/.bashrc"
+        block: |
+          alias rook-ceph="kubectl rook-ceph"
+          alias ceph="kubectl rook-ceph ceph"
+        state: present
+
+    - name: Configure Rook-Ceph auto-completion
+      become: yes
+      command: bash -c "kubectl rook-ceph completion bash > /etc/bash_completion.d/rook-ceph-completion.bash"
+      args:
+        creates: /etc/bash_completion.d/rook-ceph-completion.bash
+
+    - name: Add Rook-Ceph auto-completion to .bashrc
+      lineinfile:
+        path: "{{ ansible_env.HOME }}/.bashrc"
+        line: "source '/etc/bash_completion.d/rook-ceph-completion.bash'"
+        state: present
+
+    # ArgoCD Vault Plugin
+    - name: Download ArgoCD Vault Plugin
+      get_url:
+        url: "https://github.com/argoproj-labs/argocd-vault-plugin/releases/download/v1.16.1/argocd-vault-plugin_1.16.1_linux_amd64"
+        dest: /tmp/argocd-vault-plugin
+        mode: "0755"
+
+    - name: Move ArgoCD Vault Plugin to /usr/local/bin
+      command: mv /tmp/argocd-vault-plugin /usr/local/bin/argocd-vault-plugin
+      args:
+        creates: /usr/local/bin/argocd-vault-plugin
+
+    # CloudNativePG CLI
+    - name: Install CloudNativePG CLI via Krew
+      command: bash -c "kubectl krew install cnpg"
+      args:
+        creates: "{{ ansible_env.HOME }}/.krew/store/cnpg"
+
+    - name: Configure CloudNativePG CLI auto-completion
+      become: yes
+      copy:
+        content: |
+          #!/usr/bin/env sh
+          # Call the __complete command passing it all arguments
+          kubectl cnpg __complete "$@"
+        dest: /usr/local/bin/kubectl_complete-cnpg
+        mode: "0755"
+
+    # MinIO CLI
+    - name: Download MinIO CLI
+      get_url:
+        url: https://dl.min.io/client/mc/release/linux-amd64/mc
+        dest: "{{ ansible_env.HOME }}/minio-binaries/mc"
+        mode: "0755"
+
+    - name: Add MinIO CLI to PATH in .bashrc
+      lineinfile:
+        path: "{{ ansible_env.HOME }}/.bashrc"
+        line: "export PATH=$PATH:{{ ansible_env.HOME }}/minio-binaries/"
+        state: present
+
+    - name: Configure MinIO CLI auto-completion
+      lineinfile:
+        path: "{{ ansible_env.HOME }}/.bashrc"
+        line: "complete -C {{ ansible_env.HOME }}/minio-binaries/mc mc"
+        state: present
+
+    - name: Configure MinIO alias
+      shell: mc alias set minio https://minio.tail4d334.ts.net
+      args:
+        creates: "{{ ansible_env.HOME }}/.mc/config.json"
+
+    # RabbitMQ CLI
+    - name: Install RabbitMQ plugin via Krew
+      command: bash -c "kubectl krew install rabbitmq"
+      args:
+        creates: "{{ ansible_env.HOME }}/.krew/store/rabbitmq"
+
+    # Camel-K CLI
+    - name: Install Camel-K CLI via brew
+      command: brew install kamel
+      args:
+        creates: /home/linuxbrew/.linuxbrew/bin/kamel
+
+    - name: Configure Camel-K CLI auto-completion
+      copy:
+        content: "{{ lookup('pipe', 'kamel completion bash') }}"
+        dest: /etc/bash_completion.d/kamel-completion.bash
+        mode: "0644"
+
+    - name: Add Camel-K CLI auto-completion to .bashrc
+      lineinfile:
+        path: "{{ ansible_env.HOME }}/.bashrc"
+        line: "source '/etc/bash_completion.d/kamel-completion.bash'"
+        state: present
