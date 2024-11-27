@@ -52,10 +52,10 @@ auth:
     GOTRUE_SITE_URL: https://supabase.remikeat.com
     GOTRUE_EXTERNAL_EMAIL_ENABLED: "true"
     GOTRUE_MAILER_AUTOCONFIRM: "true"
-    GOTRUE_SMTP_ADMIN_EMAIL: "contact@remikeat.com"
+    GOTRUE_SMTP_ADMIN_EMAIL: "<path:kv/data/infra/common#email>"
     GOTRUE_SMTP_HOST: "smtp.sendgrid.net"
     GOTRUE_SMTP_PORT: "587"
-    GOTRUE_SMTP_SENDER_NAME: "contact@remikeat.com"
+    GOTRUE_SMTP_SENDER_NAME: "<path:kv/data/infra/common#email>"
 
 rest:
   image:

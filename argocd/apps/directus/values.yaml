@@ -1,4 +1,4 @@
-adminEmail: contact@remikeat.com
+adminEmail: <path:kv/data/infra/common#email>
 
 ingress:
   enabled: true

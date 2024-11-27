@@ -7,6 +7,6 @@ resources:
     memory: 500Mi
 
 issuer:
-  email: contact@remikeat.com
+  email: <path:kv/data/infra/common#email>
   solver:
     ingressClass: kong

@@ -42,6 +42,8 @@ vault operator raft snapshot restore backup.snap
 - kv/data/infra/github#username
 - kv/data/infra/github#password
 
+- kv/data/infra/common#email
+
 ### Core
 
 - kv/data/infra/core/kong#certificate

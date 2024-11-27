@@ -8,7 +8,7 @@ metadata:
 spec:
   acme:
     server: https://acme-staging-v02.api.letsencrypt.org/directory
-    email: contact@remikeat.com
+    email: <path:kv/data/infra/common#email>
     privateKeySecretRef:
       name: letsencrypt-staging
     solvers:
