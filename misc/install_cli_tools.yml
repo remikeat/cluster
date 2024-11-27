@@ -90,6 +90,19 @@
         line: "source '/etc/bash_completion.d/tailscale-completion.bash'"
         state: present
 
+    # kubectl
+    - name: Configure kubectl auto-completion
+      copy:
+        content: "{{ lookup('pipe', 'kubectl completion bash') }}"
+        dest: /etc/bash_completion.d/kubectl-completion.bash
+        mode: "0644"
+
+    - name: Add kubectl completion to .bashrc
+      lineinfile:
+        path: "{{ ansible_env.HOME }}/.bashrc"
+        line: "source '/etc/bash_completion.d/kubectl-completion.bash'"
+        state: present
+
     # Helm
     - name: Configure helm auto-completion
       copy:
