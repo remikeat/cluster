@@ -24,7 +24,7 @@ tenant:
   configSecret:
     name: minio-env-configuration
     accessKey: minio
-    secretKey: <path:kv/data/infra/minio#secret_key>
+    secretKey: <path:kv/data/infra/storage/minio#secret_key>
   pools:
     - servers: 1
       name: pool-0
@@ -97,8 +97,8 @@ tenant:
           namespace: "" # An optional Vault namespace. See: https://www.vaultproject.io/docs/enterprise/namespaces/index.html
           prefix: "minio"    # An optional K/V prefix. The server will store keys under this prefix.
           approle:    # AppRole credentials. See: https://www.vaultproject.io/docs/auth/approle.html
-            id: "<path:kv/data/infra/minio#kes-id>"      # Your AppRole Role ID
-            secret: "<path:kv/data/infra/minio#kes-secret>"  # Your AppRole Secret ID
+            id: "<path:kv/data/infra/storage/minio#kes-id>"      # Your AppRole Role ID
+            secret: "<path:kv/data/infra/storage/minio#kes-secret>"  # Your AppRole Secret ID
             retry: 15s  # Duration until the server tries to re-authenticate after connection loss.
           tls:        # The Vault client TLS configuration for mTLS authentication and certificate verification
             key: ""     # Path to the TLS client private key for mTLS authentication to Vault

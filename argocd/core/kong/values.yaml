@@ -41,7 +41,7 @@ env:
 
   database: "off"
 
-  password: <path:kv/data/infra/kong#password>
+  password: <path:kv/data/infra/core/kong#password>
 
   admin_gui_url: https://kong-manager.tail4d334.ts.net
   admin_gui_api_url: https://kong-admin.tail4d334.ts.net
@@ -112,8 +112,8 @@ deployment:
 appsec:
   persistence:
     enabled: true
-  userEmail: <path:kv/data/infra/open-appsec#email>
-  agentToken: <path:kv/data/infra/open-appsec#token>
+  userEmail: <path:kv/data/infra/core/open-appsec#email>
+  agentToken: <path:kv/data/infra/core/open-appsec#token>
   configMapContent:
     crowdsec:
       enabled: true
@@ -127,4 +127,4 @@ appsec:
   secretContent:
     crowdsec:
       auth:
-        data: <path:kv/data/infra/crowdsec#bouncer_key>
+        data: <path:kv/data/infra/monitoring/crowdsec#bouncer_key>

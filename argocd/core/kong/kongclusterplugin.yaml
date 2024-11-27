@@ -7,8 +7,8 @@ metadata:
     kubernetes.io/ingress.class: kong
 config:
   introspect_url: http://keycloak-service.keycloak.svc.cluster.local:8080/realms/users/protocol/openid-connect/token/introspect
-  client_id: <path:kv/data/infra/kong#client_id>
-  client_secret: <path:kv/data/infra/kong#client_secret>
+  client_id: <path:kv/data/infra/core/kong#client_id>
+  client_secret: <path:kv/data/infra/core/kong#client_secret>
 plugin: auth
 # ---
 # apiVersion: configuration.konghq.com/v1
@@ -19,5 +19,5 @@ plugin: auth
 #   annotations:
 #     kubernetes.io/ingress.class: kong
 # config:
-#   allow: [<path:kv/data/infra/kong#ip>/32]
+#   allow: [<path:kv/data/infra/core/kong#ip>/32]
 # plugin: ip-restriction

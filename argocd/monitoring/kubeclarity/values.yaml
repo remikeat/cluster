@@ -1,5 +1,5 @@
 global:
-  databasePassword: <path:kv/data/infra/kubeclarity#db_password>
+  databasePassword: <path:kv/data/infra/monitoring/kubeclarity#db_password>
 kubeclarity:
   ingress:
     enabled: true

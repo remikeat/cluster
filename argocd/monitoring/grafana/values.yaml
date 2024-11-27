@@ -19,7 +19,7 @@ prometheus:
     serviceMonitorSelector: {}
     serviceMonitorNamespaceSelector: {}
 grafana:
-  adminPassword: <path:kv/data/infra/grafana#password>
+  adminPassword: <path:kv/data/infra/monitoring/grafana#password>
   persistence:
     enabled: true
     storageClassName: longhorn

@@ -1,14 +1,14 @@
 secrets:
   username: agent
-  password: <path:kv/data/infra/crowdsec#agent_password>
+  password: <path:kv/data/infra/monitoring/crowdsec#agent_password>
 lapi:
   env:
     - name: ENROLL_INSTANCE_NAME
       value: "my-k8s-cluster"
     - name: ENROLL_KEY
-      value: <path:kv/data/infra/crowdsec#enroll_key>
+      value: <path:kv/data/infra/monitoring/crowdsec#enroll_key>
     - name: BOUNCER_KEY_kong
-      value: <path:kv/data/infra/crowdsec#bouncer_key>
+      value: <path:kv/data/infra/monitoring/crowdsec#bouncer_key>
   persistentVolume:
     data:
       storageClassName: longhorn

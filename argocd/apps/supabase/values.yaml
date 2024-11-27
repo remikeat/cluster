@@ -1,20 +1,20 @@
 secret:
   jwt:
-    anonKey: <path:kv/data/infra/supabase#anon_key>
-    serviceKey: <path:kv/data/infra/supabase#service_key>
-    secret: <path:kv/data/infra/supabase#secret>
+    anonKey: <path:kv/data/infra/apps/supabase#anon_key>
+    serviceKey: <path:kv/data/infra/apps/supabase#service_key>
+    secret: <path:kv/data/infra/apps/supabase#secret>
   smtp:
     username: apikey
     password: <path:kv/data/infra/sendgrid#smtp_password>
   dashboard:
     username: supabase
-    password: <path:kv/data/infra/supabase#password>
+    password: <path:kv/data/infra/apps/supabase#password>
   db:
     username: postgres
-    password: <path:kv/data/infra/supabase#db_password>
+    password: <path:kv/data/infra/apps/supabase#db_password>
     database: postgres
   analytics:
-    apiKey: <path:kv/data/infra/supabase#analytics_api_key>
+    apiKey: <path:kv/data/infra/apps/supabase#analytics_api_key>
 
 db:
   enabled: true

@@ -7,7 +7,7 @@ falcosidekick:
   replicaCount: 1
   webui:
     enabled: true
-    user: "admin:<path:kv/data/infra/falco#password>"
+    user: "admin:<path:kv/data/infra/monitoring/falco#password>"
     replicaCount: 1
     redis:
       storageEnabled: false

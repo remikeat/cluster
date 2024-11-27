@@ -33,88 +33,102 @@ vault operator raft snapshot restore backup.snap
 
 ## Items
 
+### Common
+
 - kv/data/infra/sendgrid#smtp_password
 
-- kv/data/infra/crowdsec#agent_password
-- kv/data/infra/crowdsec#enroll_key
-- kv/data/infra/crowdsec#bouncer_key
-
-- kv/data/infra/falco#password
-
-- kv/data/infra/elastic#password
-
-- kv/data/infra/kubevirt-manager#htpasswd
-
-- kv/data/infra/supabase#anon_key
-- kv/data/infra/supabase#service_key
-- kv/data/infra/supabase#secret
-- kv/data/infra/supabase#password
-- kv/data/infra/supabase#db_password
-- kv/data/infra/supabase#analytics_api_key
-
-- kv/data/infra/grafana#password
-
 - kv/data/infra/ghcr#user
-
-- kv/data/infra/harbor#user
-- kv/data/infra/harbor#registry_user
-- kv/data/infra/harbor#db_password
-- kv/data/infra/harbor#secret_key
-
-- kv/data/infra/kubeclarity#db_password
-
-- kv/data/infra/rook-ceph#object_access_key
-- kv/data/infra/rook-ceph#object_secret_key
-
-- kv/data/infra/cloudnativepg#pg_backup_access_key
-- kv/data/infra/cloudnativepg#pg_backup_secret_key
-
-- kv/data/infra/minio#secret_key
-- kv/data/infra/minio#kes-id
-- kv/data/infra/minio#kes-secret
-
-- kv/data/infra/kong#certificate
-- kv/data/infra/kong#private_key
-- kv/data/infra/kong#password
-- kv/data/infra/kong#client_id
-- kv/data/infra/kong#client_secret
-- kv/data/infra/kong#ip
-
-- kv/data/infra/keycloak#password
-- kv/data/infra/keycloak#pg_password
-
-- kv/data/infra/pgadmin#password
-
-- kv/data/infra/open-appsec#email
-- kv/data/infra/open-appsec#token
-
-- kv/data/infra/argo-workflows#pg_password
-- kv/data/infra/argo-workflows#client_id
-- kv/data/infra/argo-workflows#client_secret
-- kv/data/infra/argo-workflows#access_key
-- kv/data/infra/argo-workflows#secret_key
 
 - kv/data/infra/github#username
 - kv/data/infra/github#password
 
-- kv/data/infra/redis#password
+### Core
 
-- kv/data/infra/strapi#db_password
-- kv/data/infra/strapi#app_keys
-- kv/data/infra/strapi#api_token_salt
-- kv/data/infra/strapi#admin_jwt_secret
-- kv/data/infra/strapi#transfer_token_salt
-- kv/data/infra/strapi#jwt_secret
+- kv/data/infra/core/kong#certificate
+- kv/data/infra/core/kong#private_key
+- kv/data/infra/core/kong#password
+- kv/data/infra/core/kong#client_id
+- kv/data/infra/core/kong#client_secret
+- kv/data/infra/core/kong#ip
 
-<!-- - kv/data/infra/rabbitmq#username
-- kv/data/infra/rabbitmq#password -->
+- kv/data/infra/core/keycloak#password
+- kv/data/infra/core/keycloak#pg_password
+
+- kv/data/infra/core/open-appsec#email
+- kv/data/infra/core/open-appsec#token
+
+### Storage
+
+- kv/data/infra/storage/harbor#user
+- kv/data/infra/storage/harbor#registry_user
+- kv/data/infra/storage/harbor#db_password
+- kv/data/infra/storage/harbor#secret_key
+
+- kv/data/infra/storage/rook-ceph#object_access_key
+- kv/data/infra/storage/rook-ceph#object_secret_key
+
+- kv/data/infra/storage/cloudnativepg#pg_backup_access_key
+- kv/data/infra/storage/cloudnativepg#pg_backup_secret_key
+
+- kv/data/infra/storage/minio#secret_key
+- kv/data/infra/storage/minio#kes-id
+- kv/data/infra/storage/minio#kes-secret
+
+- kv/data/infra/storage/pgadmin#password
+
+- kv/data/infra/storage/redis#password
+
+### Monitoring
+
+- kv/data/infra/monitoring/crowdsec#agent_password
+- kv/data/infra/monitoring/crowdsec#enroll_key
+- kv/data/infra/monitoring/crowdsec#bouncer_key
+
+- kv/data/infra/monitoring/falco#password
+
+- kv/data/infra/monitoring/elastic#password
+
+- kv/data/infra/monitoring/grafana#password
+
+- kv/data/infra/monitoring/kubeclarity#db_password
+
+### Pipelines
+
+- kv/data/infra/pipelines/argo-workflows#pg_password
+- kv/data/infra/pipelines/argo-workflows#client_id
+- kv/data/infra/pipelines/argo-workflows#client_secret
+- kv/data/infra/pipelines/argo-workflows#access_key
+- kv/data/infra/pipelines/argo-workflows#secret_key
+
+### VM
+
+- kv/data/infra/vm/kubevirt-manager#htpasswd
+
+### Apps
+
+- kv/data/infra/apps/supabase#anon_key
+- kv/data/infra/apps/supabase#service_key
+- kv/data/infra/apps/supabase#secret
+- kv/data/infra/apps/supabase#password
+- kv/data/infra/apps/supabase#db_password
+- kv/data/infra/apps/supabase#analytics_api_key
+
+- kv/data/infra/apps/strapi#db_password
+- kv/data/infra/apps/strapi#app_keys
+- kv/data/infra/apps/strapi#api_token_salt
+- kv/data/infra/apps/strapi#admin_jwt_secret
+- kv/data/infra/apps/strapi#transfer_token_salt
+- kv/data/infra/apps/strapi#jwt_secret
+
+<!-- - kv/data/infra/messages/rabbitmq#username
+- kv/data/infra/messages/rabbitmq#password -->
 
 ### Container registry
 
 - kv/data/infra/ghcr#user
 
-- kv/data/infra/harbor#user
-- kv/data/infra/harbor#registry_user
+- kv/data/infra/storage/harbor#user
+- kv/data/infra/storage/harbor#registry_user
 
 Value should be
 

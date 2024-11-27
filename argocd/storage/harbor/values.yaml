@@ -1,4 +1,4 @@
-harborAdminPassword: <path:kv/data/infra/harbor#user | yamlParse | jsonPath {.password}>
+harborAdminPassword: <path:kv/data/infra/storage/harbor#user | yamlParse | jsonPath {.password}>
 expose:
   ingress:
     hosts:
@@ -13,12 +13,12 @@ expose:
 externalURL: https://harbor.remikeat.com
 database:
   internal:
-    password: <path:kv/data/infra/harbor#db_password>
+    password: <path:kv/data/infra/storage/harbor#db_password>
 registry:
   credentials:
-    username: <path:kv/data/infra/harbor#registry_user | yamlParse | jsonPath {.username}>
-    password: <path:kv/data/infra/harbor#registry_user | yamlParse | jsonPath {.password}>
-secretKey: <path:kv/data/infra/harbor#secret_key>
+    username: <path:kv/data/infra/storage/harbor#registry_user | yamlParse | jsonPath {.username}>
+    password: <path:kv/data/infra/storage/harbor#registry_user | yamlParse | jsonPath {.password}>
+secretKey: <path:kv/data/infra/storage/harbor#secret_key>
 # nginx:
 #   image:
 #     repository: ghcr.io/octohelm/harbor/nginx-photon
