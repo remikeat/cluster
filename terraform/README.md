@@ -19,5 +19,7 @@ export TF_VAR_vault_token=''
 ```
 terraform init
 source .env
-terraform apply
+terraform apply -auto-approve
 ```
+
+Might need to run once more as the CRDs are not ready yet
