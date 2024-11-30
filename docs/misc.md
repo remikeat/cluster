@@ -72,6 +72,20 @@ talosctl config merge ./talosconfig
 kubectl run -it --rm -n rook-ceph --image ubuntu:latest --privileged debug
 ```
 
+### Remove read only attribute (using windows)
+
+```
+diskpart
+list disk
+select disk <disk_number>
+attributes disk
+attributes disk clear readonly
+attributes disk
+clean
+create partition primary
+format quick fs=ntfs
+```
+
 ### Wipe disk for ceph to use
 
 Carefully check which disk to wipe with
