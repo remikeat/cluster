@@ -82,6 +82,13 @@ attributes disk
 attributes disk clear readonly
 attributes disk
 clean
+```
+
+### To create a partition (allow to use as storage device again)
+
+Do above commands plus below commands
+
+```
 create partition primary
 format quick fs=ntfs
 ```
