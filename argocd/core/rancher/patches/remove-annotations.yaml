@@ -1,0 +1,4 @@
+- op: remove
+  path: /metadata/annotations/cert-manager.io~1issuer
+- op: remove
+  path: /metadata/annotations/cert-manager.io~1issuer-kind

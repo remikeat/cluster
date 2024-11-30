@@ -8,3 +8,12 @@ helmCharts:
     valuesFile: values.yaml
     version: 2.9.2
     repo: https://releases.rancher.com/server-charts/latest
+
+patches:
+  - target:
+      group: networking.k8s.io
+      version: v1
+      kind: Ingress
+      name: rancher
+      namespace: rancher
+    path: patches/remove-annotations.yaml
