@@ -7,8 +7,7 @@ server:
     storageClass: longhorn
   ingress:
     enabled: true
-    annotations:
-      kubernetes.io/ingress.class: tailscale
+    ingressClassName: tailscale
     hosts:
       - host: vault
     tls:

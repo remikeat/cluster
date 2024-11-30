@@ -17,7 +17,6 @@ spec:
       - app: core/keycloak
       - app: core/kong
       - app: core/rancher
-      - app: core/vault
   template:
     metadata:
       name: '{{base .app}}-app'

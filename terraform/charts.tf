@@ -39,3 +39,17 @@ resource "helm_release" "argocd" {
 
   depends_on = [helm_release.tailscale]
 }
+
+resource "helm_release" "vault" {
+  name             = "vault"
+  namespace        = "vault"
+  repository       = "https://helm.releases.hashicorp.com"
+  chart            = "vault"
+  create_namespace = true
+
+  values = [
+    file("${path.module}/values/vault-values.yaml")
+  ]
+
+  depends_on = [helm_release.argocd]
+}

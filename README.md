@@ -116,6 +116,7 @@ Might need to run once more as the CRDs are not ready yet
 ### Create applications
 
 ```
+cd argocd
 kubectl apply --server-side --request-timeout 0 -f core.yaml
 kubectl apply --server-side --request-timeout 0 -f storage.yaml
 kubectl apply --server-side --request-timeout 0 -f monitoring.yaml
