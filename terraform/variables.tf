@@ -31,9 +31,3 @@ variable "clientSecret" {
   type        = string
   sensitive   = true
 }
-
-variable "vault_token" {
-  description = "Vault token"
-  type        = string
-  sensitive   = true
-}
