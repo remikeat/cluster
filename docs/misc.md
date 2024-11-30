@@ -34,6 +34,12 @@ tailscale configure kubeconfig tailscale-operator
 talosctl reset --graceful=false --system-labels-to-wipe STATE --system-labels-to-wipe EPHEMERAL --reboot
 ```
 
+### Upgrade talos
+
+```
+talosctl upgrade --preserve --image factory.talos.dev/installer/708747e350d604ae9e57227d8dcf274091453ddb1097b765d4ea8884f1992c1f:v1.8.3
+```
+
 ### Debugging
 
 ```
