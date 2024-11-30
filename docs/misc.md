@@ -9,6 +9,12 @@ curl -X PUT -L 'https://elasticsearch.tail4d334.ts.net/*/_settings' \
 -d '{"index": {"number_of_replicas": 0}}'
 ```
 
+### Generate talos secrets
+
+```
+talosctl gen secrets -o secrets.yaml
+```
+
 ### Cluster shutdown
 
 ```

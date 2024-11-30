@@ -10,3 +10,4 @@ secrets.yaml
 talosconfig
 *.img
 *.qcow2
+*.iso

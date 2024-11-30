@@ -1,18 +1,72 @@
-## Instalation
+# Instalation
 
-### Talos installation
+## CLI tools installation
+
+```
+cd misc
+ansible-playbook install_cli_tools.yml -K
+```
+
+## Talos installation
 
 - Download talos image from https://factory.talos.dev/ by setting values according to talos/boot_assets/assets.yaml
-- Extract the image
+
+```
+cd talos/boot_assets
+./get_boot_assets_id.sh
+```
+
+### Flash image (installation with bootable usb drive)
+
+Flash the iso image (metal-amd64.iso) with balenaEtcher (https://www.balena.io/)
+
+### Or flash disk image directly (SBC)
+
+Extract the image
 
 ```
 xz -d metal-arm64.raw.xz
 ```
 
-Add tokens to below files
+Check carefully which drive to flash with
+
+```
+sudo lsblk
+```
+
+Flash the image
+
+```
+sudo dd if=metal-arm64.raw of=DEVICE_TO_FLASH conv=fsync bs=4M
+```
+
+### Apply configuration
+
+Generate a auth key for tailscale
+
+https://login.tailscale.com/admin/settings/keys
+
+Generate a personal access token
+
+https://app.docker.com/settings/personal-access-tokens
+
+Add those tokens to below files
 
 - registries.yaml
 - tailscale.yaml
+
+Generate secrets
+
+```
+cd talos
+talosctl gen secrets -o secrets.yaml
+```
+
+Generate config files
+
+```
+./gen_machine_config.sh
+```
 
 Prepare the cluster
 
