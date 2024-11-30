@@ -14,12 +14,6 @@ variable "github_token" {
   sensitive   = true
 }
 
-variable "registry_password" {
-  description = "Github registry password"
-  type        = string
-  sensitive   = true
-}
-
 variable "clientId" {
   description = "Tailscale client id"
   type        = string
