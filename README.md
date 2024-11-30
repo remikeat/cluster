@@ -79,6 +79,13 @@ talosctl bootstrap
 talosctl kubeconfig
 ```
 
+### Approve certificates
+
+```
+kubectl get csr
+kubectl certificate approve csr-xxxxx
+```
+
 ### Terraform installation
 
 ```
