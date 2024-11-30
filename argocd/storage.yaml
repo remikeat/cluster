@@ -13,8 +13,6 @@ spec:
         namespace: cnpg-system
       - app: storage/harbor
       # - app: storage/local-path-provisioner
-      - app: storage/longhorn
-        namespace: longhorn-system
       - app: storage/minio
       - app: storage/mongodb
       - app: storage/pgadmin

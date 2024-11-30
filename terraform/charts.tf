@@ -37,7 +37,21 @@ resource "helm_release" "argocd" {
     file("${path.module}/values/argocd-values.yaml")
   ]
 
-  depends_on = [helm_release.tailscale]
+  depends_on = [helm_release.tailscale, kubernetes_namespace.argocd]
+}
+
+resource "helm_release" "longhorn" {
+  name             = "longhorn"
+  namespace        = "longhorn-system"
+  repository       = "https://charts.longhorn.io"
+  chart            = "longhorn"
+  create_namespace = false
+
+  values = [
+    file("${path.module}/values/longhorn-values.yaml")
+  ]
+
+  depends_on = [helm_release.argocd, kubernetes_namespace.longhorn_system]
 }
 
 resource "helm_release" "vault" {
@@ -51,5 +65,5 @@ resource "helm_release" "vault" {
     file("${path.module}/values/vault-values.yaml")
   ]
 
-  depends_on = [helm_release.argocd]
+  depends_on = [helm_release.longhorn]
 }
