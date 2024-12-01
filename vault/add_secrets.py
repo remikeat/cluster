@@ -24,7 +24,7 @@ def generate_password(key="password", length=64):
     result = subprocess.run(['openssl', 'rand', '-base64', str(length)],
                             stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     if result.returncode == 0:
-        return {key: result.stdout.decode().strip()}
+        return {key: result.stdout.decode().strip().replace("\n", "")}
     else:
         print(f"Error generating password: {result.stderr.decode()}")
         return {}
