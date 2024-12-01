@@ -74,7 +74,7 @@ Prepare the cluster
 cp talosconfig ~/.talos/config
 talosctl config endpoint 192.168.0.122
 talosctl config nodes 192.168.0.122
-talosctl apply-config --insecure --file controlplane.yaml
+talosctl apply-config --insecure -n 192.168.0.122 --file controlplane.yaml
 talosctl bootstrap
 talosctl kubeconfig
 ```
@@ -110,6 +110,94 @@ terraform apply -auto-approve
 ```
 
 Might need to run once more as the CRDs are not ready yet
+
+## Vault
+
+### Init and unseal
+
+```
+kubectl exec -it -n vault pods/vault-0 -- vault operator init
+kubectl exec -it -n vault pods/vault-0 -- vault operator unseal
+```
+
+### Update token
+
+Update token in terraform .env file and apply terraform one more time
+
+```
+cd terraform
+source .env
+terraform apply -auto-approve
+```
+
+### Add secrets
+
+```
+vault login
+```
+
+### Enable kv secrets
+
+```
+vault secrets enable -version=2 kv
+```
+
+### Enable AppRole auth
+
+```
+vault auth enable approle
+```
+
+### Create policy
+
+```
+vault policy write kes-policy kes-policy.hcl
+```
+
+### Create role
+
+```
+vault write auth/approle/role/kes-role token_num_uses=0 secret_id_num_uses=0 period=5m
+vault write auth/approle/role/kes-role policies=kes-policy
+```
+
+### Retrieve secret
+
+```
+vault read auth/approle/role/kes-role/role-id
+vault write -f auth/approle/role/kes-role/secret-id
+```
+
+Create .env file in vault folder with below content
+
+```
+infra/sendgrid/smtp_password=
+infra/ghcr/username=
+infra/ghcr/password=
+infra/github/username=
+infra/github/password=
+infra/common/email=
+infra/core/kong/ip=
+infra/core/kong/client_id=
+infra/core/open-appsec/email=
+infra/core/open-appsec/token=
+infra/storage/harbor/username=
+infra/storage/harbor/registry/username=
+infra/storage/rook-ceph/object_access_key=
+infra/storage/cloudnativepg/pg_backup_access_key=
+infra/storage/minio/kes-id=
+infra/storage/minio/kes-secret=
+infra/monitoring/crowdsec/enroll_key=
+infra/pipelines/argo-workflows/client_id=
+infra/pipelines/argo-workflows/acess_key=
+infra/vm/kubevirt-manager/username=
+infra/vm/kubevirt-manager/password=
+```
+
+```
+cd vault
+./add_secrets.py
+```
 
 ## Initial configuration (after terraform)
 
