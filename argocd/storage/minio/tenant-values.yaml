@@ -32,7 +32,7 @@ tenant:
       name: pool-0
       volumesPerServer: 1
       size: 50Gi
-      storageClassName: ceph-block
+      storageClassName: longhorn
       securityContext:
         runAsUser: 1000
         runAsGroup: 1000
