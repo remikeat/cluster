@@ -1,5 +1,17 @@
 # Vault
 
+## Enable kv secrets
+
+```
+vault secrets enable -version=2 kv
+```
+
+## Enable AppRole auth
+
+```
+vault auth enable approle
+```
+
 ## Create policy
 
 ```
