@@ -21,6 +21,8 @@ ingress:
     pathType: Prefix
 tenant:
   name: minio
+  configuration:
+    name: minio-env-configuration
   configSecret:
     name: minio-env-configuration
     accessKey: minio
