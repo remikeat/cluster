@@ -26,6 +26,13 @@ configMapGenerator:
 
 resources:
   - https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.1.0/standard-install.yaml
+  - https://raw.githubusercontent.com/openappsec/openappsec/refs/tags/1.1.18/build_system/charts/open-appsec-kong/crds/crd-openappsec-exception.yaml
+  - https://raw.githubusercontent.com/openappsec/openappsec/refs/tags/1.1.18/build_system/charts/open-appsec-kong/crds/crd-openappsec-log-trigger.yaml
+  - https://raw.githubusercontent.com/openappsec/openappsec/refs/tags/1.1.18/build_system/charts/open-appsec-kong/crds/crd-openappsec-policy.yaml
+  - https://raw.githubusercontent.com/openappsec/openappsec/refs/tags/1.1.18/build_system/charts/open-appsec-kong/crds/crd-openappsec-practice.yaml
+  - https://raw.githubusercontent.com/openappsec/openappsec/refs/tags/1.1.18/build_system/charts/open-appsec-kong/crds/crd-openappsec-sources-identifier.yaml
+  - https://raw.githubusercontent.com/openappsec/openappsec/refs/tags/1.1.18/build_system/charts/open-appsec-kong/crds/crd-openappsec-trusted-sources.yaml
+  - https://raw.githubusercontent.com/openappsec/openappsec/refs/tags/1.1.18/build_system/charts/open-appsec-kong/crds/custom-resource-definitions.yaml
   - gatewayclass.yaml
   - gateway.yaml
   - kongclusterplugin.yaml
