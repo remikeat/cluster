@@ -187,7 +187,7 @@ SECRETS = {
             lambda: generate_yaml_credentials(
                 "infra/storage/harbor/username", "infra/storage/harbor/password"),
             lambda: generate_yaml_credentials(
-                "infra/storage/harbor/registry/username", "infra/storage/harbor/registry/password"),
+                "infra/storage/harbor/registry/username", "infra/storage/harbor/registry/password", "registry_user"),
             "db_password",
             "secret_key"
         ],
