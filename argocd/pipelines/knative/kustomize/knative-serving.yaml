@@ -17,7 +17,7 @@ spec:
     domain:
       remikeat.com: ""
     certmanager:
-      issuerRef: |
+      issuerRef:
         kind: ClusterIssuer
         name: letsencrypt-production
     tracing:
