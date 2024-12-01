@@ -26,6 +26,7 @@ configMapGenerator:
 
 resources:
   - https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.1.0/standard-install.yaml
+  - https://raw.githubusercontent.com/openappsec/openappsec/refs/tags/1.1.18/build_system/charts/open-appsec-kong/crds/crd-openappsec-custom-response.yaml
   - https://raw.githubusercontent.com/openappsec/openappsec/refs/tags/1.1.18/build_system/charts/open-appsec-kong/crds/crd-openappsec-exception.yaml
   - https://raw.githubusercontent.com/openappsec/openappsec/refs/tags/1.1.18/build_system/charts/open-appsec-kong/crds/crd-openappsec-log-trigger.yaml
   - https://raw.githubusercontent.com/openappsec/openappsec/refs/tags/1.1.18/build_system/charts/open-appsec-kong/crds/crd-openappsec-policy.yaml
