@@ -130,6 +130,13 @@ source .env
 terraform apply -auto-approve
 ```
 
+### Restart argocd
+
+```
+kubectl -n argocd rollout restart deployment argocd-server
+kubectl -n argocd rollout restart deployment argocd-repo-server
+```
+
 ### Add secrets
 
 ```
