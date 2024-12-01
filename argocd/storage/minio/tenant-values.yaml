@@ -97,7 +97,7 @@ tenant:
           engine: "kv"
           version: "v2"
           namespace: "" # An optional Vault namespace. See: https://www.vaultproject.io/docs/enterprise/namespaces/index.html
-          prefix: "minio"    # An optional K/V prefix. The server will store keys under this prefix.
+          prefix: "infra/storage/minio-keys"    # An optional K/V prefix. The server will store keys under this prefix.
           approle:    # AppRole credentials. See: https://www.vaultproject.io/docs/auth/approle.html
             id: "<path:kv/data/infra/storage/minio#kes-id>"      # Your AppRole Role ID
             secret: "<path:kv/data/infra/storage/minio#kes-secret>"  # Your AppRole Secret ID
