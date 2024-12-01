@@ -34,7 +34,7 @@ def generate_yaml_credentials(username_path, password_path, user="user"):
     username = secret_values.get(username_path, "admin")
     password = secret_values.get(
         password_path, generate_password()["password"])
-    return {user: f"username: {username}\npassword: {password}"}
+    return {user: f'username: "{username}"\npassword: "{password}"'}
 
 
 def split_cert_and_key(cert_and_key_content):
