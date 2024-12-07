@@ -5,6 +5,3 @@ resources:
   - https://storage.googleapis.com/tekton-releases/operator/latest/release.yaml
   - https://raw.githubusercontent.com/tektoncd/operator/main/config/crs/kubernetes/config/all/operator_v1alpha1_config_cr.yaml
   - ingress.yaml
-  # - https://api.hub.tekton.dev/v1/resource/tekton/task/git-clone/0.9/raw
-  # - https://api.hub.tekton.dev/v1/resource/tekton/task/kaniko/0.6/raw
-  # - clone-build-push.yaml

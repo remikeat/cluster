@@ -13,6 +13,7 @@ spec:
       - app: pipelines/camel-k
       - app: pipelines/knative
       - app: pipelines/tekton
+      - app: pipelines/tekton-pipelines
   template:
     metadata:
       name: '{{base .app}}-app'
