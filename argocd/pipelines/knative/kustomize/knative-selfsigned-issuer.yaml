@@ -1,0 +1,30 @@
+# this issuer is used by cert-manager to sign all certificates
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: cluster-selfsigned-issuer
+spec:
+  selfSigned: {}
+---
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer # this issuer is specifically for Knative, it will use the CA stored in the secret created by the Certificate below
+metadata:
+  name: knative-selfsigned-issuer
+spec:
+  ca:
+    secretName: knative-selfsigned-ca
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate # this creates a CA certificate, signed by cluster-selfsigned-issuer and stored in the secret knative-selfsigned-ca
+metadata:
+  name: knative-selfsigned-ca
+  namespace: cert-manager #  If you want to use it as a ClusterIssuer the secret must be in the cert-manager namespace.
+spec:
+  secretName: knative-selfsigned-ca
+  commonName: knative.dev
+  usages:
+    - server auth
+  isCA: true
+  issuerRef:
+    kind: ClusterIssuer
+    name: cluster-selfsigned-issuer

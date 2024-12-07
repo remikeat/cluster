@@ -20,6 +20,12 @@ spec:
       issuerRef: |
         kind: ClusterIssuer
         name: letsencrypt-production
+      clusterLocalIssuerRef: |
+        kind: ClusterIssuer
+        name: knative-selfsigned-issuer
+      systemInternalIssuerRef: |
+        kind: ClusterIssuer
+        name: knative-selfsigned-issuer
     tracing:
       backend: zipkin
       zipkin-endpoint: http://otel-collector-collector.open-telemetry:9411/api/v2/spans
