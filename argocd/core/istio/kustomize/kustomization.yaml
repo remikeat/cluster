@@ -19,12 +19,12 @@ helmCharts:
     version: 1.23.0
     valuesFile: values.yaml
     repo: https://istio-release.storage.googleapis.com/charts
-  # - name: gateway
-  #   namespace: istio-system
-  #   releaseName: istio-ingressgateway
-  #   version: 1.23.0
-  #   valuesFile: values-ingressgateway.yaml
-  #   repo: https://istio-release.storage.googleapis.com/charts
+  - name: gateway
+    namespace: istio-system
+    releaseName: istio-ingressgateway
+    version: 1.23.0
+    valuesFile: values-ingressgateway.yaml
+    repo: https://istio-release.storage.googleapis.com/charts
 
 resources:
   - namespace.yaml
