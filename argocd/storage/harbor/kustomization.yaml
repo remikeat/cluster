@@ -6,7 +6,7 @@ helmCharts:
     namespace: harbor
     releaseName: harbor
     valuesFile: values.yaml
-    version: 1.15.1
+    version: 1.16.0
     repo: https://helm.goharbor.io
 
 patches:
