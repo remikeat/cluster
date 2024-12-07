@@ -38,6 +38,7 @@ resources:
   - gateway.yaml
   - kongclusterplugin.yaml
   - externalsecret.yaml
+  - exception.yaml
 
 generators:
   - kong.yaml

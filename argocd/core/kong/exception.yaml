@@ -1,0 +1,9 @@
+apiVersion: openappsec.io/v1beta1
+kind: Exception
+metadata:
+  name: appsec-exception
+spec:
+- action: accept
+  comment: Own IP
+  sourceIp:
+  - <path:kv/data/infra/core/kong#ip>
