@@ -10,6 +10,11 @@ metadata:
   namespace: knative-serving
 spec:
   config:
+    istio:
+      external-gateways: |
+        - name: kong
+          namespace: kong
+          service: kong-open-appsec-kong-proxy.kong.svc.cluster.local
     network:
       ingress-class: kong
       domain-template: "{{.Name}}.{{.Namespace}}.kn.{{.Domain}}"
