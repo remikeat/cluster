@@ -6,7 +6,7 @@ helmCharts:
     namespace: falco
     releaseName: falco
     valuesFile: values.yaml
-    version: 4.8.2
+    version: 4.16.0
     repo: https://falcosecurity.github.io/charts
     includeCRDs: true
 
