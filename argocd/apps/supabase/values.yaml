@@ -103,7 +103,7 @@ imgproxy:
 kong:
   image:
     repository: kong
-    tag: 2.8.1
+    tag: 3.8.0
   environment:
     KONG_DECLARATIVE_CONFIG: /usr/local/kong/kong.yml
     KONG_LOG_LEVEL: info
