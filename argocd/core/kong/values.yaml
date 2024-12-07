@@ -1,3 +1,5 @@
+kind: Vanilla
+
 ingressController:
   enabled: true
   image:
