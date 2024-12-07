@@ -183,12 +183,16 @@
       args:
         creates: /usr/local/bin/kn-func
 
-    - name: Add Knative func alias and environment variable to .bashrc
-      blockinfile:
+    - name: Add Knative func alias to .bashrc
+      lineinfile:
         path: "{{ ansible_env.HOME }}/.bashrc"
-        block: |
-          alias func='kn func'
-          export FUNC_REGISTRY=harbor.remikeat.com/library
+        line: alias func='kn func'
+        state: present
+
+    - name: Add Knative func environment variable to .bashrc
+      lineinfile:
+        path: "{{ ansible_env.HOME }}/.bashrc"
+        line: export FUNC_REGISTRY=harbor.remikeat.com/library
         state: present
 
     - name: Configure Knative CLI auto-completion
@@ -283,12 +287,16 @@
         line: "source '/etc/bash_completion.d/kustomize-completion.bash'"
         state: present
 
-    - name: Add aliases to .bashrc
-      blockinfile:
+    - name: Add rook-ceph aliases to .bashrc
+      lineinfile:
         path: "{{ ansible_env.HOME }}/.bashrc"
-        block: |
-          alias rook-ceph="kubectl rook-ceph"
-          alias ceph="kubectl rook-ceph ceph"
+        line: alias rook-ceph="kubectl rook-ceph"
+        state: present
+
+    - name: Add ceph aliases to .bashrc
+      lineinfile:
+        path: "{{ ansible_env.HOME }}/.bashrc"
+        line: alias ceph="kubectl rook-ceph ceph"
         state: present
 
     - name: Configure Rook-Ceph auto-completion
