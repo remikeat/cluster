@@ -175,6 +175,9 @@ vault read auth/approle/role/kes-role/role-id
 vault write -f auth/approle/role/kes-role/secret-id
 ```
 
+Generate secrets for supabase using this page:
+https://supabase.com/docs/guides/self-hosting/docker
+
 Create .env file in vault folder with below content
 
 ```
@@ -200,6 +203,10 @@ infra/pipelines/argo-workflows/client_id=
 infra/pipelines/argo-workflows/acess_key=
 infra/vm/kubevirt-manager/username=
 infra/vm/kubevirt-manager/password=
+infra/apps/supabase/anon_key=
+infra/apps/supabase/service_key=
+infra/apps/supabase/secret=
+infra/apps/supabase/analytics_api_key=
 ```
 
 ```

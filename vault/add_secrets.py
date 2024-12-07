@@ -245,24 +245,24 @@ SECRETS = {
                 "infra/vm/kubevirt-manager/username", "infra/vm/kubevirt-manager/password")
         ]
     },
-    # "apps": {
-    #     "supabase": [
-    #         "anon_key",
-    #         "service_key",
-    #         "secret",
-    #         "password",
-    #         "db_password",
-    #         "analytics_api_key"
-    #     ],
-    #     "strapi": [
-    #         "db_password",
-    #         "app_keys",
-    #         "api_token_salt",
-    #         "admin_jwt_secret",
-    #         "transfer_token_salt",
-    #         "jwt_secret"
-    #     ]
-    # }
+    "apps": {
+        "supabase": [
+            "anon_key",
+            "service_key",
+            "secret",
+            "password",
+            "db_password",
+            "analytics_api_key"
+        ],
+        "strapi": [
+            "db_password",
+            "app_keys",
+            "api_token_salt",
+            "admin_jwt_secret",
+            "transfer_token_salt",
+            "jwt_secret"
+        ]
+    }
 }
 
 process_secrets("infra", SECRETS)
