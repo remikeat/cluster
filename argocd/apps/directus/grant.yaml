@@ -6,9 +6,6 @@ spec:
   mariaDbRef:
     name: mariadb
   privileges:
-    - "SELECT"
-    - "INSERT"
-    - "UPDATE"
     - "ALL PRIVILEGES"
   database: "*"
   table: "*"
