@@ -2,8 +2,10 @@ harborAdminPassword: <path:kv/data/infra/storage/harbor#user | yamlParse | jsonP
 expose:
   ingress:
     hosts:
-      core: harbor
-    className: tailscale
+      core: harbor.remikeat.com
+    className: kong
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-production
   tls:
     certSource: secret
     secret:
