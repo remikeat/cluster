@@ -9,6 +9,9 @@ metadata:
   name: knative-serving
   namespace: knative-serving
 spec:
+  ingress:
+    istio:
+      enabled: false
   config:
     network:
       ingress-class: kong
