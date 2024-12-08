@@ -31,4 +31,4 @@ spec:
         traces:
           receivers: [otlp, zipkin]
           processors: []
-          exporters: [debug, otlp/jaeger]
+          exporters: [otlp/jaeger]
