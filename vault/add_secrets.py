@@ -20,7 +20,7 @@ def load_env_file(filename):
 secret_values = load_env_file(env_file)
 
 
-def generate_password(key="password", length=64):
+def generate_password(key="password", length=32):
     result = subprocess.run(['openssl', 'rand', '-base64', str(length)],
                             stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     if result.returncode == 0:
