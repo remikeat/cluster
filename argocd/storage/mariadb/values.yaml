@@ -1,0 +1,4 @@
+webhook:
+  cert:
+    certManager:
+      enabled: true
