@@ -266,9 +266,9 @@ SECRETS = {
             "mariadb-root-password",
             "mariadb-replication-password",
             "mariadb-password",
-            "ADMIN_PASSWORD",
-            "KEY",
-            "SECRET"
+            "admin_password",
+            "key",
+            "secret"
         ]
     }
 }
