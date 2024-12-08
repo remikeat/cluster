@@ -82,4 +82,4 @@ spec:
             --local context=. \
             --local dockerfile=. \
             $(for arg in {{inputs.parameters.buildArgs}}; do echo "--opt build-arg:$arg"; done) \
-            --output type=image,name=harbor.remikeat.com/{{inputs.parameters.image}},push=true
+            --output type=image,name=harbor.tail4d334.ts.net/{{inputs.parameters.image}},push=true
