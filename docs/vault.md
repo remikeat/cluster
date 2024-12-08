@@ -128,6 +128,13 @@ vault operator raft snapshot restore backup.snap
 - kv/data/infra/apps/strapi#transfer_token_salt
 - kv/data/infra/apps/strapi#jwt_secret
 
+- kv/data/infra/apps/directus#mariadb-root-password
+- kv/data/infra/apps/directus#mariadb-replication-password
+- kv/data/infra/apps/directus#mariadb-password
+- kv/data/infra/apps/directus#ADMIN_PASSWORD
+- kv/data/infra/apps/directus#KEY
+- kv/data/infra/apps/directus#SECRET
+
 <!-- - kv/data/infra/messages/rabbitmq#username
 - kv/data/infra/messages/rabbitmq#password -->
 

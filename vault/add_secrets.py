@@ -261,6 +261,14 @@ SECRETS = {
             "admin_jwt_secret",
             "transfer_token_salt",
             "jwt_secret"
+        ],
+        "directus": [
+            "mariadb-root-password",
+            "mariadb-replication-password",
+            "mariadb-password",
+            "ADMIN_PASSWORD",
+            "KEY",
+            "SECRET"
         ]
     }
 }

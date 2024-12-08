@@ -13,3 +13,12 @@ ingress:
    - secretName: directus-tls
      hosts:
        - directus
+
+mariadb:
+  enableInstallation: false
+  auth:
+    createSecrets: false
+    existingSecret: directus-secret
+    database: directus
+    username: directus
+  mariadbURL: mariadb.directus.svc.cluster.local
