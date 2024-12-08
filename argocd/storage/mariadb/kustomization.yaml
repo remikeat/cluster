@@ -3,12 +3,12 @@ kind: Kustomization
 
 helmCharts:
   - name: mariadb-operator-crds
-    namespace: mariadb-operator-crds
+    namespace: mariadb
     releaseName: mariadb-operator-crds
     version: 0.36.0
     repo: https://helm.mariadb.com/mariadb-operator
   - name: mariadb-operator
-    namespace: mariadb-operator
+    namespace: mariadb
     releaseName: mariadb-operator
     version: 0.36.0
     valuesFile: values.yaml
