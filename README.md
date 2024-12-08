@@ -200,6 +200,7 @@ infra/storage/minio/kes-secret=
 infra/monitoring/crowdsec/enroll_key=
 infra/monitoring/elastic/password=
 infra/pipelines/argo-workflows/client_id=
+infra/pipelines/argo-workflows/client_secret=
 infra/pipelines/argo-workflows/acess_key=
 infra/vm/kubevirt-manager/username=
 infra/vm/kubevirt-manager/password=
