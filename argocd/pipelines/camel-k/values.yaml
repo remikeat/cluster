@@ -3,6 +3,6 @@ operator:
 platform:
   build:
     registry:
-      address: harbor.tail4d334.ts.net
+      address: harbor.remikeat.com
       organization: library
       secret: harbor-credentials

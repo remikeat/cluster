@@ -192,7 +192,7 @@
     - name: Add Knative func environment variable to .bashrc
       lineinfile:
         path: "{{ ansible_env.HOME }}/.bashrc"
-        line: export FUNC_REGISTRY=harbor.tail4d334.ts.net/library
+        line: export FUNC_REGISTRY=harbor.remikeat.com/library
         state: present
 
     - name: Configure Knative CLI auto-completion

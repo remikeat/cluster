@@ -8,7 +8,7 @@ expose:
     certSource: secret
     secret:
       secretName: harbor-tls
-externalURL: https://harbor.tail4d334.ts.net
+externalURL: https://harbor.remikeat.com
 database:
   internal:
     password: <path:kv/data/infra/storage/harbor#db_password>
