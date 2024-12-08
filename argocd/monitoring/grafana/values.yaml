@@ -62,7 +62,7 @@ grafana:
         revision: 184
         datasource: Prometheus
       node-export-full:
-        gnetId: 12486
+        gnetId: 1860
         revision: 37
         datasource: Prometheus
       trivy-operator-dashboard:
