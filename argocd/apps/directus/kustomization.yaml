@@ -8,6 +8,12 @@ helmCharts:
     valuesFile: values.yaml
     version: 1.1.0
     repo: https://directus-labs.github.io/helm-chart/
+  - name: redis
+    namespace: redis
+    releaseName: redis
+    valuesFile: redis-values.yaml
+    version: 0.16.1
+    repo: https://ot-container-kit.github.io/helm-charts/
 
 resources:
   - mariadb.yaml

@@ -134,6 +134,7 @@ vault operator raft snapshot restore backup.snap
 - kv/data/infra/apps/directus#admin_password
 - kv/data/infra/apps/directus#key
 - kv/data/infra/apps/directus#secret
+- kv/data/infra/apps/directus#redis_password
 
 <!-- - kv/data/infra/messages/rabbitmq#username
 - kv/data/infra/messages/rabbitmq#password -->

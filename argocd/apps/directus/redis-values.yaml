@@ -1,0 +1,4 @@
+redisStandalone:
+  redisSecret:
+    secretName: directus-redis
+    secretKey: redis-password

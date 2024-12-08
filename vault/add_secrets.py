@@ -268,7 +268,8 @@ SECRETS = {
             "mariadb_password",
             "admin_password",
             "key",
-            "secret"
+            "secret",
+            "redis_password"
         ]
     }
 }

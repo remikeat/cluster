@@ -22,3 +22,9 @@ mariadb:
     database: directus
     username: directus
   mariadbURL: mariadb.directus.svc.cluster.local
+
+redis:
+  enabled: false
+  auth:
+    existingSecret: directus-redis
+    existingSecretPasswordKey: redis-password
