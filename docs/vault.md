@@ -128,9 +128,9 @@ vault operator raft snapshot restore backup.snap
 - kv/data/infra/apps/strapi#transfer_token_salt
 - kv/data/infra/apps/strapi#jwt_secret
 
-- kv/data/infra/apps/directus#mariadb-root-password
-- kv/data/infra/apps/directus#mariadb-replication-password
-- kv/data/infra/apps/directus#mariadb-password
+- kv/data/infra/apps/directus#mariadb_root_password
+- kv/data/infra/apps/directus#mariadb_replication_password
+- kv/data/infra/apps/directus#mariadb_password
 - kv/data/infra/apps/directus#admin_password
 - kv/data/infra/apps/directus#key
 - kv/data/infra/apps/directus#secret

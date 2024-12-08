@@ -263,9 +263,9 @@ SECRETS = {
             "jwt_secret"
         ],
         "directus": [
-            "mariadb-root-password",
-            "mariadb-replication-password",
-            "mariadb-password",
+            "mariadb_root_password",
+            "mariadb_replication_password",
+            "mariadb_password",
             "admin_password",
             "key",
             "secret"
