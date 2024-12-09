@@ -23,6 +23,9 @@ spec:
   - name: opt-folder
     hostPath:
       path: /opt/
+  - name: dev-folder
+    hostPath:
+      path: /dev/
   containers:
   - name: debug
     image: ubuntu
@@ -35,4 +38,6 @@ spec:
       mountPath: /node/etc
     - name: opt-folder
       mountPath: /node/opt
+    - name: dev-folder
+      mountPath: /node/dev
     command: ["/bin/bash", "-c", "trap : TERM INT; sleep infinity & wait"]
