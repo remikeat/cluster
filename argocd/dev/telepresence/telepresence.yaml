@@ -1,0 +1,15 @@
+apiVersion: remikeat.com/v1
+kind: GitGenerator
+metadata:
+  name: telepresence
+  annotations:
+    config.kubernetes.io/function: |
+      exec: 
+        path: ./git-generator.sh
+spec:
+  repoURL: https://github.com/telepresenceio/telepresence.git
+  path: charts/telepresence
+  targetRevision: v2.20.3
+  name: telepresence
+  namespace: telepresence
+  skipCrds: false
