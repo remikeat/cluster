@@ -33,3 +33,13 @@ spec:
     - name: dev-folder
       mountPath: /node/dev
     command: ["/bin/bash", "-c", "trap : TERM INT; sleep infinity & wait"]
+    readinessProbe:
+      exec:
+        command: [sh, -c, "exit 0"]
+      initialDelaySeconds: 1
+      periodSeconds: 5
+    livenessProbe:
+      exec:
+        command: [sh, -c, "exit 0"]
+      initialDelaySeconds: 30
+      periodSeconds: 10
