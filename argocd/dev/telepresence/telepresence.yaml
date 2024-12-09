@@ -10,6 +10,6 @@ spec:
   repoURL: https://github.com/telepresenceio/telepresence.git
   path: charts/telepresence
   targetRevision: v2.20.3
-  name: telepresence
+  name: traffic-manager
   namespace: telepresence
   skipCrds: false
