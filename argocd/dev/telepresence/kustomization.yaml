@@ -1,8 +1,9 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-resources:
-  - namespace.yaml
-
-generators:
-  - telepresence.yaml
+helmCharts:
+  - name: telepresence
+    namespace: telepresence
+    releaseName: traffic-manager
+    version: 2.20.1
+    repo: https://getambassador.io/
