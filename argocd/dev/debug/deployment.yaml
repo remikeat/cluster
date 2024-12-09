@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: debug
+  namespace: debug
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: debug
+  template:
+    metadata:
+      labels:
+        app: debug
+    spec:
+      restartPolicy: Always
+      volumes:
+      - name: var-folder
+        hostPath:
+          path: /var/
+      - name: etc-folder
+        hostPath:
+          path: /etc/
+      - name: opt-folder
+        hostPath:
+          path: /opt/
+      - name: dev-folder
+        hostPath:
+          path: /dev/
+      containers:
+      - name: debug
+        image: ubuntu
+        securityContext:
+          privileged: true
+        volumeMounts:
+        - name: var-folder
+          mountPath: /node/var
+        - name: etc-folder
+          mountPath: /node/etc
+        - name: opt-folder
+          mountPath: /node/opt
+        - name: dev-folder
+          mountPath: /node/dev
+        command: ["/bin/bash", "-c", "trap : TERM INT; sleep infinity & wait"]
+        readinessProbe:
+          exec:
+            command: [sh, -c, "exit 0"]
+          initialDelaySeconds: 1
+          periodSeconds: 5
+        livenessProbe:
+          exec:
+            command: [sh, -c, "exit 0"]
+          initialDelaySeconds: 30
+          periodSeconds: 10
