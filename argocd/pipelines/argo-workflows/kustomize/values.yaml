@@ -25,7 +25,7 @@ server:
     - client
   sso:
     enabled: true
-    issuer: https://keycloak.remikeat.com/realms/master
+    issuer: https://<path:kv/data/infra/core/keycloak#hostname>/realms/master
     clientId:
       name: argo-server-sso
       key: client-id

@@ -190,6 +190,7 @@ infra/common/email=
 infra/core/kong/ip=
 infra/core/kong/client_id=
 infra/core/kong/client_secret=
+infra/core/keycloak/hostname=
 infra/core/open-appsec/email=
 infra/core/open-appsec/token=
 infra/storage/harbor/hostname=

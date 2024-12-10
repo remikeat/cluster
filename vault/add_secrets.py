@@ -174,6 +174,7 @@ SECRETS = {
             "ip"
         ],
         "keycloak": [
+            "hostname",
             "password",
             "pg_password"
         ],
