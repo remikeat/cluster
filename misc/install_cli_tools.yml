@@ -390,7 +390,7 @@
     - name: Download the latest Telepresence binary
       become: yes
       ansible.builtin.get_url:
-        url: "https://app.getambassador.io/download/tel2oss/releases/download/v2.20.3/telepresence-linux-amd64"
+        url: "https://app.getambassador.io/download/tel2/linux/amd64/latest/telepresence"
         dest: "/usr/local/bin/telepresence"
         mode: "0755"
 
