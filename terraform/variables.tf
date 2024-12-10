@@ -1,10 +1,20 @@
-variable "config_path" {
+variable "kube_config_path" {
   description = "Kube config file"
   type        = string
 }
 
 variable "external_cidr" {
   description = "External cidr"
+  type        = string
+}
+
+variable "github_repo" {
+  description = "Github repo"
+  type        = string
+}
+
+variable "github_username" {
+  description = "Github username"
   type        = string
 }
 

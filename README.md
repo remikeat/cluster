@@ -96,6 +96,10 @@ Leave the vault token empty at first and after initializating and unsealing the 
 Create a `.env` file with the following content in terraform folder
 
 ```
+export TF_VAR_kube_config_path=''
+export TF_VAR_external_cidr=''
+export TF_VAR_github_repo=''
+export TF_VAR_github_username=''
 export TF_VAR_github_token=''
 export TF_VAR_clientId=''
 export TF_VAR_clientSecret=''

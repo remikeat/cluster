@@ -10,8 +10,8 @@ resource "kubernetes_secret" "private_repo" {
   data = {
     type     = "git"
     project  = "default"
-    url      = "https://github.com/remikeat/cluster"
-    username = "remikeat"
+    url      = var.github_repo
+    username = var.github_username
     password = var.github_token
   }
   depends_on = [kubernetes_namespace.argocd]
