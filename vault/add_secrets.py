@@ -163,7 +163,8 @@ SECRETS = {
         "password"
     ],
     "common": [
-        "email"
+        "email",
+        "domain"
     ],
     "core": {
         "kong": [

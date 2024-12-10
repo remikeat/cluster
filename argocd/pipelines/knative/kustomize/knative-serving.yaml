@@ -18,7 +18,7 @@ spec:
       domain-template: "{{.Name}}.{{.Namespace}}.kn.{{.Domain}}"
       external-domain-tls: Enabled
     domain:
-      remikeat.com: ""
+      <path:kv/data/infra/common#domain>: ""
     certmanager:
       issuerRef: |
         kind: ClusterIssuer

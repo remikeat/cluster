@@ -187,6 +187,7 @@ infra/ghcr/password=
 infra/github/username=
 infra/github/password=
 infra/common/email=
+infra/common/domain=
 infra/core/kong/ip=
 infra/core/kong/client_id=
 infra/core/kong/client_secret=
