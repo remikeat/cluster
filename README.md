@@ -1,3 +1,79 @@
+# Introduction
+
+This repository contains the Infrastructure as Code to deploy a single node kubernetes cluster with below software
+
+| Category       | Component                 | Rough AWS equivalent                    |
+| -------------- | ------------------------- | --------------------------------------- |
+| **apps**       | directus                  |                                         |
+|                | strapi                    |                                         |
+|                | supabase                  | AWS Amplify                             |
+| **core**       | cert-manager              | AWS Certificate Manager (ACM)           |
+|                | descheduler               |                                         |
+|                | external-secrets          | AWS Secrets Manager                     |
+|                | istio                     | AWS App Mesh                            |
+|                | keycloak                  | Amazon Cognito                          |
+|                | kong                      | Amazon API Gateway                      |
+|                | rancher                   | AWS Console                             |
+| **dev**        | debug                     |                                         |
+|                | telepresence              |                                         |
+| **messages**   | emqx                      | AWS IoT Core                            |
+|                | kafka                     | Amazon MSK (Managed Kafka Service)      |
+|                | kafka-ui                  | Amazon MSK Management Console           |
+|                | rabbitmq                  | Amazon MQ                               |
+| **monitoring** | crowdsec                  | AWS GuardDuty                           |
+|                | elastic                   | Amazon OpenSearch Service               |
+|                | falco                     | AWS CloudTrail                          |
+|                | fluent                    | Amazon Kinesis Data Firehose            |
+|                | grafana                   | Amazon Managed Grafana                  |
+|                | jaeger                    | AWS X-Ray                               |
+|                | kiali                     | AWS App Mesh Visualizer                 |
+|                | kubeclarity               |                                         |
+|                | metrics-server            | Amazon CloudWatch                       |
+|                | open-telemetry            | AWS Distro for OpenTelemetry (ADOT)     |
+|                | trivy                     | AWS Inspector                           |
+| **pipelines**  | argo-workflows            | AWS Step Functions                      |
+|                | camel-k                   |                                         |
+|                | knative                   | AWS Lambda                              |
+|                | tekton                    | AWS CodePipeline                        |
+|                | tekton-pipelines          | AWS CodePipeline                        |
+| **storage**    | cloudnativepg             | Amazon RDS (PostgreSQL engine)          |
+|                | harbor                    | Amazon Elastic Container Registry (ECR) |
+|                | local-path-provisioner    |                                         |
+|                | mariadb                   | Amazon RDS (MariaDB engine)             |
+|                | minio                     | Amazon S3                               |
+|                | mongodb                   | Amazon DocumentDB                       |
+|                | pgadmin                   | AWS RDS Management Console              |
+|                | redis                     | Amazon ElastiCache                      |
+|                | redis-insight             | Amazon ElastiCache Management Console   |
+|                | rook-ceph                 | Amazon S3 / EBS                         |
+| **vm**         | external-snapshotter      |                                         |
+|                | harvester                 | Amazon EC2                              |
+|                | kubevirt                  | Amazon EC2                              |
+|                | kubevirt-manager          | Amazon EC2 Management Console           |
+|                | multus                    |                                         |
+|                | system-upgrade-controller |                                         |
+
+It is using
+
+- ArgoCD for gitops
+- terraform to deploy the base components
+- talos linux as a k8s linux distribution
+
+Terraform is deploying
+
+- cilium (as a CNI)
+- longhorn (block storage)
+- vault (Hashicorp)
+- tailscale (for ingresses)
+- argocd (for gitops)
+
+# Minimum requirements
+
+To have all the components running
+
+- CPU: 16 cores
+- Memory: 64GB
+
 # Instalation
 
 ## CLI tools installation
@@ -196,6 +272,7 @@ infra/common/tailnet=
 infra/core/kong/ip=
 infra/core/kong/client_id=
 infra/core/kong/client_secret=
+infra/core/kong/proxy_ip=
 infra/core/keycloak/hostname=
 infra/core/open-appsec/email=
 infra/core/open-appsec/token=

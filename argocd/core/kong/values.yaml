@@ -100,7 +100,7 @@ manager:
 proxy:
   enabled: true
   annotations:
-    "lbipam.cilium.io/ips": "192.168.1.1"
+    "lbipam.cilium.io/ips": <path:kv/data/infra/core/kong#proxy_ip>
 
 plugins:
   configMaps:

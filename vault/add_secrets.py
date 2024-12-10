@@ -173,7 +173,8 @@ SECRETS = {
             "password",
             "client_id",
             "client_secret",
-            "ip"
+            "ip",
+            "proxy_ip"
         ],
         "keycloak": [
             "hostname",
