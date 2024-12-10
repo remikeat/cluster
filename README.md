@@ -252,3 +252,16 @@ EMQX dashboard initial credentials:
 
 - username: admin
 - password: public
+
+# Notes
+
+It seems that argo-vault-plugin is not able to replace templated values if they are keys
+
+So manual remplacement of the value is needed in below file
+
+- argocd/pipelines/knative/kustomize-serving.yaml
+
+```
+domain:
+    remikeat.com: ""
+```
