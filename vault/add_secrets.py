@@ -176,6 +176,9 @@ SECRETS = {
             "ip",
             "proxy_ip"
         ],
+        "istio": [
+            "gateway_ip"
+        ],
         "keycloak": [
             "hostname",
             "password",

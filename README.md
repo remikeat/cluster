@@ -273,6 +273,7 @@ infra/core/kong/ip=
 infra/core/kong/client_id=
 infra/core/kong/client_secret=
 infra/core/kong/proxy_ip=
+infra/core/istio/gateway_ip=
 infra/core/keycloak/hostname=
 infra/core/open-appsec/email=
 infra/core/open-appsec/token=
