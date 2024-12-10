@@ -115,6 +115,7 @@ vault operator raft snapshot restore backup.snap
 
 ### Apps
 
+- kv/data/infra/apps/supabase#hostname
 - kv/data/infra/apps/supabase#anon_key
 - kv/data/infra/apps/supabase#service_key
 - kv/data/infra/apps/supabase#secret

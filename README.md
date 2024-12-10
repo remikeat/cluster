@@ -206,6 +206,7 @@ infra/pipelines/argo-workflows/client_secret=
 infra/pipelines/argo-workflows/acess_key=
 infra/vm/kubevirt-manager/username=
 infra/vm/kubevirt-manager/password=
+infra/apps/supabase/hostname=
 infra/apps/supabase/anon_key=
 infra/apps/supabase/service_key=
 infra/apps/supabase/secret=

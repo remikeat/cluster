@@ -248,6 +248,7 @@ SECRETS = {
     },
     "apps": {
         "supabase": [
+            "hostname",
             "anon_key",
             "service_key",
             "secret",

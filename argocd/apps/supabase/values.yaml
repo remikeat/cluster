@@ -36,7 +36,7 @@ studio:
   environment:
     STUDIO_DEFAULT_ORGANIZATION: "My Organization"
     STUDIO_DEFAULT_PROJECT: "My Project"
-    SUPABASE_PUBLIC_URL: https://supabase.remikeat.com/
+    SUPABASE_PUBLIC_URL: https://<path:kv/data/infra/apps/supabase#hostname>/
     NEXT_PUBLIC_ENABLE_LOGS: "true"
   livenessProbe:
     httpGet:
@@ -48,8 +48,8 @@ auth:
   image:
     tag: v2.143.0
   environment:
-    API_EXTERNAL_URL: https://supabase.remikeat.com
-    GOTRUE_SITE_URL: https://supabase.remikeat.com
+    API_EXTERNAL_URL: https://<path:kv/data/infra/apps/supabase#hostname>
+    GOTRUE_SITE_URL: https://<path:kv/data/infra/apps/supabase#hostname>
     GOTRUE_EXTERNAL_EMAIL_ENABLED: "true"
     GOTRUE_MAILER_AUTOCONFIRM: "true"
     GOTRUE_SMTP_ADMIN_EMAIL: "<path:kv/data/infra/common#email>"
@@ -116,9 +116,9 @@ kong:
     tls:
       - secretName: supabase-ingress-tls
         hosts:
-          - supabase.remikeat.com
+          - <path:kv/data/infra/apps/supabase#hostname>
     hosts:
-      - host: supabase.remikeat.com
+      - host: <path:kv/data/infra/apps/supabase#hostname>
         paths:
           - path: /
             pathType: Prefix
