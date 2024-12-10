@@ -141,7 +141,7 @@ talosctl gen secrets -o secrets.yaml
 Generate config files
 
 ```
-./gen_machine_config.sh
+./gen_machine_config.sh NODE_IP_ADDRESS
 ```
 
 Prepare the cluster

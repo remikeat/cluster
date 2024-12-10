@@ -1,3 +1,11 @@
+#!/bin/bash
+if [ -z "$1" ]; then
+    echo "Usage: $0 <IP_ADDRESS>"
+    exit 1
+fi
+
+IP_ADDRESS=$1
+
 talosctl gen config --with-secrets secrets.yaml \
     --config-patch @patches/disable-cni.yaml \
     --config-patch @patches/data-path-mount.yaml \
@@ -12,4 +20,4 @@ talosctl gen config --with-secrets secrets.yaml \
     --config-patch @patches/registries.yaml \
     --with-docs=false \
     --with-examples=false \
-    cluster https://192.168.0.122:6443
+    cluster https://$IP_ADDRESS:6443
