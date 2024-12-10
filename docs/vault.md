@@ -50,6 +50,7 @@ vault operator raft snapshot restore backup.snap
 
 - kv/data/infra/common#email
 - kv/data/infra/common#domain
+- kv/data/infra/common#tailnet
 
 ### Core
 

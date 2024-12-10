@@ -32,7 +32,7 @@ server:
     clientSecret:
       name: argo-server-sso
       key: client-secret
-    redirectUrl: https://argo-workflows.tail4d334.ts.net/oauth2/callback
+    redirectUrl: https://argo-workflows.<path:kv/data/infra/common#tailnet>/oauth2/callback
     scopes:
       - groups
     rbac:
@@ -41,11 +41,11 @@ server:
     enabled: true
     ingressClassName: tailscale
     hosts:
-      - argo-workflows.tail4d334.ts.net
+      - argo-workflows
     tls:
-      - secretName: argoworkflows-example-tls
+      - secretName: argoworkflows-tls
         hosts:
-          - argo-workflows.tail4d334.ts.net
+          - argo-workflows
 artifactRepository:
   archiveLogs: false
   s3:

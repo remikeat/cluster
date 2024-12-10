@@ -23,7 +23,6 @@ spec:
       key: password
   hostname:
     hostname: https://<path:kv/data/infra/core/keycloak#hostname>
-    # admin: https://keycloak-admin.tail4d334.ts.net
   http:
     httpEnabled: true
     tlsSecret: keycloak-tls

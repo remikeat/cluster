@@ -16,4 +16,4 @@ spec:
       selfSignedCertificate:
         disabled: true
   config:
-    server.publicBaseUrl: "https://kibana.tail4d334.ts.net"
+    server.publicBaseUrl: https://kibana.<path:kv/data/infra/common#tailnet>

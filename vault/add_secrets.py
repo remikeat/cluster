@@ -164,7 +164,8 @@ SECRETS = {
     ],
     "common": [
         "email",
-        "domain"
+        "domain",
+        "tailnet"
     ],
     "core": {
         "kong": [

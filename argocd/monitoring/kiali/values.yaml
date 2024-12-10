@@ -27,19 +27,19 @@ cr:
     external_services:
       grafana:
         enabled: true
-        in_cluster_url: 'http://kube-prometheus-stack-grafana.kube-prometheus-stack'
-        url: 'https://grafana.tail4d334.ts.net'
+        in_cluster_url: http://kube-prometheus-stack-grafana.kube-prometheus-stack
+        url: https://grafana.<path:kv/data/infra/common#tailnet>
         auth:
           type: basic
-          username: "admin"
+          username: admin
           password: <path:kv/data/infra/monitoring/grafana#password>
       prometheus:
-        url: "http://kube-prometheus-stack-prometheus.kube-prometheus-stack:9090/"
+        url: http://kube-prometheus-stack-prometheus.kube-prometheus-stack:9090/
       tracing:
         enabled: true
         use_grpc: true
         in_cluster_url: http://jaeger-query.observability:16685
-        url: https://jaeger.tail4d334.ts.net
+        url: https://jaeger.<path:kv/data/infra/common#tailnet>
         namespace_selector: false
         # internal_url: http://jaeger-query.observability:16685
-        # external_url: https://jaeger.tail4d334.ts.net
+        # external_url: https://jaeger.<path:kv/data/infra/common#tailnet>
