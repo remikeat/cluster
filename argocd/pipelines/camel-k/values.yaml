@@ -3,6 +3,6 @@ operator:
 platform:
   build:
     registry:
-      address: harbor.remikeat.com
+      address: <path:kv/data/infra/storage/harbor#hostname>
       organization: library
       secret: harbor-credentials

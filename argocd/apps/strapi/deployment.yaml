@@ -18,7 +18,7 @@ spec:
         - name: harbor-credentials
       containers:
         - name: strapi
-          image: harbor.remikeat.com/library/strapi:latest
+          image: <path:kv/data/infra/storage/harbor#hostname>/library/strapi:latest
           imagePullPolicy: IfNotPresent
           ports:
             - name: http

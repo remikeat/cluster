@@ -192,6 +192,7 @@ infra/core/kong/client_id=
 infra/core/kong/client_secret=
 infra/core/open-appsec/email=
 infra/core/open-appsec/token=
+infra/storage/harbor/hostname=
 infra/storage/harbor/username=
 infra/storage/harbor/registry/username=
 infra/storage/rook-ceph/object_access_key=

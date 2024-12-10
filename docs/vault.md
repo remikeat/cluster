@@ -67,6 +67,7 @@ vault operator raft snapshot restore backup.snap
 
 ### Storage
 
+- kv/data/infra/storage/harbor#hostname
 - kv/data/infra/storage/harbor#user
 - kv/data/infra/storage/harbor#registry_user
 - kv/data/infra/storage/harbor#db_password
