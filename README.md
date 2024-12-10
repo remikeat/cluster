@@ -74,6 +74,17 @@ To have all the components running
 - CPU: 16 cores
 - Memory: 64GB
 
+## Accounts
+
+### Needed
+
+- https://tailscale.com/
+
+### Optional
+
+- https://app.crowdsec.net/
+- https://www.getambassador.io/
+
 # Instalation
 
 ## CLI tools installation
