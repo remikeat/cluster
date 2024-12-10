@@ -169,17 +169,11 @@ Create a tailscale OAuth client: https://login.tailscale.com/admin/settings/oaut
 Create the tailscale OAuth client with Devices Core and Auth Keys write scopes, and the tag tag:k8s-operator
 Leave the vault token empty at first and after initializating and unsealing the vault reapply terraform
 
-Create a `.env` file with the following content in terraform folder
+Create a `.env` file in terraform folder and fill the values
 
 ```
-export TF_VAR_kube_config_path=''
-export TF_VAR_external_cidr=''
-export TF_VAR_github_repo=''
-export TF_VAR_github_username=''
-export TF_VAR_github_token=''
-export TF_VAR_clientId=''
-export TF_VAR_clientSecret=''
-export TF_VAR_vault_token=''
+cd terraform
+cp example.env .env
 ```
 
 ```
@@ -258,44 +252,11 @@ vault write -f auth/approle/role/kes-role/secret-id
 Generate secrets for supabase using this page:
 https://supabase.com/docs/guides/self-hosting/docker
 
-Create .env file in vault folder with below content
+Create .env file in vault folder and fill the values
 
 ```
-infra/sendgrid/smtp_password=
-infra/ghcr/username=
-infra/ghcr/password=
-infra/github/username=
-infra/github/password=
-infra/common/email=
-infra/common/domain=
-infra/common/tailnet=
-infra/core/kong/ip=
-infra/core/kong/client_id=
-infra/core/kong/client_secret=
-infra/core/kong/proxy_ip=
-infra/core/istio/gateway_ip=
-infra/core/keycloak/hostname=
-infra/core/open-appsec/email=
-infra/core/open-appsec/token=
-infra/storage/harbor/hostname=
-infra/storage/harbor/username=
-infra/storage/harbor/registry/username=
-infra/storage/rook-ceph/object_access_key=
-infra/storage/cloudnativepg/pg_backup_access_key=
-infra/storage/minio/kes-id=
-infra/storage/minio/kes-secret=
-infra/monitoring/crowdsec/enroll_key=
-infra/monitoring/elastic/password=
-infra/pipelines/argo-workflows/client_id=
-infra/pipelines/argo-workflows/client_secret=
-infra/pipelines/argo-workflows/acess_key=
-infra/vm/kubevirt-manager/username=
-infra/vm/kubevirt-manager/password=
-infra/apps/supabase/hostname=
-infra/apps/supabase/anon_key=
-infra/apps/supabase/service_key=
-infra/apps/supabase/secret=
-infra/apps/supabase/analytics_api_key=
+cd vault
+cp example.env .env
 ```
 
 ```
