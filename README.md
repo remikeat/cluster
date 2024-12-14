@@ -1,6 +1,6 @@
 # Introduction
 
-Landing page: https://diy-cluster.remikeat.com/
+Landing page: https://diy-cloud.remikeat.com/
 
 This repository contains the Infrastructure as Code to deploy a single node kubernetes cluster with below software
 
